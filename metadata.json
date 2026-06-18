@@ -1,0 +1,6 @@
+{
+  "name": "Beatriz Bittencourt • Visagismo & Estética",
+  "description": "Ateliê de Visagismo e Estética Beatriz Bittencourt na região de Vila Sofia e Chácara Flora, São Paulo. Faça sua análise facial com IA, explore serviços e agende o seu horário.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
