@@ -17,6 +17,7 @@ import {
   HelpCircle, 
   CheckCircle2, 
   ChevronRight, 
+  ChevronLeft,
   Star, 
   X,
   Plus,
@@ -28,6 +29,33 @@ import {
 } from "lucide-react";
 import { SERVICES, TEMPERAMENTS, STUDIO_INFO, FAQ, LOCAL_SEO_REGIONS, CLIENT_TESTIMONIALS, BRIDAL_PACKAGES, BRIDAL_FAQS } from "./data";
 import { VisagismDiagnosis, Appointment, Service } from "./types";
+const bridalHairstyle = "/src/assets/images/bridal_hairstyle_1781965146296.jpg";
+const bridalPreparation = "/src/assets/images/bridal_preparation_1781965158411.jpg";
+const bridalPhotoshoot = "/src/assets/images/bridal_photoshoot_1781965171530.jpg";
+
+const BRIDGE_GALLERY = [
+  {
+    image: bridalHairstyle,
+    title: "Penteados de Noiva Autoral",
+    category: "Penteado",
+    description: "Design visagista focado no caimento perfeito. Coques e semi-presos texturizados que suportam grinaldas, véus e casamentos com alta fixação.",
+    tag: "Estilo & Grinalda"
+  },
+  {
+    image: bridalPreparation,
+    title: "Ritual de Preparação da Noiva",
+    category: "Preparação",
+    description: "Terapia capilar biotecnológica pré-casamento e spa facial relaxante. Garante brilho espelhado e pele blindada resistente a lágrimas.",
+    tag: "Spa & Biotecnologia"
+  },
+  {
+    image: bridalPhotoshoot,
+    title: "Book de Noivas & Making Of",
+    category: "Book / Making Of",
+    description: "Espaço boutique com camarim de iluminação de estúdio natural, projetado com estética neutra chique para capturar os álbuns fotográficos mais lindos.",
+    tag: "Camarim & Buffet"
+  }
+];
 
 export default function App() {
   // Navigation tabs
@@ -90,6 +118,8 @@ export default function App() {
   const [bridalOpenFaq, setBridalOpenFaq] = useState<number | null>(null);
   const [bridalQuickQuestion, setBridalQuickQuestion] = useState("");
   const [bridalQuestionStatus, setBridalQuestionStatus] = useState<"idle" | "sent">("idle");
+  const [bridalPaymentMethod, setBridalPaymentMethod] = useState<"parcelado" | "vista">("parcelado");
+  const [bridalCarouselIndex, setBridalCarouselIndex] = useState<number>(0);
   
   // Submit new review form states
   const [newReviewName, setNewReviewName] = useState("");
@@ -528,6 +558,161 @@ export default function App() {
                 </div>
               </div>
 
+              {/* GALERIA AUTORAL: CARROSSEL DE FOTOS COM IMAGENS INTEGRADAS */}
+              <div className="bg-stone-50 border border-[#EAE6DD] rounded-3xl p-6 md:p-8 space-y-6">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                  <div className="space-y-1">
+                    <span className="text-2xs text-[#B5945F] font-mono uppercase tracking-widest font-bold">Portfólio & Visualização Real</span>
+                    <h3 className="text-xl md:text-2xl font-serif text-stone-900">Conceitos e Resultados Reais de Noivas</h3>
+                    <p className="text-xs text-stone-500">
+                      Explore as fotos do nosso ateliê boutique na Zona Sul: do planejamento focado ao grande dia.
+                    </p>
+                  </div>
+                  
+                  {/* Seletor rápido de slides */}
+                  <div className="flex flex-wrap gap-1 bg-white p-1 rounded-xl border border-stone-200">
+                    {BRIDGE_GALLERY.map((item, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setBridalCarouselIndex(idx)}
+                        className={`px-3 py-1.5 rounded-lg text-[9px] font-bold uppercase transition-all tracking-wider ${
+                          bridalCarouselIndex === idx
+                            ? "bg-[#1C1A17] text-white shadow-xs"
+                            : "text-stone-500 hover:text-stone-800"
+                        }`}
+                      >
+                        {item.category}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Carrossel Ativo */}
+                <div className="bg-white border border-[#F3EFF5] rounded-2xl overflow-hidden shadow-xs grid grid-cols-1 md:grid-cols-12 gap-0">
+                  {/* Lado Esquerdo: Imagem com botões de navegação */}
+                  <div className="col-span-1 md:col-span-5 relative bg-stone-950 aspect-[3/4] overflow-hidden group">
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={bridalCarouselIndex}
+                        src={BRIDGE_GALLERY[bridalCarouselIndex].image}
+                        alt={BRIDGE_GALLERY[bridalCarouselIndex].title}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                      />
+                    </AnimatePresence>
+
+                    {/* Gradiente sutil inferior na imagem */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+
+                    {/* Categoria tag na imagem */}
+                    <span className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm text-[#1C1A17] text-3xs tracking-widest uppercase font-mono font-bold px-2.5 py-1 rounded shadow-xs">
+                      {BRIDGE_GALLERY[bridalCarouselIndex].category}
+                    </span>
+
+                    {/* Botões do Carrossel */}
+                    <div className="absolute bottom-4 right-4 flex gap-1.5 z-10">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setBridalCarouselIndex((prev) => (prev === 0 ? BRIDGE_GALLERY.length - 1 : prev - 1));
+                        }}
+                        className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-stone-800 flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer"
+                        title="Anterior"
+                      >
+                        <ChevronLeft size={16} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setBridalCarouselIndex((prev) => (prev === BRIDGE_GALLERY.length - 1 ? 0 : prev + 1));
+                        }}
+                        className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-stone-800 flex items-center justify-center transition-all shadow-md active:scale-95 cursor-pointer"
+                        title="Próximo"
+                      >
+                        <ChevronRight size={16} />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Lado Direito: Informações e CTA */}
+                  <div className="col-span-1 md:col-span-7 p-6 md:p-8 flex flex-col justify-between space-y-6">
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <span className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold block">
+                          ✦ {BRIDGE_GALLERY[bridalCarouselIndex].tag}
+                        </span>
+                        <h4 className="text-lg md:text-xl font-serif text-stone-900 leading-tight block">
+                          {BRIDGE_GALLERY[bridalCarouselIndex].title}
+                        </h4>
+                        <p className="text-xs text-stone-600 leading-relaxed">
+                          {BRIDGE_GALLERY[bridalCarouselIndex].description}
+                        </p>
+                      </div>
+
+                      {/* Detalhes de Excelência */}
+                      <div className="bg-stone-50 p-4 rounded-xl border border-stone-100 space-y-2.5 text-3xs font-mono uppercase tracking-wider text-stone-500">
+                        <span className="font-bold text-stone-700 text-2xs block mb-1">Diferenciais Do Ateliê:</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#B5945F] font-bold">✔</span>
+                          <span>Análise de Visagismo integrada para valorização autêntica</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#B5945F] font-bold">✔</span>
+                          <span>Atendimento exclusivo com privacidade absoluta de uma única noiva</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#B5945F] font-bold">✔</span>
+                          <span>Estúdio aconchegante com buffet VIP na Zona Sul</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* CTA Interativo integrado */}
+                    <div className="pt-4 border-t border-stone-100 flex flex-wrap items-center justify-between gap-4">
+                      <div className="space-y-0.5">
+                        <span className="text-[8px] text-stone-400 font-mono block uppercase">Status da Agenda</span>
+                        <span className="text-2xs font-extrabold text-[#B5945F] flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#B5945F] animate-ping inline-block" />
+                          FAZENDO COORDENAÇÃO PARA 2026/2027
+                        </span>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const targetSection = document.getElementById("bridal-calculator-section");
+                          targetSection?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                        className="bg-[#1C1A17] hover:bg-stone-800 text-white font-mono text-[10px] tracking-widest uppercase font-black px-4 py-2.5 rounded-lg transition-colors flex items-center gap-2 shadow-xs cursor-pointer"
+                      >
+                        Simular Valores Desta Categoria
+                        <ChevronRight size={12} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Dots indicadores embaixo */}
+                <div className="flex justify-center gap-1.5 pt-1">
+                  {BRIDGE_GALLERY.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setBridalCarouselIndex(idx)}
+                      className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                        bridalCarouselIndex === idx ? "w-6 bg-[#B5945F]" : "w-1.5 bg-stone-300"
+                      }`}
+                      aria-label={`Ir para slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
               {/* Dynamic Interactive Budget Calculator */}
               <div id="bridal-calculator-section" className="bg-white border border-[#EAE6DD] rounded-2xl p-6 md:p-8 space-y-8 shadow-sm">
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 pb-4 border-b border-stone-100">
@@ -679,6 +864,35 @@ export default function App() {
                       <h4 className="text-base font-serif text-white">Resumo do Planejamento</h4>
                     </div>
 
+                    {/* TÉCNICA DE VENDAS: SELETOR DE CONCENTRAÇÃO DE PAGAMENTO */}
+                    <div className="space-y-2">
+                      <span className="text-[9px] text-[#B5945F] font-mono uppercase tracking-widest font-bold block">Escolha a Condição de Pagamento:</span>
+                      <div className="grid grid-cols-2 gap-2 bg-stone-950 p-1 rounded-xl border border-stone-800">
+                        <button
+                          type="button"
+                          onClick={() => setBridalPaymentMethod("parcelado")}
+                          className={`py-2 px-1 rounded-lg text-2xs font-extrabold uppercase transition-all tracking-wider text-center ${
+                            bridalPaymentMethod === "parcelado"
+                              ? "bg-stone-800 text-white shadow-xs"
+                              : "text-stone-400 hover:text-stone-200"
+                          }`}
+                        >
+                          💳 Parcelado em 10x
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setBridalPaymentMethod("vista")}
+                          className={`py-2 px-1 rounded-lg text-2xs font-extrabold uppercase transition-all tracking-wider text-center flex items-center justify-center gap-1 ${
+                            bridalPaymentMethod === "vista"
+                              ? "bg-[#B5945F] text-[#1C1A17] shadow-xs"
+                              : "text-stone-400 hover:text-stone-200"
+                          }`}
+                        >
+                          ⚡ À Vista (PIX) <span className="bg-red-600 text-white font-sans text-[8px] font-black px-1 py-0.2 rounded-md">-15%</span>
+                        </button>
+                      </div>
+                    </div>
+
                     <div className="space-y-3.5 text-xs text-stone-300">
                       <div className="flex justify-between items-start gap-2">
                         <span className="text-stone-400">Pacote Principal:</span>
@@ -713,34 +927,62 @@ export default function App() {
                         </div>
                       )}
 
-                      <div className="pt-4 border-t border-stone-800 space-y-2">
-                        <span className="text-[10px] text-stone-500 block uppercase tracking-wide font-mono">Valor de Investimento Estimado</span>
-                        <div className="flex items-baseline justify-between">
-                          <span className="text-2xl font-serif text-[#B5945F] font-bold">
-                            R$ {(
-                              (bridalPackage === "noiva-essencial" ? 1500 : bridalPackage === "noiva-signature" ? 3900 : 2600) + 
-                              (bridalMadrinhasCount * 300) + 
-                              (bridalIncludeRehearsal ? 350 : 0) + 
-                              (bridalExternalTravel ? 600 : 0)
-                            ).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
-                          </span>
-                          <span className="text-[9px] text-[#B5945F] font-mono font-bold bg-[#B5945F]/15 px-2 py-0.5 rounded uppercase">
-                            Sem Juros
-                          </span>
-                        </div>
-                        <p className="text-[10px] text-stone-400 leading-normal">
-                          Ou parcelado em <span className="text-[#B5945F] font-bold">10 parcelas mensais de R$ {(
-                            ((bridalPackage === "noiva-essencial" ? 1500 : bridalPackage === "noiva-signature" ? 3900 : 2600) + 
-                             (bridalMadrinhasCount * 300) + 
-                             (bridalIncludeRehearsal ? 350 : 0) + 
-                             (bridalExternalTravel ? 600 : 0)) / 10
-                          ).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span> no cartão.
-                        </p>
-                      </div>
+                      {/* CALCULATING VALUES FOR SALES TECHNIQUE */}
+                      {(() => {
+                        const baseCost = (bridalPackage === "noiva-essencial" ? 1500 : bridalPackage === "noiva-signature" ? 3900 : 2600);
+                        const extraCost = (bridalMadrinhasCount * 300) + (bridalIncludeRehearsal ? 350 : 0) + (bridalExternalTravel ? 600 : 0);
+                        const rawTotal = baseCost + extraCost;
+                        const discountAmount = rawTotal * 0.15;
+                        const finalTotal = bridalPaymentMethod === "vista" ? rawTotal - discountAmount : rawTotal;
+
+                        return (
+                          <div className="pt-4 border-t border-stone-800 space-y-2">
+                            <span className="text-[10px] text-stone-500 block uppercase tracking-wide font-mono">Valor de Investimento Estimado</span>
+                            
+                            {bridalPaymentMethod === "vista" ? (
+                              <div className="space-y-1.5">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-xs text-stone-500 line-through">
+                                    R$ {rawTotal.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                                  </span>
+                                  <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[9px] px-2 py-0.5 rounded font-mono font-bold uppercase">
+                                    Economia de R$ {discountAmount.toLocaleString("pt-BR", { minimumFractionDigits: 0 })}
+                                  </span>
+                                </div>
+                                <div className="flex items-baseline justify-between">
+                                  <span className="text-3xl font-serif text-[#B5945F] font-black tracking-tight drop-shadow-xs">
+                                    R$ {finalTotal.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                                  </span>
+                                  <span className="text-[9px] text-[#B5945F] font-mono font-bold bg-[#B5945F]/20 px-2 py-0.5 rounded uppercase border border-[#B5945F]/30 animate-pulse">
+                                    Super Desconto PIX
+                                  </span>
+                                </div>
+                                <p className="text-[10px] text-stone-400 leading-normal">
+                                  Preço exclusivo para pagamento à vista no fechamento. 100% de isenção de taxas bancárias.
+                                </p>
+                              </div>
+                            ) : (
+                              <div className="space-y-1.5">
+                                <div className="flex items-baseline justify-between">
+                                  <span className="text-3xl font-serif text-[#B5945F] font-bold">
+                                    R$ {rawTotal.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                                  </span>
+                                  <span className="text-[9px] text-stone-400 font-mono font-bold bg-stone-800 px-2 py-0.5 rounded uppercase">
+                                    10x Sem Juros
+                                  </span>
+                                </div>
+                                <p className="text-[10px] text-stone-400 leading-normal">
+                                  Ou parcelado em <span className="text-[#B5945F] font-bold">10 parcelas mensais de R$ {(rawTotal / 10).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span> no cartão de crédito de sua preferência.
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })()}
                     </div>
 
                     <div className="pt-4 border-t border-stone-800 space-y-3">
-                      <div className="bg-stone-850 p-3 rounded-lg text-[10px] text-stone-300 space-y-1 leading-relaxed">
+                      <div className="bg-stone-850 p-3 rounded-lg text-[10px] text-stone-300 space-y-1 leading-relaxed border border-stone-800">
                         <p className="font-bold text-[#B5945F] flex items-center gap-1">
                           <CheckCircle2 size={11} /> Incluso no pacote:
                         </p>
@@ -755,20 +997,20 @@ export default function App() {
                         type="button"
                         onClick={() => {
                           const selectedPkg = BRIDAL_PACKAGES.find(p => p.id === bridalPackage) || BRIDAL_PACKAGES[1];
-                          const totalVal = (
-                            (bridalPackage === "noiva-essencial" ? 1500 : bridalPackage === "noiva-signature" ? 3900 : 2600) + 
-                            (bridalMadrinhasCount * 300) + 
-                            (bridalIncludeRehearsal ? 350 : 0) + 
-                            (bridalExternalTravel ? 600 : 0)
-                          );
+                          const baseCost = (bridalPackage === "noiva-essencial" ? 1500 : bridalPackage === "noiva-signature" ? 3900 : 2600);
+                          const extraCost = (bridalMadrinhasCount * 300) + (bridalIncludeRehearsal ? 350 : 0) + (bridalExternalTravel ? 600 : 0);
+                          const rawTotal = baseCost + extraCost;
+                          const discountAmount = rawTotal * 0.15;
+                          const finalTotal = bridalPaymentMethod === "vista" ? rawTotal - discountAmount : rawTotal;
+
                           setSelectedService({
                             id: selectedPkg.id,
                             title: selectedPkg.name.split(":")[0],
-                            description: selectedPkg.idealFor,
-                            price: `R$ ${totalVal.toLocaleString("pt-BR", { minimumFractionDigits: 0 })}`,
+                            description: `${selectedPkg.idealFor} (Condição de Pagamento: ${bridalPaymentMethod === "vista" ? "À Vista PIX com 15% Desconto" : "Parcelado 10x sem juros"})`,
+                            price: `R$ ${finalTotal.toLocaleString("pt-BR", { minimumFractionDigits: 0 })}`,
                             duration: "Dia da Noiva",
                             category: "Noivas",
-                            tags: selectedPkg.features
+                            tags: [...selectedPkg.features, bridalPaymentMethod === "vista" ? "Promoção PIX" : "10x Sem Juros"]
                           });
                           setActiveTab("agendamento");
                           setTimeout(() => {
