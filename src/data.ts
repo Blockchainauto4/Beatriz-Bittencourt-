@@ -238,70 +238,72 @@ export const BRIDAL_PACKAGES: BridalPackage[] = [
     priceString: "R$ 1.500",
     idealFor: "Noivas que desejam um atendimento concentrado com maquiagem HD e penteado de noiva de alta fixação.",
     included: [
-      "Teste prévio completo de penteado de noiva",
-      "Penteado de noiva profissional no Grande Dia de seu Dia da noiva",
-      "Maquiagem HD com cílios de alta qualidade e pele blindada resistente a lágrimas",
+      "Teste prévio de penteado de noiva e makeup",
+      "Penteado de noiva e maquiagem profissional no salão no Grande Dia da noiva",
+      "Hidratação capilar essencial e preparação de noiva para o penteado autoral",
       "Consultoria de visagismo express para harmonização de véu, acessórios e decote na Zona Sul, São Paulo"
     ],
-    features: ["Penteado de noiva", "Preparação de Noiva", "Dia da noiva Slim"]
+    features: ["Penteado de noiva", "Makeup", "Dia da noiva Slim"]
   },
   {
     id: "noiva-classico",
     name: "Pacote Clássico: Dia da noiva Premium & Penteado de noiva na Zona Sul, São Paulo",
     price: 2600,
     priceString: "R$ 2.600",
-    idealFor: "A escolha favorita para máximo conforto com Dia da noiva. Inclui assessoria de visagismo e penteado de noiva.",
+    idealFor: "A escolha favorita para o dia dela no salão com máximo conforto, relaxamento e bem-estar completo.",
     included: [
-      "Consultoria completa de visagismo profissional para noivas (análise de linhas e arquétipo facial)",
-      "Teste prévio com simulação real de penteado de noiva e maquiagem de alta definição",
-      "Spa facial biotecnológico e hidratação profunda pré-maquiagem no seu Dia da noiva",
-      "Penteado de noiva sofisticado personalizado + Maquiagem blindada ultra resistente",
-      "Uso de camarim e espaço privativo boutique no ateliê para o Dia da noiva (com buffet gourmet na Zona Sul, São Paulo)",
-      "Assessoria e suporte especializado para vestimenta, colocação de véu e grinalda"
+      "Delicioso café da manhã completo no salão boutique",
+      "Massagem relaxante corporal para aliviar a tensão do casamento",
+      "Manicure e pedicure delicada dedicada para o grande dia",
+      "Hidratação capilar profunda e preparação completa do penteado de noiva",
+      "Penteado de noiva sofisticado personalizado + Maquiagem (makeup) blindada",
+      "Pausa estruturada para sessões de fotos e filmagens (por conta da noiva/seus fotógrafos)",
+      "Uso de camarim e espaço privativo boutique no ateliê na Zona Sul, São Paulo"
     ],
-    features: ["Penteado de noiva", "Dia da noiva", "Preparo de Noiva", "Visagismo"]
+    features: ["Penteado de noiva", "Makeup", "Dia da noiva", "Boutique no Salão"]
   },
   {
     id: "noiva-signature",
     name: "Pacote Signature: Dia da noiva & Book de noiva de Luxo na Zona Sul, São Paulo",
     price: 3900,
     priceString: "R$ 3.900",
-    idealFor: "A experiência absoluta de luxo e exclusividade no Dia da noiva. Perfeito para noivas que desejam registrar fotos refinadas no Book de noiva.",
+    idealFor: "A experiência absoluta de luxo, beleza e privacidade total para o dia dela no salão e book de fotos.",
     included: [
-      "Todos os serviços do pacote clássico com privacidade total do ateliê na Zona Sul, São Paulo",
-      "Coordenação de camarim e facilitação de cenários para fotógrafos e vídeo para o Book de noiva",
+      "Todos os serviços do pacote clássico (Café da manhã, Massagem, Depilação, Manicure & Pedicure)",
+      "Tratamento capilar intensivo, hidratação capilar e preparação exclusiva do penteado",
+      "Espaço boutique reservado com suporte a pausas planejadas para fotos e filmagens (por conta da noiva/seus fotógrafos)",
       "Acompanhamento personalizado da visagista Beatriz Bittencourt até a cerimônia (retoque final no altar)",
       "Acesso ao lounge VIP reservado do ateliê para mãe da noiva ou até 2 madrinhas na Zona Sul, São Paulo",
       "Design de sobrancelha e análise de colorimetria express na semana do casamento"
     ],
-    features: ["Book de noiva", "Penteado de noiva", "Dia da noiva", "Zona Sul, São Paulo"]
+    features: ["Book de noiva", "Fazer Fotos & Filmes", "Dia da noiva", "Zona Sul, São Paulo"]
   }
 ];
 
 export const BRIDAL_FAQS = [
   {
     question: "Qual o valor médio e estimativa de custos para o Dia da noiva na Zona Sul, São Paulo?",
-    answer: "O valor de investimento estimado para o Dia da noiva no nosso ateliê boutique na Zona Sul, São Paulo varia de R$ 1.500 no Pacote Essencial (focalizado em preparação de fibra e penteado de noiva) até R$ 3.900 no Pacote Signature (experiência VIP de luxo integrada, camarim exclusivo para Book de noiva e acompanhamento ao altar). Um pacote muito procurado é o Pacote Clássico por R$ 2.600, que já contempla visagismo completo, spa facial, buffet gourmet e camarim privativo no Jardim Marajoara. Valores adicionais consistem em produção de Madrinhas ou Mães por R$ 300 cada, ensaio extra por R$ 350, e deslocamento para hotéis boutique ou domicílios na Zona Sul, São Paulo por R$ 600. Oferecemos parcelamento facilitado em até 10x sem juros no cartão de crédito."
+    answer: "O valor de investimento estimado para o Dia da noiva no nosso ateliê boutique na Zona Sul, São Paulo varia de R$ 1.500 no Pacote Essencial até R$ 3.900 no Pacote Signature. O Pacote Clássico, por R$ 2.600, é a escolha favorita e oferece uma experiência completa: delicioso café da manhã no salão, massagem relaxante corporal, manicure e pedicure, hidratação capilar profissional, preparação cuidadosa do penteado de noiva, penteado autoral com makeup blindada e uma pausa especial para fotos e filmagens por conta da noiva. Valores adicionais consistem em produção de Madrinhas/Mães por R$ 300 cada e ensaio prévio extra por R$ 350."
   },
   {
     question: "Como funciona a etapa de Preparação de Noiva e cuidados com o penteado de noiva?",
-    answer: "A etapa de preparação de noiva no Ateliê Beatriz Bittencourt envolve um ritual biotecnológico especializado na semana e no Dia da noiva. Realizamos infusão de nutrientes para aumentar o brilho das mechas, escova de alinhamento térmico (sem formol) para garantir caimento impecável ao penteado de noiva, e hidratação facial pré-maquiagem para que a pele blindada resista a lágrimas e suor por mais de 18 horas de festa. Toda essa preparação assegura que você esteja relaxada e radiante para as fotos do seu Book de noiva."
+    answer: "O Dia da noiva no nosso salão é planejado milimetricamente para ser relaxante e inabalável. Toda a preparação inclui hidratação capilar de alta performance para a fibra capilar, preparação cuidadosa do penteado autoral, além de spa facial e depilação. Tudo isso cria a base perfeita para o penteado de noiva e a maquiagem (makeup) dos seus sonhos, garantindo durabilidade extrema e visual impecável frente a luzes e câmeras."
   },
   {
     question: "Como é a escolha de cada Penteado de noiva em sintonia com o vestido?",
-    answer: "Através da nossa consultoria de visagismo profissional para noivas na Zona Sul, São Paulo, analisamos o formato do seu rosto, decote do vestido de casamento, caimento do véu e design da grinalda para recomendar a melhor harmonia física. Realizamos o Teste Prévio Completo de 30 a 60 dias antes da cerimônia, onde montamos e validamos fisicamente o penteado de noiva escolhido (seja o Coque Atemporal, Semi-Preso Texturizado ou Trança Boho Premium), garantindo total tranquilidade e satisfação absoluta para o seu Dia da noiva."
+    answer: "Através da nossa consultoria de visagismo profissional para noivas na Zona Sul, São Paulo, analisamos o formato do seu rosto, decote do vestido, véu e acessórios para recomendar a melhor harmonia física. Realizamos o Teste Prévio Completo de 30 a 60 dias antes da cerimônia, onde montamos e validamos fisicamente o penteado de noiva escolhido (seja o Coque Atemporal, Semi-Preso Waves ou Trança Boho Premium), garantindo total tranquilidade para o seu Dia da noiva."
   },
   {
     question: "O Ateliê boutique oferece suporte de camarim para o Book de noiva (Making Of) na Zona Sul, São Paulo?",
-    answer: "Sim! Pensado exclusivamente para o seu Book de noiva e ensaio fotográfico de luxo, nosso espaço boutique localizado na região da Chácara Flora e Vila Sofia possui iluminação de estúdio natural e de camarim profissional neutra, buffet gourmet com espumante de cortesia para a noiva, e cenários chiques para capturar cada momento espontâneo com os fotógrafos e cinegrafistas. O uso privativo do camarim boutique para o Dia da noiva está incluso sem taxas adicionais de locação nos pacotes Clássico e Signature."
+    answer: "Com certeza! Nosso espaço boutique na Zona Sul, São Paulo conta com camarim profissional iluminado de forma natural e neutra. Oferecemos um buffet gourmet (com café da manhã/coquetel) e estruturamos uma pausa especial planejada para fotos e filmagens por conta da noiva (equipes de fotografia do seu book de noiva), permitindo capturar os melhores momentos do making of com total privacidade."
   },
   {
-    question: "Quais são as localizadas atendidas na Zona Sul, São Paulo para o Dia da noiva?",
-    answer: "Somos um ateliê boutique altamente avaliado com 5.0 estrelas no Google Maps e Google Meu Negócio. Atendemos presencialmente em nosso espaço com hora marcada, localizado na Zona Sul, São Paulo (próximo à Chácara Flora, Jardim Marajoara, Vila Sofia, Brooklin e Santo Amaro, fácil acesso pela Av. Washington Luís). Para noivas que desejam atendimento personalizado on-location em domicílio ou hotéis boutique selecionados da Zona Sul, São Paulo, oferecemos suporte VIP completo de deslocamento de equipe para penteado de noiva e produção completa."
+    question: "Quais são as localizações atendidas na Zona Sul, São Paulo para o Dia da noiva?",
+    answer: "Somos um ateliê boutique premium localizado na Rua Dr. Ferreira Lopes, 703, region da Chácara Flora, Jardim Marajoara, Vila Sofia, Brooklin e Santo Amaro (Zona Sul, São Paulo). Atendemos noivas e acompanhantes sob agendamento exclusivo com estacionamento privativo de cortesia. Caso prefira atendimento on-location em domicílios ou hotéis boutique selecionados da Zona Sul, também oferecemos suporte de deslocamento da equipe."
   },
   {
     question: "Como posso tirar dúvidas personalizadas e fazer o agendamento do meu Dia da noiva?",
-    answer: "Para agendar uma pré-avaliação ou sanar quaisquer dúvidas específicas sobre os pacotes, prazos para o seu Book de noiva e cronograma para as suas madrinhas, você pode clicar em qualquer botão de Call to Action nesta página para simular o orçamento do seu Dia da noiva e falar instantaneamente com a visagista Beatriz Bittencourt via WhatsApp comercial. Recomendamos o agendamento prévio com 6 a 12 meses de antecedência na Zona Sul, São Paulo, pois trabalhamos com atendimento totalmente exclusivo de uma única noiva por período para garantir privacidade absoluta."
+    answer: "Para agendar uma pré-avaliação ou sanar dúvidas sobre os serviços inclusos (como café da manhã, massagem, manicure, pedicure, hidratação capilar, maquiagem e penteado), você pode clicar em qualquer botão de Call to Action nesta página para simular o orçamento do seu Dia da noiva e falar instantaneamente com a visagista Beatriz Bittencourt via WhatsApp comercial. Recomendamos o agendamento prévio com 6 a 12 meses de antecedência."
   }
 ];
 

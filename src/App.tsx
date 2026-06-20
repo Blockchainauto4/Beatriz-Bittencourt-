@@ -519,27 +519,27 @@ export default function App() {
                   {[
                     {
                       title: "Semi-Preso Waves",
-                      keyword: "Penteados de Noiva",
+                      keyword: "Penteado de noiva",
                       desc: "Técnica que combina leveza com movimento. Ondulações impecáveis com fixação flexível, excelentes para casamentos diurnos ao ar livre na região.",
                       feature: "Fixação leve e movimento"
                     },
                     {
                       title: "Coque Atemporal",
-                      keyword: "Preparação de Noiva",
+                      keyword: "Penteado de noiva",
                       desc: "Sofisticação total. Um design polido que valoriza o pescoço e a grinalda de casamento, com resistência climática de alta durabilidade.",
                       feature: "Perfeito para véus clássicos"
                     },
                     {
                       title: "Trança Boho Premium",
-                      keyword: "Dia da Noiva",
+                      keyword: "Dia da noiva",
                       desc: "Ar despojado e romântico. Elementos texturizados com fivelas de pérola ou flores secas de campo integradas de maneira harmoniosa.",
                       feature: "Estilo sofisticadamente livre"
                     },
                     {
-                      title: "Fibras de Alta Performance",
-                      keyword: "Preparo de Noivas",
-                      desc: "Terapia reparadora de mechas pré-evento. Oferece toque suave, brilho de espelho e blindagem contra umidade para fotos maravilhosas.",
-                      feature: "Blindagem de mecha 18 horas"
+                      title: "Book de Noiva Integrado",
+                      keyword: "Book de noiva",
+                      desc: "Espaço boutique planejado com iluminação perfeita de camarim e natural. Oferece cenários para fotos impecáveis de making of na Zona Sul, São Paulo.",
+                      feature: "Cenários e luz natural"
                     }
                   ].map((style, i) => (
                     <div key={i} className="bg-white border border-[#EAE6DD] rounded-2xl p-5 space-y-3 flex flex-col justify-between hover:border-[#B5945F]/40 transition-colors shadow-2xs">
@@ -1181,7 +1181,7 @@ export default function App() {
                         <span className="text-[#B5945F] font-serif text-sm">📍</span>
                         <div>
                           <strong className="text-stone-900 block">Endereço Real & Fácil</strong>
-                          Rua Dep. João Sussumu Hirata (região de Jd. Marajoara, Vila Sofia e Chácara Flora). Estacionamento privativo para noivas.
+                          Rua Dr. Ferreira Lopes, 703 (região de Jd. Marajoara, Vila Sofia e Chácara Flora). Estacionamento privativo para noivas.
                         </div>
                       </div>
                       <div className="flex items-start gap-2 text-2xs text-stone-600">
