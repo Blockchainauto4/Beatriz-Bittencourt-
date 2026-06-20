@@ -29,31 +29,31 @@ import {
 } from "lucide-react";
 import { SERVICES, TEMPERAMENTS, STUDIO_INFO, FAQ, LOCAL_SEO_REGIONS, CLIENT_TESTIMONIALS, BRIDAL_PACKAGES, BRIDAL_FAQS } from "./data";
 import { VisagismDiagnosis, Appointment, Service } from "./types";
-const bridalHairstyle = "/src/assets/images/bridal_hairstyle_1781965146296.jpg";
-const bridalPreparation = "/src/assets/images/bridal_preparation_1781965158411.jpg";
-const bridalPhotoshoot = "/src/assets/images/bridal_photoshoot_1781965171530.jpg";
+const bridalHairstyle = "/src/assets/images/bride_back_updo_1781965445461.jpg";
+const bridalPreparation = "/src/assets/images/bride_sitting_stairs_1781965459138.jpg";
+const bridalPhotoshoot = "/src/assets/images/three_brides_studio_1781965473262.jpg";
 
 const BRIDGE_GALLERY = [
   {
     image: bridalHairstyle,
-    title: "Penteados de Noiva Autoral",
-    category: "Penteado",
-    description: "Design visagista focado no caimento perfeito. Coques e semi-presos texturizados que suportam grinaldas, véus e casamentos com alta fixação.",
-    tag: "Estilo & Grinalda"
+    title: "Penteado Premium & Coque Baixo Autoral",
+    category: "Penteado Especializado",
+    description: "Design de visagismo com o caimento perfeito de perfil. Coques baixos trançados de alta costura que sustentam grinaldas e acessórios com segurança máxima para noivas chiques.",
+    tag: "Penteados de Noiva Autoral"
   },
   {
     image: bridalPreparation,
-    title: "Ritual de Preparação da Noiva",
-    category: "Preparação",
-    description: "Terapia capilar biotecnológica pré-casamento e spa facial relaxante. Garante brilho espelhado e pele blindada resistente a lágrimas.",
-    tag: "Spa & Biotecnologia"
+    title: "Preparação Espetacular no Ateliê Boutique",
+    category: "Ritual & Preparação",
+    description: "Cronograma capilar, spa facial de relaxamento e preparação completa com escova térmica. Garante caimento, maciez e fixação inabalável para mais de 18 horas de festa.",
+    tag: "Spa & Texturização"
   },
   {
     image: bridalPhotoshoot,
-    title: "Book de Noivas & Making Of",
-    category: "Book / Making Of",
-    description: "Espaço boutique com camarim de iluminação de estúdio natural, projetado com estética neutra chique para capturar os álbuns fotográficos mais lindos.",
-    tag: "Camarim & Buffet"
+    title: "Noivas, Madrinhas & Produção de Grupo",
+    category: "Produção de Noivas & Madrinhas",
+    description: "Espaço sob medida para noivas, mães e convidadas. Criação de identidades complementares com tiaras, coroas e texturas em perfeita sincronia com o tom do seu casamento.",
+    tag: "Simultâneo & Assessoria"
   }
 ];
 
