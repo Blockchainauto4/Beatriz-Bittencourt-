@@ -88,6 +88,8 @@ export default function App() {
   const [bridalIncludeRehearsal, setBridalIncludeRehearsal] = useState<boolean>(false);
   const [bridalExternalTravel, setBridalExternalTravel] = useState<boolean>(false);
   const [bridalOpenFaq, setBridalOpenFaq] = useState<number | null>(null);
+  const [bridalQuickQuestion, setBridalQuickQuestion] = useState("");
+  const [bridalQuestionStatus, setBridalQuestionStatus] = useState<"idle" | "sent">("idle");
   
   // Submit new review form states
   const [newReviewName, setNewReviewName] = useState("");
@@ -834,6 +836,161 @@ export default function App() {
                       </div>
                     );
                   })}
+                </div>
+              </div>
+
+              {/* Seção Integrada: Call To Action de Dúvidas + Diretrizes do Google Meu Negócio */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-6">
+                {/* 1. CTA INTERATIVO PARA TIRAR DÚVIDAS */}
+                <div className="bg-gradient-to-br from-[#1C1A17] to-stone-900 text-stone-200 p-6 md:p-8 rounded-2xl border border-stone-800 flex flex-col justify-between space-y-6 shadow-md">
+                  <div className="space-y-3">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#B5945F]/20 text-[#B5945F] rounded-full text-2xs font-mono tracking-wider uppercase font-bold">
+                      <HelpCircle size={10} /> Canal Direto de Dúvidas
+                    </div>
+                    <h3 className="text-lg md:text-xl font-serif text-white">Restou alguma dúvida sobre o Dia da Noiva?</h3>
+                    <p className="text-xs text-stone-400 leading-relaxed">
+                      Digite sua dúvida personalizada ou mencione a data pretendida do seu casamento. Nossa equipe de assessoria e a visagista Beatriz Bittencourt responderão você instantaneamente com atendimento VIP.
+                    </p>
+                  </div>
+
+                  <form 
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (!bridalQuickQuestion.trim()) return;
+                      setBridalQuestionStatus("sent");
+                    }}
+                    className="space-y-4"
+                  >
+                    <div className="relative">
+                      <textarea
+                        rows={2}
+                        value={bridalQuickQuestion}
+                        onChange={(e) => {
+                          setBridalQuickQuestion(e.target.value);
+                          if (bridalQuestionStatus === "sent") setBridalQuestionStatus("idle");
+                        }}
+                        placeholder="Ex: Qual o valor aproximado para produzir a Noiva e mais 4 Madrinhas com retoques e assessoria no altar?"
+                        className="w-full bg-stone-850/60 border border-stone-750 focus:border-[#B5945F] outline-none rounded-xl p-3 text-xs text-stone-100 placeholder-stone-500 resize-none transition-colors"
+                      />
+                    </div>
+
+                    {bridalQuestionStatus === "sent" ? (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="p-3 bg-[#B5945F]/10 border border-[#B5945F]/20 rounded-lg text-2xs text-[#B5945F] leading-tight space-y-1.5"
+                      >
+                        <p className="font-bold">✓ Pergunta processada e pré-estimada!</p>
+                        <p className="text-stone-300 leading-normal">
+                          Perfeito! De acordo com sua dúvida sobre os pacotes de casamento, nosso ateliê boutique responderá os detalhes de datas e logística na Zona Sul. Deseja iniciar a conversa rápida no WhatsApp comercial com o seu texto pré-preenchido?
+                        </p>
+                        <a 
+                          href={`https://wa.me/551199999999?text=${encodeURIComponent(`Olá Beatriz Bittencourt, fiz uma simulação de Dia da Noiva no app e gostaria de tirar uma dúvida sobre: ${bridalQuickQuestion}`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 bg-[#B5945F] hover:bg-[#A38250] text-[#1C1A17] font-bold px-3 py-1.5 rounded text-4xs uppercase tracking-wider transition-colors mt-1"
+                        >
+                          <Phone size={10} /> Enviar Pergunta ao WhatsApp Oficial
+                        </a>
+                      </motion.div>
+                    ) : (
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <button
+                          type="submit"
+                          disabled={!bridalQuickQuestion.trim()}
+                          className="flex-1 bg-stone-800 hover:bg-stone-750 disabled:opacity-50 disabled:hover:bg-stone-800 text-stone-200 border border-stone-700 py-2.5 px-4 rounded-xl text-xs font-semibold tracking-wider uppercase transition-colors"
+                        >
+                          Simular Envio de Dúvida
+                        </button>
+                        <a
+                          href={`https://wa.me/551199999999?text=${encodeURIComponent(bridalQuickQuestion.trim() ? `Olá Beatriz Bittencourt, fiz uma simulação de Dia da Noiva no app e gostaria de saber: ${bridalQuickQuestion}` : 'Olá Beatriz, gostaria de tirar dúvidas e solicitar orçamento para meu Dia da Noiva.')}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-[#B5945F] hover:bg-[#A38250] text-[#1C1A17] py-2.5 px-4 rounded-xl text-xs font-bold tracking-wider uppercase transition-colors flex items-center gap-1.5 justify-center font-semibold"
+                        >
+                          <Phone size={13} />
+                          Falar no WhatsApp
+                        </a>
+                      </div>
+                    )}
+                  </form>
+                </div>
+
+                {/* 2. RECOMENDAÇÕES DO GOOGLE MEU NEGÓCIO & CREDIBILIDADE LOCAL */}
+                <div className="bg-white border border-[#EAE6DD] p-6 md:p-8 rounded-2xl flex flex-col justify-between space-y-6 shadow-2xs">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-stone-100 text-stone-800 rounded-full text-2xs font-mono tracking-wider uppercase font-bold">
+                        <Star size={10} className="fill-[#B5945F] text-[#B5945F]" /> Google Meu Negócio
+                      </div>
+                      <span className="text-2xs font-bold text-[#B5945F] font-mono tracking-wide">100% VERIFICADO</span>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <h3 className="text-lg font-serif text-stone-900 leading-tight">Presença Local e Transparência Estrita</h3>
+                      <p className="text-xs text-stone-600 leading-relaxed">
+                        Seguindo rigorosamente as recomendações e diretrizes do Google Meu Negócio, nosso Ateliê Boutique garante total confiabilidade física e transparência comercial:
+                      </p>
+                    </div>
+
+                    {/* Checkpoints do GMN */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                      <div className="flex items-start gap-2 text-2xs text-stone-600">
+                        <span className="text-[#B5945F] font-serif text-sm">📍</span>
+                        <div>
+                          <strong className="text-stone-900 block">Endereço Real & Fácil</strong>
+                          Rua Dep. João Sussumu Hirata (região de Jd. Marajoara, Vila Sofia e Chácara Flora). Estacionamento privativo para noivas.
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2 text-2xs text-stone-600">
+                        <span className="text-[#B5945F] font-serif text-sm">⏰</span>
+                        <div>
+                          <strong className="text-stone-900 block">Horários em Tempo Real</strong>
+                          Terça a Sábado das 08h30 às 19h30, com aberturas exclusivas adaptadas ao cronograma da cerimônia de casamento.
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2 text-2xs text-stone-600">
+                        <span className="text-[#B5945F] font-serif text-sm">💳</span>
+                        <div>
+                          <strong className="text-stone-900 block">Investimento Visível</strong>
+                          Nossos preços são abertos e tabelados. Sem taxas ocultas de fim de ano ou surpresas desagradáveis para o seu planejamento.
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2 text-2xs text-stone-600">
+                        <span className="text-[#B5945F] font-serif text-sm">🌟</span>
+                        <div>
+                          <strong className="text-stone-900 block">Avaliação 5.0 Estrelas</strong>
+                          Com mais de 140 avaliações de noivas e clientes auditadas publicamente pelo Google Maps na Zona Sul de SP.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-stone-100 flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex items-center gap-1.5 text-[11px] text-stone-500">
+                      <span>Média Geral:</span>
+                      <div className="flex text-[#B5945F] gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} size={11} className="fill-current text-[#B5945F]" />
+                        ))}
+                      </div>
+                      <span className="font-bold text-stone-700 font-mono ml-1">5.0 / 5.0</span>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        setActiveTab("atelie");
+                        setTimeout(() => {
+                          const contactSec = document.getElementById("studio-location-section");
+                          contactSec?.scrollIntoView({ behavior: "smooth" });
+                        }, 100);
+                      }}
+                      className="text-[#B5945F] hover:text-[#A38250] text-[10px] font-mono tracking-widest uppercase font-bold inline-flex items-center gap-1 transition-colors"
+                    >
+                      Ver Ateliê no Mapa
+                      <ChevronRight size={10} />
+                    </button>
+                  </div>
                 </div>
               </div>
             </motion.div>

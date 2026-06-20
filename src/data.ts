@@ -280,24 +280,28 @@ export const BRIDAL_PACKAGES: BridalPackage[] = [
 
 export const BRIDAL_FAQS = [
   {
-    question: "Qual o valor médio e formas de pagamento do Dia da Noiva?",
-    answer: "Os valores dos nossos pacotes exclusivos com penteados de noiva e maquiagem blindada variam de R$ 1.500 a R$ 3.900. O preço é reflexo da personalização, do nível de exclusividade e da infraestrutura de camarim para o Book de Noivas. Dividimos o valor das parcelas em até 10x sem juros no cartão para facilitar o planejamento do casamento."
+    question: "Qual o valor médio e estimativa de custos para o Dia da Noiva na Zona Sul de SP?",
+    answer: "O valor de investimento estimado para o Dia da Noiva no nosso ateliê boutique varia de R$ 1.500 no Pacote Essencial (focalizado em preparação essencial e penteado) até R$ 3.900 no Pacote Signature (experiência VIP de luxo integrada, camarim exclusivo e acompanhamento ao altar). Um pacote muito procurado é o Pacote Clássico por R$ 2.600, que já contempla visagismo completo, spa facial, buffet gourmet e camarim privativo no Jardim Marajoara. Valores adicionais consistem em produção de Madrinhas ou Mães por R$ 300 cada, ensaio extra por R$ 350, e deslocamento para hotéis boutique ou domicílios na Zona Sul por R$ 600. Oferecemos parcelamento facilitado em até 10x sem juros no cartão de crédito."
   },
   {
-    question: "O que compreende a etapa de Preparação de Noiva?",
-    answer: "A etapa de preparação de noiva envolve tratamentos para que a pele e o cabelo estejam radiantes. Inclui revitalização facial profunda para melhor fixação da maquiagem HD, higienização terapêutica dos fios, escova modeladora de alinhamento e cronograma de relaxamento para que você se sinta plena e descansada."
+    question: "Como funciona a etapa de Preparação de Noiva e cuidados com o cabelo?",
+    answer: "A etapa de preparação de noiva no Ateliê Beatriz Bittencourt envolve um ritual biotecnológico especializado na semana e no dia do casamento. Realizamos infusão de nutrientes para aumentar o brilho das mechas, escova de alinhamento térmico (sem formol) para garantir caimento impecável aos penteados de noiva, e hidratação facial pré-maquiagem para que a pele blindada resista a lágrimas e suor por mais de 18 horas de festa. Toda essa preparação assegura que você esteja relaxada e radiante para as câmeras."
   },
   {
-    question: "Como é estruturado o Teste de Penteado de Noiva?",
-    answer: "O teste de penteados de noiva é realizado com antecedência sugerida de 30 a 60 dias da cerimônia de casamento. Analisamos todas as referências preferidas da noiva e testamos o penteado e a maquiagem até obter a composição perfeita de acordo com o decote do vestido, véu e acessórios."
+    question: "Como é a escolha dos Penteados de Noiva em sintonia com o vestido?",
+    answer: "Através da nossa consultoria de visagismo profissional para noivas, analisamos o formato do seu rosto, decote do vestido de casamento, caimento do véu e design da grinalda para recomendar a melhor harmonia física. Realizamos o Teste Prévio Completo de 30 a 60 dias antes da cerimônia, onde montamos e validamos fisicamente o penteado de noiva escolhido (seja o Coque Atemporal, Semi-Preso Texturizado ou Trança Boho Premium), garantindo total tranquilidade e satisfação absoluta para o grande dia."
   },
   {
-    question: "Pode ser realizado o Book de Noivas fotográfico no Ateliê?",
-    answer: "Sim! Nosso espaço físico boutique foi projetado com uma estética neutra chique e iluminação de camarim de alto padrão, ideal para capturar as fotos espontâneas e posadas do seu book de noivas de fabricação sofisticada. Sua equipe de fotos e filmagem terá infraestrutura e lanche gourmet garantidos."
+    question: "O Ateliê boutique oferece suporte de camarim para o Book de Noivas (Making Of)?",
+    answer: "Sim! Pensado exclusivamente para o seu Book de Noivas e ensaio fotográfico de luxo, nosso espaço boutique localizado na região da Chácara Flora e Vila Sofia possui iluminação de estúdio natural e de camarim profissional neutra, buffet gourmet com espumante de cortesia para a noiva, e cenários chiques para capturar cada momento espontâneo com os fotógrafos e cinegrafistas. O uso privativo do camarim boutique está incluso sem taxas adicionais de locação nos pacotes Clássico e Signature."
   },
   {
-    question: "Vocês atendem em domicílio ou no local da festa de casamento?",
-    answer: "Atendemos de forma reservada no conforto do nosso ateliê boutique próximo ao Jardim Marajoara e Chácara Flora na Zona Sul de SP. Para noivas que adquiriram o pacote Signature de alta exclusividade, oferecemos suporte VIP para deslocamento até hotéis boutique e salões na capital."
+    question: "Quais são as localizações atendidas e as diretrizes do Google Meu Negócio do Ateliê?",
+    answer: "Somos um ateliê boutique altamente avaliado com 5.0 estrelas no Google Maps e Google Meu Negócio. Atendemos presencialmente em nosso espaço com hora marcada, localizado na Zona Sul de SP (próximo à Chácara Flora, Jardim Marajoara, Vila Sofia, Brooklin e Santo Amaro, fácil acesso pela Av. Washington Luís). Para noivas que desejam atendimento personalizado on-location em domicílio ou hotéis boutique selecionados da capital paulista, oferecemos suporte VIP completo de deslocamento de equipe."
+  },
+  {
+    question: "Como posso tirar dúvidas personalizadas e fazer o agendamento da minha data?",
+    answer: "Para agendar uma pré-avaliação ou sanar quaisquer dúvidas específicas sobre os pacotes, prazos e cronograma para as suas madrinhas, você pode clicar em qualquer botão de Call to Action nesta página para simular o orçamento e falar instantaneamente com a visagista Beatriz Bittencourt via WhatsApp comercial. Recomendamos o agendamento prévio com 6 a 12 meses de antecedência, pois trabalhamos com atendimento totalmente exclusivo de uma única noiva por período para garantir privacidade absoluta."
   }
 ];
 
