@@ -26,12 +26,12 @@ import {
   Palette,
   Briefcase
 } from "lucide-react";
-import { SERVICES, TEMPERAMENTS, STUDIO_INFO, FAQ, LOCAL_SEO_REGIONS, CLIENT_TESTIMONIALS } from "./data";
+import { SERVICES, TEMPERAMENTS, STUDIO_INFO, FAQ, LOCAL_SEO_REGIONS, CLIENT_TESTIMONIALS, BRIDAL_PACKAGES, BRIDAL_FAQS } from "./data";
 import { VisagismDiagnosis, Appointment, Service } from "./types";
 
 export default function App() {
   // Navigation tabs
-  const [activeTab, setActiveTab] = useState<"diagnostico" | "servicos" | "agendamento" | "atelie">("diagnostico");
+  const [activeTab, setActiveTab] = useState<"noivas" | "diagnostico" | "servicos" | "agendamento" | "atelie">("noivas");
 
   // Diagnosis states
   const [faceShape, setFaceShape] = useState<string>("Oval");
@@ -81,11 +81,18 @@ export default function App() {
   });
 
   const [selectedRegionFilter, setSelectedRegionFilter] = useState<string>("Todos");
+
+  // Bridal calculator states
+  const [bridalPackage, setBridalPackage] = useState<string>("noiva-classico");
+  const [bridalMadrinhasCount, setBridalMadrinhasCount] = useState<number>(0);
+  const [bridalIncludeRehearsal, setBridalIncludeRehearsal] = useState<boolean>(false);
+  const [bridalExternalTravel, setBridalExternalTravel] = useState<boolean>(false);
+  const [bridalOpenFaq, setBridalOpenFaq] = useState<number | null>(null);
   
   // Submit new review form states
   const [newReviewName, setNewReviewName] = useState("");
   const [newReviewLocation, setNewReviewLocation] = useState("Jardim Marajoara");
-  const [newReviewService, setNewReviewService] = useState("Consultoria Master de Visagismo");
+  const [newReviewService, setNewReviewService] = useState("Corte de Cabelo Feminino (Corte)");
   const [newReviewRating, setNewReviewRating] = useState<number>(5);
   const [newReviewText, setNewReviewText] = useState("");
   const [reviewSubmitMessage, setReviewSubmitMessage] = useState("");
@@ -142,6 +149,10 @@ export default function App() {
     let desc = "";
 
     switch (activeTab) {
+      case "noivas":
+        title = "Dia da Noiva perto de mim | Penteados de Noiva & Preparação de Noiva em SP";
+        desc = "Especialista em preparação de noiva, penteados de noiva, dia da noiva e book de noivas na Zona Sul de SP. Conheça nossos pacotes exclusivos com valores competitivos.";
+        break;
       case "diagnostico":
         title = "Barbeiro, Cabeleireira & Visagista perto de mim | Beatriz Bittencourt Jardim Marajoara";
         desc = "Buscando barbeiro, cabeleireira ou visagista perto de mim na Chácara Flora, Vila Sofia ou Jardim Marajoara? Realize nossa análise de temperamento facial por Inteligência Artificial.";
@@ -370,8 +381,9 @@ export default function App() {
           {/* Elegant Top Navigation Tabs */}
           <nav className="flex items-center gap-1 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
             {[
+              { id: "noivas", label: "Noivas & Assessoria", icon: Heart },
               { id: "diagnostico", label: "Consultoria IA", icon: Sparkles },
-              { id: "servicos", label: "Serviços & Preços", icon: Scissors },
+              { id: "servicos", label: "Corte, Mechas & Cor", icon: Scissors },
               { id: "agendamento", label: "Agendar Horário", icon: Calendar },
               { id: "atelie", label: "O Ateliê & Contato", icon: MapPin }
             ].map((tab) => {
@@ -401,6 +413,432 @@ export default function App() {
       <main className="max-w-6xl mx-auto px-4 md:px-8 py-8 md:py-12">
         <AnimatePresence mode="wait">
           
+          {/* TAB 0: ESPECIALIZAÇÃO BRIDAL PREPARATION & DIA DA NOIVA */}
+          {activeTab === "noivas" && (
+            <motion.div
+              key="noivas"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-10"
+            >
+              {/* Luxury Bridal Hero */}
+              <div 
+                className="relative bg-gradient-to-br from-[#1C1A17] to-stone-900 text-[#FAF9F5] rounded-3xl p-6 md:p-12 shadow-xl overflow-hidden"
+              >
+                <div className="absolute right-0 bottom-0 top-0 w-1/3 opacity-10 pointer-events-none bg-[radial-gradient(#B5945F_1px,transparent_1px)] [background-size:16px_16px] hidden md:block" />
+                
+                <div className="max-w-2xl relative z-10 space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-800 text-[#B5945F] rounded-full text-2xs tracking-widest uppercase font-mono border border-stone-700">
+                    <Heart size={11} className="fill-current text-[#B5945F]" /> Especialista em Noivas perto de mim
+                  </div>
+                  <h1 className="text-3xl md:text-5xl font-serif tracking-tight leading-tight">
+                    Seu Dia da Noiva dos Sonhos na Zona Sul de SP.
+                  </h1>
+                  <p className="text-stone-300 text-sm md:text-base leading-relaxed">
+                    Com mais de uma década de excelência perto de Vila Sofia Jardim Marajoara e Chácara Flora, proporcionamos uma experiência impecável. Cuidamos com perfeição de cada detalhe: da <strong>preparação de noiva</strong> biotecnológica aos refinados <strong>penteados de noiva</strong> e total infraestrutura para acomodar seu <strong>book de noivas</strong>.
+                  </p>
+                  
+                  <div className="pt-2 flex flex-wrap gap-3">
+                    <button 
+                      onClick={() => {
+                        const form = document.getElementById("bridal-calculator-section");
+                        form?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="bg-[#B5945F] hover:bg-[#A38250] text-[#1C1A17] px-5 py-2.5 rounded-lg text-xs tracking-wider uppercase font-semibold transition-all inline-flex items-center gap-2"
+                    >
+                      Calcular Valores do Pacote
+                      <ChevronRight size={14} />
+                    </button>
+                    <button 
+                      onClick={() => {
+                        const defaultBridal = BRIDAL_PACKAGES.find(p => p.id === bridalPackage) || BRIDAL_PACKAGES[1];
+                        setSelectedService({
+                          id: defaultBridal.id,
+                          title: defaultBridal.name,
+                          description: defaultBridal.idealFor,
+                          price: defaultBridal.priceString,
+                          duration: "Dia da Noiva",
+                          category: "Noivas",
+                          tags: defaultBridal.features
+                        });
+                        setActiveTab("agendamento");
+                      }}
+                      className="bg-transparent hover:bg-stone-800 text-[#EAE6DD] border border-stone-700 px-5 py-2.5 rounded-lg text-xs tracking-wider uppercase font-semibold transition-all"
+                    >
+                      Agendar Visita Fisioterapêutica
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Penteados de Noiva & Preparação de Noiva Styles Grid */}
+              <div className="space-y-6">
+                <div className="text-center max-w-2xl mx-auto space-y-1.5">
+                  <span className="text-2xs text-[#B5945F] font-mono uppercase tracking-widest font-bold">Assinaturas de Beleza Autoral</span>
+                  <h2 className="text-2xl md:text-3xl font-serif text-stone-900">Penteados de Noiva & Preparação Especializada de Fibra</h2>
+                  <p className="text-xs text-stone-500">
+                    Nossa metodologia alia o visagismo clássico para adaptar a harmonia do cabelo ao corte do vestido, véu e acessórios, otimizando seu book de noiva.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {[
+                    {
+                      title: "Semi-Preso Waves",
+                      keyword: "Penteados de Noiva",
+                      desc: "Técnica que combina leveza com movimento. Ondulações impecáveis com fixação flexível, excelentes para casamentos diurnos ao ar livre na região.",
+                      feature: "Fixação leve e movimento"
+                    },
+                    {
+                      title: "Coque Atemporal",
+                      keyword: "Preparação de Noiva",
+                      desc: "Sofisticação total. Um design polido que valoriza o pescoço e a grinalda de casamento, com resistência climática de alta durabilidade.",
+                      feature: "Perfeito para véus clássicos"
+                    },
+                    {
+                      title: "Trança Boho Premium",
+                      keyword: "Dia da Noiva",
+                      desc: "Ar despojado e romântico. Elementos texturizados com fivelas de pérola ou flores secas de campo integradas de maneira harmoniosa.",
+                      feature: "Estilo sofisticadamente livre"
+                    },
+                    {
+                      title: "Fibras de Alta Performance",
+                      keyword: "Preparo de Noivas",
+                      desc: "Terapia reparadora de mechas pré-evento. Oferece toque suave, brilho de espelho e blindagem contra umidade para fotos maravilhosas.",
+                      feature: "Blindagem de mecha 18 horas"
+                    }
+                  ].map((style, i) => (
+                    <div key={i} className="bg-white border border-[#EAE6DD] rounded-2xl p-5 space-y-3 flex flex-col justify-between hover:border-[#B5945F]/40 transition-colors shadow-2xs">
+                      <div className="space-y-2">
+                        <span className="text-[9px] bg-[#B5945F]/10 text-[#B5945F] px-2 py-0.5 rounded-full font-mono uppercase tracking-wider font-semibold inline-block">
+                          {style.keyword}
+                        </span>
+                        <h3 className="text-sm font-bold text-stone-900">{style.title}</h3>
+                        <p className="text-xs text-stone-600 leading-relaxed">{style.desc}</p>
+                      </div>
+                      <div className="pt-2 border-t border-stone-100 flex items-center justify-between text-[10px] text-stone-500">
+                        <span className="font-medium text-[#B5945F]">✓ {style.feature}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Dynamic Interactive Budget Calculator */}
+              <div id="bridal-calculator-section" className="bg-white border border-[#EAE6DD] rounded-2xl p-6 md:p-8 space-y-8 shadow-sm">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 pb-4 border-b border-stone-100">
+                  <div className="space-y-1">
+                    <span className="text-2xs text-[#B5945F] font-mono uppercase tracking-widest font-bold">Simular Valor Total</span>
+                    <h3 className="text-xl md:text-2xl font-serif text-stone-900">Planejamento Transparente & Valores do Dia da Noiva</h3>
+                    <p className="text-xs text-stone-500">
+                      Escolha seu pacote principal e adicione itens adicionais para obter sua cotação e valor de investimento prévio.
+                    </p>
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#B5945F]/10 rounded-full text-xs text-[#B5945F] font-semibold font-mono">
+                    <span>💳 Em até 10x sem juros</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                  {/* Left Column: Interactive Inputs */}
+                  <div className="lg:col-span-7 space-y-6">
+                    {/* Choose Package */}
+                    <div className="space-y-3">
+                      <label className="text-xs font-bold uppercase tracking-wider text-stone-700 block col-span-full">
+                        Selecione Seu Pacote de Noiva de Preferência:
+                      </label>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        {BRIDAL_PACKAGES.map((pkg) => {
+                          const active = bridalPackage === pkg.id;
+                          return (
+                            <button
+                              key={pkg.id}
+                              type="button"
+                              onClick={() => setBridalPackage(pkg.id)}
+                              className={`p-4 rounded-xl text-left border transition-all flex flex-col justify-between gap-3 h-full ${
+                                active
+                                  ? "bg-[#1C1A17] border-[#1C1A17] text-[#FAF9F5] shadow-md"
+                                  : "border-stone-200 bg-stone-50 text-stone-800 hover:border-stone-300"
+                              }`}
+                            >
+                              <div className="space-y-1">
+                                <h4 className={`text-xs font-bold uppercase ${active ? "text-[#B5945F]" : "text-stone-900"}`}>
+                                  {pkg.name.split(":")[0]}
+                                </h4>
+                                <p className={`text-[10px] line-clamp-2 leading-relaxed ${active ? "text-stone-300" : "text-stone-500"}`}>
+                                  {pkg.idealFor}
+                                </p>
+                              </div>
+                              <div className="pt-2 flex items-baseline justify-between w-full border-t border-stone-200/20">
+                                <span className="text-[9px] font-mono tracking-widest uppercase opacity-75">Preço Base</span>
+                                <span className="text-xs font-mono font-bold text-[#B5945F]">{pkg.priceString}</span>
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Number of Madrinhas */}
+                    <div className="space-y-3 pt-2">
+                      <div className="flex justify-between items-center">
+                        <label className="text-xs font-bold uppercase tracking-wider text-stone-700 block">
+                          Produção de Madrinhas / Mães das Noivas:
+                        </label>
+                        <span className="text-xs font-semibold text-[#B5945F] font-mono bg-[#B5945F]/10 px-2 py-0.5 rounded">
+                          +{bridalMadrinhasCount} {bridalMadrinhasCount === 1 ? "madrinha" : "madrinhas"} (+R$ {bridalMadrinhasCount * 300})
+                        </span>
+                      </div>
+                      <p className="text-[10px] text-stone-500">
+                        Maquiagem e penteado adicionais para mães e assessoras. Unifica o cenário do hotel/ateliê para enriquecer as tomadas dinâmicas do book de noivas.
+                      </p>
+                      <div className="flex items-center gap-4">
+                        <input 
+                          type="range"
+                          min="0"
+                          max="8"
+                          value={bridalMadrinhasCount}
+                          onChange={(e) => setBridalMadrinhasCount(parseInt(e.target.value))}
+                          className="w-full accent-[#B5945F] h-1.5 bg-stone-200 rounded-lg cursor-pointer"
+                        />
+                        <div className="flex gap-1">
+                          {[0, 1, 2, 4, 6].map(num => (
+                            <button
+                              key={num}
+                              type="button"
+                              onClick={() => setBridalMadrinhasCount(num)}
+                              className={`w-6 h-6 rounded-full text-[9px] font-mono flex items-center justify-center border ${
+                                bridalMadrinhasCount === num
+                                  ? "bg-[#B5945F] border-[#B5945F] text-[#1C1A17] font-bold"
+                                  : "border-stone-200 hover:border-stone-400 text-stone-500"
+                              }`}
+                            >
+                              {num}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Checkboxes Addons */}
+                    <div className="space-y-3 pt-2">
+                      <label className="text-xs font-bold uppercase tracking-wider text-stone-700 block">
+                        Deseja Acrescentar Serviços & Comodidades ao Orçamento?
+                      </label>
+                      
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <label 
+                          className={`flex items-start gap-3 p-3.5 rounded-xl border cursor-pointer transition-all ${
+                            bridalIncludeRehearsal 
+                              ? "bg-[#B5945F]/5 border-[#B5945F]/40" 
+                              : "border-stone-200 hover:border-stone-300"
+                          }`}
+                        >
+                          <input 
+                            type="checkbox"
+                            checked={bridalIncludeRehearsal}
+                            onChange={(e) => setBridalIncludeRehearsal(e.target.checked)}
+                            className="mt-0.5 rounded text-[#B5945F] focus:ring-[#B5945F]/30 w-4 h-4 accent-[#B5945F]"
+                          />
+                          <div className="space-y-0.5">
+                            <span className="text-xs font-bold text-stone-900 block">Ensaio Adicional de Penteado (+R$ 350)</span>
+                            <span className="text-[10px] text-stone-500 block leading-tight">Garante um segundo evento físico de testes caso você mude de ideia ou estilo de véu.</span>
+                          </div>
+                        </label>
+
+                        <label 
+                          className={`flex items-start gap-3 p-3.5 rounded-xl border cursor-pointer transition-all ${
+                            bridalExternalTravel 
+                              ? "bg-[#B5945F]/5 border-[#B5945F]/40" 
+                              : "border-stone-200 hover:border-stone-300"
+                          }`}
+                        >
+                          <input 
+                            type="checkbox"
+                            checked={bridalExternalTravel}
+                            onChange={(e) => setBridalExternalTravel(e.target.checked)}
+                            className="mt-0.5 rounded text-[#B5945F] focus:ring-[#B5945F]/30 w-4 h-4 accent-[#B5945F]"
+                          />
+                          <div className="space-y-0.5">
+                            <span className="text-xs font-bold text-stone-900 block">Atendimento no Local / Hotel (+R$ 600)</span>
+                            <span className="text-[10px] text-stone-500 block leading-tight">Deslocamento exclusivo da visagista Beatriz Bittencourt para camarins da noiva na Zona Sul de SP.</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Dynamic Price Summary Card */}
+                  <div className="lg:col-span-5 bg-stone-900 text-stone-200 rounded-2xl p-6 space-y-6 shadow-md border border-stone-850">
+                    <div className="space-y-1 pb-4 border-b border-stone-800">
+                      <span className="text-[9px] font-mono text-[#B5945F] uppercase tracking-widest font-semibold block">Configuração Customizada</span>
+                      <h4 className="text-base font-serif text-white">Resumo do Planejamento</h4>
+                    </div>
+
+                    <div className="space-y-3.5 text-xs text-stone-300">
+                      <div className="flex justify-between items-start gap-2">
+                        <span className="text-stone-400">Pacote Principal:</span>
+                        <div className="text-right">
+                          <span className="font-semibold text-white block">
+                            {(BRIDAL_PACKAGES.find(p => p.id === bridalPackage) || BRIDAL_PACKAGES[1]).name.split(":")[0]}
+                          </span>
+                          <span className="text-[10px] text-stone-500 block">
+                            {(BRIDAL_PACKAGES.find(p => p.id === bridalPackage) || BRIDAL_PACKAGES[1]).priceString}
+                          </span>
+                        </div>
+                      </div>
+
+                      {bridalMadrinhasCount > 0 && (
+                        <div className="flex justify-between">
+                          <span className="text-stone-400">Acompanhamento de {bridalMadrinhasCount} {bridalMadrinhasCount === 1 ? "Madrinha" : "Madrinhas"}:</span>
+                          <span className="font-semibold text-white">R$ {bridalMadrinhasCount * 300}</span>
+                        </div>
+                      )}
+
+                      {bridalIncludeRehearsal && (
+                        <div className="flex justify-between">
+                          <span className="text-stone-400">Segundo Ensaio Penteados:</span>
+                          <span className="font-semibold text-white">R$ 350</span>
+                        </div>
+                      )}
+
+                      {bridalExternalTravel && (
+                        <div className="flex justify-between">
+                          <span className="text-stone-400">On-Location na Zona Sul SP:</span>
+                          <span className="font-semibold text-white">R$ 600</span>
+                        </div>
+                      )}
+
+                      <div className="pt-4 border-t border-stone-800 space-y-2">
+                        <span className="text-[10px] text-stone-500 block uppercase tracking-wide font-mono">Valor de Investimento Estimado</span>
+                        <div className="flex items-baseline justify-between">
+                          <span className="text-2xl font-serif text-[#B5945F] font-bold">
+                            R$ {(
+                              (bridalPackage === "noiva-essencial" ? 1500 : bridalPackage === "noiva-signature" ? 3900 : 2600) + 
+                              (bridalMadrinhasCount * 300) + 
+                              (bridalIncludeRehearsal ? 350 : 0) + 
+                              (bridalExternalTravel ? 600 : 0)
+                            ).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                          </span>
+                          <span className="text-[9px] text-[#B5945F] font-mono font-bold bg-[#B5945F]/15 px-2 py-0.5 rounded uppercase">
+                            Sem Juros
+                          </span>
+                        </div>
+                        <p className="text-[10px] text-stone-400 leading-normal">
+                          Ou parcelado em <span className="text-[#B5945F] font-bold">10 parcelas mensais de R$ {(
+                            ((bridalPackage === "noiva-essencial" ? 1500 : bridalPackage === "noiva-signature" ? 3900 : 2600) + 
+                             (bridalMadrinhasCount * 300) + 
+                             (bridalIncludeRehearsal ? 350 : 0) + 
+                             (bridalExternalTravel ? 600 : 0)) / 10
+                          ).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span> no cartão.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-stone-800 space-y-3">
+                      <div className="bg-stone-850 p-3 rounded-lg text-[10px] text-stone-300 space-y-1 leading-relaxed">
+                        <p className="font-bold text-[#B5945F] flex items-center gap-1">
+                          <CheckCircle2 size={11} /> Incluso no pacote:
+                        </p>
+                        <ul className="list-disc pl-3.5 space-y-0.5 text-stone-400">
+                          {(BRIDAL_PACKAGES.find(p => p.id === bridalPackage) || BRIDAL_PACKAGES[1]).included.slice(0, 3).map((inc, index) => (
+                            <li key={index} className="line-clamp-1">{inc}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const selectedPkg = BRIDAL_PACKAGES.find(p => p.id === bridalPackage) || BRIDAL_PACKAGES[1];
+                          const totalVal = (
+                            (bridalPackage === "noiva-essencial" ? 1500 : bridalPackage === "noiva-signature" ? 3900 : 2600) + 
+                            (bridalMadrinhasCount * 300) + 
+                            (bridalIncludeRehearsal ? 350 : 0) + 
+                            (bridalExternalTravel ? 600 : 0)
+                          );
+                          setSelectedService({
+                            id: selectedPkg.id,
+                            title: selectedPkg.name.split(":")[0],
+                            description: selectedPkg.idealFor,
+                            price: `R$ ${totalVal.toLocaleString("pt-BR", { minimumFractionDigits: 0 })}`,
+                            duration: "Dia da Noiva",
+                            category: "Noivas",
+                            tags: selectedPkg.features
+                          });
+                          setActiveTab("agendamento");
+                          setTimeout(() => {
+                            const sched = document.getElementById("booking-main-scheduler");
+                            sched?.scrollIntoView({ behavior: "smooth" });
+                          }, 100);
+                        }}
+                        className="w-full bg-[#B5945F] hover:bg-[#A38250] text-[#1C1A17] hover:scale-[1.01] font-semibold py-3 px-4 rounded-xl text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-1.5"
+                      >
+                        <Calendar size={13} />
+                        Reservar Data do Meu Casamento
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bridal FAQ Accordion Area */}
+              <div className="space-y-6 pt-4">
+                <div className="max-w-2xl mx-auto text-center space-y-1.5">
+                  <span className="text-2xs text-[#B5945F] font-mono uppercase tracking-widest font-bold">Central de Suporte da Noiva</span>
+                  <h3 className="text-2xl font-serif text-stone-900 font-medium">Perguntas Frequentes & Valores de Casamento</h3>
+                  <p className="text-xs text-stone-500">
+                    Esclareça de maneira transparente suas principais dúvidas sobre o book de noivas, os testes de penteados e valores locais na Zona Sul de SP.
+                  </p>
+                </div>
+
+                <div className="max-w-3xl mx-auto space-y-2">
+                  {BRIDAL_FAQS.map((faq, index) => {
+                    const isOpen = bridalOpenFaq === index;
+                    return (
+                      <div 
+                        key={index} 
+                        className="bg-white border border-[#EAE6DD] rounded-xl overflow-hidden transition-colors"
+                      >
+                        <button
+                          type="button"
+                          onClick={() => setBridalOpenFaq(isOpen ? null : index)}
+                          className="w-full text-left p-4 flex items-center justify-between gap-4 focus:outline-none"
+                        >
+                          <span className="text-xs md:text-sm font-bold text-stone-900 flex items-center gap-2">
+                            <span className="text-[#B5945F] font-mono font-bold text-[11px]">0{index + 1}.</span>
+                            {faq.question}
+                          </span>
+                          <span className="text-[#B5945F] text-[10px] font-mono font-bold whitespace-nowrap">
+                            {isOpen ? "✕ FECHAR" : "🕵️‍♀️ DUVIDAS"}
+                          </span>
+                        </button>
+                        
+                        <AnimatePresence>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="border-[#EAE6DD] border-t"
+                            >
+                              <p className="p-4 md:p-5 text-xs text-stone-605 leading-relaxed bg-stone-50">
+                                {faq.answer}
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
           {/* TAB 1: INTEGRATED AI DIAGNOSIS & INTERACTIVE WORKSPACE */}
           {activeTab === "diagnostico" && (
             <motion.div
@@ -1122,19 +1560,43 @@ export default function App() {
                       <label className="text-xs font-semibold text-stone-700 block uppercase">
                         Serviço Selecionado:
                       </label>
-                      <select 
+                       <select 
                         value={selectedService.id}
                         onChange={(e) => {
-                          const found = SERVICES.find(s => s.id === e.target.value);
-                          if (found) setSelectedService(found);
+                          const foundGeneral = SERVICES.find(s => s.id === e.target.value);
+                          if (foundGeneral) {
+                            setSelectedService(foundGeneral);
+                          } else {
+                            const foundBridal = BRIDAL_PACKAGES.find(bp => bp.id === e.target.value);
+                            if (foundBridal) {
+                              setSelectedService({
+                                id: foundBridal.id,
+                                title: foundBridal.name.split(":")[0],
+                                description: foundBridal.idealFor,
+                                price: foundBridal.priceString,
+                                duration: "Dia da Noiva",
+                                category: "Noivas",
+                                tags: foundBridal.features
+                              });
+                            }
+                          }
                         }}
                         className="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-[#B5945F] focus:border-[#B5945F] outline-none text-stone-800"
                       >
-                        {SERVICES.map(s => (
-                          <option key={s.id} value={s.id}>
-                            {s.title} — {s.price} ({s.duration})
-                          </option>
-                        ))}
+                        <optgroup label="Serviços Gerais de Cabelo">
+                          {SERVICES.map(s => (
+                            <option key={s.id} value={s.id}>
+                              {s.title} — {s.price} ({s.duration})
+                            </option>
+                          ))}
+                        </optgroup>
+                        <optgroup label="Assessoria & Dia da Noiva">
+                          {BRIDAL_PACKAGES.map(bp => (
+                            <option key={bp.id} value={bp.id}>
+                              {bp.name} — {bp.priceString} (Dia Todo)
+                            </option>
+                          ))}
+                        </optgroup>
                       </select>
                     </div>
 
@@ -1745,10 +2207,9 @@ export default function App() {
                           onChange={(e) => setNewReviewService(e.target.value)}
                           className="w-full bg-white border border-stone-200/80 rounded-lg px-2.5 py-2 text-xs focus:ring-1 focus:ring-[#B5945F] focus:border-[#B5945F] outline-none text-stone-800"
                         >
-                          <option value="Consultoria Master: Cabeleireira & Visagista">Consultoria Master de Visagismo Humano</option>
-                          <option value="Cortes de cabelo feminino perto de mim">Cortes de Cabelo Feminino com Visagismo</option>
-                          <option value="Aplicação de mechas perto de mim com Visagismo">Aplicação de Mechas Capilares com Designer</option>
-                          <option value="Barbearia Premium perto de mim com Visagismo">Corte Masculino & Barbearia Premium</option>
+                          <option value="Corte de Cabelo Feminino (Corte)">Corte de Cabelo Feminino (Corte)</option>
+                          <option value="Mechas e Iluminação Capilar (Mechas)">Mechas e Iluminação Capilar (Mechas)</option>
+                          <option value="Coloração Capilar Profissional (Coloração)">Coloração Capilar Profissional (Coloração)</option>
                         </select>
                       </div>
 
@@ -1761,7 +2222,7 @@ export default function App() {
                           rows={3}
                           value={newReviewText}
                           onChange={(e) => setNewReviewText(e.target.value)}
-                          placeholder="Ex: Como moradora da Chácara Flora a 200 metros daqui, adorei o visagismo capilar. O atendimento é primoroso e bem discreto."
+                          placeholder="Ex: Como moradora da Chácara Flora a 200 metros daqui, adorei o serviço de corte de cabelo feminino. O atendimento é primoroso e bem discreto."
                           className="w-full bg-white border border-stone-200/80 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-[#B5945F] focus:border-[#B5945F] outline-none text-stone-850 resize-y"
                         />
                       </div>

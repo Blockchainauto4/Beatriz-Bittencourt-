@@ -3,48 +3,30 @@ import { Service } from "./types";
 export const SERVICES: Service[] = [
   {
     id: "consultoria-master",
-    title: "Consultoria Master: Cabeleireira & Visagista perto de mim",
-    description: "Análise facial detalhada baseada no método Philip Hallawell, mapeamento cromático sazonal expansivo e definição do arquétipo de imagem. Ideal para quem busca um atendimento autoral de cabeleireira, visagista perto de mim na Zona Sul de São Paulo com certificação e relatório digital completo de 30 páginas.",
-    price: "R$ 480",
-    duration: "1h 30min",
-    category: "Consultoria",
-    tags: ["Formato de Rosto", "Linhas Faciais", "Cabeleireira Visagista"]
-  },
-  {
-    id: "visagismo-integrated",
-    title: "Cortes de cabelo feminino perto de mim • Visagismo",
-    description: "Definição geométrica e comportamental para cortes de cabelo feminino perto de mim. Sessão presencial de direção visual em nosso ateliê perto de Vila Sofia e Jardim Marajoara para desenhar a moldura perfeita que valoriza sua expressão natural e beleza singular.",
-    price: "R$ 290",
+    title: "Corte de Cabelo Feminino (Corte)",
+    description: "Corte de cabelo feminino personalizado para valorizar seu formato de rosto e movimento natural. Se você busca um corte perto de mim na Zona Sul de São Paulo, agende para renovar seu estilo com acabamento de alto padrão.",
+    price: "R$ 180",
     duration: "45min",
-    category: "Cabelos",
-    tags: ["Cortes Femininos", "Mudança de Visual", "Design de Fios"]
+    category: "Corte",
+    tags: ["Corte Feminino", "Corte perto de mim"]
   },
   {
     id: "aplicacao-mechas",
-    title: "Aplicação de mechas perto de mim com Visagismo",
-    description: "Mapeamento das mechas de contorno facial personalizadas com coloração premium e proteção capilar. Se você procura aplicação de mechas perto de mim especializada em iluminar os traços do temperamento, nossa técnica une a colorimetria com o design facial para resultados sublimes.",
+    title: "Mechas e Iluminação Capilar (Mechas)",
+    description: "Técnica de mechas e iluminação com contorno suave para iluminar os fios com proteção da saúde capilar. Perfeito para quem busca mechas perto de mim na região.",
     price: "R$ 450",
     duration: "2h 30min",
-    category: "Coloração",
-    tags: ["Mechas Criativas", "Contorno Iluminado", "Colorimetria"]
+    category: "Mechas",
+    tags: ["Mechas", "Cabelo Iluminado"]
   },
   {
     id: "colorimetria",
-    title: "Análise de Colorimetria Pessoal Sazonal",
-    description: "Mapeamento clássico de temperatura, valor e croma de sua pele por meio do método das doze estações. Descubra sua melhor cartela de cores para roupas, cores de maquiagem e tintura de mechas capilares com kit físico incluído.",
-    price: "R$ 350",
-    duration: "1h",
-    category: "Colorimetria",
-    tags: ["Estação Cromática", "Roupas e Cores", "Paleta Digital"]
-  },
-  {
-    id: "imagem-corporativa",
-    title: "Visagismo de Imagem & Marca Pessoal",
-    description: "Específico para executivos, palestrantes e profissionais que necessitam alinhar sua assinatura de estilo e gestual com seu público-alvo. Otimização de retratos corporativos no LinkedIn, vestimenta de autoridade e suavização de traços na comunicação.",
-    price: "R$ 680",
-    duration: "2h",
-    category: "Corporativo",
-    tags: ["LinkedIn", "Arquétipo de Poder", "Posicionamento"]
+    title: "Coloração Capilar Profissional (Coloração)",
+    description: "Coloração completa com cobertura excelente de fios brancos ou mudança de tom com brilho de alta duração. Ideal para quem procura coloração perto de mim.",
+    price: "R$ 220",
+    duration: "1h 30min",
+    category: "Coloração",
+    tags: ["Coloração", "Tintura Capilar"]
   }
 ];
 
@@ -208,20 +190,20 @@ export const CLIENT_TESTIMONIALS: Testimonial[] = [
     name: "Mariana S. Albuquerque",
     role: "Diretora de Marketing",
     location: "Chácara Flora (a 300m do ateliê)",
-    service: "Consultoria Master de Visagismo & Corte",
+    service: "Corte de Cabelo Feminino (Corte)",
     rating: 5,
-    text: "Moro a poucos metros do ateliê na Chácara Flora e estava procurando uma visagista perto de mim de confiança. A consultoria da Beatriz superou tudo! O relatório de 30 páginas e o novo corte adaptado ao meu temperamento colérico elevaram absurdamente minha autoimagem. O atendimento boutique é impecável e privativo.",
+    text: "Moro a poucos metros do ateliê na Chácara Flora e estava procurando um cabeleireiro para corte de cabelo feminino perto de mim de confiança. A Beatriz fez um corte magnífico! O novo estilo adaptado com leveza e movimento elevou absurdamente minha expressão visual. O atendimento boutique é impecável e privativo.",
     source: "Google Reviews",
     date: "Junho 2026"
   },
   {
     id: "t2",
-    name: "Rodrigo Mendonça Prado",
-    role: "Advogado Tributarista",
+    name: "Amanda Mendes Prado",
+    role: "Profissional Liberal",
     location: "Jardim Marajoara (a 200m do ateliê)",
-    service: "Barbearia Premium & Harmonização de Imagem",
+    service: "Coloração Capilar Profissional (Coloração)",
     rating: 5,
-    text: "Sempre sofri para achar uma barbearia perto de mim que fizesse design de barba visagista de verdade. Como o ateliê fica a menos de 200m da Chapel School, fica muito fácil passar lá após deixar as crianças. A experiência de corte de barba e cabelo com análise de linhas faciais e simetria é incomparável. Sem fila, sem barulho, atendimento personalizado.",
+    text: "Estava em busca de um local confiável para coloração perto de mim perto da Chapel School. O ateliê é maravilhoso! Fizeram uma coloração capilar impecável, com cobertura uniforme dos brancos e um brilho fora do comum. Fiquei muito feliz com o cuidado e carinho no atendimento.",
     source: "Google Reviews",
     date: "Maio 2026"
   },
@@ -230,22 +212,93 @@ export const CLIENT_TESTIMONIALS: Testimonial[] = [
     name: "Camila F. Vasconcellos",
     role: "Arquiteta & Designer",
     location: "Vila Sofia (a 450m do ateliê)",
-    service: "Aplicação de Mechas Capilares com Colorimetria",
+    service: "Aplicação de Mechas Capilares (Mechas)",
     rating: 5,
-    text: "Fui ao ateliê fazer mechas de contorno facial logo após indicação de uma vizinha da Escola Suíço-Brasileira. Incrível como o mapeamento cromático de 12 estações acerta as cores que nos valorizam. As mechas ficaram super naturais e iluminaram meu rosto. Encontrar colorimetria e cortes de cabelo feminino perto de mim com essa qualidade na Zona Sul é precioso.",
+    text: "Fui ao ateliê fazer mechas de contorno facial logo após indicação de uma vizinha da Escola Suíço-Brasileira. As mechas ficaram super naturais e iluminaram totalmente meu semblante sem danificar os fios. Encontrar especialistas em mechas perto de mim com essa qualidade na Zona Sul é precioso.",
     source: "Google Reviews",
     date: "Junho 2026"
-  },
-  {
-    id: "t4",
-    name: "Dr. Gustavo Henrique Neves",
-    role: "Médico Cardiologista",
-    location: "Alto da Boa Vista (a 1.2 km)",
-    service: "Barber Shop & Visagismo Masculino",
-    rating: 5,
-    text: "O atendimento com hora marcada é o diferencial absoluto. O estúdio fica muito perto de mim aqui no Alto da Boa Vista, a rota é direta e rápida. O design de barba com visagismo me deu um visual bem mais sério e confiável para os congressos. Indico para todo mundo que quer fugir do agito de salões barulhentos.",
-    source: "Recomendação Direta",
-    date: "Abril 2026"
   }
 ];
+
+export interface BridalPackage {
+  id: string;
+  name: string;
+  price: number;
+  priceString: string;
+  idealFor: string;
+  included: string[];
+  features: string[];
+}
+
+export const BRIDAL_PACKAGES: BridalPackage[] = [
+  {
+    id: "noiva-essencial",
+    name: "Pacote Essencial: Preparação de Noiva & Penteado",
+    price: 1500,
+    priceString: "R$ 1.500",
+    idealFor: "Noivas que desejam um ritual focado com maquiagem de alta definição e penteado sofisticado de alta fixação.",
+    included: [
+      "Teste prévio completo de penteado de noiva",
+      "Penteado de noiva profissional no Grande Dia",
+      "Maquiagem HD com cílios de alta qualidade e pele blindada resistente a lágrimas",
+      "Consultoria de visagismo express para harmonização de véu, acessórios e decote"
+    ],
+    features: ["Penteados de Noiva", "Preparação de Noiva", "Dia da Noiva Slim"]
+  },
+  {
+    id: "noiva-classico",
+    name: "Pacote Clássico: Dia da Noiva Premium com Visagismo",
+    price: 2600,
+    priceString: "R$ 2.600",
+    idealFor: "A escolha favorita para máximo conforto e tranquilidade completa. Inclui espaço reservado para relaxamento.",
+    included: [
+      "Consultoria completa de visagismo profissional para noivas (análise de linhas e arquétipo facial)",
+      "Teste prévio com simulação real de penteados de noiva e maquiagem completa",
+      "Spa facial biotecnológico e hidratação profunda pré-maquiagem no Grande Dia",
+      "Penteado de noiva sofisticado personalizado + Maquiagem blindada ultra resistente",
+      "Uso de camarim e espaço privativo boutique no ateliê para o Dia da Noiva (com buffet gourmet)",
+      "Assessoria e suporte especializado para vestimenta, colocação de véu e grinalda"
+    ],
+    features: ["Penteados de Noiva", "Dia da Noiva", "Preparo de Noiva", "Visagismo"]
+  },
+  {
+    id: "noiva-signature",
+    name: "Pacote Signature: Experiência Completa & Book de Noivas",
+    price: 3900,
+    priceString: "R$ 3.900",
+    idealFor: "A experiência absoluta de luxo e exclusividade. Perfeito para noivas que desejam registrar cada segundo do making of.",
+    included: [
+      "Todos os serviços do pacote clássico com privacidade total do ateliê",
+      "Coordenação de camarim e facilitação de cenários para fotógrafos e vídeo (Book de Noiva)",
+      "Acompanhamento personalizado da visagista Beatriz Bittencourt até a cerimônia (retoque final no altar)",
+      "Acesso ao lounge VIP reservado do para mãe da noiva ou até 2 madrinhas",
+      "Design de sobrancelha e análise de colorimetria express na semana do casamento"
+    ],
+    features: ["Book de Noivas", "Penteados de Noiva", "Preparação de Noiva", "Experiência de Luxo VIP"]
+  }
+];
+
+export const BRIDAL_FAQS = [
+  {
+    question: "Qual o valor médio e formas de pagamento do Dia da Noiva?",
+    answer: "Os valores dos nossos pacotes exclusivos com penteados de noiva e maquiagem blindada variam de R$ 1.500 a R$ 3.900. O preço é reflexo da personalização, do nível de exclusividade e da infraestrutura de camarim para o Book de Noivas. Dividimos o valor das parcelas em até 10x sem juros no cartão para facilitar o planejamento do casamento."
+  },
+  {
+    question: "O que compreende a etapa de Preparação de Noiva?",
+    answer: "A etapa de preparação de noiva envolve tratamentos para que a pele e o cabelo estejam radiantes. Inclui revitalização facial profunda para melhor fixação da maquiagem HD, higienização terapêutica dos fios, escova modeladora de alinhamento e cronograma de relaxamento para que você se sinta plena e descansada."
+  },
+  {
+    question: "Como é estruturado o Teste de Penteado de Noiva?",
+    answer: "O teste de penteados de noiva é realizado com antecedência sugerida de 30 a 60 dias da cerimônia de casamento. Analisamos todas as referências preferidas da noiva e testamos o penteado e a maquiagem até obter a composição perfeita de acordo com o decote do vestido, véu e acessórios."
+  },
+  {
+    question: "Pode ser realizado o Book de Noivas fotográfico no Ateliê?",
+    answer: "Sim! Nosso espaço físico boutique foi projetado com uma estética neutra chique e iluminação de camarim de alto padrão, ideal para capturar as fotos espontâneas e posadas do seu book de noivas de fabricação sofisticada. Sua equipe de fotos e filmagem terá infraestrutura e lanche gourmet garantidos."
+  },
+  {
+    question: "Vocês atendem em domicílio ou no local da festa de casamento?",
+    answer: "Atendemos de forma reservada no conforto do nosso ateliê boutique próximo ao Jardim Marajoara e Chácara Flora na Zona Sul de SP. Para noivas que adquiriram o pacote Signature de alta exclusividade, oferecemos suporte VIP para deslocamento até hotéis boutique e salões na capital."
+  }
+];
+
 
