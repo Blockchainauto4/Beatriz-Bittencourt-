@@ -79,6 +79,42 @@ export default function App() {
     }
   }, []);
 
+  // Dynamic SEO meta targets for each tab (acting as individual optimized landing pages)
+  useEffect(() => {
+    let title = "";
+    let desc = "";
+
+    switch (activeTab) {
+      case "diagnostico":
+        title = "Barbeiro, Cabeleireira & Visagista perto de mim | Beatriz Bittencourt Jardim Marajoara";
+        desc = "Buscando barbeiro, cabeleireira ou visagista perto de mim na Chácara Flora, Vila Sofia ou Jardim Marajoara? Realize nossa análise de temperamento facial por Inteligência Artificial.";
+        break;
+      case "servicos":
+        title = "Aplicação de mechas & Barbearia perto de mim • Ateliê Beatriz Bittencourt";
+        desc = "Especialista em aplicação de mechas perto de mim e corte de cabelo masculino com design de barba visagista. Conheça nossa tabela de valores e serviços boutique.";
+        break;
+      case "agendamento":
+        title = "Cortes de cabelo feminino perto de mim & Barber Shop • Agendamentos";
+        desc = "Agende cortes de cabelo feminino perto de mim ou barbearia premium no Jardim Marajoara. Atendimento agendado com hora marcada perto de você na Zona Sul.";
+        break;
+      case "atelie":
+        title = "Ateliê & Barbearia Beatriz Bittencourt | Rua Dr. Ferreira Lopes, 703 SP";
+        desc = "Conheça nosso espaço boutique integrando visagismo feminino e barber shop perto das regiões de Chácara Flora, Vila Sofia e Alto da Boa Vista.";
+        break;
+      default:
+        title = "Beatriz Bittencourt | Ateliê de Visagismo, Estética & Barbearia Jardim Marajoara";
+        desc = "Ateliê especializado em visagismo integrado, colorimetria facial, corte feminino e barbearia perto de você na Chácara Flora, Vila Sofia e Jardim Marajoara.";
+    }
+
+    document.title = title;
+    
+    // Update main meta description dynamically for search bots
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", desc);
+    }
+  }, [activeTab]);
+
   // Handle image drag & drop
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -1153,6 +1189,24 @@ export default function App() {
                       Confirmar Reserva No Ateliê Presencial
                     </button>
 
+                    <div className="flex items-center my-4">
+                      <div className="flex-1 border-t border-stone-200"></div>
+                      <span className="px-3 text-stone-400 text-[9px] font-mono uppercase tracking-widest">ou converse diretamente</span>
+                      <div className="flex-1 border-t border-stone-200"></div>
+                    </div>
+
+                    <a
+                      href="https://api.whatsapp.com/send?phone=5511992279655&text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%2C%20gostaria%20de%20agendar."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs uppercase tracking-wider py-3 rounded-lg shadow-sm transition-all flex items-center justify-center gap-2"
+                    >
+                      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                      </svg>
+                      Enviar Mensagem WhatsApp
+                    </a>
+
                   </form>
                 </div>
 
@@ -1195,7 +1249,7 @@ export default function App() {
                               </p>
                               <p className="flex items-center gap-1">
                                 <MapPin size={11} className="text-[#B5945F]" />
-                                Rua Verbo Divino, 1045 - Chácara Flora
+                                Rua Dr. Ferreira Lopes, 703 - Jardim Marajoara
                               </p>
                             </div>
 
@@ -1273,6 +1327,15 @@ export default function App() {
                         <div>
                           <p className="font-semibold text-stone-900">{STUDIO_INFO.address}</p>
                           <p className="text-stone-500">{STUDIO_INFO.city}</p>
+                          <a 
+                            href="https://www.google.com/maps/search/?api=1&query=Rua+Dr.+Ferreira+Lopes,+703+-+Jardim+Marajoara,+S%C3%A3o+Paulo+-+SP,+04671-011" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#B5945F] hover:text-[#9A7D4C] mt-1.5 transition-colors group"
+                          >
+                            <span>Abrir no Google Maps</span>
+                            <span className="text-[10px] transform group-hover:translate-x-0.5 transition-transform">↗</span>
+                          </a>
                         </div>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
@@ -1338,19 +1401,36 @@ export default function App() {
                     </div>
 
                     {/* Central active studio point */}
-                    <div className="relative text-center space-y-1.5 z-10">
-                      <div className="w-10 h-10 rounded-full bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/60 flex items-center justify-center mx-auto animate-bounce">
+                    <a 
+                      href="https://www.google.com/maps/search/?api=1&query=Rua+Dr.+Ferreira+Lopes,+703+-+Jardim+Marajoara,+S%C3%A3o+Paulo+-+SP,+04671-011"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative text-center space-y-1.5 z-10 block group cursor-pointer"
+                      title="Clique para rotas no Google Maps"
+                    >
+                      <div className="w-10 h-10 rounded-full bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/60 flex items-center justify-center mx-auto animate-bounce group-hover:bg-[#B5945F]/30 group-hover:scale-105 transition-all">
                         <MapPin size={18} />
                       </div>
-                      <p className="text-xs font-semibold text-[#FAF9F5]">Ateliê Beatriz Bittencourt</p>
-                      <p className="text-[9px] text-[#B5945F] font-mono uppercase tracking-wide">Rua Verbo Divino, 1045</p>
-                    </div>
+                      <p className="text-xs font-semibold text-[#FAF9F5] group-hover:text-[#B5945F] transition-colors">Ateliê Beatriz Bittencourt</p>
+                      <p className="text-[9px] text-[#B5945F] font-mono uppercase tracking-wide underline decoration-dotted">Rua Dr. Ferreira Lopes, 703 ↗</p>
+                    </a>
 
                   </div>
 
-                  <div className="text-[11px] text-stone-450 leading-relaxed font-mono">
-                    <span className="text-[#B5945F] font-bold">●</span> Distância a pé de Vila Sofia: 4 min <br />
-                    <span className="text-[#B5945F] font-bold">●</span> Distância de carro da Chácara Flora: 2 min
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-stone-850/70 pt-4">
+                    <div className="text-[11px] text-stone-400 leading-relaxed font-mono">
+                      <span className="text-[#B5945F] font-bold">●</span> Distância a pé de Vila Sofia: 4 min <br />
+                      <span className="text-[#B5945F] font-bold">●</span> Distância de carro da Chácara Flora: 2 min
+                    </div>
+                    <a 
+                      href="https://www.google.com/maps/search/?api=1&query=Rua+Dr.+Ferreira+Lopes,+703+-+Jardim+Marajoara,+S%C3%A3o+Paulo+-+SP,+04671-011"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#B5945F] hover:bg-[#A38250] text-[#1C1A17] font-mono text-[10px] font-bold px-3 py-2 rounded-lg uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shrink-0 shadow-sm"
+                    >
+                      <span>Como Chegar</span>
+                      <span className="text-xs">↗</span>
+                    </a>
                   </div>
 
                 </div>
@@ -1386,47 +1466,99 @@ export default function App() {
       </main>
 
       {/* Main luxury footer */}
-      <footer className="bg-[#1C1A17] text-stone-400 text-xs border-t border-stone-850 py-12 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      <footer className="bg-[#1C1A17] text-stone-400 text-xs border-t border-stone-850 py-16 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto space-y-12">
           
-          <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-serif tracking-widest text-[#FAF9F5]">
-                BEATRIZ BITTENCOURT
-              </span>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            
+            <div className="md:col-span-5 space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="text-lg font-serif tracking-widest text-[#FAF9F5]">
+                  BEATRIZ BITTENCOURT
+                </span>
+              </div>
+              <p className="text-[#FAF9F5]/60 max-w-sm leading-relaxed text-[11px]">
+                Especialista em visagismo integrado e colorimetria com foco no empoderamento estético da mulher contemporânea em São Paulo, SP.
+              </p>
             </div>
-            <p className="text-[#FAF9F5]/60 max-w-sm leading-relaxed text-[11px]">
-              Especialista em visagismo integrado e colorimetria com foco no empoderamento estético da mulher contemporânea em São Paulo, SP.
-            </p>
-          </div>
 
-          <div className="md:col-span-4 space-y-2">
-            <h5 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Atendimento Presencial</h5>
-            <p className="text-[#FAF9F5]/70 text-[11px] leading-relaxed">
-              Rua Verbo Divino, 1045 - Chácara Flora / Vila Sofia<br />
-              Zona Sul, São Paulo - SP, CEP 04719-002
-            </p>
-          </div>
-
-          <div className="md:col-span-3 space-y-2">
-            <h5 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold font-bold">Conexões Digitais</h5>
-            <div className="space-y-1.5">
-              <a href={`tel:${STUDIO_INFO.phone}`} className="flex items-center gap-1.5 hover:text-[#FAF9F5] transition-all">
-                <Phone size={11} className="text-[#B5945F]" />
-                {STUDIO_INFO.phone}
-              </a>
-              <a href={`https://instagram.com/${STUDIO_INFO.instagram.replace('@', '')}`} target="_blank" className="flex items-center gap-1.5 hover:text-[#FAF9F5] transition-all">
-                <Instagram size={11} className="text-[#B5945F]" />
-                {STUDIO_INFO.instagram}
-              </a>
+            <div className="md:col-span-4 space-y-2">
+              <h5 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Atendimento Presencial</h5>
+              <p className="text-[#FAF9F5]/70 text-[11px] leading-relaxed">
+                Rua Dr. Ferreira Lopes, 703 - Jardim Marajoara<br />
+                Zona Sul, São Paulo - SP, CEP 04671-011
+              </p>
             </div>
+
+            <div className="md:col-span-3 space-y-2">
+              <h5 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold font-bold">Conexões Digitais</h5>
+              <div className="space-y-1.5">
+                <a href={`tel:${STUDIO_INFO.phone}`} className="flex items-center gap-1.5 hover:text-[#FAF9F5] transition-all">
+                  <Phone size={11} className="text-[#B5945F]" />
+                  {STUDIO_INFO.phone}
+                </a>
+                <a href={`https://instagram.com/${STUDIO_INFO.instagram.replace('@', '')}`} target="_blank" className="flex items-center gap-1.5 hover:text-[#FAF9F5] transition-all">
+                  <Instagram size={11} className="text-[#B5945F]" />
+                  {STUDIO_INFO.instagram}
+                </a>
+              </div>
+            </div>
+
           </div>
 
-        </div>
+          {/* Visible Local SEO Navigation & Directories Layer for organic rankings */}
+          <div className="border-t border-stone-850/70 pt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div className="space-y-3">
+              <h6 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Visagista & Barbearia Perto De Mim • Bairros Atendidos</h6>
+              <p className="text-[10px] text-[#FAF9F5]/50 leading-relaxed">
+                Atendemos clientes masculinos e femininos com alto padrão de visagismo em toda a Zona Sul de São Paulo. Se você procura uma <strong>visagista perto de mim</strong> ou <strong>barbearia perto de mim</strong> com design de barba visagista, nosso ateliê unificado é ideal para residentes de:
+              </p>
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {["Jardim Marajoara", "Chácara Flora", "Vila Sofia", "Alto da Boa Vista", "Santo Amaro", "Brooklin", "Campo Belo", "Panamby", "Morumbi", "Moema"].map((bairro) => (
+                  <span key={bairro} className="text-[9px] bg-stone-900 border border-stone-800 text-stone-400 px-2 py-0.5 rounded-full hover:border-[#B5945F]/40 transition-colors">
+                    {bairro}
+                  </span>
+                ))}
+              </div>
+            </div>
 
-        <div className="max-w-6xl mx-auto border-t border-stone-800 mt-10 pt-6 text-center text-[10px] text-stone-500 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p>© {new Date().getFullYear()} Beatriz Bittencourt Visagismo & Estética. Todos os direitos reservados.</p>
-          <p className="font-mono text-[9px]">Chácara Flora • Vila Sofia • Santo Amaro</p>
+            <div className="space-y-3">
+              <h6 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Termos de Busca Orgânica Relacionados</h6>
+              <ul className="text-[10px] text-stone-500 space-y-1 leading-normal list-none pl-0">
+                <li className="flex items-center gap-1">
+                  <span className="w-1 h-1 bg-[#B5945F] rounded-full" />
+                  <span><strong>Cabeleireira, visagista perto de mim</strong> em Jardim Marajoara e Chácara Flora</span>
+                </li>
+                <li className="flex items-center gap-1">
+                  <span className="w-1 h-1 bg-[#B5945F] rounded-full" />
+                  <span><strong>Aplicação de mechas perto de mim</strong> na Zona Sul de São Paulo / Vila Sofia</span>
+                </li>
+                <li className="flex items-center gap-1">
+                  <span className="w-1 h-1 bg-[#B5945F] rounded-full" />
+                  <span><strong>Cortes de cabelo feminino perto de mim</strong> com visagismo integrado</span>
+                </li>
+                <li className="flex items-center gap-1">
+                  <span className="w-1 h-1 bg-[#B5945F] rounded-full" />
+                  <span><strong>Barbeiro e barbearia perto de mim</strong> no Jardim Marajoara e Chácara Flora</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h6 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Sobre o Posicionamento Orgânico</h6>
+              <p className="text-[10px] text-stone-500 leading-relaxed">
+                Desenvolvemos este portal oficial integrado com Inteligência Artificial para facilitar o agendamento de consultas de imagem, cortes masculinos, design de barba com visagismo, corte feminino e colorimetria capilar próximos à sua localização, reduzindo seu tempo de deslocamento no trânsito de São Paulo e garantindo atendimento especializado de nível internacional perto de sua residência.
+              </p>
+            </div>
+
+          </div>
+
+          <div className="border-t border-stone-800/80 pt-6 text-center text-[10px] text-stone-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© {new Date().getFullYear()} Beatriz Bittencourt Visagismo, Estética & Barbearia Premium. Todos os direitos reservados.</p>
+            <p className="font-mono text-[9px] text-[#B5945F]">Jardim Marajoara • Chácara Flora • Vila Sofia • Santo Amaro</p>
+          </div>
+
         </div>
       </footer>
 
@@ -1478,19 +1610,53 @@ export default function App() {
                   Enviaremos dicas preparatórias em seu WhatsApp para a sessão!
                 </p>
 
-                <button
-                  type="button"
-                  onClick={() => setShowBookingModal(false)}
-                  className="w-full bg-[#1C1A17] hover:bg-stone-800 text-white font-semibold text-xs uppercase py-3 rounded-lg transition-all"
-                >
-                  Entendi e Vou me Preparar
-                </button>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href={`https://api.whatsapp.com/send?phone=5511992279655&text=Olá, vim através do site, gostaria de agendar. Meu nome é ${encodeURIComponent(clientName)}, para o serviço ${encodeURIComponent(selectedService.title)} no dia ${encodeURIComponent(bookingDate.split("-").reverse().join("/"))} às ${encodeURIComponent(bookingTime)}h.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-[#25D366] hover:bg-[#20ba59] text-[#1C1A17] font-semibold text-xs uppercase py-3 rounded-lg transition-all flex items-center justify-center gap-2 shadow-sm"
+                  >
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    <span>Confirmar via WhatsApp</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => setShowBookingModal(false)}
+                    className="w-full bg-[#1C1A17] hover:bg-stone-800 text-[#FAF9F5]/75 font-semibold text-xs uppercase py-2.5 rounded-lg transition-all"
+                  >
+                    Fechar e Voltar
+                  </button>
+                </div>
 
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Floating WhatsApp reservation button on entire project */}
+      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 group">
+        <span className="pointer-events-none opacity-0 translate-x-2 transition-all duration-300 md:group-hover:opacity-100 md:group-hover:translate-x-0 bg-[#1C1A17] text-[#B5945F] text-[10px] uppercase font-mono tracking-wider px-3 py-1.5 rounded-lg shadow-xl border border-[#FAF9F5]/10 whitespace-nowrap">
+          Agendar pelo WhatsApp
+        </span>
+        
+        <a
+          href="https://api.whatsapp.com/send?phone=5511992279655&text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%2C%20gostaria%20de%20agendar."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-[#25D366] hover:bg-[#20ba59] text-[#1C1A17] hover:text-[#1C1A17] p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform md:hover:scale-115 relative group"
+          aria-label="Agendar via WhatsApp"
+        >
+          <span className="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping -z-10"></span>
+          <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </a>
+      </div>
 
     </div>
   );

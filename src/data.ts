@@ -3,26 +3,35 @@ import { Service } from "./types";
 export const SERVICES: Service[] = [
   {
     id: "consultoria-master",
-    title: "Consultoria Master de Visagismo",
-    description: "Análise facial aprofundada baseada em técnicas de Philip Hallawell, mapeamento cromático sazonal expansivo, definição do arquétipo de imagem pessoal, relatório digital de 30 páginas e recomendação exata para cabelo, maquiagem e acessórios.",
+    title: "Consultoria Master: Cabeleireira & Visagista perto de mim",
+    description: "Análise facial detalhada baseada no método Philip Hallawell, mapeamento cromático sazonal expansivo e definição do arquétipo de imagem. Ideal para quem busca um atendimento autoral de cabeleireira, visagista perto de mim na Zona Sul de São Paulo com certificação e relatório digital completo de 30 páginas.",
     price: "R$ 480",
     duration: "1h 30min",
     category: "Consultoria",
-    tags: ["Formato de Rosto", "Linhas Faciais", "Relatório PDF"]
+    tags: ["Formato de Rosto", "Linhas Faciais", "Cabeleireira Visagista"]
   },
   {
     id: "visagismo-integrated",
-    title: "Visagismo Integrado para Corte & Cor",
-    description: "Análise express direcionada para mudança de cabelo. Sessão conjunta em nosso ateliê com definição geométrica e comportamental, seguida da entrega do plano de direção visual para o seu cabeleireiro ou execução direta com nossos profissionais credenciados.",
+    title: "Cortes de cabelo feminino perto de mim • Visagismo",
+    description: "Definição geométrica e comportamental para cortes de cabelo feminino perto de mim. Sessão presencial de direção visual em nosso ateliê perto de Vila Sofia e Jardim Marajoara para desenhar a moldura perfeita que valoriza sua expressão natural e beleza singular.",
     price: "R$ 290",
     duration: "45min",
-    category: "Cabelo",
-    tags: ["Direção de Corte", "Coloração Pessoal", "Manual Prático"]
+    category: "Cabelos",
+    tags: ["Cortes Femininos", "Mudança de Visual", "Design de Fios"]
+  },
+  {
+    id: "aplicacao-mechas",
+    title: "Aplicação de mechas perto de mim com Visagismo",
+    description: "Mapeamento das mechas de contorno facial personalizadas com coloração premium e proteção capilar. Se você procura aplicação de mechas perto de mim especializada em iluminar os traços do temperamento, nossa técnica une a colorimetria com o design facial para resultados sublimes.",
+    price: "R$ 450",
+    duration: "2h 30min",
+    category: "Coloração",
+    tags: ["Mechas Criativas", "Contorno Iluminado", "Colorimetria"]
   },
   {
     id: "colorimetria",
     title: "Análise de Colorimetria Pessoal Sazonal",
-    description: "Mapeamento clássico de temperatura, valor e croma de sua pele por meio do método das doze estações. Descubra sua melhor cartela de cores para roupas, coloração capilar, joias e maquiagem com kit físico de cartelas incluído.",
+    description: "Mapeamento clássico de temperatura, valor e croma de sua pele por meio do método das doze estações. Descubra sua melhor cartela de cores para roupas, cores de maquiagem e tintura de mechas capilares com kit físico incluído.",
     price: "R$ 350",
     duration: "1h",
     category: "Colorimetria",
@@ -36,15 +45,6 @@ export const SERVICES: Service[] = [
     duration: "2h",
     category: "Corporativo",
     tags: ["LinkedIn", "Arquétipo de Poder", "Posicionamento"]
-  },
-  {
-    id: "noiva-visagista",
-    title: "Experiência Noiva Visagista",
-    description: "Consultoria completa de noivas englobando teste de adaptabilidade de coques, tiaras, decotes, iluminação da maquiagem conforme o horário da cerimônia, análise do temperamento do casal e adaptação perfeita com o vestido dos sonhos.",
-    price: "R$ 1.200",
-    duration: "Sessões Múltiplas",
-    category: "Especial",
-    tags: ["Casamento", "Guia de Vestido", "Teste Presencial"]
   }
 ];
 
@@ -84,9 +84,9 @@ export const TEMPERAMENTS = [
 ];
 
 export const STUDIO_INFO = {
-  address: "Rua Verbo Divino, 1045 - Suite 5B - Chácara Flora / Vila Sofia",
-  city: "São Paulo - SP, CEP 04719-002",
-  phone: "(11) 98754-0321",
+  address: "Rua Dr. Ferreira Lopes, 703 - Jardim Marajoara",
+  city: "São Paulo - SP, CEP 04671-011",
+  phone: "(11) 99227-9655",
   instagram: "@beatrizbittencourt.visagismo",
   email: "contato@beatrizbittencourt.com.br",
   hours: [
@@ -94,7 +94,7 @@ export const STUDIO_INFO = {
     { days: "Sábados", time: "09:00h às 16:00h" },
     { days: "Domingo e Segunda", time: "Fechado" }
   ],
-  coordinates: { lat: -23.6358, lng: -46.7032 } // Vila Sofia
+  coordinates: { lat: -23.6429, lng: -46.6974 } // Jardim Marajoara / Chácara Flora boundary
 };
 
 export const FAQ = [
@@ -108,7 +108,7 @@ export const FAQ = [
   },
   {
     question: "A consulta é feita perto de mim?",
-    answer: "Sim! Se você está em São Paulo, especialmente na região da Chácara Flora, Vila Sofia, Alto da Boa Vista, Santo Amaro ou Panamby, nosso ateliê físico fica extremamente próximo, na Rua Verbo Divino, com estacionamento privativo e atendimento boutique reservado."
+    answer: "Sim! Se você está em São Paulo, especialmente na região de Jardim Marajoara, Chácara Flora, Vila Sofia, Alto da Boa Vista, Santo Amaro ou Panamby, nosso ateliê físico fica extremamente próximo, na Rua Dr. Ferreira Lopes, 703, com estacionamento privativo e atendimento boutique reservado."
   },
   {
     question: "Preciso ir sem maquiagem para a consulta presencial?",
