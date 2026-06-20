@@ -463,13 +463,13 @@ export default function App() {
                 
                 <div className="max-w-2xl relative z-10 space-y-4">
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-800 text-[#B5945F] rounded-full text-2xs tracking-widest uppercase font-mono border border-stone-700">
-                    <Heart size={11} className="fill-current text-[#B5945F]" /> Especialista em Noivas perto de mim
+                    <Heart size={11} className="fill-current text-[#B5945F]" /> Especialista na Zona Sul, São Paulo
                   </div>
                   <h1 className="text-3xl md:text-5xl font-serif tracking-tight leading-tight">
-                    Seu Dia da Noiva dos Sonhos na Zona Sul de SP.
+                    Seu Dia da noiva dos Sonhos na Zona Sul, São Paulo
                   </h1>
                   <p className="text-stone-300 text-sm md:text-base leading-relaxed">
-                    Com mais de uma década de excelência perto de Vila Sofia Jardim Marajoara e Chácara Flora, proporcionamos uma experiência impecável. Cuidamos com perfeição de cada detalhe: da <strong>preparação de noiva</strong> biotecnológica aos refinados <strong>penteados de noiva</strong> e total infraestrutura para acomodar seu <strong>book de noivas</strong>.
+                    Com mais de uma década de excelência perto de Vila Sofia, Jardim Marajoara e Chácara Flora, proporcionamos uma experiência extraordinária. Cuidamos com carinho de cada mínimo detalhe: desde a <strong>preparação de noiva</strong> biotecnológica ao refinado <strong>penteado de noiva</strong> autoral, com toda a infraestrutura personalizada para o seu <strong>book de noiva</strong> no melhor e mais exclusivo <strong>Dia da noiva</strong> na <strong>Zona Sul, São Paulo</strong>.
                   </p>
                   
                   <div className="pt-2 flex flex-wrap gap-3">
@@ -487,31 +487,31 @@ export default function App() {
                       onClick={() => {
                         const defaultBridal = BRIDAL_PACKAGES.find(p => p.id === bridalPackage) || BRIDAL_PACKAGES[1];
                         setSelectedService({
-                          id: defaultBridal.id,
-                          title: defaultBridal.name,
-                          description: defaultBridal.idealFor,
-                          price: defaultBridal.priceString,
-                          duration: "Dia da Noiva",
-                          category: "Noivas",
-                          tags: defaultBridal.features
+                           id: defaultBridal.id,
+                           title: defaultBridal.name,
+                           description: defaultBridal.idealFor,
+                           price: defaultBridal.priceString,
+                           duration: "Dia da noiva",
+                           category: "Noivas",
+                           tags: defaultBridal.features
                         });
                         setActiveTab("agendamento");
                       }}
                       className="bg-transparent hover:bg-stone-800 text-[#EAE6DD] border border-stone-700 px-5 py-2.5 rounded-lg text-xs tracking-wider uppercase font-semibold transition-all"
                     >
-                      Agendar Visita Fisioterapêutica
+                      Agendar meu Dia da noiva
                     </button>
                   </div>
                 </div>
               </div>
 
-              {/* Penteados de Noiva & Preparação de Noiva Styles Grid */}
+              {/* Penteado de noiva & Preparação de Noiva Styles Grid */}
               <div className="space-y-6">
                 <div className="text-center max-w-2xl mx-auto space-y-1.5">
                   <span className="text-2xs text-[#B5945F] font-mono uppercase tracking-widest font-bold">Assinaturas de Beleza Autoral</span>
-                  <h2 className="text-2xl md:text-3xl font-serif text-stone-900">Penteados de Noiva & Preparação Especializada de Fibra</h2>
+                  <h2 className="text-2xl md:text-3xl font-serif text-stone-900">Penteado de noiva, Dia da noiva & Book de noiva</h2>
                   <p className="text-xs text-stone-500">
-                    Nossa metodologia alia o visagismo clássico para adaptar a harmonia do cabelo ao corte do vestido, véu e acessórios, otimizando seu book de noiva.
+                    Nossa metodologia alia o visagismo de perfil para adaptar a harmonia física do cabelo ao corte do vestido, véu e acessórios, otimizando o seu book de noiva na Zona Sul, São Paulo.
                   </p>
                 </div>
 
