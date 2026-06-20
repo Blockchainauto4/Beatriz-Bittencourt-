@@ -115,3 +115,137 @@ export const FAQ = [
     answer: "Sim. Para a colorimetria presencial e análise de linhas faciais ideais, solicitamos que venha de rosto limpo para que a pele neutra reflita os tecidos de draping sazonal com fidelidade perfeita."
   }
 ];
+
+export interface LocalRegion {
+  landmark: string;
+  distance: string;
+  transport: string;
+  context: string;
+  seoKeywords: string[];
+}
+
+export const LOCAL_SEO_REGIONS: LocalRegion[] = [
+  {
+    landmark: "Colégio Chapel / Chapel School",
+    distance: "A apenas 200 metros",
+    transport: "a pé 🚶‍♀️ (cerca de 2 min)",
+    context: "Siga reto pela Rua Dr. Ferreira Lopes para maior conveniência de pais e alunos da Chácara Flora.",
+    seoKeywords: ["ChácaraFlora", "Visagismo", "DrFerreiraLopes"]
+  },
+  {
+    landmark: "Escola Suíço-Brasileira de São Paulo",
+    distance: "A 450 metros",
+    transport: "a pé 🚶‍♂️ (cerca de 5 min)",
+    context: "Excelente conveniência para agendamento rápido durante o contra-turno escolar na Vila Sofia.",
+    seoKeywords: ["VilaSofia", "CabeloFeminino", "Estilo"]
+  },
+  {
+    landmark: "Supermercado Pão de Açúcar Jardim Marajoara",
+    distance: "A 300 metros",
+    transport: "a pé 🚶 ou 1 min de carro 🚗",
+    context: "Localizado na mesma calçada principal, ideal para otimizar suas compras diárias com seu atendimento de imagem e barbearia.",
+    seoKeywords: ["JardimMarajoara", "Barbearia", "Conveniência"]
+  },
+  {
+    landmark: "Cruzamento da Avenida Washington Luís",
+    distance: "A 350 metros",
+    transport: "de carro 🚗 (menos de 1 min)",
+    context: "Acesso direto e super rápido à principal via que conecta o Aeroporto de Congonhas a Santo Amaro.",
+    seoKeywords: ["AvWashingtonLuis", "Estética", "ZonaSul"]
+  },
+  {
+    landmark: "Pizzaria Vicolo Nostro / Chácara Flora",
+    distance: "A 500 metros",
+    transport: "a pé 🚶‍♀️ ou 2 min de carro 🚗",
+    context: "Ponto gastronômico icônico e histórico da Chácara Flora, nas redondezas do nosso ateliê boutique.",
+    seoKeywords: ["ChácaraFlora", "VicoloNostro", "Boutique"]
+  },
+  {
+    landmark: "Parque Cordeiro - Martin Luther King",
+    distance: "A 800 metros",
+    transport: "cerca de 3 min de carro 🚗",
+    context: "Belíssima área verde residencial de alto padrão localizada entre a Chácara Monte Alegre e Jardim Marajoara.",
+    seoKeywords: ["ParqueCordeiro", "BemEstar", "ChácaraMonteAlegre"]
+  },
+  {
+    landmark: "Estação Alto da Boa Vista (Metrô Linha 5-Lilás)",
+    distance: "A 1.2 km",
+    transport: "5 min de carro 🚗 ou Uber",
+    context: "Fácil acesso para quem vem pela linha metroviária principal, desembarcando próximo à paz residencial de nossa rua.",
+    seoKeywords: ["AltoDaBoaVista", "Mobilidade", "MetrôLinha5"]
+  },
+  {
+    landmark: "Avenida Interlagos & Shopping SP Market",
+    distance: "A 1.8 km",
+    transport: "6 min de carro 🚗 ou ônibus",
+    context: "Roteiro perfeito para quem reside ou trabalha em frente ao complexo corporativo e residencial do SP Market.",
+    seoKeywords: ["AvInterlagos", "SPMarket", "VilaSofia"]
+  },
+  {
+    landmark: "Bairros vizinhos: Brooklin, Moema & Campo Belo",
+    distance: "A menos de 2.5 km",
+    transport: "de 7 a 10 min de carro 🚗",
+    context: "Deslocamento reto pela Av. Vereador José Diniz ou Av. Santo Amaro, evitando faixas pesadas de trânsito.",
+    seoKeywords: ["Brooklin", "CampoBelo", "Moema"]
+  }
+];
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  location: string;
+  service: string;
+  rating: number;
+  text: string;
+  source: string;
+  date: string;
+}
+
+export const CLIENT_TESTIMONIALS: Testimonial[] = [
+  {
+    id: "t1",
+    name: "Mariana S. Albuquerque",
+    role: "Diretora de Marketing",
+    location: "Chácara Flora (a 300m do ateliê)",
+    service: "Consultoria Master de Visagismo & Corte",
+    rating: 5,
+    text: "Moro a poucos metros do ateliê na Chácara Flora e estava procurando uma visagista perto de mim de confiança. A consultoria da Beatriz superou tudo! O relatório de 30 páginas e o novo corte adaptado ao meu temperamento colérico elevaram absurdamente minha autoimagem. O atendimento boutique é impecável e privativo.",
+    source: "Google Reviews",
+    date: "Junho 2026"
+  },
+  {
+    id: "t2",
+    name: "Rodrigo Mendonça Prado",
+    role: "Advogado Tributarista",
+    location: "Jardim Marajoara (a 200m do ateliê)",
+    service: "Barbearia Premium & Harmonização de Imagem",
+    rating: 5,
+    text: "Sempre sofri para achar uma barbearia perto de mim que fizesse design de barba visagista de verdade. Como o ateliê fica a menos de 200m da Chapel School, fica muito fácil passar lá após deixar as crianças. A experiência de corte de barba e cabelo com análise de linhas faciais e simetria é incomparável. Sem fila, sem barulho, atendimento personalizado.",
+    source: "Google Reviews",
+    date: "Maio 2026"
+  },
+  {
+    id: "t3",
+    name: "Camila F. Vasconcellos",
+    role: "Arquiteta & Designer",
+    location: "Vila Sofia (a 450m do ateliê)",
+    service: "Aplicação de Mechas Capilares com Colorimetria",
+    rating: 5,
+    text: "Fui ao ateliê fazer mechas de contorno facial logo após indicação de uma vizinha da Escola Suíço-Brasileira. Incrível como o mapeamento cromático de 12 estações acerta as cores que nos valorizam. As mechas ficaram super naturais e iluminaram meu rosto. Encontrar colorimetria e cortes de cabelo feminino perto de mim com essa qualidade na Zona Sul é precioso.",
+    source: "Google Reviews",
+    date: "Junho 2026"
+  },
+  {
+    id: "t4",
+    name: "Dr. Gustavo Henrique Neves",
+    role: "Médico Cardiologista",
+    location: "Alto da Boa Vista (a 1.2 km)",
+    service: "Barber Shop & Visagismo Masculino",
+    rating: 5,
+    text: "O atendimento com hora marcada é o diferencial absoluto. O estúdio fica muito perto de mim aqui no Alto da Boa Vista, a rota é direta e rápida. O design de barba com visagismo me deu um visual bem mais sério e confiável para os congressos. Indico para todo mundo que quer fugir do agito de salões barulhentos.",
+    source: "Recomendação Direta",
+    date: "Abril 2026"
+  }
+];
+

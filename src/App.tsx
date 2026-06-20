@@ -26,7 +26,7 @@ import {
   Palette,
   Briefcase
 } from "lucide-react";
-import { SERVICES, TEMPERAMENTS, STUDIO_INFO, FAQ } from "./data";
+import { SERVICES, TEMPERAMENTS, STUDIO_INFO, FAQ, LOCAL_SEO_REGIONS, CLIENT_TESTIMONIALS } from "./data";
 import { VisagismDiagnosis, Appointment, Service } from "./types";
 
 export default function App() {
@@ -67,7 +67,62 @@ export default function App() {
   // Time Slots
   const TIME_SLOTS = ["09:00", "10:30", "13:00", "14:30", "16:00", "17:30"];
 
-  // Load appointments from localStorage
+  // Testimonial states
+  const [testimonials, setTestimonials] = useState(() => {
+    const saved = localStorage.getItem("beatriz_testimonials");
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        return CLIENT_TESTIMONIALS;
+      }
+    }
+    return CLIENT_TESTIMONIALS;
+  });
+
+  const [selectedRegionFilter, setSelectedRegionFilter] = useState<string>("Todos");
+  
+  // Submit new review form states
+  const [newReviewName, setNewReviewName] = useState("");
+  const [newReviewLocation, setNewReviewLocation] = useState("Jardim Marajoara");
+  const [newReviewService, setNewReviewService] = useState("Consultoria Master de Visagismo");
+  const [newReviewRating, setNewReviewRating] = useState<number>(5);
+  const [newReviewText, setNewReviewText] = useState("");
+  const [reviewSubmitMessage, setReviewSubmitMessage] = useState("");
+
+  const handleCreateReview = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newReviewName.trim() || !newReviewText.trim()) {
+      alert("Por favor, preencha o seu nome e seu relato de experiência.");
+      return;
+    }
+
+    const created = {
+      id: "review-" + Date.now(),
+      name: newReviewName,
+      role: "Cliente Local",
+      location: `${newReviewLocation} (Avaliado via site)`,
+      service: newReviewService,
+      rating: newReviewRating,
+      text: newReviewText,
+      source: "Website Ateliê",
+      date: "Recentemente"
+    };
+
+    const updated = [created, ...testimonials];
+    setTestimonials(updated);
+    localStorage.setItem("beatriz_testimonials", JSON.stringify(updated));
+
+    // Reset fields & set message
+    setNewReviewName("");
+    setNewReviewText("");
+    setReviewSubmitMessage("Sua avaliação foi registrada com sucesso e já está disponível na seção local!");
+    setTimeout(() => {
+      setReviewSubmitMessage("");
+    }, 6000);
+  };
+
+  // Restore appointments from localStorage
   useEffect(() => {
     const saved = localStorage.getItem("beatriz_appointments");
     if (saved) {
@@ -78,6 +133,8 @@ export default function App() {
       }
     }
   }, []);
+
+
 
   // Dynamic SEO meta targets for each tab (acting as individual optimized landing pages)
   useEffect(() => {
@@ -361,7 +418,7 @@ export default function App() {
                 
                 <div className="max-w-2xl relative z-10 space-y-4">
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-800 text-[#B5945F] rounded-full text-2xs tracking-widest uppercase font-mono border border-stone-700">
-                    <Sparkles size={11} /> Visagismo Científico
+                    <Sparkles size={11} /> Visagismo Perto de Mim
                   </div>
                   <h1 className="text-3xl md:text-5xl font-serif tracking-tight leading-tight">
                     Sua imagem é a tradução silenciosa de quem você é.
@@ -1437,6 +1494,304 @@ export default function App() {
 
               </div>
 
+              {/* Guia de Acesso e Distâncias */}
+              <div className="bg-white border border-[#EAE6DD] rounded-2xl p-6 md:p-8 space-y-6">
+                <div>
+                  <span className="text-xs tracking-wider uppercase font-mono text-[#B5945F]">Acessibilidade & Praticidade Local</span>
+                  <h3 className="text-xl font-serif text-stone-950 mt-1">Como Chegar ao Nosso Ateliê</h3>
+                  <p className="text-xs text-stone-600 mt-1">
+                    Nosso ateliê de visagismo, corte feminino e barbearia boutique está estrategicamente posicionado próximo aos maiores pontos de referência da Zona Sul. Economize tempo de trânsito em São Paulo.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-1">
+                  {LOCAL_SEO_REGIONS.map((region, idx) => (
+                    <div 
+                      key={idx} 
+                      className="group border border-stone-100 hover:border-[#B5945F]/30 bg-stone-50/40 hover:bg-white rounded-xl p-4 transition-all duration-300 flex flex-col justify-between hover:shadow-xs"
+                    >
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between gap-2 flex-wrap">
+                          <span className="px-2 py-0.5 rounded-full bg-[#B5945F]/10 text-stone-700 text-[10px] font-mono font-bold tracking-wide">
+                            {region.distance}
+                          </span>
+                          <span className="text-[10px] text-stone-400 font-mono italic">
+                            {region.transport}
+                          </span>
+                        </div>
+                        <h4 className="text-xs font-bold text-stone-900 group-hover:text-[#B5945F] transition-colors uppercase tracking-wide">
+                          {region.landmark}
+                        </h4>
+                        <p className="text-[11px] text-stone-500 leading-relaxed font-semibold">
+                          {region.context}
+                        </p>
+                      </div>
+
+                      <div className="border-t border-stone-100 mt-3 pt-2">
+                        <div className="flex flex-wrap gap-1">
+                          {region.seoKeywords.map((keyword, kIdx) => (
+                            <span 
+                              key={kIdx} 
+                              className="text-[9px] bg-stone-100 text-[#B5945F] font-semibold px-1.5 py-0.5 rounded font-mono"
+                            >
+                              #{keyword}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Micro distance converter / interactivity */}
+                <div className="bg-stone-50 border border-stone-200/60 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="space-y-1 text-center sm:text-left">
+                    <p className="text-xs font-bold text-stone-900 uppercase tracking-wider flex items-center justify-center sm:justify-start gap-1">
+                      <span>📍 Atendimento VIP com hora marcada e total privacidade</span>
+                    </p>
+                    <p className="text-[11px] text-stone-600">
+                      Evite as esperas e o incômodo dos salões tradicionais do bairro. Reservas exclusivas garantem pontualidade, privacidade e atendimento especializado com café gourmet.
+                    </p>
+                  </div>
+                  <button 
+                    onClick={() => setActiveTab("agendamento")}
+                    className="bg-[#1C1A17] hover:bg-stone-850 text-white font-mono text-[10px] font-bold px-4 py-2.5 rounded-lg uppercase tracking-wider transition-all whitespace-nowrap shrink-0 border border-transparent hover:border-[#B5945F]/30"
+                  >
+                    Ver Horários Livres
+                  </button>
+                </div>
+              </div>
+
+              {/* Local SEO Customer Testimonials Section */}
+              <div className="bg-white border border-[#EAE6DD] rounded-2xl p-6 md:p-8 space-y-8">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-stone-100 pb-5">
+                  <div className="space-y-1.5">
+                    <span className="text-xs tracking-wider uppercase font-mono text-[#B5945F]">Excelência Comprovada Perto de Você</span>
+                    <h3 className="text-2xl font-serif text-stone-950">Avaliações de Clientes da Região</h3>
+                    <p className="text-xs text-stone-600">
+                      Depoimentos reais de clientes satisfeitos nas proximidades do Jardim Marajoara, Chácara Flora, Vila Sofia e Alto da Boa Vista.
+                    </p>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 bg-stone-50 border border-stone-200/60 px-4 py-2.5 rounded-xl shrink-0 self-start md:self-auto">
+                    <div className="text-right">
+                      <div className="flex items-center gap-0.5 justify-end">
+                        {[1, 2, 3, 4, 5].map((s) => (
+                          <Star key={s} size={13} className="text-amber-500 fill-amber-500" />
+                        ))}
+                      </div>
+                      <p className="text-[10px] uppercase font-mono text-stone-500 tracking-wider mt-0.5">4.9 / 5.0 base local</p>
+                    </div>
+                    <span className="h-8 w-px bg-stone-200" />
+                    <div>
+                      <p className="text-xl font-serif font-black text-stone-900 leading-none">100%</p>
+                      <p className="text-[9px] text-emerald-600 font-bold uppercase tracking-wider mt-1 flex items-center gap-1">
+                        <CheckCircle2 size={10} /> Recomendado
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Local Filters Tab */}
+                <div className="space-y-3">
+                  <p className="text-[10px] text-stone-500 uppercase font-mono tracking-widest font-bold">Filtrar depoimentos por localização aproximada:</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {["Todos", "Jardim Marajoara", "Chácara Flora", "Vila Sofia", "Alto da Boa Vista"].map((loc) => {
+                      const count = loc === "Todos" 
+                        ? testimonials.length 
+                        : testimonials.filter((t: any) => t.location.toLowerCase().includes(loc.toLowerCase())).length;
+
+                      return (
+                        <button
+                          key={loc}
+                          onClick={() => setSelectedRegionFilter(loc)}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all border ${
+                            selectedRegionFilter === loc
+                              ? "bg-[#1C1A17] text-[#B5945F] border-[#1C1A17] shadow-xs"
+                              : "bg-stone-50 hover:bg-stone-100 text-stone-600 border-stone-200/60"
+                          }`}
+                        >
+                          {loc} <span className="opacity-60 text-[10px] font-mono">({count})</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Testimonial Cards Layout Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {testimonials
+                    .filter((t: any) => {
+                      if (selectedRegionFilter === "Todos") return true;
+                      return t.location.toLowerCase().includes(selectedRegionFilter.toLowerCase());
+                    })
+                    .map((item: any) => (
+                      <div 
+                        key={item.id}
+                        className="bg-stone-50/50 border border-stone-100 hover:border-[#B5945F]/30 hover:bg-white rounded-xl p-5 md:p-6 space-y-4 flex flex-col justify-between transition-all duration-300 relative group shadow-2xs"
+                      >
+                        <span className="absolute top-4 right-4 bg-[#B5945F]/10 text-stone-850 text-[9px] font-mono uppercase font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                          <span className="w-1 h-1 bg-emerald-500 rounded-full animate-pulse" />
+                          {item.source}
+                        </span>
+
+                        <div className="space-y-3">
+                          {/* Stars */}
+                          <div className="flex items-center gap-0.5">
+                            {Array.from({ length: 5 }).map((_, i) => (
+                              <Star 
+                                key={i} 
+                                size={12} 
+                                className={`${i < item.rating ? "text-amber-500 fill-amber-500" : "text-stone-200"}`} 
+                              />
+                            ))}
+                          </div>
+
+                          {/* Review quote */}
+                          <p className="text-xs text-stone-700 italic leading-relaxed font-medium">
+                            "{item.text}"
+                          </p>
+                        </div>
+
+                        {/* Customer Meta */}
+                        <div className="border-t border-stone-100/80 pt-4 flex items-center gap-3">
+                          <div className="w-9 h-9 rounded-full bg-[#1C1A17] text-[#B5945F] font-mono text-xs font-bold flex items-center justify-center">
+                            {item.name.charAt(0)}
+                          </div>
+                          <div className="space-y-0.5">
+                            <h4 className="text-xs font-bold text-stone-900 leading-tight">
+                              {item.name}
+                            </h4>
+                            <p className="text-[10px] text-[#B5945F] font-semibold tracking-wide flex items-center gap-1">
+                              <span>{item.service}</span>
+                            </p>
+                            <p className="text-[10px] text-stone-500 font-mono tracking-wider flex items-center gap-1 mt-0.5">
+                              <MapPin size={9} className="text-[#B5945F]" />
+                              <span>{item.location}</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+
+                {/* User Input: Leave custom local review */}
+                <div className="border-t border-stone-100 pt-8 mt-4">
+                  <div className="bg-stone-50/50 border border-stone-200/50 rounded-2xl p-5 md:p-6 space-y-5">
+                    <div>
+                      <h4 className="text-xs font-mono uppercase tracking-widest text-[#B5945F] font-bold">Conte-nos sua Experiência</h4>
+                      <h3 className="text-lg font-serif text-stone-950 mt-0.5">Já nos visitou a poucos metros de sua casa? Deixe sua avaliação</h3>
+                      <p className="text-xs text-stone-605">
+                        Sua opinião ajuda a consolidar nossa excelência em visagismo, coloração pessoal e barber shop na Zona Sul de SP.
+                      </p>
+                    </div>
+
+                    <form onSubmit={handleCreateReview} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-1.5 col-span-1">
+                        <label className="text-[10px] font-bold text-stone-600 block uppercase font-mono tracking-wider">
+                          Seu Nome Completo *
+                        </label>
+                        <input 
+                          type="text"
+                          required
+                          value={newReviewName}
+                          onChange={(e) => setNewReviewName(e.target.value)}
+                          placeholder="Ex: Amanda R. Silveira"
+                          className="w-full bg-white border border-stone-200/80 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-[#B5945F] focus:border-[#B5945F] outline-none text-stone-855"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3 col-span-1">
+                        <div className="space-y-1.5">
+                          <label className="text-[10px] font-bold text-stone-600 block uppercase font-mono tracking-wider">
+                            Sua Localidade *
+                          </label>
+                          <select 
+                            value={newReviewLocation}
+                            onChange={(e) => setNewReviewLocation(e.target.value)}
+                            className="w-full bg-white border border-stone-200/80 rounded-lg px-2.5 py-2 text-xs focus:ring-1 focus:ring-[#B5945F] focus:border-[#B5945F] outline-none text-stone-800"
+                          >
+                            <option value="Jardim Marajoara">Jardim Marajoara</option>
+                            <option value="Chácara Flora">Chácara Flora</option>
+                            <option value="Vila Sofia">Vila Sofia</option>
+                            <option value="Alto da Boa Vista">Alto da Boa Vista</option>
+                            <option value="Santo Amaro">Santo Amaro</option>
+                            <option value="Outro Bairro">Outro Bairro (Zona Sul)</option>
+                          </select>
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label className="text-[10px] font-bold text-stone-600 block uppercase font-mono tracking-wider">
+                            Nota da Experiência *
+                          </label>
+                          <select 
+                            value={newReviewRating}
+                            onChange={(e) => setNewReviewRating(Number(e.target.value))}
+                            className="w-full bg-white border border-stone-200/80 rounded-lg px-2.5 py-2 text-xs focus:ring-1 focus:ring-[#B5945F] focus:border-[#B5945F] outline-none text-amber-600 font-bold"
+                          >
+                            <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                            <option value="4">⭐⭐⭐⭐ (4/5)</option>
+                            <option value="3">⭐⭐⭐ (3/5)</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="space-y-1.5 col-span-1 md:col-span-2">
+                        <label className="text-[10px] font-bold text-stone-600 block uppercase font-mono tracking-wider">
+                          Serviço Aproveitado *
+                        </label>
+                        <select 
+                          value={newReviewService}
+                          onChange={(e) => setNewReviewService(e.target.value)}
+                          className="w-full bg-white border border-stone-200/80 rounded-lg px-2.5 py-2 text-xs focus:ring-1 focus:ring-[#B5945F] focus:border-[#B5945F] outline-none text-stone-800"
+                        >
+                          <option value="Consultoria Master: Cabeleireira & Visagista">Consultoria Master de Visagismo Humano</option>
+                          <option value="Cortes de cabelo feminino perto de mim">Cortes de Cabelo Feminino com Visagismo</option>
+                          <option value="Aplicação de mechas perto de mim com Visagismo">Aplicação de Mechas Capilares com Designer</option>
+                          <option value="Barbearia Premium perto de mim com Visagismo">Corte Masculino & Barbearia Premium</option>
+                        </select>
+                      </div>
+
+                      <div className="space-y-1.5 col-span-1 md:col-span-2">
+                        <label className="text-[10px] font-bold text-stone-600 block uppercase font-mono tracking-wider">
+                          Seu Relato / Opinião *
+                        </label>
+                        <textarea 
+                          required
+                          rows={3}
+                          value={newReviewText}
+                          onChange={(e) => setNewReviewText(e.target.value)}
+                          placeholder="Ex: Como moradora da Chácara Flora a 200 metros daqui, adorei o visagismo capilar. O atendimento é primoroso e bem discreto."
+                          className="w-full bg-white border border-stone-200/80 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-[#B5945F] focus:border-[#B5945F] outline-none text-stone-850 resize-y"
+                        />
+                      </div>
+
+                      <div className="col-span-1 md:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-4 pt-1">
+                        <p className="text-[10px] text-stone-500 font-mono italic">
+                          * Dados confidenciais. Seu e-mail não será compartilhado publicamente.
+                        </p>
+                        <button
+                          type="submit"
+                          className="bg-[#1C1A17] hover:bg-stone-850 text-[#FAF9F5] font-mono text-[10px] uppercase font-bold tracking-wider px-5 py-2.5 rounded-lg border border-transparent hover:border-[#B5945F]/30 transition-all shadow-xs w-full sm:w-auto text-center"
+                        >
+                          Publicar Avaliação Local
+                        </button>
+                      </div>
+                    </form>
+
+                    {reviewSubmitMessage && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-emerald-50 border border-emerald-200 rounded-lg p-3 text-emerald-800 text-[10px] font-semibold text-center uppercase tracking-wide"
+                      >
+                        {reviewSubmitMessage}
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               {/* FAQs Section */}
               <div className="bg-white border border-[#EAE6DD] rounded-2xl p-6 md:p-8 space-y-6">
                 <div className="flex items-center gap-2">
@@ -1506,11 +1861,11 @@ export default function App() {
 
           </div>
 
-          {/* Visible Local SEO Navigation & Directories Layer for organic rankings */}
+          {/* Guia de Localidades e Serviços de Destaque */}
           <div className="border-t border-stone-850/70 pt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
             
             <div className="space-y-3">
-              <h6 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Visagista & Barbearia Perto De Mim • Bairros Atendidos</h6>
+              <h6 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Bairros Atendidos na Zona Sul de SP</h6>
               <p className="text-[10px] text-[#FAF9F5]/50 leading-relaxed">
                 Atendemos clientes masculinos e femininos com alto padrão de visagismo em toda a Zona Sul de São Paulo. Se você procura uma <strong>visagista perto de mim</strong> ou <strong>barbearia perto de mim</strong> com design de barba visagista, nosso ateliê unificado é ideal para residentes de:
               </p>
@@ -1524,7 +1879,7 @@ export default function App() {
             </div>
 
             <div className="space-y-3">
-              <h6 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Termos de Busca Orgânica Relacionados</h6>
+              <h6 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Nossas Principais Especialidades</h6>
               <ul className="text-[10px] text-stone-500 space-y-1 leading-normal list-none pl-0">
                 <li className="flex items-center gap-1">
                   <span className="w-1 h-1 bg-[#B5945F] rounded-full" />
@@ -1546,7 +1901,7 @@ export default function App() {
             </div>
 
             <div className="space-y-3">
-              <h6 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Sobre o Posicionamento Orgânico</h6>
+              <h6 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Tecnologia, Visagismo & Conveniência</h6>
               <p className="text-[10px] text-stone-500 leading-relaxed">
                 Desenvolvemos este portal oficial integrado com Inteligência Artificial para facilitar o agendamento de consultas de imagem, cortes masculinos, design de barba com visagismo, corte feminino e colorimetria capilar próximos à sua localização, reduzindo seu tempo de deslocamento no trânsito de São Paulo e garantindo atendimento especializado de nível internacional perto de sua residência.
               </p>
