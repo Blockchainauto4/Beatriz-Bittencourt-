@@ -108,67 +108,144 @@ export interface LocalRegion {
 
 export const LOCAL_SEO_REGIONS: LocalRegion[] = [
   {
-    landmark: "Colégio Chapel / Chapel School",
-    distance: "A apenas 200 metros",
-    transport: "a pé 🚶‍♀️ (cerca de 2 min)",
-    context: "Siga reto pela Rua Dr. Ferreira Lopes para maior conveniência de pais e alunos da Chácara Flora.",
-    seoKeywords: ["ChácaraFlora", "Visagismo", "DrFerreiraLopes"]
+    landmark: "Colégio Chapel / Chapel School (Chácara Flora)",
+    distance: "A apenas 200m",
+    transport: "2 min a pé 🚶‍♀️",
+    context: "Siga pela Rua Dr. Ferreira Lopes. A melhor opção de cabeleireiro residencial perto de mim na Chácara Flora com atendimento privativo premium e seguro.",
+    seoKeywords: ["CabeleireiroResidencial", "CabeleireiroChácaraFlora", "CabeleireiroPertoDeMim"]
   },
   {
-    landmark: "Escola Suíço-Brasileira de São Paulo",
-    distance: "A 450 metros",
-    transport: "a pé 🚶‍♂️ (cerca de 5 min)",
-    context: "Excelente conveniência para agendamento rápido durante o contra-turno escolar na Vila Sofia.",
-    seoKeywords: ["VilaSofia", "CabeloFeminino", "Estilo"]
+    landmark: "Escola Suíço-Brasileira (Vila Sofia)",
+    distance: "A 450m",
+    transport: "5 min a pé 🚶‍♂️",
+    context: "Perfeito para moradoras locais que buscam um cabeleireiro residencial perto de mim em Vila Sofia para corte feminino e visagismo de alta precisão.",
+    seoKeywords: ["CabeleireiroVilaSofia", "CabeleireiroPertoDeMim", "SalãoDeBelezaVilaSofia"]
   },
   {
-    landmark: "Supermercado Pão de Açúcar Jardim Marajoara",
-    distance: "A 300 metros",
-    transport: "a pé 🚶 ou 1 min de carro 🚗",
-    context: "Localizado na mesma calçada principal, ideal para otimizar suas compras diárias com seu atendimento de imagem e barbearia.",
-    seoKeywords: ["JardimMarajoara", "Barbearia", "Conveniência"]
-  },
-  {
-    landmark: "Cruzamento da Avenida Washington Luís",
-    distance: "A 350 metros",
-    transport: "de carro 🚗 (menos de 1 min)",
-    context: "Acesso direto e super rápido à principal via que conecta o Aeroporto de Congonhas a Santo Amaro.",
-    seoKeywords: ["AvWashingtonLuis", "Estética", "ZonaSul"]
-  },
-  {
-    landmark: "Pizzaria Vicolo Nostro / Chácara Flora",
-    distance: "A 500 metros",
-    transport: "a pé 🚶‍♀️ ou 2 min de carro 🚗",
-    context: "Ponto gastronômico icônico e histórico da Chácara Flora, nas redondezas do nosso ateliê boutique.",
-    seoKeywords: ["ChácaraFlora", "VicoloNostro", "Boutique"]
-  },
-  {
-    landmark: "Parque Cordeiro - Martin Luther King",
-    distance: "A 800 metros",
-    transport: "cerca de 3 min de carro 🚗",
-    context: "Belíssima área verde residencial de alto padrão localizada entre a Chácara Monte Alegre e Jardim Marajoara.",
-    seoKeywords: ["ParqueCordeiro", "BemEstar", "ChácaraMonteAlegre"]
+    landmark: "Pão de Açúcar (Jardim Marajoara)",
+    distance: "A 300m",
+    transport: "3 min a pé 🚶",
+    context: "No centro do bairro, somos a referência número um de cabeleireiro residencial perto de mim no Jardim Marajoara com estacionamento privativo e café gourmet.",
+    seoKeywords: ["CabeleireiroJardimMarajoara", "CabeleireiroResidencial", "SalãoDeBelezaMarajoara"]
   },
   {
     landmark: "Estação Alto da Boa Vista (Metrô Linha 5-Lilás)",
     distance: "A 1.2 km",
-    transport: "5 min de carro 🚗 ou Uber",
-    context: "Fácil acesso para quem vem pela linha metroviária principal, desembarcando próximo à paz residencial de nossa rua.",
-    seoKeywords: ["AltoDaBoaVista", "Mobilidade", "MetrôLinha5"]
+    transport: "5 min de carro 🚗",
+    context: "Se você pesquisa por cabeleireiro perto de mim no Alto da Boa Vista, desfrute de um ambiente residencial boutique projetado para o seu bem-estar.",
+    seoKeywords: ["CabeleireiroAltoDaBoaVista", "CabeleireiroPertoDeMim", "CabeleireiroResidencial"]
   },
   {
-    landmark: "Avenida Interlagos & Shopping SP Market",
+    landmark: "Av. Vereador José Diniz (Brooklin)",
+    distance: "A 2.2 km",
+    transport: "8 min de carro 🚗",
+    context: "Evite a agitação dos salões tradicionais de shopping. Atendemos como um cabeleireiro perto de mim no Brooklin com exclusividade e hora marcada.",
+    seoKeywords: ["CabeleireiroBrooklin", "CabeleireiroPertoDeMim", "CorteFemininoBrooklin"]
+  },
+  {
+    landmark: "Rua Vieira de Morais (Campo Belo)",
+    distance: "A 2.5 km",
+    transport: "9 min de carro 🚗",
+    context: "Buscando por cabeleireiro residencial perto de mim no Campo Belo? Atendimento de altíssimo padrão com visagismo focado em realçar sua beleza natural.",
+    seoKeywords: ["CabeleireiroCampoBelo", "CabeleireiroResidencial", "VisagismoCampoBelo"]
+  },
+  {
+    landmark: "Largo Treze & Av. Adolfo Pinheiro (Santo Amaro)",
+    distance: "A 1.5 km",
+    transport: "6 min de carro 🚗",
+    context: "Próximo à Av. Washington Luís, somos a melhor escolha de cabeleireiro residencial perto de mim em Santo Amaro para tratamentos e coloração segura.",
+    seoKeywords: ["CabeleireiroSantoAmaro", "CabeleireiroResidencial", "SalãoDeBelezaSantoAmaro"]
+  },
+  {
+    landmark: "Parque Cordeiro (Chácara Monte Alegre)",
+    distance: "A 800m",
+    transport: "3 min de carro 🚗",
+    context: "Uma experiência de beleza acolhedora. Venha ao cabeleireiro perto de mim na Chácara Monte Alegre com total sigilo e atendimento VIP individualizado.",
+    seoKeywords: ["CabeleireiroChácaraMonteAlegre", "CabeleireiroPertoDeMim", "CorteFemininoZonaSul"]
+  },
+  {
+    landmark: "Av. Ibirapuera & Bairro de Moema",
+    distance: "A 3.8 km",
+    transport: "12 min de carro 🚗",
+    context: "Fácil acesso. Para quem busca cabeleireiro residencial perto de mim em Moema, oferecemos um refúgio acolhedor com atendimento especializado por Beatriz Bittencourt.",
+    seoKeywords: ["CabeleireiroMoema", "CabeleireiroResidencialMoema", "SalãoDeBelezaMoema"]
+  },
+  {
+    landmark: "Avenida Santa Catarina (Vila Mascote)",
     distance: "A 1.8 km",
-    transport: "6 min de carro 🚗 ou ônibus",
-    context: "Roteiro perfeito para quem reside ou trabalha em frente ao complexo corporativo e residencial do SP Market.",
-    seoKeywords: ["AvInterlagos", "SPMarket", "VilaSofia"]
+    transport: "6 min de carro 🚗",
+    context: "Se você quer um cabeleireiro perto de mim na Vila Mascote para corte autoral ou terapia capilar, desfrute de nossa estrutura privativa.",
+    seoKeywords: ["CabeleireiroVilaMascote", "CabeleireiroPertoDeMim", "SalãoDeBelezaVilaMascote"]
   },
   {
-    landmark: "Bairros vizinhos: Brooklin, Moema & Campo Belo",
-    distance: "A menos de 2.5 km",
-    transport: "de 7 a 10 min de carro 🚗",
-    context: "Deslocamento reto pela Av. Vereador José Diniz ou Av. Santo Amaro, evitando faixas pesadas de trânsito.",
-    seoKeywords: ["Brooklin", "CampoBelo", "Moema"]
+    landmark: "Parque do Cordeiro (Vila Santa Catarina)",
+    distance: "A 1.4 km",
+    transport: "5 min de carro 🚗",
+    context: "Excelente localização para quem pesquisa cabeleireiro residencial perto de mim em Vila Santa Catarina. Conforto, agilidade e resultados surpreendentes.",
+    seoKeywords: ["CabeleireiroVilaSantaCatarina", "CabeleireiroResidencial", "SalãoDeBelezaZonaSul"]
+  },
+  {
+    landmark: "Avenida Nações Unidas (Jurubatuba)",
+    distance: "A 2.9 km",
+    transport: "10 min de carro 🚗",
+    context: "Fácil acesso para executivas que buscam cabeleireiro perto de mim em Jurubatuba. Agende seu horário de almoço ou fim de tarde com praticidade.",
+    seoKeywords: ["CabeleireiroJurubatuba", "CabeleireiroPertoDeMim", "CorteDeCabeloJurubatuba"]
+  },
+  {
+    landmark: "Avenida Interlagos & Represa",
+    distance: "A 3.5 km",
+    transport: "11 min de carro 🚗",
+    context: "Mora ou trabalha na região? Nosso espaço é o cabeleireiro residencial perto de mim em Interlagos ideal para quem preza por segurança e perfeccionismo.",
+    seoKeywords: ["CabeleireiroInterlagos", "CabeleireiroResidencial", "SalãoDeBelezaInterlagos"]
+  },
+  {
+    landmark: "Ponte do Socorro & Bairro Socorro",
+    distance: "A 2.7 km",
+    transport: "9 min de carro 🚗",
+    context: "Procurando cabeleireiro perto de mim no Socorro? Conte com nosso atendimento premium de beleza com visagismo físico de ponta.",
+    seoKeywords: ["CabeleireiroSocorro", "CabeleireiroPertoDeMim", "SalãoFemininoSocorro"]
+  },
+  {
+    landmark: "Clube de Campo Castelo (Veleiros)",
+    distance: "A 3.2 km",
+    transport: "10 min de carro 🚗",
+    context: "Uma alternativa chique e sossegada para quem quer cabeleireiro residencial perto de mim em Veleiros, livre de ruídos e com atendimento um a um.",
+    seoKeywords: ["CabeleireiroVeleiros", "CabeleireiroResidencial", "CorteFemininoVeleiros"]
+  },
+  {
+    landmark: "Avenida Vereador João de Luca (Jardim Prudência)",
+    distance: "A 1.6 km",
+    transport: "6 min de carro 🚗",
+    context: "O cabeleireiro perto de mim no Jardim Prudência perfeito para mechas, coloração capilar e spa de fibra com produtos importados e importação de ponta.",
+    seoKeywords: ["CabeleireiroJardimPrudência", "CabeleireiroPertoDeMim", "SalãoDeBelezaPrudência"]
+  },
+  {
+    landmark: "Parque Burle Marx (Panamby)",
+    distance: "A 4.5 km",
+    transport: "15 min de carro 🚗",
+    context: "Para quem valoriza privacidade absoluta e busca cabeleireiro residencial perto de mim no Panamby. Estacionamento fechado e segurança de alto nível.",
+    seoKeywords: ["CabeleireiroPanamby", "CabeleireiroResidencial", "VisagismoPanamby"]
+  },
+  {
+    landmark: "Shopping Jardim Sul (Vila Andrade)",
+    distance: "A 4.2 km",
+    transport: "14 min de carro 🚗",
+    context: "Cansada de shoppings cheios? Encontre a calma no cabeleireiro perto de mim na Vila Andrade com atendimento totalmente focado na sua imagem única.",
+    seoKeywords: ["CabeleireiroVilaAndrade", "CabeleireiroPertoDeMim", "SalãoDeBelezaVilaAndrade"]
+  },
+  {
+    landmark: "Ponte Estaiada Octávio Frias (Real Parque)",
+    distance: "A 4.8 km",
+    transport: "15 min de carro 🚗",
+    context: "Atendemos clientes exigentes como o melhor cabeleireiro residencial perto de mim no Real Parque para corte autoral e visagismo de luxo.",
+    seoKeywords: ["CabeleireiroRealParque", "CabeleireiroResidencial", "SalãoDeBelezaRealParque"]
+  },
+  {
+    landmark: "Clube Hípico de Santo Amaro (Vila Cruzeiro)",
+    distance: "A 1.3 km",
+    transport: "5 min de carro 🚗",
+    context: "A opção definitiva para quem busca cabeleireiro perto de mim na Vila Cruzeiro. Venha cuidar de sua fibra capilar com exclusividade e conforto familiar.",
+    seoKeywords: ["CabeleireiroVilaCruzeiro", "CabeleireiroPertoDeMim", "SalãoFemininoVilaCruzeiro"]
   }
 ];
 

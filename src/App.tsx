@@ -2361,7 +2361,7 @@ export default function App() {
                   <span className="text-xs tracking-wider uppercase font-mono text-[#B5945F]">Acessibilidade & Praticidade Local</span>
                   <h3 className="text-xl font-serif text-stone-950 mt-1">Como Chegar ao Nosso Ateliê</h3>
                   <p className="text-xs text-stone-600 mt-1">
-                    Nosso ateliê de visagismo, corte feminino e barbearia boutique está estrategicamente posicionado próximo aos maiores pontos de referência da Zona Sul. Economize tempo de trânsito em São Paulo.
+                    Se você procura um <strong>cabeleireiro perto de mim</strong> ou <strong>cabeleireiro residencial perto de mim</strong> na Zona Sul, nosso ateliê de visagismo, corte feminino e maquiagem de luxo está estrategicamente posicionado próximo aos maiores pontos de referência e bairros locais. Economize tempo de trânsito em São Paulo.
                   </p>
                 </div>
 
