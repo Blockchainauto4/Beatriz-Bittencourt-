@@ -2355,14 +2355,55 @@ export default function App() {
 
               </div>
 
-              {/* Guia de Acesso e Distâncias */}
+              {/* Guia de Acesso e Distâncias - SEO Local & SEO Profissional */}
               <div className="bg-white border border-[#EAE6DD] rounded-2xl p-6 md:p-8 space-y-6">
-                <div>
-                  <span className="text-xs tracking-wider uppercase font-mono text-[#B5945F]">Acessibilidade & Praticidade Local</span>
-                  <h3 className="text-xl font-serif text-stone-950 mt-1">Como Chegar ao Nosso Ateliê</h3>
-                  <p className="text-xs text-stone-600 mt-1">
-                    Se você procura um <strong>cabeleireiro perto de mim</strong> ou <strong>cabeleireiro residencial perto de mim</strong> na Zona Sul, nosso ateliê de visagismo, corte feminino e maquiagem de luxo está estrategicamente posicionado próximo aos maiores pontos de referência e bairros locais. Economize tempo de trânsito em São Paulo.
+                <div className="space-y-3 border-b border-stone-100 pb-5">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-xs tracking-wider uppercase font-mono text-[#B5945F] font-bold">Acessibilidade & Praticidade Local</span>
+                    <span className="text-[10px] font-mono font-bold bg-[#B5945F]/10 text-stone-800 px-2.5 py-0.5 rounded-full border border-[#B5945F]/20">
+                      📍 Raio de Atendimento: pelo menos 5 km
+                    </span>
+                    <span className="text-[10px] font-mono font-bold bg-stone-100 text-stone-700 px-2.5 py-0.5 rounded-full">
+                      ✨ SEO Profissional & Visagismo
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl font-serif text-stone-950">
+                    Otimização para Busca Local (SEO Local) & Atendimento Profissional
+                  </h3>
+
+                  <p className="text-xs text-stone-600 leading-relaxed max-w-4xl">
+                    Se você procura por <strong>cabeleireira feminina perto de mim</strong>, <strong>cabeleireira de coloração perto de mim</strong>, <strong>cortes femininos perto de mim</strong> ou <strong>cabeleireiro residencial perto de mim</strong> na Zona Sul de São Paulo, nosso ateliê boutique une a excelência do <strong>SEO Profissional</strong> (supervisão de visagismo com a especialista Beatriz Bittencourt) ao <strong>SEO Local</strong> com rotas facilitadas num <strong>raio de pelo menos 5 km</strong> cobrindo 20 bairros estratégicos.
                   </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                    <div className="bg-stone-50 border border-stone-200/60 p-3 rounded-xl space-y-1">
+                      <div className="text-[11px] font-bold text-stone-900 font-mono uppercase flex items-center gap-1.5">
+                        <span>🗺️ SEO Local & Maps</span>
+                      </div>
+                      <p className="text-[11px] text-stone-500">
+                        Geo-localização otimizada para chegada em até 15 minutos via Google Maps e Waze com estacionamento privativo.
+                      </p>
+                    </div>
+
+                    <div className="bg-stone-50 border border-stone-200/60 p-3 rounded-xl space-y-1">
+                      <div className="text-[11px] font-bold text-stone-900 font-mono uppercase flex items-center gap-1.5">
+                        <span>👩‍🎨 SEO Profissional</span>
+                      </div>
+                      <p className="text-[11px] text-stone-500">
+                        Atendimento com a visagista Beatriz Bittencourt, unindo análise dos temperamentos faciais a cortes e mechas exclusivas.
+                      </p>
+                    </div>
+
+                    <div className="bg-stone-50 border border-stone-200/60 p-3 rounded-xl space-y-1">
+                      <div className="text-[11px] font-bold text-stone-900 font-mono uppercase flex items-center gap-1.5">
+                        <span>📍 Raio de 5 km Atendido</span>
+                      </div>
+                      <p className="text-[11px] text-stone-500">
+                        Atendimento rápido e VIP para moradoras de Chácara Flora, Marajoara, Vila Sofia, Brooklin, Campo Belo, Moema e região.
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-1">

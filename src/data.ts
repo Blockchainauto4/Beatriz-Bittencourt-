@@ -71,6 +71,9 @@ export const STUDIO_INFO = {
   phone: "(11) 99227-9655",
   instagram: "@beatrizbittencourt.visagismo",
   email: "contato@beatrizbittencourt.com.br",
+  coverageRadius: "Raio de pelo menos 5 km",
+  seoLocalTitle: "SEO Local & Cobertura Geográfica Zona Sul SP",
+  seoProfissionalTitle: "SEO Profissional: Visagismo Autoral & Alta Cabeleireira Feminina",
   hours: [
     { days: "Terça a Sexta-feira", time: "09:00h às 19:00h" },
     { days: "Sábados", time: "09:00h às 16:00h" },
@@ -81,8 +84,12 @@ export const STUDIO_INFO = {
 
 export const FAQ = [
   {
-    question: "O que é o Visagismo?",
-    answer: "O visagismo é a arte de criar uma imagem pessoal personalizada que revela a identidade, temperamento e intenções comunicativas de uma pessoa, sincronizando a estrutura de corte capilar, maquiagem, acessórios e vestuário com o seu modo de viver."
+    question: "O que é o Visagismo e o SEO Profissional do Ateliê?",
+    answer: "O visagismo é a arte de criar uma imagem pessoal personalizada que revela sua identidade. Nosso SEO Profissional garante atendimento especializado por Beatriz Bittencourt, com técnicas autorais de corte feminino, coloração avançada e mechas harmônicas sem o barulho dos salões de massa."
+  },
+  {
+    question: "Qual o raio de atendimento do SEO Local do salão?",
+    answer: "Nosso SEO Local atende em um raio de pelo menos 5 km ao redor da Rua Dr. Ferreira Lopes, 703 (Zona Sul - SP). Cobrimos com máxima facilidade e estacionamento privativo de cortesia bairros como Chácara Flora, Jardim Marajoara, Vila Sofia, Alto da Boa Vista, Santo Amaro, Brooklin, Campo Belo, Moema, Vila Mascote, Jurubatuba, Panamby, Real Parque, Vila Andrade, Interlagos e região."
   },
   {
     question: "Como funciona a Análise IA do Ateliê?",
@@ -90,7 +97,7 @@ export const FAQ = [
   },
   {
     question: "A consulta é feita perto de mim?",
-    answer: "Sim! Se você está em São Paulo, especialmente na região de Jardim Marajoara, Chácara Flora, Vila Sofia, Alto da Boa Vista, Santo Amaro ou Panamby, nosso ateliê físico fica extremamente próximo, na Rua Dr. Ferreira Lopes, 703, com estacionamento privativo e atendimento boutique reservado."
+    answer: "Sim! Se você está em São Paulo em um raio de 5 km (Chácara Flora, Jardim Marajoara, Vila Sofia, Alto da Boa Vista, Santo Amaro, Brooklin ou Panamby), nosso ateliê fica na Rua Dr. Ferreira Lopes, 703, com estacionamento privativo e atendimento boutique reservado."
   },
   {
     question: "Preciso ir sem maquiagem para a consulta presencial?",
@@ -111,141 +118,141 @@ export const LOCAL_SEO_REGIONS: LocalRegion[] = [
     landmark: "Colégio Chapel / Chapel School (Chácara Flora)",
     distance: "A apenas 200m",
     transport: "2 min a pé 🚶‍♀️",
-    context: "Siga pela Rua Dr. Ferreira Lopes. A melhor opção de cabeleireiro residencial perto de mim na Chácara Flora com atendimento privativo premium e seguro.",
-    seoKeywords: ["CabeleireiroResidencial", "CabeleireiroChácaraFlora", "CabeleireiroPertoDeMim"]
+    context: "Siga pela Rua Dr. Ferreira Lopes. A melhor opção de cabeleireira feminina perto de mim na Chácara Flora com cortes femininos e atendimento privativo premium e seguro.",
+    seoKeywords: ["CabeleireiraFeminina", "CortesFemininosPertoDeMim", "CabeleireiroResidencial"]
   },
   {
     landmark: "Escola Suíço-Brasileira (Vila Sofia)",
     distance: "A 450m",
     transport: "5 min a pé 🚶‍♂️",
-    context: "Perfeito para moradoras locais que buscam um cabeleireiro residencial perto de mim em Vila Sofia para corte feminino e visagismo de alta precisão.",
-    seoKeywords: ["CabeleireiroVilaSofia", "CabeleireiroPertoDeMim", "SalãoDeBelezaVilaSofia"]
+    context: "Perfeito para quem busca cabeleireira de coloração perto de mim em Vila Sofia para iluminação capilar, mechas e cortes femininos perto de mim de alta precisão.",
+    seoKeywords: ["CabeleireiraDeColoração", "CortesFemininos", "VilaSofia"]
   },
   {
     landmark: "Pão de Açúcar (Jardim Marajoara)",
     distance: "A 300m",
     transport: "3 min a pé 🚶",
-    context: "No centro do bairro, somos a referência número um de cabeleireiro residencial perto de mim no Jardim Marajoara com estacionamento privativo e café gourmet.",
-    seoKeywords: ["CabeleireiroJardimMarajoara", "CabeleireiroResidencial", "SalãoDeBelezaMarajoara"]
+    context: "No centro do bairro, somos a referência de cabeleireira feminina perto de mim no Jardim Marajoara, oferecendo coloração avançada e cortes femininos personalizados.",
+    seoKeywords: ["CabeleireiraFemininaPertoDeMim", "CabeleireiroResidencial", "JardimMarajoara"]
   },
   {
     landmark: "Estação Alto da Boa Vista (Metrô Linha 5-Lilás)",
     distance: "A 1.2 km",
     transport: "5 min de carro 🚗",
-    context: "Se você pesquisa por cabeleireiro perto de mim no Alto da Boa Vista, desfrute de um ambiente residencial boutique projetado para o seu bem-estar.",
-    seoKeywords: ["CabeleireiroAltoDaBoaVista", "CabeleireiroPertoDeMim", "CabeleireiroResidencial"]
+    context: "Se você pesquisa por cabeleireira de coloração perto de mim no Alto da Boa Vista, desfrute de um ambiente residencial boutique projetado para cortes femininos e renovação de imagem.",
+    seoKeywords: ["CabeleireiraDeColoraçãoPertoDeMim", "AltoDaBoaVista", "CortesFemininos"]
   },
   {
     landmark: "Av. Vereador José Diniz (Brooklin)",
     distance: "A 2.2 km",
     transport: "8 min de carro 🚗",
-    context: "Evite a agitação dos salões tradicionais de shopping. Atendemos como um cabeleireiro perto de mim no Brooklin com exclusividade e hora marcada.",
-    seoKeywords: ["CabeleireiroBrooklin", "CabeleireiroPertoDeMim", "CorteFemininoBrooklin"]
+    context: "Atendemos como a principal cabeleireira feminina perto de mim no Brooklin com exclusividade e hora marcada para cortes femininos perto de mim e mechas autorais.",
+    seoKeywords: ["CabeleireiraFeminina", "CortesFemininosPertoDeMim", "Brooklin"]
   },
   {
     landmark: "Rua Vieira de Morais (Campo Belo)",
     distance: "A 2.5 km",
     transport: "9 min de carro 🚗",
-    context: "Buscando por cabeleireiro residencial perto de mim no Campo Belo? Atendimento de altíssimo padrão com visagismo focado em realçar sua beleza natural.",
-    seoKeywords: ["CabeleireiroCampoBelo", "CabeleireiroResidencial", "VisagismoCampoBelo"]
+    context: "Procurando por cabeleireira de coloração perto de mim no Campo Belo? Atendimento de altíssimo padrão com visagismo para cortes femininos e mechas que realçam sua beleza.",
+    seoKeywords: ["CabeleireiraDeColoração", "CampoBelo", "CabeleireiraFemininaPertoDeMim"]
   },
   {
     landmark: "Largo Treze & Av. Adolfo Pinheiro (Santo Amaro)",
     distance: "A 1.5 km",
     transport: "6 min de carro 🚗",
-    context: "Próximo à Av. Washington Luís, somos a melhor escolha de cabeleireiro residencial perto de mim em Santo Amaro para tratamentos e coloração segura.",
-    seoKeywords: ["CabeleireiroSantoAmaro", "CabeleireiroResidencial", "SalãoDeBelezaSantoAmaro"]
+    context: "Próximo à Av. Washington Luís, somos a melhor escolha de cabeleireira feminina perto de mim em Santo Amaro para cortes femininos perto de mim e coloração segura.",
+    seoKeywords: ["CabeleireiraFemininaPertoDeMim", "CortesFemininos", "SantoAmaro"]
   },
   {
     landmark: "Parque Cordeiro (Chácara Monte Alegre)",
     distance: "A 800m",
     transport: "3 min de carro 🚗",
-    context: "Uma experiência de beleza acolhedora. Venha ao cabeleireiro perto de mim na Chácara Monte Alegre com total sigilo e atendimento VIP individualizado.",
-    seoKeywords: ["CabeleireiroChácaraMonteAlegre", "CabeleireiroPertoDeMim", "CorteFemininoZonaSul"]
+    context: "Uma experiência de beleza acolhedora. Venha à cabeleireira de coloração perto de mim na Chácara Monte Alegre com atendimento VIP individualizado.",
+    seoKeywords: ["CabeleireiraDeColoraçãoPertoDeMim", "ChácaraMonteAlegre", "CortesFemininos"]
   },
   {
     landmark: "Av. Ibirapuera & Bairro de Moema",
     distance: "A 3.8 km",
     transport: "12 min de carro 🚗",
-    context: "Fácil acesso. Para quem busca cabeleireiro residencial perto de mim em Moema, oferecemos um refúgio acolhedor com atendimento especializado por Beatriz Bittencourt.",
-    seoKeywords: ["CabeleireiroMoema", "CabeleireiroResidencialMoema", "SalãoDeBelezaMoema"]
+    context: "Para quem busca cabeleireira feminina perto de mim em Moema, oferecemos um refúgio acolhedor com especialista em cortes femininos perto de mim por Beatriz Bittencourt.",
+    seoKeywords: ["CabeleireiraFeminina", "CortesFemininosPertoDeMim", "Moema"]
   },
   {
     landmark: "Avenida Santa Catarina (Vila Mascote)",
     distance: "A 1.8 km",
     transport: "6 min de carro 🚗",
-    context: "Se você quer um cabeleireiro perto de mim na Vila Mascote para corte autoral ou terapia capilar, desfrute de nossa estrutura privativa.",
-    seoKeywords: ["CabeleireiroVilaMascote", "CabeleireiroPertoDeMim", "SalãoDeBelezaVilaMascote"]
+    context: "Se você quer uma cabeleireira de coloração perto de mim na Vila Mascote para cortes femininos autorais e mechas com proteção capilar, aproveite nosso ateliê.",
+    seoKeywords: ["CabeleireiraDeColoração", "VilaMascote", "CortesFemininosPertoDeMim"]
   },
   {
     landmark: "Parque do Cordeiro (Vila Santa Catarina)",
     distance: "A 1.4 km",
     transport: "5 min de carro 🚗",
-    context: "Excelente localização para quem pesquisa cabeleireiro residencial perto de mim em Vila Santa Catarina. Conforto, agilidade e resultados surpreendentes.",
-    seoKeywords: ["CabeleireiroVilaSantaCatarina", "CabeleireiroResidencial", "SalãoDeBelezaZonaSul"]
+    context: "Excelente localização para quem pesquisa cabeleireira feminina perto de mim em Vila Santa Catarina para renovar o visual com cortes femininos de alto padrão.",
+    seoKeywords: ["CabeleireiraFemininaPertoDeMim", "CortesFemininos", "VilaSantaCatarina"]
   },
   {
     landmark: "Avenida Nações Unidas (Jurubatuba)",
     distance: "A 2.9 km",
     transport: "10 min de carro 🚗",
-    context: "Fácil acesso para executivas que buscam cabeleireiro perto de mim em Jurubatuba. Agende seu horário de almoço ou fim de tarde com praticidade.",
-    seoKeywords: ["CabeleireiroJurubatuba", "CabeleireiroPertoDeMim", "CorteDeCabeloJurubatuba"]
+    context: "Fácil acesso para quem busca cabeleireira de coloração perto de mim em Jurubatuba. Agende cortes femininos e tratamentos capilares no seu horário ideal.",
+    seoKeywords: ["CabeleireiraDeColoraçãoPertoDeMim", "Jurubatuba", "CortesFemininos"]
   },
   {
     landmark: "Avenida Interlagos & Represa",
     distance: "A 3.5 km",
     transport: "11 min de carro 🚗",
-    context: "Mora ou trabalha na região? Nosso espaço é o cabeleireiro residencial perto de mim em Interlagos ideal para quem preza por segurança e perfeccionismo.",
-    seoKeywords: ["CabeleireiroInterlagos", "CabeleireiroResidencial", "SalãoDeBelezaInterlagos"]
+    context: "Nosso espaço é a cabeleireira feminina perto de mim em Interlagos ideal para quem preza por segurança em cortes femininos perto de mim e coloração perfeccionista.",
+    seoKeywords: ["CabeleireiraFeminina", "CortesFemininosPertoDeMim", "Interlagos"]
   },
   {
     landmark: "Ponte do Socorro & Bairro Socorro",
     distance: "A 2.7 km",
     transport: "9 min de carro 🚗",
-    context: "Procurando cabeleireiro perto de mim no Socorro? Conte com nosso atendimento premium de beleza com visagismo físico de ponta.",
-    seoKeywords: ["CabeleireiroSocorro", "CabeleireiroPertoDeMim", "SalãoFemininoSocorro"]
+    context: "Procurando cabeleireira de coloração perto de mim no Socorro? Conte com nosso atendimento premium para cortes femininos com visagismo físico de ponta.",
+    seoKeywords: ["CabeleireiraDeColoração", "Socorro", "CortesFemininosPertoDeMim"]
   },
   {
     landmark: "Clube de Campo Castelo (Veleiros)",
     distance: "A 3.2 km",
     transport: "10 min de carro 🚗",
-    context: "Uma alternativa chique e sossegada para quem quer cabeleireiro residencial perto de mim em Veleiros, livre de ruídos e com atendimento um a um.",
-    seoKeywords: ["CabeleireiroVeleiros", "CabeleireiroResidencial", "CorteFemininoVeleiros"]
+    context: "Uma alternativa chique e sossegada para quem quer cabeleireira feminina perto de mim em Veleiros com cortes femininos personalizados e ambiente privativo.",
+    seoKeywords: ["CabeleireiraFemininaPertoDeMim", "Veleiros", "CortesFemininos"]
   },
   {
     landmark: "Avenida Vereador João de Luca (Jardim Prudência)",
     distance: "A 1.6 km",
     transport: "6 min de carro 🚗",
-    context: "O cabeleireiro perto de mim no Jardim Prudência perfeito para mechas, coloração capilar e spa de fibra com produtos importados e importação de ponta.",
-    seoKeywords: ["CabeleireiroJardimPrudência", "CabeleireiroPertoDeMim", "SalãoDeBelezaPrudência"]
+    context: "A cabeleireira de coloração perto de mim no Jardim Prudência perfeita para cortes femininos perto de mim, mechas e renovação da fibra com cosméticos importados.",
+    seoKeywords: ["CabeleireiraDeColoraçãoPertoDeMim", "CortesFemininosPertoDeMim", "JardimPrudência"]
   },
   {
     landmark: "Parque Burle Marx (Panamby)",
     distance: "A 4.5 km",
     transport: "15 min de carro 🚗",
-    context: "Para quem valoriza privacidade absoluta e busca cabeleireiro residencial perto de mim no Panamby. Estacionamento fechado e segurança de alto nível.",
-    seoKeywords: ["CabeleireiroPanamby", "CabeleireiroResidencial", "VisagismoPanamby"]
+    context: "Para quem valoriza privacidade e busca cabeleireira feminina perto de mim no Panamby com especialidade em cortes femininos e coloração de alto nível.",
+    seoKeywords: ["CabeleireiraFeminina", "Panamby", "CortesFemininos"]
   },
   {
     landmark: "Shopping Jardim Sul (Vila Andrade)",
     distance: "A 4.2 km",
     transport: "14 min de carro 🚗",
-    context: "Cansada de shoppings cheios? Encontre a calma no cabeleireiro perto de mim na Vila Andrade com atendimento totalmente focado na sua imagem única.",
-    seoKeywords: ["CabeleireiroVilaAndrade", "CabeleireiroPertoDeMim", "SalãoDeBelezaVilaAndrade"]
+    context: "Encontre a tranquilidade na cabeleireira de coloração perto de mim na Vila Andrade com atendimento VIP focado em cortes femininos perto de mim e mechas.",
+    seoKeywords: ["CabeleireiraDeColoraçãoPertoDeMim", "VilaAndrade", "CortesFemininosPertoDeMim"]
   },
   {
     landmark: "Ponte Estaiada Octávio Frias (Real Parque)",
     distance: "A 4.8 km",
     transport: "15 min de carro 🚗",
-    context: "Atendemos clientes exigentes como o melhor cabeleireiro residencial perto de mim no Real Parque para corte autoral e visagismo de luxo.",
-    seoKeywords: ["CabeleireiroRealParque", "CabeleireiroResidencial", "SalãoDeBelezaRealParque"]
+    context: "Atendemos clientes exigentes como a melhor cabeleireira feminina perto de mim no Real Parque para cortes femininos autorais e visagismo de imagem.",
+    seoKeywords: ["CabeleireiraFemininaPertoDeMim", "RealParque", "CortesFemininos"]
   },
   {
     landmark: "Clube Hípico de Santo Amaro (Vila Cruzeiro)",
     distance: "A 1.3 km",
     transport: "5 min de carro 🚗",
-    context: "A opção definitiva para quem busca cabeleireiro perto de mim na Vila Cruzeiro. Venha cuidar de sua fibra capilar com exclusividade e conforto familiar.",
-    seoKeywords: ["CabeleireiroVilaCruzeiro", "CabeleireiroPertoDeMim", "SalãoFemininoVilaCruzeiro"]
+    context: "A opção definitiva para quem busca cabeleireira de coloração perto de mim na Vila Cruzeiro para transformar os fios com cortes femininos impecáveis.",
+    seoKeywords: ["CabeleireiraDeColoração", "VilaCruzeiro", "CortesFemininosPertoDeMim"]
   }
 ];
 
