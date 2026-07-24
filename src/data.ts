@@ -5,7 +5,7 @@ export const SERVICES: Service[] = [
     id: "consultoria-master",
     title: "Corte de Cabelo Feminino (Corte)",
     description: "Corte de cabelo feminino personalizado para valorizar seu formato de rosto e movimento natural. Se você busca um corte perto de mim na Zona Sul de São Paulo, agende para renovar seu estilo com acabamento de alto padrão.",
-    price: "R$ 180",
+    price: "Consulte via WhatsApp",
     duration: "45min",
     category: "Corte",
     tags: ["Corte Feminino", "Corte perto de mim"]
@@ -14,7 +14,7 @@ export const SERVICES: Service[] = [
     id: "aplicacao-mechas",
     title: "Mechas e Iluminação Capilar (Mechas)",
     description: "Técnica de mechas e iluminação com contorno suave para iluminar os fios com proteção da saúde capilar. Perfeito para quem busca mechas perto de mim na região.",
-    price: "R$ 450",
+    price: "Consulte via WhatsApp",
     duration: "2h 30min",
     category: "Mechas",
     tags: ["Mechas", "Cabelo Iluminado"]
@@ -23,7 +23,7 @@ export const SERVICES: Service[] = [
     id: "colorimetria",
     title: "Coloração Capilar Profissional (Coloração)",
     description: "Coloração completa com cobertura excelente de fios brancos ou mudança de tom com brilho de alta duração. Ideal para quem procura coloração perto de mim.",
-    price: "R$ 220",
+    price: "Consulte via WhatsApp",
     duration: "1h 30min",
     category: "Coloração",
     tags: ["Coloração", "Tintura Capilar"]
@@ -280,7 +280,8 @@ export const CITY_SEO_TERMS_LIST: { category: string; terms: string[] }[] = [
       "Cabeleireira",
       "Visagista",
       "Perto de mim",
-      "Corte de cabelo",
+      "Corte de cabelo feminino",
+      "Corte masculino perto de mim",
       "Com visagismo",
       "Valorize o formato do seu rosto",
       "Atendimento",
@@ -291,9 +292,23 @@ export const CITY_SEO_TERMS_LIST: { category: string; terms: string[] }[] = [
     ]
   },
   {
+    category: "Corte Masculino & Barbeiro Perto de Mim",
+    terms: [
+      "corte masculino perto de mim",
+      "corte masculino peeto De Mim",
+      "corte masculino perto de mim São Paulo",
+      "corte masculino perto de mim SP",
+      "corte masculino p/ mim Jardim Marajoara",
+      "corte de cabelo masculino perto de mim SP",
+      "barbeiro e corte masculino perto de mim São Paulo",
+      "corte masculino com visagismo perto de mim SP"
+    ]
+  },
+  {
     category: "Abreviações Frequentes de Busca ('p/ mim', 'p mim', 'prox a mim', 'perto')",
     terms: [
       "corte de cabelo feminino p/ mim São Paulo",
+      "corte masculino p/ mim SP",
       "corte de cabelo feminino p/ mim SP",
       "corte de cabelo feminino p mim Sao Paulo",
       "cabeleireira p/ mim São Paulo",
@@ -666,8 +681,8 @@ export const BRIDAL_PACKAGES: BridalPackage[] = [
   {
     id: "noiva-essencial",
     name: "Pacote Essencial: Preparação de Noiva & Penteado de noiva na Zona Sul, São Paulo",
-    price: 1500,
-    priceString: "R$ 1.500",
+    price: 0,
+    priceString: "Consulte via WhatsApp",
     idealFor: "Noivas que desejam um atendimento concentrado com maquiagem HD e penteado de noiva de alta fixação.",
     included: [
       "Teste prévio de penteado de noiva e makeup",
@@ -680,8 +695,8 @@ export const BRIDAL_PACKAGES: BridalPackage[] = [
   {
     id: "noiva-classico",
     name: "Pacote Clássico: Dia da noiva Premium & Penteado de noiva na Zona Sul, São Paulo",
-    price: 2600,
-    priceString: "R$ 2.600",
+    price: 0,
+    priceString: "Consulte via WhatsApp",
     idealFor: "A escolha favorita para o dia dela no salão com máximo conforto, relaxamento e bem-estar completo.",
     included: [
       "Delicioso café da manhã completo no salão boutique",
@@ -697,8 +712,8 @@ export const BRIDAL_PACKAGES: BridalPackage[] = [
   {
     id: "noiva-signature",
     name: "Pacote Signature: Dia da noiva & Book de noiva de Luxo na Zona Sul, São Paulo",
-    price: 3900,
-    priceString: "R$ 3.900",
+    price: 0,
+    priceString: "Consulte via WhatsApp",
     idealFor: "A experiência absoluta de luxo, beleza e privacidade total para o dia dela no salão e book de fotos.",
     included: [
       "Todos os serviços do pacote clássico (Café da manhã, Massagem, Depilação, Manicure & Pedicure)",
@@ -715,7 +730,7 @@ export const BRIDAL_PACKAGES: BridalPackage[] = [
 export const BRIDAL_FAQS = [
   {
     question: "Qual o valor médio e estimativa de custos para o Dia da noiva na Zona Sul, São Paulo?",
-    answer: "O valor de investimento estimado para o Dia da noiva no nosso ateliê boutique na Zona Sul, São Paulo varia de R$ 1.500 no Pacote Essencial até R$ 3.900 no Pacote Signature. O Pacote Clássico, por R$ 2.600, é a escolha favorita e oferece uma experiência completa: delicioso café da manhã no salão, massagem relaxante corporal, manicure e pedicure, hidratação capilar profissional, preparação cuidadosa do penteado de noiva, penteado autoral com makeup blindada e uma pausa especial para fotos e filmagens por conta da noiva. Valores adicionais consistem em produção de Madrinhas/Mães por R$ 300 cada e ensaio prévio extra por R$ 350."
+    answer: "Para consultar os valores atualizados e solicitar um orçamento sob medida para o Dia da noiva no nosso ateliê boutique na Zona Sul, São Paulo, fale diretamente conosco via WhatsApp. Oferecemos pacotes personalizados (Essencial, Clássico e Signature) e condições especiais de agendamento."
   },
   {
     question: "Como funciona a etapa de Preparação de Noiva e cuidados com o penteado de noiva?",

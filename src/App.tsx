@@ -427,12 +427,7 @@ export default function App() {
           {/* Elegant Top Navigation Tabs */}
           <nav className="flex items-center gap-1 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
             {[
-              { id: "corteFeminino", label: "Corte Feminino Perto de Mim", icon: Scissors },
-              { id: "noivas", label: "Noivas & Assessoria", icon: Heart },
-              { id: "diagnostico", label: "Consultoria IA", icon: Sparkles },
-              { id: "servicos", label: "Mechas & Cor", icon: Palette },
-              { id: "agendamento", label: "Agendar Horário", icon: Calendar },
-              { id: "atelie", label: "O Ateliê & Contato", icon: MapPin }
+              { id: "corteFeminino", label: "Corte Feminino Perto de Mim", icon: Scissors }
             ].map((tab) => {
               const Icon = tab.icon;
               const active = activeTab === tab.id;
@@ -496,6 +491,7 @@ export default function App() {
                     <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Visagista</span>
                     <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Perto de mim</span>
                     <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Corte de cabelo feminino</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Corte masculino perto de mim</span>
                     <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Corte autoral, residencial e tranquilo</span>
                     <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Com visagismo</span>
                     <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Valorize o formato do seu rosto</span>
