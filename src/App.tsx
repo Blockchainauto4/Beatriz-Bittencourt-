@@ -483,11 +483,11 @@ export default function App() {
                   </div>
 
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight leading-tight">
-                    Corte de Cabelo Feminino Perto de Mim na Zona Sul
+                    Cabeleireira Visagista Próxima a Mim
                   </h1>
 
                   <p className="text-stone-300 text-sm md:text-base leading-relaxed">
-                    Sua <strong>cabeleireira</strong> e <strong>visagista perto de mim</strong> para um <strong>corte de cabelo feminino autoral, residencial e tranquilo</strong> com visagismo sob medida. <strong>Valorize o formato do seu rosto</strong> com um <strong>atendimento</strong> exclusivo <strong>em São Paulo</strong>, na <strong>Zona Sul</strong>, localizado na <strong>Rua Doutor Ferreira Lopes, 703</strong> - <strong>Jardim Marajoara</strong>.
+                    <strong>Corte de cabelos com especialista em visagismo, cor e make up.</strong> Atendimento em sala privativa dentro de um dos melhores salões da zona sul de São Paulo. <strong>Rua Dr. Ferreira Lopes, n° 703 - Jd. Marajoara, SP.</strong>
                   </p>
 
                   {/* Badges de Destaque com os Termos Solicitados */}
