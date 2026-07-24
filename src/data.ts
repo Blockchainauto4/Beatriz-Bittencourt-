@@ -275,6 +275,22 @@ export interface NeighborhoodSeoTerms {
 
 export const CITY_SEO_TERMS_LIST: { category: string; terms: string[] }[] = [
   {
+    category: "Termos Principais (Ateliê, Visagismo & Localização)",
+    terms: [
+      "Cabeleireira",
+      "Visagista",
+      "Perto de mim",
+      "Corte de cabelo",
+      "Com visagismo",
+      "Valorize o formato do seu rosto",
+      "Atendimento",
+      "Em São Paulo",
+      "Zona Sul",
+      "Rua Doutor Ferreira Lopes, 703",
+      "Jardim Marajoara"
+    ]
+  },
+  {
     category: "Abreviações Frequentes de Busca ('p/ mim', 'p mim', 'prox a mim', 'perto')",
     terms: [
       "corte de cabelo feminino p/ mim São Paulo",

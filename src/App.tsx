@@ -487,8 +487,24 @@ export default function App() {
                   </h1>
 
                   <p className="text-stone-300 text-sm md:text-base leading-relaxed">
-                    Encontre a sua <strong>cabeleireira feminina perto de mim</strong> para um <strong>corte de cabelo feminino autoral</strong> com técnica de visagismo, valorização do seu formato de rosto e caimento impecável. Atendimento privativo, residencial e tranquilo na Rua Dr. Ferreira Lopes, 703 (Jardim Marajoara / Chácara Flora).
+                    Sua <strong>cabeleireira</strong> e <strong>visagista perto de mim</strong> para um <strong>corte de cabelo feminino autoral, residencial e tranquilo</strong> com visagismo sob medida. <strong>Valorize o formato do seu rosto</strong> com um <strong>atendimento</strong> exclusivo <strong>em São Paulo</strong>, na <strong>Zona Sul</strong>, localizado na <strong>Rua Doutor Ferreira Lopes, 703</strong> - <strong>Jardim Marajoara</strong>.
                   </p>
+
+                  {/* Badges de Destaque com os Termos Solicitados */}
+                  <div className="flex flex-wrap gap-2 pt-1 text-[11px] font-mono text-stone-300">
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Cabeleireira</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Visagista</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Perto de mim</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Corte de cabelo feminino</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Corte autoral, residencial e tranquilo</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Com visagismo</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Valorize o formato do seu rosto</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Atendimento</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Em São Paulo</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Zona Sul</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Rua Doutor Ferreira Lopes, 703</span>
+                    <span className="bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/40 px-2.5 py-1 rounded-md">Jardim Marajoara</span>
+                  </div>
 
                   {/* Micro Badges */}
                   <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-300 pt-2">
