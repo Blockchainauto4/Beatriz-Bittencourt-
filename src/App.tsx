@@ -577,7 +577,7 @@ export default function App() {
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-stone-200 pb-6">
                   <div>
                     <span className="text-xs font-mono text-[#B5945F] tracking-widest uppercase font-semibold flex items-center gap-1.5">
-                      <MapPin size={14} /> SEO Local • Cobertura Raio de 5 km
+                      <MapPin size={14} /> Atendimento Local • Cobertura Raio de 5 km
                     </span>
                     <h2 className="text-2xl md:text-3xl font-serif text-stone-950 mt-1">
                       Regiões Próximas para Corte Feminino Perto de Mim
@@ -693,13 +693,13 @@ export default function App() {
               <div className="bg-[#1C1A17] text-[#FAF9F5] rounded-3xl p-6 md:p-10 space-y-8">
                 <div className="space-y-3 border-b border-stone-800 pb-6">
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-800 text-[#B5945F] rounded-full text-xs font-mono tracking-wider uppercase border border-stone-700">
-                    <MapPin size={13} /> 20 Bairros Próximos • SEO Local Completo
+                    <MapPin size={13} /> 20 Bairros Próximos • Atendimento na Sua Região
                   </div>
                   <h2 className="text-2xl md:text-3xl font-serif text-[#FAF9F5]">
-                    Termos de Busca Locais: 20 Bairros Próximos com "Perto de Mim", "Próximo a Mim" e "Perto"
+                    Guia de Localização: 20 Bairros Próximos com "Perto de Mim", "Próximo a Mim" e "Perto"
                   </h2>
                   <p className="text-xs text-stone-300 max-w-4xl leading-relaxed">
-                    Para garantir que moradoras de todos os bairros vizinhos encontrem o nosso ateliê com total facilidade, mapeamos os <strong>20 bairros próximos</strong> da Zona Sul de São Paulo com combinações de busca reais incluindo <strong>"perto de mim"</strong>, <strong>"próximo a mim"</strong> e <strong>"perto"</strong>:
+                    Para que você encontre o nosso ateliê com total facilidade na sua região, mapeamos a localização de <strong>20 bairros próximos</strong> na Zona Sul de São Paulo com referências de distância para <strong>"perto de mim"</strong>, <strong>"próximo a mim"</strong> e <strong>"perto"</strong>:
                   </p>
                 </div>
 
@@ -2582,37 +2582,59 @@ export default function App() {
               {/* Studio Details / Geographic Presence */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                 
-                {/* Physical information of Chácara Flora */}
+                {/* Physical information of The Place Salon */}
                 <div className="bg-white border border-[#EAE6DD] rounded-2xl p-6 md:p-8 space-y-6 flex flex-col justify-between">
                   <div className="space-y-4">
                     <div>
-                      <span className="text-xs tracking-wider uppercase font-mono text-[#B5945F]">Ateliê Autorizado</span>
-                      <h3 className="text-2xl font-serif text-stone-950 mt-1">Região de Vila Sofia & Chácara Flora</h3>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-xs tracking-wider uppercase font-mono text-[#B5945F] font-bold">Ateliê de Visagismo Autorizado</span>
+                        <span className="bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center gap-1">
+                          <Star size={11} className="fill-amber-500 text-amber-500" />
+                          {STUDIO_INFO.googleRating} ({STUDIO_INFO.googleReviewsCount} avaliações no Google)
+                        </span>
+                      </div>
+                      <h3 className="text-2xl font-serif text-stone-950 mt-1">{STUDIO_INFO.salonName}</h3>
+                      <p className="text-xs text-stone-500 font-mono mt-0.5">Jardim Marajoara / Chácara Flora / Vila Sofia</p>
                     </div>
                     
-                    <p className="text-xs text-stone-605 leading-relaxed">
-                      Nosso espaço foi idealizado para proporcionar uma imersão sensorial de alto padrão. Cada detalhe, desde a iluminação laboratorial calibrada (5500K - ideal para análise fiel de tecidos) até o silêncio e o conforto de nossas salas individuais, foi planejado para colocar sua autoestima em primeiro plano.
+                    <p className="text-xs text-stone-600 leading-relaxed">
+                      Nosso espaço no <strong>The Place Salon</strong> foi idealizado para proporcionar uma imersão sensorial de alto padrão. Cada detalhe, desde a iluminação laboratorial calibrada (5500K - ideal para análise fiel de tecidos e colorimetria) até o silêncio e o conforto de nossas estações individuais, foi planejado para colocar sua beleza e autoestima em primeiro plano.
                     </p>
 
                     <div className="space-y-3.5 border-t border-stone-100 pt-5">
-                      <div className="flex items-start gap-2 text-xs">
-                        <MapPin size={15} className="text-[#B5945F] shrink-0 mt-0.5" />
-                        <div>
-                          <p className="font-semibold text-stone-900">{STUDIO_INFO.address}</p>
-                          <p className="text-stone-500">{STUDIO_INFO.city}</p>
-                          <a 
-                            href="https://www.google.com/maps/search/?api=1&query=Rua+Dr.+Ferreira+Lopes,+703+-+Jardim+Marajoara,+S%C3%A3o+Paulo+-+SP,+04671-011" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#B5945F] hover:text-[#9A7D4C] mt-1.5 transition-colors group"
-                          >
-                            <span>Abrir no Google Maps</span>
-                            <span className="text-[10px] transform group-hover:translate-x-0.5 transition-transform">↗</span>
-                          </a>
+                      <div className="flex items-start gap-2.5 text-xs">
+                        <MapPin size={16} className="text-[#B5945F] shrink-0 mt-0.5" />
+                        <div className="space-y-1">
+                          <p className="font-semibold text-stone-900">{STUDIO_INFO.salonName}</p>
+                          <p className="text-stone-700">{STUDIO_INFO.address}</p>
+                          <p className="text-stone-500 text-[11px]">{STUDIO_INFO.city}</p>
+                          <p className="text-[11px] text-[#B5945F] font-mono font-medium">📍 {STUDIO_INFO.landmarkReference}</p>
+                          
+                          <div className="flex items-center gap-3 pt-1.5 flex-wrap">
+                            <a 
+                              href={STUDIO_INFO.mapsUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="inline-flex items-center gap-1 text-[11px] font-bold text-[#B5945F] hover:text-[#9A7D4C] transition-colors group bg-[#B5945F]/10 px-2.5 py-1 rounded-md border border-[#B5945F]/20"
+                            >
+                              <span>Abrir no Google Maps</span>
+                              <span className="text-[10px] transform group-hover:translate-x-0.5 transition-transform">↗</span>
+                            </a>
+                            <a 
+                              href={STUDIO_INFO.wazeUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="inline-flex items-center gap-1 text-[11px] font-bold text-sky-700 hover:text-sky-800 transition-colors group bg-sky-50 px-2.5 py-1 rounded-md border border-sky-200"
+                            >
+                              <span>Abrir no Waze</span>
+                              <span className="text-[10px] transform group-hover:translate-x-0.5 transition-transform">↗</span>
+                            </a>
+                          </div>
                         </div>
                       </div>
-                      <div className="flex items-start gap-2 text-xs">
-                        <Clock size={15} className="text-[#B5945F] shrink-0 mt-0.5" />
+
+                      <div className="flex items-start gap-2.5 text-xs">
+                        <Clock size={16} className="text-[#B5945F] shrink-0 mt-0.5" />
                         <div>
                           {STUDIO_INFO.hours.map(h => (
                             <p key={h.days} className="text-stone-700">
@@ -2624,13 +2646,14 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="border-t border-stone-100 pt-5 flex items-center gap-3">
+                  <div className="border-t border-stone-100 pt-5 flex flex-wrap items-center gap-3">
                     <a 
-                      href={`https://wa.me/5511987540321`} 
+                      href={`https://wa.me/${STUDIO_INFO.whatsapp}`} 
                       target="_blank" 
-                      className="bg-stone-900 hover:bg-stone-800 text-white font-mono text-xs font-semibold px-4 py-2.5 rounded-lg uppercase tracking-wider transition-all inline-flex items-center gap-2"
+                      rel="noopener noreferrer"
+                      className="bg-[#25D366] hover:bg-[#20ba59] text-stone-950 font-mono text-xs font-bold px-4 py-2.5 rounded-lg uppercase tracking-wider transition-all inline-flex items-center gap-2 shadow-xs"
                     >
-                      WhatsApp Ateliê
+                      <span>WhatsApp Ateliê</span>
                     </a>
                     <button 
                       onClick={() => setActiveTab("agendamento")}
@@ -2646,8 +2669,13 @@ export default function App() {
                   
                   {/* Stylized local micro map element constructed from clean divs */}
                   <div className="space-y-1">
-                    <span className="text-[10px] font-mono tracking-widest text-[#B5945F] uppercase font-bold">Mapa da Região Zona Sul</span>
-                    <h4 className="text-base font-serif font-semibold text-white">Chácara Flora e Vila Sofia</h4>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono tracking-widest text-[#B5945F] uppercase font-bold">Localização no Google Maps</span>
+                      <span className="text-[10px] text-amber-400 font-mono font-bold flex items-center gap-1 bg-stone-800/80 px-2 py-0.5 rounded border border-stone-700">
+                        ★ 4.7 (235 Reviews)
+                      </span>
+                    </div>
+                    <h4 className="text-base font-serif font-semibold text-white">The Place Salon - Jardim Marajoara</h4>
                   </div>
 
                   <div className="bg-stone-800 border border-stone-700 rounded-xl p-4 my-4 relative overflow-hidden h-48 flex items-center justify-center">
@@ -2666,25 +2694,25 @@ export default function App() {
                     <div className="absolute top-0 left-1/3 w-[2px] h-full bg-[#B5945F]/30 transform rotate-45 pointer-events-none" />
 
                     {/* Neighborhood Label elements */}
-                    <div className="absolute top-4 left-4 text-[10px] text-stone-500 bg-stone-900/60 p-1 px-1.5 rounded uppercase tracking-wider font-semibold">
-                      Vila Sofia
+                    <div className="absolute top-3 left-3 text-[10px] text-stone-300 bg-stone-900/80 border border-stone-700 p-1 px-1.5 rounded uppercase tracking-wider font-semibold">
+                      Av. Washington Luís
                     </div>
-                    <div className="absolute bottom-4 right-4 text-[10px] text-stone-500 bg-stone-900/60 p-1 px-1.5 rounded uppercase tracking-wider font-semibold">
-                      Chácara Flora
+                    <div className="absolute bottom-3 right-3 text-[10px] text-stone-300 bg-stone-900/80 border border-stone-700 p-1 px-1.5 rounded uppercase tracking-wider font-semibold">
+                      Smart Fit / Chácara Flora
                     </div>
 
                     {/* Central active studio point */}
                     <a 
-                      href="https://www.google.com/maps/search/?api=1&query=Rua+Dr.+Ferreira+Lopes,+703+-+Jardim+Marajoara,+S%C3%A3o+Paulo+-+SP,+04671-011"
+                      href={STUDIO_INFO.mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="relative text-center space-y-1.5 z-10 block group cursor-pointer"
-                      title="Clique para rotas no Google Maps"
+                      title="Clique para abrir rotas no Google Maps"
                     >
                       <div className="w-10 h-10 rounded-full bg-[#B5945F]/20 text-[#B5945F] border border-[#B5945F]/60 flex items-center justify-center mx-auto animate-bounce group-hover:bg-[#B5945F]/30 group-hover:scale-105 transition-all">
                         <MapPin size={18} />
                       </div>
-                      <p className="text-xs font-semibold text-[#FAF9F5] group-hover:text-[#B5945F] transition-colors">Ateliê Beatriz Bittencourt</p>
+                      <p className="text-xs font-bold text-[#FAF9F5] group-hover:text-[#B5945F] transition-colors">The Place Salon (Floor 0)</p>
                       <p className="text-[9px] text-[#B5945F] font-mono uppercase tracking-wide underline decoration-dotted">Rua Dr. Ferreira Lopes, 703 ↗</p>
                     </a>
 
@@ -2692,16 +2720,16 @@ export default function App() {
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-stone-850/70 pt-4">
                     <div className="text-[11px] text-stone-400 leading-relaxed font-mono">
-                      <span className="text-[#B5945F] font-bold">●</span> Distância a pé de Vila Sofia: 4 min <br />
-                      <span className="text-[#B5945F] font-bold">●</span> Distância de carro da Chácara Flora: 2 min
+                      <span className="text-[#B5945F] font-bold">●</span> R. Dr. Ferreira Lopes, 703 - Piso Térreo <br />
+                      <span className="text-[#B5945F] font-bold">●</span> Estacionamento privativo de cortesia no local
                     </div>
                     <a 
-                      href="https://www.google.com/maps/search/?api=1&query=Rua+Dr.+Ferreira+Lopes,+703+-+Jardim+Marajoara,+S%C3%A3o+Paulo+-+SP,+04671-011"
+                      href={STUDIO_INFO.mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-[#B5945F] hover:bg-[#A38250] text-[#1C1A17] font-mono text-[10px] font-bold px-3 py-2 rounded-lg uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shrink-0 shadow-sm"
+                      className="bg-[#B5945F] hover:bg-[#A38250] text-[#1C1A17] font-mono text-[10px] font-bold px-3.5 py-2 rounded-lg uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shrink-0 shadow-sm"
                     >
-                      <span>Como Chegar</span>
+                      <span>Como Chegar (Maps)</span>
                       <span className="text-xs">↗</span>
                     </a>
                   </div>
@@ -2710,7 +2738,7 @@ export default function App() {
 
               </div>
 
-              {/* Guia de Acesso e Distâncias - SEO Local & SEO Profissional */}
+              {/* Guia de Acesso e Distâncias - Atendimento Local & Visagismo */}
               <div className="bg-white border border-[#EAE6DD] rounded-2xl p-6 md:p-8 space-y-6">
                 <div className="space-y-3 border-b border-stone-100 pb-5">
                   <div className="flex flex-wrap items-center gap-2">
@@ -2719,31 +2747,31 @@ export default function App() {
                       📍 Raio de Atendimento: pelo menos 5 km
                     </span>
                     <span className="text-[10px] font-mono font-bold bg-stone-100 text-stone-700 px-2.5 py-0.5 rounded-full">
-                      ✨ SEO Profissional & Visagismo
+                      ✨ Visagismo Autoral & Atendimento VIP
                     </span>
                   </div>
 
                   <h3 className="text-2xl font-serif text-stone-950">
-                    Otimização para Busca Local (SEO Local) & Atendimento Profissional
+                    Localização Estratégica na Zona Sul & Atendimento Personalizado
                   </h3>
 
                   <p className="text-xs text-stone-600 leading-relaxed max-w-4xl">
-                    Se você procura por <strong>cabeleireira feminina perto de mim</strong>, <strong>cabeleireira de coloração perto de mim</strong>, <strong>cortes femininos perto de mim</strong> ou <strong>cabeleireiro residencial perto de mim</strong> na Zona Sul de São Paulo, nosso ateliê boutique une a excelência do <strong>SEO Profissional</strong> (supervisão de visagismo com a especialista Beatriz Bittencourt) ao <strong>SEO Local</strong> com rotas facilitadas num <strong>raio de pelo menos 5 km</strong> cobrindo 20 bairros estratégicos.
+                    Se você procura por <strong>cabeleireira feminina perto de mim</strong>, <strong>cabeleireira de coloração perto de mim</strong>, <strong>cortes femininos perto de mim</strong> ou <strong>cabeleireiro residencial perto de mim</strong> na Zona Sul de São Paulo, nosso ateliê boutique une a excelência do visagismo autoral com a especialista Beatriz Bittencourt à comodidade de um espaço privativo próximo de você, com rotas facilitadas num <strong>raio de pelo menos 5 km</strong> cobrindo 20 bairros estratégicos.
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                     <div className="bg-stone-50 border border-stone-200/60 p-3 rounded-xl space-y-1">
                       <div className="text-[11px] font-bold text-stone-900 font-mono uppercase flex items-center gap-1.5">
-                        <span>🗺️ SEO Local & Maps</span>
+                        <span>🗺️ Rotas Facilitadas & Maps</span>
                       </div>
                       <p className="text-[11px] text-stone-500">
-                        Geo-localização otimizada para chegada em até 15 minutos via Google Maps e Waze com estacionamento privativo.
+                        Acesso rápido para chegada em até 15 minutos via Google Maps e Waze com estacionamento privativo.
                       </p>
                     </div>
 
                     <div className="bg-stone-50 border border-stone-200/60 p-3 rounded-xl space-y-1">
                       <div className="text-[11px] font-bold text-stone-900 font-mono uppercase flex items-center gap-1.5">
-                        <span>👩‍🎨 SEO Profissional</span>
+                        <span>👩‍🎨 Visagismo Autoral</span>
                       </div>
                       <p className="text-[11px] text-stone-500">
                         Atendimento com a visagista Beatriz Bittencourt, unindo análise dos temperamentos faciais a cortes e mechas exclusivas.
@@ -3095,10 +3123,14 @@ export default function App() {
 
             <div className="md:col-span-4 space-y-2">
               <h5 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Atendimento Presencial</h5>
-              <p className="text-[#FAF9F5]/70 text-[11px] leading-relaxed">
-                Rua Dr. Ferreira Lopes, 703 - Jardim Marajoara<br />
-                Zona Sul, São Paulo - SP, CEP 04671-011
-              </p>
+              <div className="space-y-1 text-[#FAF9F5]/80 text-[11px] leading-relaxed">
+                <p className="font-bold text-stone-200">{STUDIO_INFO.salonName}</p>
+                <p>{STUDIO_INFO.address}</p>
+                <p className="text-stone-400">{STUDIO_INFO.city}</p>
+                <div className="pt-1 flex items-center gap-1.5 text-amber-400 font-mono text-[10px]">
+                  <span>★ 4.7 (235 avaliações no Google Maps)</span>
+                </div>
+              </div>
             </div>
 
             <div className="md:col-span-3 space-y-2">

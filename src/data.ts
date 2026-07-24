@@ -66,14 +66,25 @@ export const TEMPERAMENTS = [
 ];
 
 export const STUDIO_INFO = {
-  address: "Rua Dr. Ferreira Lopes, 703 - Jardim Marajoara",
+  salonName: "The Place Salon - Ateliê Beatriz Bittencourt",
+  address: "Rua Dr. Ferreira Lopes, 703 - Piso Térreo - Jardim Marajoara",
+  streetAddress: "Rua Dr. Ferreira Lopes, 703",
+  district: "Jardim Marajoara",
   city: "São Paulo - SP, CEP 04671-011",
+  postalCode: "04671-011",
+  floor: "Piso Térreo (Floor 0)",
+  landmarkReference: "Próximo à Av. Washington Luís, Escola Suíço-Brasileira & Smart Fit",
   phone: "(11) 99227-9655",
+  whatsapp: "5511992279655",
+  googleRating: 4.7,
+  googleReviewsCount: 235,
   instagram: "@beatrizbittencourt.visagismo",
   email: "contato@beatrizbittencourt.com.br",
   coverageRadius: "Raio de pelo menos 5 km",
-  seoLocalTitle: "SEO Local & Cobertura Geográfica Zona Sul SP",
-  seoProfissionalTitle: "SEO Profissional: Visagismo Autoral & Alta Cabeleireira Feminina",
+  seoLocalTitle: "Localização & Cobertura Geográfica Zona Sul SP",
+  seoProfissionalTitle: "Atendimento de Excelência: Visagismo Autoral & Alta Cabeleireira Feminina",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=The+Place+Salon+Rua+Dr.+Ferreira+Lopes,+703+-+Jardim+Marajoara,+S%C3%A3o+Paulo+-+SP,+04671-011",
+  wazeUrl: "https://waze.com/ul?q=Rua%20Dr.%20Ferreira%20Lopes%20703%20Jardim%20Marajoara%20Sao%20Paulo",
   hours: [
     { days: "Terça a Sexta-feira", time: "09:00h às 19:00h" },
     { days: "Sábados", time: "09:00h às 16:00h" },
@@ -84,12 +95,12 @@ export const STUDIO_INFO = {
 
 export const FAQ = [
   {
-    question: "O que é o Visagismo e o SEO Profissional do Ateliê?",
-    answer: "O visagismo é a arte de criar uma imagem pessoal personalizada que revela sua identidade. Nosso SEO Profissional garante atendimento especializado por Beatriz Bittencourt, com técnicas autorais de corte feminino, coloração avançada e mechas harmônicas sem o barulho dos salões de massa."
+    question: "O que é a Consultoria em Visagismo do Ateliê?",
+    answer: "O visagismo é a arte de criar uma imagem pessoal personalizada que revela sua identidade. Nossa consultoria garante atendimento especializado por Beatriz Bittencourt, com técnicas autorais de corte feminino, coloração avançada e mechas harmônicas sem o barulho dos salões de massa."
   },
   {
-    question: "Qual o raio de atendimento do SEO Local do salão?",
-    answer: "Nosso SEO Local atende em um raio de pelo menos 5 km ao redor da Rua Dr. Ferreira Lopes, 703 (Zona Sul - SP). Cobrimos com máxima facilidade e estacionamento privativo de cortesia bairros como Chácara Flora, Jardim Marajoara, Vila Sofia, Alto da Boa Vista, Santo Amaro, Brooklin, Campo Belo, Moema, Vila Mascote, Jurubatuba, Panamby, Real Parque, Vila Andrade, Interlagos e região."
+    question: "Qual é a área e o raio de atendimento do ateliê?",
+    answer: "Nosso ateliê atende clientes em um raio de pelo menos 5 km ao redor da Rua Dr. Ferreira Lopes, 703 (Zona Sul - SP). Cobrimos com máxima facilidade e estacionamento privativo de cortesia bairros como Chácara Flora, Jardim Marajoara, Vila Sofia, Alto da Boa Vista, Santo Amaro, Brooklin, Campo Belo, Moema, Vila Mascote, Jurubatuba, Panamby, Real Parque, Vila Andrade, Interlagos e região."
   },
   {
     question: "Como funciona a Análise IA do Ateliê?",
