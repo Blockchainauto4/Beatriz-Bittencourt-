@@ -273,225 +273,317 @@ export interface NeighborhoodSeoTerms {
   terms: string[];
 }
 
+export const CITY_SEO_TERMS_LIST: { category: string; terms: string[] }[] = [
+  {
+    category: "Abreviações Frequentes de Busca ('p/ mim', 'p mim', 'prox a mim', 'perto')",
+    terms: [
+      "corte de cabelo feminino p/ mim São Paulo",
+      "corte de cabelo feminino p/ mim SP",
+      "corte de cabelo feminino p mim Sao Paulo",
+      "cabeleireira p/ mim São Paulo",
+      "cabeleireira p mim SP",
+      "salão de beleza p/ mim São Paulo SP",
+      "corte de cabelo feminino prox a mim SP",
+      "corte de cabelo feminino pt de mim São Paulo",
+      "corte de cabelo feminino perto SP",
+      "cabeleireira perto São Paulo"
+    ]
+  },
+  {
+    category: "Serviços Abreviados & Combos de Corte ('corte fem', 'corte + escova', 'corte + hidratação')",
+    terms: [
+      "corte fem perto de mim SP",
+      "corte fem p/ mim São Paulo",
+      "corte + escova perto de mim São Paulo",
+      "corte + escova p/ mim SP",
+      "corte + hidratação perto de mim SP",
+      "corte + hidratação p/ mim São Paulo",
+      "corte + mechas perto de mim SP",
+      "corte + mechas p/ mim São Paulo",
+      "corte + coloração perto de mim SP",
+      "visagismo + corte perto de mim São Paulo SP"
+    ]
+  },
+  {
+    category: "Termos Populares & Informais (Como as clientes buscam no dia a dia)",
+    terms: [
+      "cabeleireira de mulher perto de mim São Paulo",
+      "onde cortar o cabelo feminino perto de mim SP",
+      "salão para cortar cabelo de mulher perto de mim",
+      "cabeleireira boa para corte perto de mim SP",
+      "corte de pontas feminino perto de mim São Paulo",
+      "corte de franja perto de mim SP",
+      "salão de cabeleireiro feminino perto de mim SP",
+      "cabeleireiro residencial perto de mim São Paulo",
+      "salão de beleza perto de mim aberto hoje SP"
+    ]
+  },
+  {
+    category: "Termos Profissionais & Especializados de Corte",
+    terms: [
+      "visagista para corte de cabelo feminino São Paulo",
+      "corte feminino com visagismo perto de mim SP",
+      "corte de cabelo feminino autoral São Paulo",
+      "especialista em corte de cabelo feminino SP",
+      "ateliê de corte feminino em São Paulo SP",
+      "consultoria de visagismo e corte feminino SP",
+      "corte para transição capilar perto de mim SP"
+    ]
+  },
+  {
+    category: "Estilos de Corte Feminino Mais Pesquisados",
+    terms: [
+      "corte de cabelo feminino em camadas perto de mim SP",
+      "corte long bob feminino perto de mim São Paulo",
+      "corte chanel de bico perto de mim SP",
+      "corte pixie feminino perto de mim São Paulo",
+      "corte borboleta / butterfly cut perto de mim SP",
+      "corte wolf cut feminino perto de mim SP",
+      "corte de cabelo cacheado feminino perto de mim SP",
+      "corte de cabelo ondulado / crespo perto de mim SP"
+    ]
+  }
+];
+
 export const NEIGHBORHOOD_SEO_TERMS_LIST: NeighborhoodSeoTerms[] = [
   {
-    district: "Jardim Marajoara",
+    district: "Jardim Marajoara (São Paulo - SP)",
     distanceInfo: "A 300m de distância • 3 min",
     terms: [
-      "corte de cabelo feminino perto de mim Jardim Marajoara",
-      "cabeleireira feminina próximo a mim no Jardim Marajoara",
-      "corte de cabelo feminino Jardim Marajoara perto",
-      "cabeleireiro residencial perto de mim Jardim Marajoara",
-      "salão para corte feminino próximo a mim Jardim Marajoara"
+      "corte de cabelo feminino perto de mim Jardim Marajoara SP",
+      "corte fem p/ mim Jardim Marajoara",
+      "corte + escova perto de mim Jardim Marajoara SP",
+      "cabeleireira de mulher p mim no Jardim Marajoara São Paulo",
+      "visagista de corte feminino perto de mim Jardim Marajoara SP",
+      "salão de beleza p/ mim Jardim Marajoara SP"
     ]
   },
   {
-    district: "Chácara Flora",
+    district: "Chácara Flora (São Paulo - SP)",
     distanceInfo: "A 200m de distância • 2 min",
     terms: [
-      "corte de cabelo feminino perto de mim Chácara Flora",
-      "cabeleireira feminina próximo a mim na Chácara Flora",
-      "corte de cabelo feminino Chácara Flora perto",
-      "cabeleireira de coloração perto de mim Chácara Flora",
-      "visagista de corte feminino próximo a mim Chácara Flora"
+      "corte de cabelo feminino perto de mim Chácara Flora SP",
+      "corte fem p/ mim Chácara Flora",
+      "corte + hidratação p/ mim Chácara Flora SP",
+      "cabeleireira de coloração perto de mim Chácara Flora São Paulo",
+      "corte feminino em camadas perto de mim Chácara Flora",
+      "visagista de corte feminino Chácara Flora SP"
     ]
   },
   {
-    district: "Vila Sofia",
+    district: "Vila Sofia (São Paulo - SP)",
     distanceInfo: "A 450m de distância • 5 min",
     terms: [
-      "corte de cabelo feminino perto de mim Vila Sofia",
-      "cabeleireira feminina próximo a mim em Vila Sofia",
-      "corte de cabelo feminino Vila Sofia perto",
-      "salão de beleza perto de mim Vila Sofia",
-      "cabeleireira de corte próximo a mim Vila Sofia"
+      "corte de cabelo feminino perto de mim Vila Sofia SP",
+      "corte fem p mim Vila Sofia",
+      "corte + escova p/ mim Vila Sofia SP",
+      "cabeleireira de mulher perto de mim Vila Sofia São Paulo",
+      "salão de beleza prox a mim Vila Sofia SP",
+      "cabeleireira de corte próximo a mim Vila Sofia SP"
     ]
   },
   {
-    district: "Alto da Boa Vista",
+    district: "Alto da Boa Vista (São Paulo - SP)",
     distanceInfo: "A 1.2 km de distância • 5 min",
     terms: [
-      "corte de cabelo feminino perto de mim Alto da Boa Vista",
-      "cabeleireira feminina próximo a mim no Alto da Boa Vista",
-      "corte de cabelo feminino Alto da Boa Vista perto",
-      "cabeleireiro residencial próximo a mim Alto da Boa Vista",
-      "salão para corte feminino perto de mim Alto da Boa Vista"
+      "corte de cabelo feminino perto de mim Alto da Boa Vista SP",
+      "corte fem p/ mim Alto da Boa Vista",
+      "corte + mechas perto de mim Alto da Boa Vista SP",
+      "cabeleireira feminina próximo a mim Alto da Boa Vista São Paulo",
+      "corte long bob perto de mim Alto da Boa Vista SP",
+      "salão para corte feminino p/ mim Alto da Boa Vista SP"
     ]
   },
   {
-    district: "Brooklin",
+    district: "Brooklin (São Paulo - SP)",
     distanceInfo: "A 2.2 km de distância • 8 min",
     terms: [
-      "corte de cabelo feminino perto de mim Brooklin",
-      "cabeleireira feminina próximo a mim no Brooklin",
-      "corte de cabelo feminino Brooklin perto",
-      "cabeleireira de coloração perto de mim Brooklin",
-      "salão de beleza próximo a mim no Brooklin"
+      "corte de cabelo feminino perto de mim Brooklin SP",
+      "corte fem p/ mim Brooklin",
+      "corte + escova perto de mim Brooklin SP",
+      "cabeleireira de coloração p mim Brooklin São Paulo",
+      "salão de beleza prox a mim Brooklin SP",
+      "visagista para corte feminino perto de mim Brooklin SP"
     ]
   },
   {
-    district: "Campo Belo",
+    district: "Campo Belo (São Paulo - SP)",
     distanceInfo: "A 2.5 km de distância • 9 min",
     terms: [
-      "corte de cabelo feminino perto de mim Campo Belo",
-      "cabeleireira feminina próximo a mim no Campo Belo",
-      "corte de cabelo feminino Campo Belo perto",
-      "salão para corte feminino próximo a mim Campo Belo",
-      "cabeleireira residencial perto de mim Campo Belo"
+      "corte de cabelo feminino perto de mim Campo Belo SP",
+      "corte fem p mim Campo Belo",
+      "corte + hidratação perto de mim Campo Belo SP",
+      "cabeleireira de mulher p/ mim Campo Belo São Paulo",
+      "corte em camadas perto de mim Campo Belo SP",
+      "cabeleireira residencial perto de mim Campo Belo SP"
     ]
   },
   {
-    district: "Santo Amaro",
+    district: "Santo Amaro (São Paulo - SP)",
     distanceInfo: "A 1.5 km de distância • 6 min",
     terms: [
-      "corte de cabelo feminino perto de mim Santo Amaro",
-      "cabeleireira feminina próximo a mim em Santo Amaro",
-      "corte de cabelo feminino Santo Amaro perto",
-      "cabeleireiro residencial perto de mim Santo Amaro",
-      "cabeleireira de corte próximo a mim Santo Amaro"
+      "corte de cabelo feminino perto de mim Santo Amaro SP",
+      "corte fem p/ mim Santo Amaro",
+      "corte + lavagem p mim Santo Amaro SP",
+      "salão de beleza p/ mim Santo Amaro São Paulo",
+      "corte de cabelo cacheado perto de mim Santo Amaro SP",
+      "cabeleireira de corte perto de mim Santo Amaro SP"
     ]
   },
   {
-    district: "Moema",
+    district: "Moema (São Paulo - SP)",
     distanceInfo: "A 3.8 km de distância • 12 min",
     terms: [
-      "corte de cabelo feminino perto de mim Moema",
-      "cabeleireira feminina próximo a mim em Moema",
-      "corte de cabelo feminino Moema perto",
-      "visagista de corte feminino próximo a mim Moema",
-      "salão de beleza perto de mim Moema"
+      "corte de cabelo feminino perto de mim Moema SP",
+      "corte fem p/ mim Moema",
+      "corte + mechas p/ mim Moema SP",
+      "visagista para corte feminino perto de mim Moema São Paulo",
+      "corte de cabelo feminino autoral Moema SP",
+      "salão de beleza prox a mim Moema SP"
     ]
   },
   {
-    district: "Vila Mascote",
+    district: "Vila Mascote (São Paulo - SP)",
     distanceInfo: "A 1.8 km de distância • 6 min",
     terms: [
-      "corte de cabelo feminino perto de mim Vila Mascote",
-      "cabeleireira feminina próximo a mim na Vila Mascote",
-      "corte de cabelo feminino Vila Mascote perto",
-      "cabeleireira de coloração perto de mim Vila Mascote",
-      "salão para corte feminino próximo a mim Vila Mascote"
+      "corte de cabelo feminino perto de mim Vila Mascote SP",
+      "corte fem p mim Vila Mascote",
+      "corte + escova perto de mim Vila Mascote SP",
+      "cabeleireira de coloração p/ mim Vila Mascote São Paulo",
+      "corte curto feminino perto de mim Vila Mascote SP",
+      "salão para corte feminino p/ mim Vila Mascote SP"
     ]
   },
   {
-    district: "Vila Santa Catarina",
+    district: "Vila Santa Catarina (São Paulo - SP)",
     distanceInfo: "A 1.4 km de distância • 5 min",
     terms: [
-      "corte de cabelo feminino perto de mim Vila Santa Catarina",
-      "cabeleireira feminina próximo a mim em Vila Santa Catarina",
-      "corte de cabelo feminino Vila Santa Catarina perto",
-      "salão de corte feminino próximo a mim Vila Santa Catarina",
-      "cabeleireiro residencial perto de mim Vila Santa Catarina"
+      "corte de cabelo feminino perto de mim Vila Santa Catarina SP",
+      "corte fem p/ mim Vila Santa Catarina",
+      "corte + hidratação p mim Vila Santa Catarina SP",
+      "salão de corte feminino prox a mim Vila Santa Catarina São Paulo",
+      "corte de cabelo feminino repicado Vila Santa Catarina SP",
+      "cabeleireiro residencial p/ mim Vila Santa Catarina SP"
     ]
   },
   {
-    district: "Jurubatuba",
+    district: "Jurubatuba (São Paulo - SP)",
     distanceInfo: "A 2.9 km de distância • 10 min",
     terms: [
-      "corte de cabelo feminino perto de mim Jurubatuba",
-      "cabeleireira feminina próximo a mim em Jurubatuba",
-      "corte de cabelo feminino Jurubatuba perto",
-      "cabeleireiro residencial perto de mim Jurubatuba",
-      "cabeleireira de coloração próximo a mim Jurubatuba"
+      "corte de cabelo feminino perto de mim Jurubatuba SP",
+      "corte fem p mim Jurubatuba",
+      "corte + escova p/ mim Jurubatuba SP",
+      "salão de beleza p/ mim Jurubatuba São Paulo",
+      "cabeleireira de coloração perto de mim Jurubatuba SP",
+      "visagista de corte Jurubatuba SP"
     ]
   },
   {
-    district: "Interlagos",
+    district: "Interlagos (São Paulo - SP)",
     distanceInfo: "A 3.5 km de distância • 11 min",
     terms: [
-      "corte de cabelo feminino perto de mim Interlagos",
-      "cabeleireira feminina próximo a mim em Interlagos",
-      "corte de cabelo feminino Interlagos perto",
-      "cabeleireira de coloração próximo a mim Interlagos",
-      "salão para corte feminino perto de mim Interlagos"
+      "corte de cabelo feminino perto de mim Interlagos SP",
+      "corte fem p/ mim Interlagos",
+      "corte + mechas perto de mim Interlagos SP",
+      "cabeleireira de mulher p mim Interlagos São Paulo",
+      "salão para corte feminino prox a mim Interlagos SP",
+      "corte de cabelo em camadas perto de mim Interlagos SP"
     ]
   },
   {
-    district: "Socorro",
+    district: "Socorro (São Paulo - SP)",
     distanceInfo: "A 2.7 km de distância • 9 min",
     terms: [
-      "corte de cabelo feminino perto de mim Socorro",
-      "cabeleireira feminina próximo a mim no Socorro",
-      "corte de cabelo feminino Socorro perto",
-      "salão para corte feminino perto de mim Socorro",
-      "cabeleireira residencial próximo a mim Socorro"
+      "corte de cabelo feminino perto de mim Socorro SP",
+      "corte fem p mim Socorro",
+      "corte + escova p/ mim Socorro SP",
+      "salão para corte feminino perto de mim Socorro São Paulo",
+      "cabeleireira residencial prox a mim Socorro SP",
+      "corte com visagismo p/ mim Socorro SP"
     ]
   },
   {
-    district: "Veleiros",
+    district: "Veleiros (São Paulo - SP)",
     distanceInfo: "A 3.2 km de distância • 10 min",
     terms: [
-      "corte de cabelo feminino perto de mim Veleiros",
-      "cabeleireira feminina próximo a mim em Veleiros",
-      "corte de cabelo feminino Veleiros perto",
-      "cabeleireiro residencial próximo a mim Veleiros",
-      "salão de corte feminino perto de mim Veleiros"
+      "corte de cabelo feminino perto de mim Veleiros SP",
+      "corte fem p/ mim Veleiros",
+      "corte + hidratação perto de mim Veleiros SP",
+      "salão de beleza p mim Veleiros São Paulo",
+      "cabeleireira de corte prox a mim Veleiros SP",
+      "corte bordado feminino perto de mim Veleiros SP"
     ]
   },
   {
-    district: "Jardim Prudência",
+    district: "Jardim Prudência (São Paulo - SP)",
     distanceInfo: "A 1.6 km de distância • 6 min",
     terms: [
-      "corte de cabelo feminino perto de mim Jardim Prudência",
-      "cabeleireira feminina próximo a mim no Jardim Prudência",
-      "corte de cabelo feminino Jardim Prudência perto",
-      "cabeleireira de coloração perto de mim Jardim Prudência",
-      "salão de beleza próximo a mim Jardim Prudência"
+      "corte de cabelo feminino perto de mim Jardim Prudência SP",
+      "corte fem p mim Jardim Prudência",
+      "corte + escova p/ mim Jardim Prudência SP",
+      "cabeleireira de coloração p/ mim Jardim Prudência São Paulo",
+      "salão de beleza prox a mim Jardim Prudência SP",
+      "visagista para corte de cabelo Jardim Prudência SP"
     ]
   },
   {
-    district: "Panamby",
+    district: "Panamby (São Paulo - SP)",
     distanceInfo: "A 4.5 km de distância • 15 min",
     terms: [
-      "corte de cabelo feminino perto de mim Panamby",
-      "cabeleireira feminina próximo a mim no Panamby",
-      "corte de cabelo feminino Panamby perto",
-      "visagista de corte feminino perto de mim Panamby",
-      "salão de luxo para corte feminino próximo a mim Panamby"
+      "corte de cabelo feminino perto de mim Panamby SP",
+      "corte fem p/ mim Panamby",
+      "corte + mechas p/ mim Panamby SP",
+      "visagista de corte feminino perto de mim Panamby São Paulo",
+      "salão de luxo para corte feminino p mim Panamby SP",
+      "corte autoral feminino perto de mim Panamby SP"
     ]
   },
   {
-    district: "Vila Andrade",
+    district: "Vila Andrade (São Paulo - SP)",
     distanceInfo: "A 4.2 km de distância • 14 min",
     terms: [
-      "corte de cabelo feminino perto de mim Vila Andrade",
-      "cabeleireira feminina próximo a mim na Vila Andrade",
-      "corte de cabelo feminino Vila Andrade perto",
-      "salão para corte feminino próximo a mim Vila Andrade",
-      "cabeleireiro residencial perto de mim Vila Andrade"
+      "corte de cabelo feminino perto de mim Vila Andrade SP",
+      "corte fem p mim Vila Andrade",
+      "corte + hidratação p/ mim Vila Andrade SP",
+      "salão para corte feminino prox a mim Vila Andrade São Paulo",
+      "cabeleireiro residencial p/ mim Vila Andrade SP",
+      "corte feminino em camadas perto de mim Vila Andrade SP"
     ]
   },
   {
-    district: "Real Parque",
+    district: "Real Parque (São Paulo - SP)",
     distanceInfo: "A 4.8 km de distância • 15 min",
     terms: [
-      "corte de cabelo feminino perto de mim Real Parque",
-      "cabeleireira feminina próximo a mim no Real Parque",
-      "corte de cabelo feminino Real Parque perto",
-      "cabeleireiro residencial perto de mim Real Parque",
-      "visagista de corte feminino próximo a mim Real Parque"
+      "corte de cabelo feminino perto de mim Real Parque SP",
+      "corte fem p/ mim Real Parque",
+      "corte + escova p mim Real Parque SP",
+      "visagista de corte feminino próximo a mim Real Parque São Paulo",
+      "cabeleireira de mulher p/ mim Real Parque SP",
+      "salão de beleza perto de mim Real Parque SP"
     ]
   },
   {
-    district: "Vila Cruzeiro",
+    district: "Vila Cruzeiro (São Paulo - SP)",
     distanceInfo: "A 1.3 km de distância • 5 min",
     terms: [
-      "corte de cabelo feminino perto de mim Vila Cruzeiro",
-      "cabeleireira feminina próximo a mim na Vila Cruzeiro",
-      "corte de cabelo feminino Vila Cruzeiro perto",
-      "cabeleireira de coloração próximo a mim Vila Cruzeiro",
-      "salão de corte feminino perto de mim Vila Cruzeiro"
+      "corte de cabelo feminino perto de mim Vila Cruzeiro SP",
+      "corte fem p mim Vila Cruzeiro",
+      "corte + coloração p/ mim Vila Cruzeiro SP",
+      "cabeleireira de coloração prox a mim Vila Cruzeiro São Paulo",
+      "salão de corte feminino p/ mim Vila Cruzeiro SP",
+      "corte de cabelo com visagismo Vila Cruzeiro SP"
     ]
   },
   {
-    district: "Chácara Monte Alegre",
+    district: "Chácara Monte Alegre (São Paulo - SP)",
     distanceInfo: "A 800m de distância • 3 min",
     terms: [
-      "corte de cabelo feminino perto de mim Chácara Monte Alegre",
-      "cabeleireira feminina próximo a mim na Chácara Monte Alegre",
-      "corte de cabelo feminino Chácara Monte Alegre perto",
-      "salão de corte feminino perto de mim Chácara Monte Alegre",
-      "cabeleireiro residencial próximo a mim Chácara Monte Alegre"
+      "corte de cabelo feminino perto de mim Chácara Monte Alegre SP",
+      "corte fem p/ mim Chácara Monte Alegre",
+      "corte + escova p/ mim Chácara Monte Alegre SP",
+      "salão de corte feminino prox a mim Chácara Monte Alegre São Paulo",
+      "cabeleireiro residencial p mim Chácara Monte Alegre SP",
+      "visagista de corte feminino Chácara Monte Alegre SP"
     ]
   }
 ];

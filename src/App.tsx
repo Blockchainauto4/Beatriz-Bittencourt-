@@ -27,7 +27,7 @@ import {
   Palette,
   Briefcase
 } from "lucide-react";
-import { SERVICES, TEMPERAMENTS, STUDIO_INFO, FAQ, LOCAL_SEO_REGIONS, CLIENT_TESTIMONIALS, BRIDAL_PACKAGES, BRIDAL_FAQS, FEMALE_HAIRCUT_STYLES, HAIRCUT_FAQS, NEIGHBORHOOD_SEO_TERMS_LIST } from "./data";
+import { SERVICES, TEMPERAMENTS, STUDIO_INFO, FAQ, LOCAL_SEO_REGIONS, CLIENT_TESTIMONIALS, BRIDAL_PACKAGES, BRIDAL_FAQS, FEMALE_HAIRCUT_STYLES, HAIRCUT_FAQS, NEIGHBORHOOD_SEO_TERMS_LIST, CITY_SEO_TERMS_LIST } from "./data";
 import { VisagismDiagnosis, Appointment, Service } from "./types";
 const bridalHairstyle = "/src/assets/images/bride_back_updo_1781965445461.jpg";
 const bridalPreparation = "/src/assets/images/bride_sitting_stairs_1781965459138.jpg";
@@ -689,18 +689,48 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Seção 4: Tabela & Guia dos 20 Bairros Próximos com Termos 'perto de mim', 'próximo a mim' e 'perto' */}
+              {/* Seção 4: Tabela & Guia dos 20 Bairros Próximos com Termos 'perto de mim', 'próximo a mim', 'p/ mim' e Serviços Abreviados */}
               <div className="bg-[#1C1A17] text-[#FAF9F5] rounded-3xl p-6 md:p-10 space-y-8">
                 <div className="space-y-3 border-b border-stone-800 pb-6">
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-800 text-[#B5945F] rounded-full text-xs font-mono tracking-wider uppercase border border-stone-700">
-                    <MapPin size={13} /> 20 Bairros Próximos • Atendimento na Sua Região
+                    <MapPin size={13} /> São Paulo & SP • Variações & Abreviações de Busca
                   </div>
                   <h2 className="text-2xl md:text-3xl font-serif text-[#FAF9F5]">
-                    Guia de Localização: 20 Bairros Próximos com "Perto de Mim", "Próximo a Mim" e "Perto"
+                    Guia de Pesquisa: Termos Populares, Profissionais, Estilos e Abreviações ("P/ Mim", "Corte Fem", "Corte + Escova")
                   </h2>
                   <p className="text-xs text-stone-300 max-w-4xl leading-relaxed">
-                    Para que você encontre o nosso ateliê com total facilidade na sua região, mapeamos a localização de <strong>20 bairros próximos</strong> na Zona Sul de São Paulo com referências de distância para <strong>"perto de mim"</strong>, <strong>"próximo a mim"</strong> e <strong>"perto"</strong>:
+                    Mapeamos todas as variações de busca reais em <strong>São Paulo (SP)</strong> — desde termos profissionais e informais até as abreviações mais utilizadas no Google e Google Maps, como <strong>"p/ mim"</strong>, <strong>"p mim"</strong>, <strong>"prox a mim"</strong>, <strong>"corte fem"</strong>, <strong>"corte + escova"</strong>, <strong>"corte + hidratação"</strong> e cortes por estilo em <strong>20 bairros próximos</strong> na Zona Sul de São Paulo:
                   </p>
+                </div>
+
+                {/* Bloco de Destaque: Termos Principais de São Paulo & SP */}
+                <div className="bg-stone-900 border border-[#B5945F]/40 rounded-2xl p-5 space-y-4">
+                  <div className="flex items-center gap-2 border-b border-stone-800 pb-3">
+                    <span className="w-6 h-6 rounded-full bg-[#B5945F] text-stone-950 font-mono text-xs flex items-center justify-center font-bold">
+                      ★
+                    </span>
+                    <h3 className="font-serif font-bold text-[#FAF9F5] text-base">
+                      Variações de Busca em São Paulo, Sao Paulo e SP (Populares, Profissionais e Abreviadas)
+                    </h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {CITY_SEO_TERMS_LIST.map((cityGroup, cIdx) => (
+                      <div key={cIdx} className="bg-stone-800/60 p-3.5 rounded-xl space-y-2 border border-stone-700/60">
+                        <span className="text-xs font-mono text-[#B5945F] font-semibold uppercase tracking-wider block">
+                          {cityGroup.category}
+                        </span>
+                        <div className="space-y-1.5">
+                          {cityGroup.terms.map((term, tIdx) => (
+                            <div key={tIdx} className="flex items-center gap-2 text-xs font-mono text-stone-200 bg-stone-900/80 p-2 rounded-lg border border-stone-800">
+                              <CheckCircle2 size={13} className="text-[#B5945F] shrink-0" />
+                              <span>{term}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Grid dos 20 Bairros */}
