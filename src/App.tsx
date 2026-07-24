@@ -27,7 +27,7 @@ import {
   Palette,
   Briefcase
 } from "lucide-react";
-import { SERVICES, TEMPERAMENTS, STUDIO_INFO, FAQ, LOCAL_SEO_REGIONS, CLIENT_TESTIMONIALS, BRIDAL_PACKAGES, BRIDAL_FAQS } from "./data";
+import { SERVICES, TEMPERAMENTS, STUDIO_INFO, FAQ, LOCAL_SEO_REGIONS, CLIENT_TESTIMONIALS, BRIDAL_PACKAGES, BRIDAL_FAQS, FEMALE_HAIRCUT_STYLES, HAIRCUT_FAQS, NEIGHBORHOOD_SEO_TERMS_LIST } from "./data";
 import { VisagismDiagnosis, Appointment, Service } from "./types";
 const bridalHairstyle = "/src/assets/images/bride_back_updo_1781965445461.jpg";
 const bridalPreparation = "/src/assets/images/bride_sitting_stairs_1781965459138.jpg";
@@ -59,7 +59,8 @@ const BRIDGE_GALLERY = [
 
 export default function App() {
   // Navigation tabs
-  const [activeTab, setActiveTab] = useState<"noivas" | "diagnostico" | "servicos" | "agendamento" | "atelie">("noivas");
+  const [activeTab, setActiveTab] = useState<"corteFeminino" | "noivas" | "diagnostico" | "servicos" | "agendamento" | "atelie">("corteFeminino");
+  const [haircutSearchQuery, setHaircutSearchQuery] = useState<string>("");
 
   // Diagnosis states
   const [faceShape, setFaceShape] = useState<string>("Oval");
@@ -109,6 +110,15 @@ export default function App() {
   });
 
   const [selectedRegionFilter, setSelectedRegionFilter] = useState<string>("Todos");
+
+  const filteredHaircutRegions = LOCAL_SEO_REGIONS.filter(region => {
+    const matchesFilter = selectedRegionFilter === "Todos" || region.landmark.toLowerCase().includes(selectedRegionFilter.toLowerCase()) || region.context.toLowerCase().includes(selectedRegionFilter.toLowerCase());
+    const matchesSearch = !haircutSearchQuery.trim() || 
+      region.landmark.toLowerCase().includes(haircutSearchQuery.toLowerCase()) || 
+      region.context.toLowerCase().includes(haircutSearchQuery.toLowerCase()) ||
+      region.seoKeywords.some(kw => kw.toLowerCase().includes(haircutSearchQuery.toLowerCase()));
+    return matchesFilter && matchesSearch;
+  });
 
   // Bridal calculator states
   const [bridalPackage, setBridalPackage] = useState<string>("noiva-classico");
@@ -181,6 +191,10 @@ export default function App() {
     let desc = "";
 
     switch (activeTab) {
+      case "corteFeminino":
+        title = "Corte de Cabelo Feminino Perto de Mim | Cabeleireira & Visagismo Zona Sul SP";
+        desc = "Especialista em corte de cabelo feminino perto de mim na Chácara Flora, Jardim Marajoara, Vila Sofia, Brooklin e toda Zona Sul SP. Agende seu corte autoral com visagismo.";
+        break;
       case "noivas":
         title = "Dia da Noiva perto de mim | Penteados de Noiva & Preparação de Noiva em SP";
         desc = "Especialista em preparação de noiva, penteados de noiva, dia da noiva e book de noivas na Zona Sul de SP. Conheça nossos pacotes exclusivos com valores competitivos.";
@@ -413,9 +427,10 @@ export default function App() {
           {/* Elegant Top Navigation Tabs */}
           <nav className="flex items-center gap-1 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
             {[
+              { id: "corteFeminino", label: "Corte Feminino Perto de Mim", icon: Scissors },
               { id: "noivas", label: "Noivas & Assessoria", icon: Heart },
               { id: "diagnostico", label: "Consultoria IA", icon: Sparkles },
-              { id: "servicos", label: "Corte, Mechas & Cor", icon: Scissors },
+              { id: "servicos", label: "Mechas & Cor", icon: Palette },
               { id: "agendamento", label: "Agendar Horário", icon: Calendar },
               { id: "atelie", label: "O Ateliê & Contato", icon: MapPin }
             ].map((tab) => {
@@ -445,6 +460,346 @@ export default function App() {
       <main className="max-w-6xl mx-auto px-4 md:px-8 py-8 md:py-12">
         <AnimatePresence mode="wait">
           
+          {/* TAB 1: PÁGINA OTIMIZADA PARA CORTE DE CABELO FEMININO PERTO DE MIM */}
+          {activeTab === "corteFeminino" && (
+            <motion.div
+              key="corteFeminino"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-12"
+            >
+              {/* Hero Section Otimizada para Corte Feminino */}
+              <div className="relative bg-gradient-to-br from-[#1C1A17] via-[#2A2723] to-[#1C1A17] text-[#FAF9F5] rounded-3xl p-6 md:p-12 shadow-xl overflow-hidden border border-[#3D3831]">
+                <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none hidden md:block">
+                  <Scissors size={280} className="text-[#B5945F]" />
+                </div>
+
+                <div className="max-w-3xl relative z-10 space-y-5">
+                  <div className="inline-flex flex-wrap items-center gap-2 px-3 py-1 bg-stone-800/90 text-[#B5945F] rounded-full text-xs font-mono tracking-widest uppercase border border-stone-700">
+                    <Scissors size={12} className="text-[#B5945F]" />
+                    <span>Ateliê Especializado em Corte Feminino • Zona Sul SP</span>
+                  </div>
+
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight leading-tight">
+                    Corte de Cabelo Feminino Perto de Mim na Zona Sul
+                  </h1>
+
+                  <p className="text-stone-300 text-sm md:text-base leading-relaxed">
+                    Encontre a sua <strong>cabeleireira feminina perto de mim</strong> para um <strong>corte de cabelo feminino autoral</strong> com técnica de visagismo, valorização do seu formato de rosto e caimento impecável. Atendimento privativo, residencial e tranquilo na Rua Dr. Ferreira Lopes, 703 (Jardim Marajoara / Chácara Flora).
+                  </p>
+
+                  {/* Micro Badges */}
+                  <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-300 pt-2">
+                    <span className="flex items-center gap-1.5 bg-stone-800/80 px-3 py-1.5 rounded-lg border border-stone-700">
+                      <MapPin size={13} className="text-[#B5945F]" /> Raio de atratividade: pelo menos 5 km
+                    </span>
+                    <span className="flex items-center gap-1.5 bg-stone-800/80 px-3 py-1.5 rounded-lg border border-stone-700">
+                      <Star size={13} className="text-[#B5945F] fill-[#B5945F]" /> 5.0 Estrelas no Google
+                    </span>
+                    <span className="flex items-center gap-1.5 bg-stone-800/80 px-3 py-1.5 rounded-lg border border-stone-700">
+                      <CheckCircle2 size={13} className="text-[#B5945F]" /> Estacionamento Privativo
+                    </span>
+                  </div>
+
+                  {/* Call to Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                    <button
+                      onClick={() => triggerBookingForService(SERVICES[0])}
+                      className="flex items-center justify-center gap-2 px-6 py-3.5 bg-[#B5945F] text-stone-950 rounded-xl font-medium hover:bg-[#c4a46e] transition-all shadow-md text-sm font-sans cursor-pointer"
+                    >
+                      <Calendar size={16} />
+                      Agendar Corte Feminino
+                    </button>
+                    
+                    <a
+                      href={`https://wa.me/5511992279655?text=${encodeURIComponent("Olá, Beatriz! Gostaria de agendar meu Corte de Cabelo Feminino perto de mim no Ateliê.")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-6 py-3.5 bg-stone-800 text-[#FAF9F5] border border-stone-700 rounded-xl font-medium hover:bg-stone-700 transition-all text-sm font-sans"
+                    >
+                      <Phone size={16} className="text-[#B5945F]" />
+                      Atendimento WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Seção 2: Estilos de Corte de Cabelo Feminino Autorais */}
+              <div className="space-y-6">
+                <div className="text-center max-w-2xl mx-auto space-y-2">
+                  <span className="text-xs font-mono text-[#B5945F] tracking-widest uppercase font-semibold">Técnica & Visagismo</span>
+                  <h2 className="text-2xl md:text-3xl font-serif text-stone-950">
+                    Estilos de Corte de Cabelo Feminino Personalizados
+                  </h2>
+                  <p className="text-xs md:text-sm text-stone-600">
+                    Cada corte feminino é desenhado sob medida para valorizar a textura dos seus fios, o contorno do seu maxilar e a sua praticidade diária.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {FEMALE_HAIRCUT_STYLES.map((style, idx) => (
+                    <div 
+                      key={idx}
+                      className="bg-white border border-[#EAE6DD] rounded-2xl p-6 space-y-3 hover:border-[#B5945F] transition-all shadow-sm hover:shadow-md flex flex-col justify-between"
+                    >
+                      <div className="space-y-2">
+                        <span className="inline-block text-[10px] font-mono uppercase tracking-wider text-[#B5945F] bg-[#B5945F]/10 px-2.5 py-1 rounded-md font-semibold">
+                          {style.tag}
+                        </span>
+                        <h3 className="text-lg font-serif font-semibold text-stone-900">
+                          {style.title}
+                        </h3>
+                        <p className="text-xs text-stone-600 leading-relaxed">
+                          {style.description}
+                        </p>
+                        <div className="pt-2 text-[11px] text-stone-500 border-t border-stone-100 flex items-center gap-1.5">
+                          <Sparkles size={12} className="text-[#B5945F] shrink-0" />
+                          <span><strong>Indicado para:</strong> {style.idealFor}</span>
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => triggerBookingForService(SERVICES[0])}
+                        className="mt-4 w-full py-2.5 px-4 bg-stone-100 hover:bg-[#1C1A17] hover:text-[#FAF9F5] text-stone-800 rounded-xl text-xs font-medium transition-all flex items-center justify-center gap-1.5 group cursor-pointer"
+                      >
+                        <span>Agendar Este Estilo</span>
+                        <ChevronRight size={14} className="text-[#B5945F] group-hover:translate-x-0.5 transition-transform" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Seção 3: Todas as Regiões Próximas - Pesquisa & Filtro Interativo */}
+              <div className="bg-white border border-[#EAE6DD] rounded-3xl p-6 md:p-10 space-y-8 shadow-sm">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-stone-200 pb-6">
+                  <div>
+                    <span className="text-xs font-mono text-[#B5945F] tracking-widest uppercase font-semibold flex items-center gap-1.5">
+                      <MapPin size={14} /> SEO Local • Cobertura Raio de 5 km
+                    </span>
+                    <h2 className="text-2xl md:text-3xl font-serif text-stone-950 mt-1">
+                      Regiões Próximas para Corte Feminino Perto de Mim
+                    </h2>
+                    <p className="text-xs md:text-sm text-stone-600 mt-1 max-w-2xl">
+                      Atendemos moradoras de 20 bairros estratégicos na Zona Sul de São Paulo. Encontre o seu bairro ou ponto de referência abaixo para verificar a distância e rota rápida.
+                    </p>
+                  </div>
+
+                  {/* Search input for neighborhood */}
+                  <div className="w-full md:w-72">
+                    <label className="text-2xs font-mono uppercase text-stone-500 block mb-1">Buscar Seu Bairro / Local</label>
+                    <div className="relative">
+                      <input 
+                        type="text"
+                        placeholder="Ex: Marajoara, Brooklin, Moema..."
+                        value={haircutSearchQuery}
+                        onChange={(e) => setHaircutSearchQuery(e.target.value)}
+                        className="w-full pl-9 pr-8 py-2 bg-stone-50 border border-stone-200 rounded-xl text-xs focus:ring-1 focus:ring-[#B5945F] focus:outline-none font-sans"
+                      />
+                      <Compass size={14} className="absolute left-3 top-2.5 text-stone-400" />
+                      {haircutSearchQuery && (
+                        <button 
+                          onClick={() => setHaircutSearchQuery("")}
+                          className="absolute right-2.5 top-2.5 text-stone-400 hover:text-stone-600"
+                        >
+                          <X size={12} />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* District Pill Filters */}
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {["Todos", "Chácara Flora", "Jardim Marajoara", "Vila Sofia", "Alto da Boa Vista", "Brooklin", "Campo Belo", "Santo Amaro", "Moema", "Vila Mascote", "Panamby", "Interlagos"].map((district) => (
+                    <button
+                      key={district}
+                      onClick={() => setSelectedRegionFilter(district)}
+                      className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all cursor-pointer ${
+                        selectedRegionFilter === district
+                          ? "bg-[#1C1A17] text-[#FAF9F5] font-bold shadow-sm"
+                          : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+                      }`}
+                    >
+                      {district}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Grid of Regional Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {filteredHaircutRegions.map((region, idx) => (
+                    <div 
+                      key={idx}
+                      className="bg-stone-50/70 border border-stone-200/80 rounded-2xl p-5 hover:bg-white hover:border-[#B5945F] transition-all space-y-3 flex flex-col justify-between"
+                    >
+                      <div className="space-y-2">
+                        <div className="flex items-start justify-between gap-2">
+                          <h3 className="font-serif font-semibold text-stone-900 text-sm leading-snug">
+                            {region.landmark}
+                          </h3>
+                          <span className="text-[10px] font-mono bg-[#B5945F]/15 text-stone-900 px-2 py-0.5 rounded-md shrink-0 font-bold">
+                            {region.distance}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2 text-2xs font-mono text-stone-500">
+                          <Clock size={12} className="text-[#B5945F]" />
+                          <span>{region.transport}</span>
+                        </div>
+
+                        <p className="text-xs text-stone-600 leading-relaxed pt-1">
+                          {region.context}
+                        </p>
+
+                        {/* Badges of Long-Tail SEO Keywords */}
+                        <div className="flex flex-wrap gap-1 pt-1">
+                          {region.seoKeywords.map((kw, kIdx) => (
+                            <span 
+                              key={kIdx}
+                              className="text-[10px] font-mono text-stone-500 bg-white border border-stone-200 px-2 py-0.5 rounded"
+                            >
+                              #{kw}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="pt-3 border-t border-stone-200/60 flex items-center justify-between">
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${STUDIO_INFO.address}, ${STUDIO_INFO.city}`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] text-[#B5945F] font-semibold hover:underline flex items-center gap-1 font-mono"
+                        >
+                          <MapPin size={12} /> Ver Rota
+                        </a>
+                        <button
+                          onClick={() => triggerBookingForService(SERVICES[0])}
+                          className="text-[11px] font-medium text-stone-800 hover:text-[#B5945F] flex items-center gap-1 font-sans cursor-pointer"
+                        >
+                          <span>Agendar Agorinha</span>
+                          <ChevronRight size={12} />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Seção 4: Tabela & Guia dos 20 Bairros Próximos com Termos 'perto de mim', 'próximo a mim' e 'perto' */}
+              <div className="bg-[#1C1A17] text-[#FAF9F5] rounded-3xl p-6 md:p-10 space-y-8">
+                <div className="space-y-3 border-b border-stone-800 pb-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-800 text-[#B5945F] rounded-full text-xs font-mono tracking-wider uppercase border border-stone-700">
+                    <MapPin size={13} /> 20 Bairros Próximos • SEO Local Completo
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-serif text-[#FAF9F5]">
+                    Termos de Busca Locais: 20 Bairros Próximos com "Perto de Mim", "Próximo a Mim" e "Perto"
+                  </h2>
+                  <p className="text-xs text-stone-300 max-w-4xl leading-relaxed">
+                    Para garantir que moradoras de todos os bairros vizinhos encontrem o nosso ateliê com total facilidade, mapeamos os <strong>20 bairros próximos</strong> da Zona Sul de São Paulo com combinações de busca reais incluindo <strong>"perto de mim"</strong>, <strong>"próximo a mim"</strong> e <strong>"perto"</strong>:
+                  </p>
+                </div>
+
+                {/* Grid dos 20 Bairros */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+                  {NEIGHBORHOOD_SEO_TERMS_LIST.map((neighborhood, nIdx) => (
+                    <div 
+                      key={nIdx}
+                      className="bg-stone-900/90 border border-stone-800 rounded-2xl p-5 space-y-3 hover:border-[#B5945F]/60 transition-all"
+                    >
+                      <div className="flex items-center justify-between border-b border-stone-800 pb-2.5">
+                        <div className="flex items-center gap-2">
+                          <span className="w-6 h-6 rounded-full bg-[#B5945F]/20 text-[#B5945F] font-mono text-xs flex items-center justify-center font-bold">
+                            {nIdx + 1}
+                          </span>
+                          <h3 className="font-serif font-semibold text-stone-100 text-base">
+                            {neighborhood.district}
+                          </h3>
+                        </div>
+                        <span className="text-[11px] font-mono text-[#B5945F] bg-stone-800 px-2.5 py-1 rounded-md">
+                          {neighborhood.distanceInfo}
+                        </span>
+                      </div>
+
+                      <div className="space-y-1.5 pt-1">
+                        {neighborhood.terms.map((term, tIdx) => (
+                          <div key={tIdx} className="flex items-start gap-2 text-xs font-mono text-stone-300 bg-stone-800/40 p-2 rounded-lg border border-stone-800">
+                            <CheckCircle2 size={13} className="text-[#B5945F] shrink-0 mt-0.5" />
+                            <span className="leading-snug">{term}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Banner de atração local */}
+                <div className="bg-stone-800/90 border border-stone-700/80 rounded-2xl p-5 flex flex-col md:flex-row items-center justify-between gap-4">
+                  <div className="space-y-1 text-center md:text-left">
+                    <h4 className="font-serif font-medium text-stone-200 text-sm">
+                      Mora em um desses 20 bairros próximos?
+                    </h4>
+                    <p className="text-xs text-stone-400">
+                      Chegada rápida em até 15 minutos com estacionamento privativo e atendimento boutique exclusivo.
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => triggerBookingForService(SERVICES[0])}
+                    className="px-5 py-2.5 bg-[#B5945F] text-stone-950 hover:bg-[#c4a46e] rounded-xl font-medium text-xs transition-all font-sans shrink-0 cursor-pointer"
+                  >
+                    Agendar Horário Perto de Mim
+                  </button>
+                </div>
+              </div>
+
+              {/* Seção 5: FAQ de Corte de Cabelo Feminino Perto de Mim */}
+              <div className="bg-white border border-[#EAE6DD] rounded-3xl p-6 md:p-10 space-y-6">
+                <div className="space-y-2">
+                  <span className="text-xs font-mono text-[#B5945F] tracking-widest uppercase font-semibold">Tire Suas Dúvidas</span>
+                  <h2 className="text-2xl md:text-3xl font-serif text-stone-950">
+                    Dúvidas Frequentes sobre Corte Feminino Perto de Mim
+                  </h2>
+                </div>
+
+                <div className="space-y-3">
+                  {HAIRCUT_FAQS.map((faq, fIdx) => (
+                    <div key={fIdx} className="border border-stone-200 rounded-2xl p-4 md:p-5 bg-stone-50/50 space-y-2">
+                      <h3 className="font-serif font-semibold text-stone-900 text-base flex items-center gap-2">
+                        <HelpCircle size={16} className="text-[#B5945F] shrink-0" />
+                        <span>{faq.question}</span>
+                      </h3>
+                      <p className="text-xs text-stone-600 leading-relaxed pl-6">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Seção 6: CTA Final */}
+              <div className="bg-gradient-to-r from-[#B5945F]/20 via-[#B5945F]/10 to-transparent border border-[#B5945F]/40 rounded-3xl p-6 md:p-10 text-center space-y-4">
+                <h2 className="text-2xl md:text-3xl font-serif text-stone-950">
+                  Pronta para Transformar seu Visual com Corte Feminino Autoral?
+                </h2>
+                <p className="text-xs md:text-sm text-stone-700 max-w-xl mx-auto">
+                  Agende seu horário com a visagista Beatriz Bittencourt na Rua Dr. Ferreira Lopes, 703 (Jardim Marajoara / Chácara Flora). Atendimento individualizado e personalizado.
+                </p>
+                <div className="flex flex-wrap justify-center gap-3 pt-2">
+                  <button
+                    onClick={() => triggerBookingForService(SERVICES[0])}
+                    className="px-6 py-3 bg-[#1C1A17] text-[#FAF9F5] rounded-xl font-medium hover:bg-stone-800 transition-all text-sm font-sans flex items-center gap-2 cursor-pointer"
+                  >
+                    <Calendar size={16} className="text-[#B5945F]" />
+                    Agendar Meu Corte Agora
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
           {/* TAB 0: ESPECIALIZAÇÃO BRIDAL PREPARATION & DIA DA NOIVA */}
           {activeTab === "noivas" && (
             <motion.div

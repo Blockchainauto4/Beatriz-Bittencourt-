@@ -119,140 +119,369 @@ export const LOCAL_SEO_REGIONS: LocalRegion[] = [
     distance: "A apenas 200m",
     transport: "2 min a pé 🚶‍♀️",
     context: "Siga pela Rua Dr. Ferreira Lopes. A melhor opção de cabeleireira feminina perto de mim na Chácara Flora com cortes femininos e atendimento privativo premium e seguro.",
-    seoKeywords: ["CabeleireiraFeminina", "CortesFemininosPertoDeMim", "CabeleireiroResidencial"]
+    seoKeywords: ["Chácara Flora perto de mim", "Corte feminino próximo a mim Chácara Flora", "Cabeleireira Chácara Flora perto"]
   },
   {
     landmark: "Escola Suíço-Brasileira (Vila Sofia)",
     distance: "A 450m",
     transport: "5 min a pé 🚶‍♂️",
     context: "Perfeito para quem busca cabeleireira de coloração perto de mim em Vila Sofia para iluminação capilar, mechas e cortes femininos perto de mim de alta precisão.",
-    seoKeywords: ["CabeleireiraDeColoração", "CortesFemininos", "VilaSofia"]
+    seoKeywords: ["Vila Sofia perto de mim", "Corte de cabelo próximo a mim Vila Sofia", "Cabeleireira Vila Sofia perto"]
   },
   {
     landmark: "Pão de Açúcar (Jardim Marajoara)",
     distance: "A 300m",
     transport: "3 min a pé 🚶",
     context: "No centro do bairro, somos a referência de cabeleireira feminina perto de mim no Jardim Marajoara, oferecendo coloração avançada e cortes femininos personalizados.",
-    seoKeywords: ["CabeleireiraFemininaPertoDeMim", "CabeleireiroResidencial", "JardimMarajoara"]
+    seoKeywords: ["Jardim Marajoara perto de mim", "Corte de cabelo feminino próximo a mim Marajoara", "Cabeleireiro Marajoara perto"]
   },
   {
     landmark: "Estação Alto da Boa Vista (Metrô Linha 5-Lilás)",
     distance: "A 1.2 km",
     transport: "5 min de carro 🚗",
     context: "Se você pesquisa por cabeleireira de coloração perto de mim no Alto da Boa Vista, desfrute de um ambiente residencial boutique projetado para cortes femininos e renovação de imagem.",
-    seoKeywords: ["CabeleireiraDeColoraçãoPertoDeMim", "AltoDaBoaVista", "CortesFemininos"]
+    seoKeywords: ["Alto da Boa Vista perto de mim", "Corte feminino próximo a mim Alto da Boa Vista", "Salão Alto da Boa Vista perto"]
   },
   {
     landmark: "Av. Vereador José Diniz (Brooklin)",
     distance: "A 2.2 km",
     transport: "8 min de carro 🚗",
     context: "Atendemos como a principal cabeleireira feminina perto de mim no Brooklin com exclusividade e hora marcada para cortes femininos perto de mim e mechas autorais.",
-    seoKeywords: ["CabeleireiraFeminina", "CortesFemininosPertoDeMim", "Brooklin"]
+    seoKeywords: ["Brooklin perto de mim", "Cabeleireira feminina próximo a mim Brooklin", "Corte de cabelo Brooklin perto"]
   },
   {
     landmark: "Rua Vieira de Morais (Campo Belo)",
     distance: "A 2.5 km",
     transport: "9 min de carro 🚗",
     context: "Procurando por cabeleireira de coloração perto de mim no Campo Belo? Atendimento de altíssimo padrão com visagismo para cortes femininos e mechas que realçam sua beleza.",
-    seoKeywords: ["CabeleireiraDeColoração", "CampoBelo", "CabeleireiraFemininaPertoDeMim"]
+    seoKeywords: ["Campo Belo perto de mim", "Corte de cabelo próximo a mim Campo Belo", "Cabeleireira Campo Belo perto"]
   },
   {
     landmark: "Largo Treze & Av. Adolfo Pinheiro (Santo Amaro)",
     distance: "A 1.5 km",
     transport: "6 min de carro 🚗",
     context: "Próximo à Av. Washington Luís, somos a melhor escolha de cabeleireira feminina perto de mim em Santo Amaro para cortes femininos perto de mim e coloração segura.",
-    seoKeywords: ["CabeleireiraFemininaPertoDeMim", "CortesFemininos", "SantoAmaro"]
+    seoKeywords: ["Santo Amaro perto de mim", "Cabeleireiro residencial próximo a mim Santo Amaro", "Corte feminino Santo Amaro perto"]
   },
   {
     landmark: "Parque Cordeiro (Chácara Monte Alegre)",
     distance: "A 800m",
     transport: "3 min de carro 🚗",
     context: "Uma experiência de beleza acolhedora. Venha à cabeleireira de coloração perto de mim na Chácara Monte Alegre com atendimento VIP individualizado.",
-    seoKeywords: ["CabeleireiraDeColoraçãoPertoDeMim", "ChácaraMonteAlegre", "CortesFemininos"]
+    seoKeywords: ["Chácara Monte Alegre perto de mim", "Corte de cabelo próximo a mim Monte Alegre", "Cabeleireira Monte Alegre perto"]
   },
   {
     landmark: "Av. Ibirapuera & Bairro de Moema",
     distance: "A 3.8 km",
     transport: "12 min de carro 🚗",
     context: "Para quem busca cabeleireira feminina perto de mim em Moema, oferecemos um refúgio acolhedor com especialista em cortes femininos perto de mim por Beatriz Bittencourt.",
-    seoKeywords: ["CabeleireiraFeminina", "CortesFemininosPertoDeMim", "Moema"]
+    seoKeywords: ["Moema perto de mim", "Corte feminino próximo a mim Moema", "Cabeleireira Moema perto"]
   },
   {
     landmark: "Avenida Santa Catarina (Vila Mascote)",
     distance: "A 1.8 km",
     transport: "6 min de carro 🚗",
     context: "Se você quer uma cabeleireira de coloração perto de mim na Vila Mascote para cortes femininos autorais e mechas com proteção capilar, aproveite nosso ateliê.",
-    seoKeywords: ["CabeleireiraDeColoração", "VilaMascote", "CortesFemininosPertoDeMim"]
+    seoKeywords: ["Vila Mascote perto de mim", "Cabeleireira feminina próximo a mim Vila Mascote", "Corte de cabelo Vila Mascote perto"]
   },
   {
     landmark: "Parque do Cordeiro (Vila Santa Catarina)",
     distance: "A 1.4 km",
     transport: "5 min de carro 🚗",
     context: "Excelente localização para quem pesquisa cabeleireira feminina perto de mim em Vila Santa Catarina para renovar o visual com cortes femininos de alto padrão.",
-    seoKeywords: ["CabeleireiraFemininaPertoDeMim", "CortesFemininos", "VilaSantaCatarina"]
+    seoKeywords: ["Vila Santa Catarina perto de mim", "Corte feminino próximo a mim Vila Santa Catarina", "Salão Vila Santa Catarina perto"]
   },
   {
     landmark: "Avenida Nações Unidas (Jurubatuba)",
     distance: "A 2.9 km",
     transport: "10 min de carro 🚗",
     context: "Fácil acesso para quem busca cabeleireira de coloração perto de mim em Jurubatuba. Agende cortes femininos e tratamentos capilares no seu horário ideal.",
-    seoKeywords: ["CabeleireiraDeColoraçãoPertoDeMim", "Jurubatuba", "CortesFemininos"]
+    seoKeywords: ["Jurubatuba perto de mim", "Cabeleireira próximo a mim Jurubatuba", "Corte de cabelo Jurubatuba perto"]
   },
   {
     landmark: "Avenida Interlagos & Represa",
     distance: "A 3.5 km",
     transport: "11 min de carro 🚗",
     context: "Nosso espaço é a cabeleireira feminina perto de mim em Interlagos ideal para quem preza por segurança em cortes femininos perto de mim e coloração perfeccionista.",
-    seoKeywords: ["CabeleireiraFeminina", "CortesFemininosPertoDeMim", "Interlagos"]
+    seoKeywords: ["Interlagos perto de mim", "Corte feminino próximo a mim Interlagos", "Cabeleireira Interlagos perto"]
   },
   {
     landmark: "Ponte do Socorro & Bairro Socorro",
     distance: "A 2.7 km",
     transport: "9 min de carro 🚗",
     context: "Procurando cabeleireira de coloração perto de mim no Socorro? Conte com nosso atendimento premium para cortes femininos com visagismo físico de ponta.",
-    seoKeywords: ["CabeleireiraDeColoração", "Socorro", "CortesFemininosPertoDeMim"]
+    seoKeywords: ["Socorro perto de mim", "Cabeleireira próximo a mim Socorro", "Corte de cabelo Socorro perto"]
   },
   {
     landmark: "Clube de Campo Castelo (Veleiros)",
     distance: "A 3.2 km",
     transport: "10 min de carro 🚗",
     context: "Uma alternativa chique e sossegada para quem quer cabeleireira feminina perto de mim em Veleiros com cortes femininos personalizados e ambiente privativo.",
-    seoKeywords: ["CabeleireiraFemininaPertoDeMim", "Veleiros", "CortesFemininos"]
+    seoKeywords: ["Veleiros perto de mim", "Corte feminino próximo a mim Veleiros", "Cabeleireira Veleiros perto"]
   },
   {
     landmark: "Avenida Vereador João de Luca (Jardim Prudência)",
     distance: "A 1.6 km",
     transport: "6 min de carro 🚗",
     context: "A cabeleireira de coloração perto de mim no Jardim Prudência perfeita para cortes femininos perto de mim, mechas e renovação da fibra com cosméticos importados.",
-    seoKeywords: ["CabeleireiraDeColoraçãoPertoDeMim", "CortesFemininosPertoDeMim", "JardimPrudência"]
+    seoKeywords: ["Jardim Prudência perto de mim", "Cabeleireira próximo a mim Jardim Prudência", "Corte de cabelo Jardim Prudência perto"]
   },
   {
     landmark: "Parque Burle Marx (Panamby)",
     distance: "A 4.5 km",
     transport: "15 min de carro 🚗",
     context: "Para quem valoriza privacidade e busca cabeleireira feminina perto de mim no Panamby com especialidade em cortes femininos e coloração de alto nível.",
-    seoKeywords: ["CabeleireiraFeminina", "Panamby", "CortesFemininos"]
+    seoKeywords: ["Panamby perto de mim", "Corte feminino próximo a mim Panamby", "Cabeleireira Panamby perto"]
   },
   {
     landmark: "Shopping Jardim Sul (Vila Andrade)",
     distance: "A 4.2 km",
     transport: "14 min de carro 🚗",
     context: "Encontre a tranquilidade na cabeleireira de coloração perto de mim na Vila Andrade com atendimento VIP focado em cortes femininos perto de mim e mechas.",
-    seoKeywords: ["CabeleireiraDeColoraçãoPertoDeMim", "VilaAndrade", "CortesFemininosPertoDeMim"]
+    seoKeywords: ["Vila Andrade perto de mim", "Cabeleireira próximo a mim Vila Andrade", "Corte de cabelo Vila Andrade perto"]
   },
   {
     landmark: "Ponte Estaiada Octávio Frias (Real Parque)",
     distance: "A 4.8 km",
     transport: "15 min de carro 🚗",
     context: "Atendemos clientes exigentes como a melhor cabeleireira feminina perto de mim no Real Parque para cortes femininos autorais e visagismo de imagem.",
-    seoKeywords: ["CabeleireiraFemininaPertoDeMim", "RealParque", "CortesFemininos"]
+    seoKeywords: ["Real Parque perto de mim", "Corte feminino próximo a mim Real Parque", "Cabeleireira Real Parque perto"]
   },
   {
     landmark: "Clube Hípico de Santo Amaro (Vila Cruzeiro)",
     distance: "A 1.3 km",
     transport: "5 min de carro 🚗",
     context: "A opção definitiva para quem busca cabeleireira de coloração perto de mim na Vila Cruzeiro para transformar os fios com cortes femininos impecáveis.",
-    seoKeywords: ["CabeleireiraDeColoração", "VilaCruzeiro", "CortesFemininosPertoDeMim"]
+    seoKeywords: ["Vila Cruzeiro perto de mim", "Cabeleireira próximo a mim Vila Cruzeiro", "Corte de cabelo Vila Cruzeiro perto"]
+  }
+];
+
+export interface NeighborhoodSeoTerms {
+  district: string;
+  distanceInfo: string;
+  terms: string[];
+}
+
+export const NEIGHBORHOOD_SEO_TERMS_LIST: NeighborhoodSeoTerms[] = [
+  {
+    district: "Jardim Marajoara",
+    distanceInfo: "A 300m de distância • 3 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Jardim Marajoara",
+      "cabeleireira feminina próximo a mim no Jardim Marajoara",
+      "corte de cabelo feminino Jardim Marajoara perto",
+      "cabeleireiro residencial perto de mim Jardim Marajoara",
+      "salão para corte feminino próximo a mim Jardim Marajoara"
+    ]
+  },
+  {
+    district: "Chácara Flora",
+    distanceInfo: "A 200m de distância • 2 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Chácara Flora",
+      "cabeleireira feminina próximo a mim na Chácara Flora",
+      "corte de cabelo feminino Chácara Flora perto",
+      "cabeleireira de coloração perto de mim Chácara Flora",
+      "visagista de corte feminino próximo a mim Chácara Flora"
+    ]
+  },
+  {
+    district: "Vila Sofia",
+    distanceInfo: "A 450m de distância • 5 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Vila Sofia",
+      "cabeleireira feminina próximo a mim em Vila Sofia",
+      "corte de cabelo feminino Vila Sofia perto",
+      "salão de beleza perto de mim Vila Sofia",
+      "cabeleireira de corte próximo a mim Vila Sofia"
+    ]
+  },
+  {
+    district: "Alto da Boa Vista",
+    distanceInfo: "A 1.2 km de distância • 5 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Alto da Boa Vista",
+      "cabeleireira feminina próximo a mim no Alto da Boa Vista",
+      "corte de cabelo feminino Alto da Boa Vista perto",
+      "cabeleireiro residencial próximo a mim Alto da Boa Vista",
+      "salão para corte feminino perto de mim Alto da Boa Vista"
+    ]
+  },
+  {
+    district: "Brooklin",
+    distanceInfo: "A 2.2 km de distância • 8 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Brooklin",
+      "cabeleireira feminina próximo a mim no Brooklin",
+      "corte de cabelo feminino Brooklin perto",
+      "cabeleireira de coloração perto de mim Brooklin",
+      "salão de beleza próximo a mim no Brooklin"
+    ]
+  },
+  {
+    district: "Campo Belo",
+    distanceInfo: "A 2.5 km de distância • 9 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Campo Belo",
+      "cabeleireira feminina próximo a mim no Campo Belo",
+      "corte de cabelo feminino Campo Belo perto",
+      "salão para corte feminino próximo a mim Campo Belo",
+      "cabeleireira residencial perto de mim Campo Belo"
+    ]
+  },
+  {
+    district: "Santo Amaro",
+    distanceInfo: "A 1.5 km de distância • 6 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Santo Amaro",
+      "cabeleireira feminina próximo a mim em Santo Amaro",
+      "corte de cabelo feminino Santo Amaro perto",
+      "cabeleireiro residencial perto de mim Santo Amaro",
+      "cabeleireira de corte próximo a mim Santo Amaro"
+    ]
+  },
+  {
+    district: "Moema",
+    distanceInfo: "A 3.8 km de distância • 12 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Moema",
+      "cabeleireira feminina próximo a mim em Moema",
+      "corte de cabelo feminino Moema perto",
+      "visagista de corte feminino próximo a mim Moema",
+      "salão de beleza perto de mim Moema"
+    ]
+  },
+  {
+    district: "Vila Mascote",
+    distanceInfo: "A 1.8 km de distância • 6 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Vila Mascote",
+      "cabeleireira feminina próximo a mim na Vila Mascote",
+      "corte de cabelo feminino Vila Mascote perto",
+      "cabeleireira de coloração perto de mim Vila Mascote",
+      "salão para corte feminino próximo a mim Vila Mascote"
+    ]
+  },
+  {
+    district: "Vila Santa Catarina",
+    distanceInfo: "A 1.4 km de distância • 5 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Vila Santa Catarina",
+      "cabeleireira feminina próximo a mim em Vila Santa Catarina",
+      "corte de cabelo feminino Vila Santa Catarina perto",
+      "salão de corte feminino próximo a mim Vila Santa Catarina",
+      "cabeleireiro residencial perto de mim Vila Santa Catarina"
+    ]
+  },
+  {
+    district: "Jurubatuba",
+    distanceInfo: "A 2.9 km de distância • 10 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Jurubatuba",
+      "cabeleireira feminina próximo a mim em Jurubatuba",
+      "corte de cabelo feminino Jurubatuba perto",
+      "cabeleireiro residencial perto de mim Jurubatuba",
+      "cabeleireira de coloração próximo a mim Jurubatuba"
+    ]
+  },
+  {
+    district: "Interlagos",
+    distanceInfo: "A 3.5 km de distância • 11 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Interlagos",
+      "cabeleireira feminina próximo a mim em Interlagos",
+      "corte de cabelo feminino Interlagos perto",
+      "cabeleireira de coloração próximo a mim Interlagos",
+      "salão para corte feminino perto de mim Interlagos"
+    ]
+  },
+  {
+    district: "Socorro",
+    distanceInfo: "A 2.7 km de distância • 9 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Socorro",
+      "cabeleireira feminina próximo a mim no Socorro",
+      "corte de cabelo feminino Socorro perto",
+      "salão para corte feminino perto de mim Socorro",
+      "cabeleireira residencial próximo a mim Socorro"
+    ]
+  },
+  {
+    district: "Veleiros",
+    distanceInfo: "A 3.2 km de distância • 10 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Veleiros",
+      "cabeleireira feminina próximo a mim em Veleiros",
+      "corte de cabelo feminino Veleiros perto",
+      "cabeleireiro residencial próximo a mim Veleiros",
+      "salão de corte feminino perto de mim Veleiros"
+    ]
+  },
+  {
+    district: "Jardim Prudência",
+    distanceInfo: "A 1.6 km de distância • 6 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Jardim Prudência",
+      "cabeleireira feminina próximo a mim no Jardim Prudência",
+      "corte de cabelo feminino Jardim Prudência perto",
+      "cabeleireira de coloração perto de mim Jardim Prudência",
+      "salão de beleza próximo a mim Jardim Prudência"
+    ]
+  },
+  {
+    district: "Panamby",
+    distanceInfo: "A 4.5 km de distância • 15 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Panamby",
+      "cabeleireira feminina próximo a mim no Panamby",
+      "corte de cabelo feminino Panamby perto",
+      "visagista de corte feminino perto de mim Panamby",
+      "salão de luxo para corte feminino próximo a mim Panamby"
+    ]
+  },
+  {
+    district: "Vila Andrade",
+    distanceInfo: "A 4.2 km de distância • 14 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Vila Andrade",
+      "cabeleireira feminina próximo a mim na Vila Andrade",
+      "corte de cabelo feminino Vila Andrade perto",
+      "salão para corte feminino próximo a mim Vila Andrade",
+      "cabeleireiro residencial perto de mim Vila Andrade"
+    ]
+  },
+  {
+    district: "Real Parque",
+    distanceInfo: "A 4.8 km de distância • 15 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Real Parque",
+      "cabeleireira feminina próximo a mim no Real Parque",
+      "corte de cabelo feminino Real Parque perto",
+      "cabeleireiro residencial perto de mim Real Parque",
+      "visagista de corte feminino próximo a mim Real Parque"
+    ]
+  },
+  {
+    district: "Vila Cruzeiro",
+    distanceInfo: "A 1.3 km de distância • 5 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Vila Cruzeiro",
+      "cabeleireira feminina próximo a mim na Vila Cruzeiro",
+      "corte de cabelo feminino Vila Cruzeiro perto",
+      "cabeleireira de coloração próximo a mim Vila Cruzeiro",
+      "salão de corte feminino perto de mim Vila Cruzeiro"
+    ]
+  },
+  {
+    district: "Chácara Monte Alegre",
+    distanceInfo: "A 800m de distância • 3 min",
+    terms: [
+      "corte de cabelo feminino perto de mim Chácara Monte Alegre",
+      "cabeleireira feminina próximo a mim na Chácara Monte Alegre",
+      "corte de cabelo feminino Chácara Monte Alegre perto",
+      "salão de corte feminino perto de mim Chácara Monte Alegre",
+      "cabeleireiro residencial próximo a mim Chácara Monte Alegre"
+    ]
   }
 ];
 
@@ -390,5 +619,62 @@ export const BRIDAL_FAQS = [
     answer: "Para agendar uma pré-avaliação ou sanar dúvidas sobre os serviços inclusos (como café da manhã, massagem, manicure, pedicure, hidratação capilar, maquiagem e penteado), você pode clicar em qualquer botão de Call to Action nesta página para simular o orçamento do seu Dia da noiva e falar instantaneamente com a visagista Beatriz Bittencourt via WhatsApp comercial. Recomendamos o agendamento prévio com 6 a 12 meses de antecedência."
   }
 ];
+
+export const FEMALE_HAIRCUT_STYLES = [
+  {
+    title: "Corte em Camadas (Layers / Butterfly Cut)",
+    description: "Ideal para dar movimento, leveza e volume natural aos cabelos longos e médios sem tirar o comprimento. Técnica que suaviza traços e emoldura o rosto.",
+    idealFor: "Cabelos lisos, ondulados e cacheados que buscam caimento fluido.",
+    tag: "Mais Pedido na Zona Sul"
+  },
+  {
+    title: "Long Bob (LOB) & Bob Francês",
+    description: "Corte elegante com base reta e leve desconexão nas pontas. Traz elegância corporativa instantânea e facilidade para estilizar no dia a dia.",
+    idealFor: "Rostos ovais, redondos e quadrados que buscam sofisticação atemporal.",
+    tag: "Tendência & Praticidade"
+  },
+  {
+    title: "Corte Pixie & Curtos Autorais",
+    description: "Design arrojado com técnica de visagismo que harmoniza a nuca, as têmporas e a franja com a estrutura óssea da cliente. Destaca o olhar e o pescoço.",
+    idealFor: "Mulheres modernas que desejam praticidade máxima com alto impacto estético.",
+    tag: "Personalidade & Atitude"
+  },
+  {
+    title: "Corte para Cabelos Cacheados e Crespos (Técnica a Seco)",
+    description: "Corte realizado cacho a cacho a seco para respeitar o fator encolhimento e criar formatos arredondados ou assimétricos harmoniosos.",
+    idealFor: "Cabelos com curvaturas de 2A a 4C que precisam de definição e balanço.",
+    tag: "Especialidade em Curvaturas"
+  },
+  {
+    title: "Franjas & Molduras Faciais (Curtain Bangs)",
+    description: "Design de franja cortina, desfiada ou lateral para suavizar a testa e destacar as maçãs do rosto sem mudar drasticamente o comprimento geral.",
+    idealFor: "Para renovar o visual rapidamente sem alterar o comprimento do cabelo.",
+    tag: "Moldura de Visagismo"
+  }
+];
+
+export const HAIRCUT_FAQS = [
+  {
+    question: "Como encontrar uma cabeleireira de corte de cabelo feminino perto de mim na Zona Sul SP?",
+    answer: "Nosso ateliê boutique fica localizado na Rua Dr. Ferreira Lopes, 703, no Jardim Marajoara (divisa com Chácara Flora e Vila Sofia). Atendemos moradoras de toda a região em um raio de até 5 km — incluindo Brooklin, Campo Belo, Moema, Alto da Boa Vista, Santo Amaro e Panamby — com facilidade de acesso e estacionamento privativo."
+  },
+  {
+    question: "Como funciona a consulta de visagismo antes do corte de cabelo feminino?",
+    answer: "Antes de iniciar a tesoura, a visagista Beatriz Bittencourt realiza uma análise minuciosa da sua estrutura facial (formato do rosto, altura do pescoço, linha do maxilar), textura do fio e estilo de vida. O objetivo é escolher a altura, o volume e a camada exata que harmoniza com você."
+  },
+  {
+    question: "Quanto tempo dura a sessão de corte de cabelo feminino no ateliê?",
+    answer: "A sessão dura em média de 45 minutos a 1 hora e inclui higienização, consultoria de visagismo, corte técnico detalhado, escova ou finalização personalizada para destacar o caimento do novo formato."
+  },
+  {
+    question: "Com qual frequência devo cortar o cabelo feminino para manter a forma?",
+    answer: "Recomendamos o retoque a cada 2 a 3 meses para cortes curtos ou com franja, e de 3 a 4 meses para cabelos médios e longos em camadas, mantendo as pontas saudáveis e sem pontas duplas."
+  },
+  {
+    question: "O atendimento de corte feminino perto de mim atende apenas com hora marcada?",
+    answer: "Sim! Trabalhamos com agendamento exclusivo para garantir que o seu momento no salão seja calmo, sem filas, sem barulho e com foco total e individualizado da profissional na sua imagem."
+  }
+];
+
 
 
