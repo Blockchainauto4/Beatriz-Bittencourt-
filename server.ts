@@ -49,7 +49,7 @@ app.post("/api/analyze", async (req, res) => {
 
     // Build the prompt for Beatriz Bittencourt Visagismo
     const promptMessage = `
-Você é Beatriz Bittencourt, uma renomada Visagista e especialista em imagem pessoal com ateliê na região de Vila Sofia e Chácara Flora, São Paulo. 
+Você é Beatriz Bittencourt, uma renomada Visagista e especialista em imagem pessoal com salão de beleza na região de Vila Sofia e Chácara Flora, São Paulo. 
 Sua missão é fazer um diagnóstico de visagismo profissional, aprofundado, luxuoso e acolhedor para a interatividade da usuária. 
 Analise as informações fornecidas e gere um plano completo em português.
 
@@ -120,7 +120,7 @@ Gere uma resposta estruturada de visagismo no formato JSON abaixo. Retorne ESTRE
     // Return mock response as a safe fallback on parsing/API errors
     console.log("API Error, falling back to mock response.");
     const mockResponse = getMockAnalysis("Oval", "Expressar autoridade e sofisticação", "Cabelo ondulado");
-    mockResponse.summary = "Seu diagnóstico foi estimado por recomendação de nossa equipe local por conta de uma oscilação na rede, mas reflete perfeitamente os princípios do Ateliê Beatriz Bittencourt.";
+    mockResponse.summary = "Seu diagnóstico foi estimado por recomendação de nossa equipe local por conta de uma oscilação na rede, mas reflete perfeitamente os princípios de Beatriz Bittencourt Visagismo.";
     return res.json(mockResponse);
   }
 });
@@ -212,7 +212,7 @@ function getMockAnalysis(faceShape: string, goals: string, features: string) {
   }
 
   return {
-    summary: `Olá! Analisando seu formato de rosto dominado pela estrutura ${faceShape}, seus objetivos de "${goals}" e suas características únicas de "${features}", tracei o perfil ideal de visagismo com as técnicas do meu ateliê em Chácara Flora.`,
+    summary: `Olá! Analisando seu formato de rosto dominado pela estrutura ${faceShape}, seus objetivos de "${goals}" e suas características únicas de "${features}", tracei o perfil ideal de visagismo com as técnicas do meu salão de beleza em Chácara Flora.`,
     temperament: temp,
     temperamentDescription: desc,
     facialLines: lines,

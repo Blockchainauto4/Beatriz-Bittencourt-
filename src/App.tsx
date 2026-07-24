@@ -38,12 +38,12 @@ const BRIDGE_GALLERY = [
     image: bridalHairstyle,
     title: "Penteado Premium & Coque Baixo Autoral",
     category: "Penteado Especializado",
-    description: "Design de visagismo com o caimento perfeito de perfil. Coques baixos trançados de alta costura que sustentam grinaldas e acessórios com segurança máxima para noivas chiques.",
+    description: "Design de visagismo com o caimento perfeito de perfil. Coques baixos trançados de alta costura que sustentam grinaldas e acessórios com segurança máxima para noivas sofisticadas.",
     tag: "Penteados de Noiva Autoral"
   },
   {
     image: bridalPreparation,
-    title: "Preparação Espetacular no Ateliê Boutique",
+    title: "Preparação Espetacular no Salão de Beleza",
     category: "Ritual & Preparação",
     description: "Cronograma capilar, spa facial de relaxamento e preparação completa com escova térmica. Garante caimento, maciez e fixação inabalável para mais de 18 horas de festa.",
     tag: "Spa & Texturização"
@@ -154,7 +154,7 @@ export default function App() {
       service: newReviewService,
       rating: newReviewRating,
       text: newReviewText,
-      source: "Website Ateliê",
+      source: "Website Oficial",
       date: "Recentemente"
     };
 
@@ -204,20 +204,20 @@ export default function App() {
         desc = "Buscando barbeiro, cabeleireira ou visagista perto de mim na Chácara Flora, Vila Sofia ou Jardim Marajoara? Realize nossa análise de temperamento facial por Inteligência Artificial.";
         break;
       case "servicos":
-        title = "Aplicação de mechas & Barbearia perto de mim • Ateliê Beatriz Bittencourt";
-        desc = "Especialista em aplicação de mechas perto de mim e corte de cabelo masculino com design de barba visagista. Conheça nossa tabela de valores e serviços boutique.";
+        title = "Aplicação de mechas & Barbearia perto de mim • Salão Beatriz Bittencourt";
+        desc = "Especialista em aplicação de mechas perto de mim e corte de cabelo masculino com design de barba visagista. Conheça nossa tabela de valores e serviços de salão de beleza.";
         break;
       case "agendamento":
         title = "Cortes de cabelo feminino perto de mim & Barber Shop • Agendamentos";
         desc = "Agende cortes de cabelo feminino perto de mim ou barbearia premium no Jardim Marajoara. Atendimento agendado com hora marcada perto de você na Zona Sul.";
         break;
       case "atelie":
-        title = "Ateliê & Barbearia Beatriz Bittencourt | Rua Dr. Ferreira Lopes, 703 SP";
-        desc = "Conheça nosso espaço boutique integrando visagismo feminino e barber shop perto das regiões de Chácara Flora, Vila Sofia e Alto da Boa Vista.";
+        title = "Salão de Beleza & Barbearia Beatriz Bittencourt | Rua Dr. Ferreira Lopes, 703 SP";
+        desc = "Conheça nosso salão de beleza integrando visagismo feminino e barber shop perto das regiões de Chácara Flora, Vila Sofia e Alto da Boa Vista.";
         break;
       default:
-        title = "Beatriz Bittencourt | Ateliê de Visagismo, Estética & Barbearia Jardim Marajoara";
-        desc = "Ateliê especializado em visagismo integrado, colorimetria facial, corte feminino e barbearia perto de você na Chácara Flora, Vila Sofia e Jardim Marajoara.";
+        title = "Beatriz Bittencourt | Salão de Visagismo, Estética & Barbearia Jardim Marajoara";
+        desc = "Salão de beleza especializado em visagismo integrado, colorimetria facial, corte feminino e barbearia perto de você na Chácara Flora, Vila Sofia e Jardim Marajoara.";
     }
 
     document.title = title;
@@ -401,7 +401,7 @@ export default function App() {
       {/* Top Notification / Micro Badge */}
       <div className="bg-[#1C1A17] text-[#EAE6DD] text-center text-xs py-2 px-4 tracking-wider uppercase font-medium flex items-center justify-center gap-2">
         <MapPin size={13} className="text-[#B5945F]" />
-        Atendimento Boutique perto de você • Chácara Flora & Vila Sofia, São Paulo
+        Atendimento de Salão de Beleza perto de você • Chácara Flora & Vila Sofia, São Paulo
       </div>
 
       {/* Main Luxury Header */}
@@ -474,7 +474,7 @@ export default function App() {
                 <div className="max-w-3xl relative z-10 space-y-5">
                   <div className="inline-flex flex-wrap items-center gap-2 px-3 py-1 bg-stone-800/90 text-[#B5945F] rounded-full text-xs font-mono tracking-widest uppercase border border-stone-700">
                     <Scissors size={12} className="text-[#B5945F]" />
-                    <span>Ateliê Especializado em Corte Feminino • Zona Sul SP</span>
+                    <span>Salão Especializado em Corte Feminino • Zona Sul SP</span>
                   </div>
 
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight leading-tight">
@@ -526,7 +526,7 @@ export default function App() {
                     </button>
                     
                     <a
-                      href={`https://wa.me/5511992279655?text=${encodeURIComponent("Olá, Beatriz! Gostaria de agendar meu Corte de Cabelo Feminino perto de mim no Ateliê.")}`}
+                      href={`https://wa.me/5511992279655?text=${encodeURIComponent("Olá, Beatriz! Gostaria de agendar meu Corte de Cabelo Feminino perto de mim no Salão de Beleza.")}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 px-6 py-3.5 bg-stone-800 text-[#FAF9F5] border border-stone-700 rounded-xl font-medium hover:bg-stone-700 transition-all text-sm font-sans"
@@ -785,7 +785,7 @@ export default function App() {
                       Mora em um desses 20 bairros próximos?
                     </h4>
                     <p className="text-xs text-stone-400">
-                      Chegada rápida em até 15 minutos com estacionamento privativo e atendimento boutique exclusivo.
+                      Chegada rápida em até 15 minutos com estacionamento privativo e atendimento de salão de beleza exclusivo.
                     </p>
                   </div>
                   <button
@@ -935,7 +935,7 @@ export default function App() {
                     {
                       title: "Book de Noiva Integrado",
                       keyword: "Book de noiva",
-                      desc: "Espaço boutique planejado com iluminação perfeita de camarim e natural. Oferece cenários para fotos impecáveis de making of na Zona Sul, São Paulo.",
+                      desc: "Espaço de salão de beleza planejado com iluminação perfeita de camarim e natural. Oferece cenários para fotos impecáveis de making of na Zona Sul, São Paulo.",
                       feature: "Cenários e luz natural"
                     }
                   ].map((style, i) => (
@@ -962,7 +962,7 @@ export default function App() {
                     <span className="text-2xs text-[#B5945F] font-mono uppercase tracking-widest font-bold">Portfólio & Visualização Real</span>
                     <h3 className="text-xl md:text-2xl font-serif text-stone-900">Conceitos e Resultados Reais de Noivas</h3>
                     <p className="text-xs text-stone-500">
-                      Explore as fotos do nosso ateliê boutique na Zona Sul: do planejamento focado ao grande dia.
+                      Explore as fotos do nosso salão de beleza na Zona Sul: do planejamento focado ao grande dia.
                     </p>
                   </div>
                   
@@ -1053,7 +1053,7 @@ export default function App() {
 
                       {/* Detalhes de Excelência */}
                       <div className="bg-stone-50 p-4 rounded-xl border border-stone-100 space-y-2.5 text-3xs font-mono uppercase tracking-wider text-stone-500">
-                        <span className="font-bold text-stone-700 text-2xs block mb-1">Diferenciais Do Ateliê:</span>
+                        <span className="font-bold text-stone-700 text-2xs block mb-1">Diferenciais Do Salão de Beleza:</span>
                         <div className="flex items-center gap-2">
                           <span className="text-[#B5945F] font-bold">✔</span>
                           <span>Análise de Visagismo integrada para valorização autêntica</span>
@@ -1176,7 +1176,7 @@ export default function App() {
                         </span>
                       </div>
                       <p className="text-[10px] text-stone-500">
-                        Maquiagem e penteado adicionais para mães e assessoras. Unifica o cenário do hotel/ateliê para enriquecer as tomadas dinâmicas do book de noivas.
+                        Maquiagem e penteado adicionais para mães e assessoras. Unifica o cenário do hotel/salão para enriquecer as tomadas dinâmicas do book de noivas.
                       </p>
                       <div className="flex items-center gap-4">
                         <input 
@@ -1521,7 +1521,7 @@ export default function App() {
                       >
                         <p className="font-bold">✓ Pergunta processada e pré-estimada!</p>
                         <p className="text-stone-300 leading-normal">
-                          Perfeito! De acordo com sua dúvida sobre os pacotes de casamento, nosso ateliê boutique responderá os detalhes de datas e logística na Zona Sul. Deseja iniciar a conversa rápida no WhatsApp comercial com o seu texto pré-preenchido?
+                          Perfeito! De acordo com sua dúvida sobre os pacotes de casamento, nosso salão de beleza responderá os detalhes de datas e logística na Zona Sul. Deseja iniciar a conversa rápida no WhatsApp comercial com o seu texto pré-preenchido?
                         </p>
                         <a 
                           href={`https://wa.me/551199999999?text=${encodeURIComponent(`Olá Beatriz Bittencourt, fiz uma simulação de Dia da Noiva no app e gostaria de tirar uma dúvida sobre: ${bridalQuickQuestion}`)}`}
@@ -1568,7 +1568,7 @@ export default function App() {
                     <div className="space-y-1.5">
                       <h3 className="text-lg font-serif text-stone-900 leading-tight">Presença Local e Transparência Estrita</h3>
                       <p className="text-xs text-stone-600 leading-relaxed">
-                        Seguindo rigorosamente as recomendações e diretrizes do Google Meu Negócio, nosso Ateliê Boutique garante total confiabilidade física e transparência comercial:
+                        Seguindo rigorosamente as recomendações e diretrizes do Google Meu Negócio, nosso Salão de Beleza garante total confiabilidade física e transparência comercial:
                       </p>
                     </div>
 
@@ -1626,7 +1626,7 @@ export default function App() {
                       }}
                       className="text-[#B5945F] hover:text-[#A38250] text-[10px] font-mono tracking-widest uppercase font-bold inline-flex items-center gap-1 transition-colors"
                     >
-                      Ver Ateliê no Mapa
+                      Ver Salão no Mapa
                       <ChevronRight size={10} />
                     </button>
                   </div>
@@ -1963,7 +1963,7 @@ export default function App() {
                       <MapPin size={18} className="text-[#B5945F]" />
                     </div>
                     <p className="text-xs text-stone-600 mt-2 leading-relaxed">
-                      Livre-se de trânsitos longos. Nosso ateliê privativo está posicionado no coração da Zona Sul de São Paulo, com manobrista e absoluto sigilo para sua transformação de imagem pessoal.
+                      Livre-se de trânsitos longos. Nosso salão privativo está posicionado no coração da Zona Sul de São Paulo, com manobrista e absoluto sigilo para sua transformação de imagem pessoal.
                     </p>
                     <button 
                       onClick={() => setActiveTab("atelie")}
@@ -1994,7 +1994,7 @@ export default function App() {
                         <div className="bg-[#1C1A17] text-[#FAF9F5] px-6 py-8 md:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                           <div className="space-y-1">
                             <div className="text-[10px] tracking-widest text-[#B5945F] uppercase font-mono font-bold flex items-center gap-1">
-                              <Star size={11} className="fill-amber-400 text-amber-400" /> Diagnóstico Oficial Ateliê Beatriz Bittencourt
+                              <Star size={11} className="fill-amber-400 text-amber-400" /> Diagnóstico Oficial Beatriz Bittencourt
                             </div>
                             <h3 className="text-2xl font-serif tracking-tight text-white">
                               Seu Retrato Metamórfico de Expressão
@@ -2242,7 +2242,7 @@ export default function App() {
                 <span className="text-xs tracking-wider uppercase font-mono text-[#B5945F] font-semibold">Tabela de Serviços Autoral</span>
                 <h2 className="text-3xl font-serif text-stone-950">Seu Equilíbrio e Brilho Pessoal</h2>
                 <p className="text-xs text-stone-500">
-                  Preços transparentes com foco em personalização extrema. Atendimento exclusivo em ateliê reservado perto de você (Chácara Flora/Vila Sofia).
+                  Preços transparentes com foco em personalização extrema. Atendimento exclusivo em salão de beleza reservado perto de você (Chácara Flora/Vila Sofia).
                 </p>
               </div>
 
@@ -2501,7 +2501,7 @@ export default function App() {
                       className="w-full bg-[#1C1A17] hover:bg-stone-800 text-white font-semibold text-xs uppercase tracking-wider py-3.5 rounded-lg shadow-sm transition-all flex items-center justify-center gap-2"
                     >
                       <CheckCircle2 size={14} className="text-[#B5945F]" />
-                      Confirmar Reserva No Ateliê Presencial
+                      Confirmar Reserva No Salão Presencial
                     </button>
 
                     <div className="flex items-center my-4">
@@ -2629,7 +2629,7 @@ export default function App() {
                   <div className="space-y-4">
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-xs tracking-wider uppercase font-mono text-[#B5945F] font-bold">Ateliê de Visagismo Autorizado</span>
+                        <span className="text-xs tracking-wider uppercase font-mono text-[#B5945F] font-bold">Salão de Beleza & Visagismo Autorizado</span>
                         <span className="bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold flex items-center gap-1">
                           <Star size={11} className="fill-amber-500 text-amber-500" />
                           {STUDIO_INFO.googleRating} ({STUDIO_INFO.googleReviewsCount} avaliações no Google)
@@ -2695,7 +2695,7 @@ export default function App() {
                       rel="noopener noreferrer"
                       className="bg-[#25D366] hover:bg-[#20ba59] text-stone-950 font-mono text-xs font-bold px-4 py-2.5 rounded-lg uppercase tracking-wider transition-all inline-flex items-center gap-2 shadow-xs"
                     >
-                      <span>WhatsApp Ateliê</span>
+                      <span>WhatsApp Oficial</span>
                     </a>
                     <button 
                       onClick={() => setActiveTab("agendamento")}
@@ -2798,7 +2798,7 @@ export default function App() {
                   </h3>
 
                   <p className="text-xs text-stone-600 leading-relaxed max-w-4xl">
-                    Se você procura por <strong>cabeleireira feminina perto de mim</strong>, <strong>cabeleireira de coloração perto de mim</strong>, <strong>cortes femininos perto de mim</strong> ou <strong>cabeleireiro residencial perto de mim</strong> na Zona Sul de São Paulo, nosso ateliê boutique une a excelência do visagismo autoral com a especialista Beatriz Bittencourt à comodidade de um espaço privativo próximo de você, com rotas facilitadas num <strong>raio de pelo menos 5 km</strong> cobrindo 20 bairros estratégicos.
+                    Se você procura por <strong>cabeleireira feminina perto de mim</strong>, <strong>cabeleireira de coloração perto de mim</strong>, <strong>cortes femininos perto de mim</strong> ou <strong>cabeleireiro residencial perto de mim</strong> na Zona Sul de São Paulo, nosso salão de beleza une a excelência do visagismo autoral com a especialista Beatriz Bittencourt à comodidade de um espaço privativo próximo de você, com rotas facilitadas num <strong>raio de pelo menos 5 km</strong> cobrindo 20 bairros estratégicos.
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
@@ -3197,7 +3197,7 @@ export default function App() {
             <div className="space-y-3">
               <h6 className="text-[10px] text-[#B5945F] font-mono tracking-widest uppercase font-bold">Bairros Atendidos na Zona Sul de SP</h6>
               <p className="text-[10px] text-[#FAF9F5]/50 leading-relaxed">
-                Atendemos clientes masculinos e femininos com alto padrão de visagismo em toda a Zona Sul de São Paulo. Se você procura uma <strong>visagista perto de mim</strong> ou <strong>barbearia perto de mim</strong> com design de barba visagista, nosso ateliê unificado é ideal para residentes de:
+                Atendemos clientes masculinos e femininos com alto padrão de visagismo em toda a Zona Sul de São Paulo. Se você procura uma <strong>visagista perto de mim</strong> ou <strong>barbearia perto de mim</strong> com design de barba visagista, nosso salão de beleza unificado é ideal para residentes de:
               </p>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {["Jardim Marajoara", "Chácara Flora", "Vila Sofia", "Alto da Boa Vista", "Santo Amaro", "Brooklin", "Campo Belo", "Panamby", "Morumbi", "Moema"].map((bairro) => (

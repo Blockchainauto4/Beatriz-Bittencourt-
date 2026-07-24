@@ -11,6 +11,24 @@ export const SERVICES: Service[] = [
     tags: ["Corte Feminino", "Corte perto de mim"]
   },
   {
+    id: "escova-progressiva",
+    title: "Escova Progressiva Orgânica / Alisamento Perto de Mim",
+    description: "Alisamento e alinhamento capilar de alta durabilidade com fórmula orgânica sem formol. Proporciona brilho espelhado, redução de volume e facilidade no dia a dia. A melhor escolha de escova progressiva perto de mim na Zona Sul.",
+    price: "Consulte via WhatsApp",
+    duration: "2h",
+    category: "Progressiva & Alisamento",
+    tags: ["Escova Progressiva", "Progressiva perto de mim", "Alisamento Orgânico", "Zero Formol"]
+  },
+  {
+    id: "botox-capilar",
+    title: "Botox Capilar & Selagem Térmica Perto de Mim",
+    description: "Tratamento intensivo de reposição de massa e selagem que elimina o frizz, alinha os fios e devolve a maciez e o brilho sem alterar a estrutura do cabelo. Ideal para quem busca botox capilar perto de mim.",
+    price: "Consulte via WhatsApp",
+    duration: "1h 30min",
+    category: "Tratamento & Alinhamento",
+    tags: ["Botox Capilar", "Selagem Térmica", "Botox perto de mim", "Anti-Frizz"]
+  },
+  {
     id: "aplicacao-mechas",
     title: "Mechas e Iluminação Capilar (Mechas)",
     description: "Técnica de mechas e iluminação com contorno suave para iluminar os fios com proteção da saúde capilar. Perfeito para quem busca mechas perto de mim na região.",
@@ -27,6 +45,33 @@ export const SERVICES: Service[] = [
     duration: "1h 30min",
     category: "Coloração",
     tags: ["Coloração", "Tintura Capilar"]
+  },
+  {
+    id: "cronograma-reconstrucao",
+    title: "Cronograma Capilar & Reconstrução de Danos Perto de Mim",
+    description: "Tratamento de nutrição, hidratação profunda e reconstrução de alta performance para fios danificados ou ressecados por processos químicos. Devolve elasticidade e força à fibra capilar.",
+    price: "Consulte via WhatsApp",
+    duration: "1h",
+    category: "Tratamento Capilar",
+    tags: ["Cronograma Capilar", "Reconstrução Capilar", "Hidratação Profunda"]
+  },
+  {
+    id: "escova-modelada",
+    title: "Escova Modelada & Penteado Express Perto de Mim",
+    description: "Modelagem profissional com escova adaptada ao seu visagismo e ao evento. Garante movimento natural, volume sob medida e brilho radiante.",
+    price: "Consulte via WhatsApp",
+    duration: "45min",
+    category: "Finalização & Modelagem",
+    tags: ["Escova Modelada", "Escova perto de mim", "Penteado Express"]
+  },
+  {
+    id: "corte-masculino-barba",
+    title: "Corte Masculino & Design de Barba Visagista Perto de Mim",
+    description: "Corte masculino autoral com acabamento fino e alinhamento de barba visagista. A escolha ideal para homens que procuram barbeiro e corte masculino perto de mim na Zona Sul.",
+    price: "Consulte via WhatsApp",
+    duration: "40min",
+    category: "Barbearia",
+    tags: ["Corte Masculino", "Barbeiro perto de mim", "Design de Barba"]
   }
 ];
 
@@ -66,7 +111,7 @@ export const TEMPERAMENTS = [
 ];
 
 export const STUDIO_INFO = {
-  salonName: "The Place Salon - Ateliê Beatriz Bittencourt",
+  salonName: "The Place Salon - Beatriz Bittencourt",
   address: "Rua Dr. Ferreira Lopes, 703 - Piso Térreo - Jardim Marajoara",
   streetAddress: "Rua Dr. Ferreira Lopes, 703",
   district: "Jardim Marajoara",
@@ -95,20 +140,28 @@ export const STUDIO_INFO = {
 
 export const FAQ = [
   {
-    question: "O que é a Consultoria em Visagismo do Ateliê?",
+    question: "O que é a Consultoria em Visagismo do Salão de Beleza?",
     answer: "O visagismo é a arte de criar uma imagem pessoal personalizada que revela sua identidade. Nossa consultoria garante atendimento especializado por Beatriz Bittencourt, com técnicas autorais de corte feminino, coloração avançada e mechas harmônicas sem o barulho dos salões de massa."
   },
   {
-    question: "Qual é a área e o raio de atendimento do ateliê?",
-    answer: "Nosso ateliê atende clientes em um raio de pelo menos 5 km ao redor da Rua Dr. Ferreira Lopes, 703 (Zona Sul - SP). Cobrimos com máxima facilidade e estacionamento privativo de cortesia bairros como Chácara Flora, Jardim Marajoara, Vila Sofia, Alto da Boa Vista, Santo Amaro, Brooklin, Campo Belo, Moema, Vila Mascote, Jurubatuba, Panamby, Real Parque, Vila Andrade, Interlagos e região."
+    question: "Como funciona a Escova Progressiva Orgânica perto de mim no salão?",
+    answer: "Nossa escova progressiva utiliza fórmula orgânica sem formol, que alinha as cutículas capilares, reduz o volume e traz brilho espelhado e toque sedoso. É a opção perfeita para quem busca escova progressiva perto de mim com segurança e sem cheiro forte."
   },
   {
-    question: "Como funciona a Análise IA do Ateliê?",
-    answer: "Nossa inteligência artificial analisa seus traços faciais estruturais (ângulo da mandíbula, distância ocular, sobrancelhas e formato declarado) e seus objetivos de vida para prever seu temperamento e traçar recomendações profissionais imediatas baseadas nos materiais de estudo do Ateliê."
+    question: "Qual a diferença entre Botox Capilar, Selagem Térmica e Escova Progressiva?",
+    answer: "A escova progressiva tem como objetivo o alisamento duradouro dos fios. Já o Botox Capilar e a Selagem Térmica realizam reposição de massa, nutrição profunda e eliminação do frizz, mantendo o movimento natural sem alterar a curvatura dos cabelos."
+  },
+  {
+    question: "Qual é a área e o raio de atendimento do salão de beleza?",
+    answer: "Nosso salão de beleza atende clientes em um raio de pelo menos 5 km ao redor da Rua Dr. Ferreira Lopes, 703 (Zona Sul - SP). Cobrimos com máxima facilidade e estacionamento privativo de cortesia bairros como Chácara Flora, Jardim Marajoara, Vila Sofia, Alto da Boa Vista, Santo Amaro, Brooklin, Campo Belo, Moema, Vila Mascote, Jurubatuba, Panamby, Real Parque, Vila Andrade, Interlagos e região."
+  },
+  {
+    question: "Como funciona a Análise IA do Salão de Beleza?",
+    answer: "Nossa inteligência artificial analisa seus traços faciais estruturais (ângulo da mandíbula, distância ocular, sobrancelhas e formato declarado) e seus objetivos de vida para prever seu temperamento e traçar recomendações profissionais imediatas baseadas nos materiais de estudo do Salão de Beleza."
   },
   {
     question: "A consulta é feita perto de mim?",
-    answer: "Sim! Se você está em São Paulo em um raio de 5 km (Chácara Flora, Jardim Marajoara, Vila Sofia, Alto da Boa Vista, Santo Amaro, Brooklin ou Panamby), nosso ateliê fica na Rua Dr. Ferreira Lopes, 703, com estacionamento privativo e atendimento boutique reservado."
+    answer: "Sim! Se você está em São Paulo em um raio de 5 km (Chácara Flora, Jardim Marajoara, Vila Sofia, Alto da Boa Vista, Santo Amaro, Brooklin ou Panamby), nosso salão de beleza fica na Rua Dr. Ferreira Lopes, 703, com estacionamento privativo e atendimento de salão de beleza reservado."
   },
   {
     question: "Preciso ir sem maquiagem para a consulta presencial?",
@@ -150,7 +203,7 @@ export const LOCAL_SEO_REGIONS: LocalRegion[] = [
     landmark: "Estação Alto da Boa Vista (Metrô Linha 5-Lilás)",
     distance: "A 1.2 km",
     transport: "5 min de carro 🚗",
-    context: "Se você pesquisa por cabeleireira de coloração perto de mim no Alto da Boa Vista, desfrute de um ambiente residencial boutique projetado para cortes femininos e renovação de imagem.",
+    context: "Se você pesquisa por cabeleireira de coloração perto de mim no Alto da Boa Vista, desfrute de um ambiente de salão de beleza residencial projetado para cortes femininos e renovação de imagem.",
     seoKeywords: ["Alto da Boa Vista perto de mim", "Corte feminino próximo a mim Alto da Boa Vista", "Salão Alto da Boa Vista perto"]
   },
   {
@@ -192,7 +245,7 @@ export const LOCAL_SEO_REGIONS: LocalRegion[] = [
     landmark: "Avenida Santa Catarina (Vila Mascote)",
     distance: "A 1.8 km",
     transport: "6 min de carro 🚗",
-    context: "Se você quer uma cabeleireira de coloração perto de mim na Vila Mascote para cortes femininos autorais e mechas com proteção capilar, aproveite nosso ateliê.",
+    context: "Se você quer uma cabeleireira de coloração perto de mim na Vila Mascote para cortes femininos autorais e mechas com proteção capilar, aproveite nosso salão de beleza.",
     seoKeywords: ["Vila Mascote perto de mim", "Cabeleireira feminina próximo a mim Vila Mascote", "Corte de cabelo Vila Mascote perto"]
   },
   {
@@ -227,7 +280,7 @@ export const LOCAL_SEO_REGIONS: LocalRegion[] = [
     landmark: "Clube de Campo Castelo (Veleiros)",
     distance: "A 3.2 km",
     transport: "10 min de carro 🚗",
-    context: "Uma alternativa chique e sossegada para quem quer cabeleireira feminina perto de mim em Veleiros com cortes femininos personalizados e ambiente privativo.",
+    context: "Para quem quer cabeleireira feminina perto de mim em Veleiros com cortes femininos personalizados e ambiente privativo.",
     seoKeywords: ["Veleiros perto de mim", "Corte feminino próximo a mim Veleiros", "Cabeleireira Veleiros perto"]
   },
   {
@@ -275,7 +328,7 @@ export interface NeighborhoodSeoTerms {
 
 export const CITY_SEO_TERMS_LIST: { category: string; terms: string[] }[] = [
   {
-    category: "Termos Principais (Ateliê, Visagismo & Localização)",
+    category: "Termos Principais (Salão de Beleza, Visagismo & Localização)",
     terms: [
       "Cabeleireira",
       "Visagista",
@@ -295,7 +348,6 @@ export const CITY_SEO_TERMS_LIST: { category: string; terms: string[] }[] = [
     category: "Corte Masculino & Barbeiro Perto de Mim",
     terms: [
       "corte masculino perto de mim",
-      "corte masculino peeto De Mim",
       "corte masculino perto de mim São Paulo",
       "corte masculino perto de mim SP",
       "corte masculino p/ mim Jardim Marajoara",
@@ -356,7 +408,7 @@ export const CITY_SEO_TERMS_LIST: { category: string; terms: string[] }[] = [
       "corte feminino com visagismo perto de mim SP",
       "corte de cabelo feminino autoral São Paulo",
       "especialista em corte de cabelo feminino SP",
-      "ateliê de corte feminino em São Paulo SP",
+      "salão de beleza de corte feminino em São Paulo SP",
       "consultoria de visagismo e corte feminino SP",
       "corte para transição capilar perto de mim SP"
     ]
@@ -372,6 +424,21 @@ export const CITY_SEO_TERMS_LIST: { category: string; terms: string[] }[] = [
       "corte wolf cut feminino perto de mim SP",
       "corte de cabelo cacheado feminino perto de mim SP",
       "corte de cabelo ondulado / crespo perto de mim SP"
+    ]
+  },
+  {
+    category: "Escova Progressiva, Botox Capilar & Tratamentos Perto de Mim",
+    terms: [
+      "escova progressiva perto de mim",
+      "escova progressiva orgânica perto de mim SP",
+      "progressiva sem formol perto de mim São Paulo",
+      "botox capilar perto de mim SP",
+      "selagem térmica perto de mim São Paulo",
+      "alisamento capilar perto de mim SP",
+      "cronograma capilar perto de mim São Paulo",
+      "reconstrução capilar perto de mim SP",
+      "escova modelada perto de mim São Paulo",
+      "hidratação profunda capilar perto de mim SP"
     ]
   }
 ];
@@ -636,10 +703,10 @@ export const CLIENT_TESTIMONIALS: Testimonial[] = [
     id: "t1",
     name: "Mariana S. Albuquerque",
     role: "Diretora de Marketing",
-    location: "Chácara Flora (a 300m do ateliê)",
+    location: "Chácara Flora (a 300m do salão de beleza)",
     service: "Corte de Cabelo Feminino (Corte)",
     rating: 5,
-    text: "Moro a poucos metros do ateliê na Chácara Flora e estava procurando um cabeleireiro para corte de cabelo feminino perto de mim de confiança. A Beatriz fez um corte magnífico! O novo estilo adaptado com leveza e movimento elevou absurdamente minha expressão visual. O atendimento boutique é impecável e privativo.",
+    text: "Moro a poucos metros do salão de beleza na Chácara Flora e estava procurando um cabeleireiro para corte de cabelo feminino perto de mim de confiança. A Beatriz fez um corte magnífico! O novo estilo adaptado com leveza e movimento elevou absurdamente minha expressão visual. O atendimento no salão de beleza é impecável e privativo.",
     source: "Google Reviews",
     date: "Junho 2026"
   },
@@ -647,10 +714,10 @@ export const CLIENT_TESTIMONIALS: Testimonial[] = [
     id: "t2",
     name: "Amanda Mendes Prado",
     role: "Profissional Liberal",
-    location: "Jardim Marajoara (a 200m do ateliê)",
+    location: "Jardim Marajoara (a 200m do salão de beleza)",
     service: "Coloração Capilar Profissional (Coloração)",
     rating: 5,
-    text: "Estava em busca de um local confiável para coloração perto de mim perto da Chapel School. O ateliê é maravilhoso! Fizeram uma coloração capilar impecável, com cobertura uniforme dos brancos e um brilho fora do comum. Fiquei muito feliz com o cuidado e carinho no atendimento.",
+    text: "Estava em busca de um local confiável para coloração perto de mim perto da Chapel School. O salão de beleza é maravilhoso! Fizeram uma coloração capilar impecável, com cobertura uniforme dos brancos e um brilho fora do comum. Fiquei muito feliz com o cuidado e carinho no atendimento.",
     source: "Google Reviews",
     date: "Maio 2026"
   },
@@ -658,10 +725,10 @@ export const CLIENT_TESTIMONIALS: Testimonial[] = [
     id: "t3",
     name: "Camila F. Vasconcellos",
     role: "Arquiteta & Designer",
-    location: "Vila Sofia (a 450m do ateliê)",
+    location: "Vila Sofia (a 450m do salão de beleza)",
     service: "Aplicação de Mechas Capilares (Mechas)",
     rating: 5,
-    text: "Fui ao ateliê fazer mechas de contorno facial logo após indicação de uma vizinha da Escola Suíço-Brasileira. As mechas ficaram super naturais e iluminaram totalmente meu semblante sem danificar os fios. Encontrar especialistas em mechas perto de mim com essa qualidade na Zona Sul é precioso.",
+    text: "Fui ao salão de beleza fazer mechas de contorno facial logo após indicação de uma vizinha da Escola Suíço-Brasileira. As mechas ficaram super naturais e iluminaram totalmente meu semblante sem danificar os fios. Encontrar especialistas em mechas perto de mim com essa qualidade na Zona Sul é precioso.",
     source: "Google Reviews",
     date: "Junho 2026"
   }
@@ -699,15 +766,15 @@ export const BRIDAL_PACKAGES: BridalPackage[] = [
     priceString: "Consulte via WhatsApp",
     idealFor: "A escolha favorita para o dia dela no salão com máximo conforto, relaxamento e bem-estar completo.",
     included: [
-      "Delicioso café da manhã completo no salão boutique",
+      "Delicioso café da manhã completo no salão de beleza",
       "Massagem relaxante corporal para aliviar a tensão do casamento",
       "Manicure e pedicure delicada dedicada para o grande dia",
       "Hidratação capilar profunda e preparação completa do penteado de noiva",
       "Penteado de noiva sofisticado personalizado + Maquiagem (makeup) blindada",
       "Pausa estruturada para sessões de fotos e filmagens (por conta da noiva/seus fotógrafos)",
-      "Uso de camarim e espaço privativo boutique no ateliê na Zona Sul, São Paulo"
+      "Uso de camarim e espaço privativo de salão de beleza na Zona Sul, São Paulo"
     ],
-    features: ["Penteado de noiva", "Makeup", "Dia da noiva", "Boutique no Salão"]
+    features: ["Penteado de noiva", "Makeup", "Dia da noiva", "Salão de Beleza"]
   },
   {
     id: "noiva-signature",
@@ -718,9 +785,9 @@ export const BRIDAL_PACKAGES: BridalPackage[] = [
     included: [
       "Todos os serviços do pacote clássico (Café da manhã, Massagem, Depilação, Manicure & Pedicure)",
       "Tratamento capilar intensivo, hidratação capilar e preparação exclusiva do penteado",
-      "Espaço boutique reservado com suporte a pausas planejadas para fotos e filmagens (por conta da noiva/seus fotógrafos)",
+      "Espaço reservado de salão de beleza com suporte a pausas planejadas para fotos e filmagens (por conta da noiva/seus fotógrafos)",
       "Acompanhamento personalizado da visagista Beatriz Bittencourt até a cerimônia (retoque final no altar)",
-      "Acesso ao lounge VIP reservado do ateliê para mãe da noiva ou até 2 madrinhas na Zona Sul, São Paulo",
+      "Acesso ao lounge VIP reservado do salão de beleza para mãe da noiva ou até 2 madrinhas na Zona Sul, São Paulo",
       "Design de sobrancelha e análise de colorimetria express na semana do casamento"
     ],
     features: ["Book de noiva", "Fazer Fotos & Filmes", "Dia da noiva", "Zona Sul, São Paulo"]
@@ -730,23 +797,23 @@ export const BRIDAL_PACKAGES: BridalPackage[] = [
 export const BRIDAL_FAQS = [
   {
     question: "Qual o valor médio e estimativa de custos para o Dia da noiva na Zona Sul, São Paulo?",
-    answer: "Para consultar os valores atualizados e solicitar um orçamento sob medida para o Dia da noiva no nosso ateliê boutique na Zona Sul, São Paulo, fale diretamente conosco via WhatsApp. Oferecemos pacotes personalizados (Essencial, Clássico e Signature) e condições especiais de agendamento."
+    answer: "Para consultar os valores atualizados e solicitar um orçamento sob medida para o Dia da noiva no nosso salão de beleza na Zona Sul, São Paulo, fale diretamente conosco via WhatsApp. Oferecemos pacotes personalizados (Essencial, Clássico e Signature) e condições especiais de agendamento."
   },
   {
     question: "Como funciona a etapa de Preparação de Noiva e cuidados com o penteado de noiva?",
-    answer: "O Dia da noiva no nosso salão é planejado milimetricamente para ser relaxante e inabalável. Toda a preparação inclui hidratação capilar de alta performance para a fibra capilar, preparação cuidadosa do penteado autoral, além de spa facial e depilação. Tudo isso cria a base perfeita para o penteado de noiva e a maquiagem (makeup) dos seus sonhos, garantindo durabilidade extrema e visual impecável frente a luzes e câmeras."
+    answer: "O Dia da noiva no nosso salão é planejado milimetricamente para ser relaxante e inabalável. Toda a preparação includes hidratação capilar de alta performance para a fibra capilar, preparação cuidadosa do penteado autoral, além de spa facial e depilação. Tudo isso cria a base perfeita para o penteado de noiva e a maquiagem (makeup) dos seus sonhos, garantindo durabilidade extrema e visual impecável frente a luzes e câmeras."
   },
   {
     question: "Como é a escolha de cada Penteado de noiva em sintonia com o vestido?",
     answer: "Através da nossa consultoria de visagismo profissional para noivas na Zona Sul, São Paulo, analisamos o formato do seu rosto, decote do vestido, véu e acessórios para recomendar a melhor harmonia física. Realizamos o Teste Prévio Completo de 30 a 60 dias antes da cerimônia, onde montamos e validamos fisicamente o penteado de noiva escolhido (seja o Coque Atemporal, Semi-Preso Waves ou Trança Boho Premium), garantindo total tranquilidade para o seu Dia da noiva."
   },
   {
-    question: "O Ateliê boutique oferece suporte de camarim para o Book de noiva (Making Of) na Zona Sul, São Paulo?",
-    answer: "Com certeza! Nosso espaço boutique na Zona Sul, São Paulo conta com camarim profissional iluminado de forma natural e neutra. Oferecemos um buffet gourmet (com café da manhã/coquetel) e estruturamos uma pausa especial planejada para fotos e filmagens por conta da noiva (equipes de fotografia do seu book de noiva), permitindo capturar os melhores momentos do making of com total privacidade."
+    question: "O salão de beleza oferece suporte de camarim para o Book de noiva (Making Of) na Zona Sul, São Paulo?",
+    answer: "Com certeza! Nosso salão de beleza na Zona Sul, São Paulo conta com camarim profissional iluminado de forma natural e neutra. Oferecemos um buffet gourmet (com café da manhã/coquetel) e estruturamos uma pausa especial planejada para fotos e filmagens por conta da noiva (equipes de fotografia do seu book de noiva), permitindo capturar os melhores momentos do making of com total privacidade."
   },
   {
     question: "Quais são as localizações atendidas na Zona Sul, São Paulo para o Dia da noiva?",
-    answer: "Somos um ateliê boutique premium localizado na Rua Dr. Ferreira Lopes, 703, region da Chácara Flora, Jardim Marajoara, Vila Sofia, Brooklin e Santo Amaro (Zona Sul, São Paulo). Atendemos noivas e acompanhantes sob agendamento exclusivo com estacionamento privativo de cortesia. Caso prefira atendimento on-location em domicílios ou hotéis boutique selecionados da Zona Sul, também oferecemos suporte de deslocamento da equipe."
+    answer: "Somos um salão de beleza premium localizado na Rua Dr. Ferreira Lopes, 703, região da Chácara Flora, Jardim Marajoara, Vila Sofia, Brooklin e Santo Amaro (Zona Sul, São Paulo). Atendemos noivas e acompanhantes sob agendamento exclusivo com estacionamento privativo de cortesia. Caso prefira atendimento on-location em domicílios ou hotéis selecionados da Zona Sul, também oferecemos suporte de deslocamento da equipe."
   },
   {
     question: "Como posso tirar dúvidas personalizadas e fazer o agendamento do meu Dia da noiva?",
@@ -790,14 +857,14 @@ export const FEMALE_HAIRCUT_STYLES = [
 export const HAIRCUT_FAQS = [
   {
     question: "Como encontrar uma cabeleireira de corte de cabelo feminino perto de mim na Zona Sul SP?",
-    answer: "Nosso ateliê boutique fica localizado na Rua Dr. Ferreira Lopes, 703, no Jardim Marajoara (divisa com Chácara Flora e Vila Sofia). Atendemos moradoras de toda a região em um raio de até 5 km — incluindo Brooklin, Campo Belo, Moema, Alto da Boa Vista, Santo Amaro e Panamby — com facilidade de acesso e estacionamento privativo."
+    answer: "Nosso salão de beleza fica localizado na Rua Dr. Ferreira Lopes, 703, no Jardim Marajoara (divisa com Chácara Flora e Vila Sofia). Atendemos moradoras de toda a região em um raio de até 5 km — incluindo Brooklin, Campo Belo, Moema, Alto da Boa Vista, Santo Amaro e Panamby — com facilidade de acesso e estacionamento privativo."
   },
   {
     question: "Como funciona a consulta de visagismo antes do corte de cabelo feminino?",
     answer: "Antes de iniciar a tesoura, a visagista Beatriz Bittencourt realiza uma análise minuciosa da sua estrutura facial (formato do rosto, altura do pescoço, linha do maxilar), textura do fio e estilo de vida. O objetivo é escolher a altura, o volume e a camada exata que harmoniza com você."
   },
   {
-    question: "Quanto tempo dura a sessão de corte de cabelo feminino no ateliê?",
+    question: "Quanto tempo dura a sessão de corte de cabelo feminino no salão de beleza?",
     answer: "A sessão dura em média de 45 minutos a 1 hora e inclui higienização, consultoria de visagismo, corte técnico detalhado, escova ou finalização personalizada para destacar o caimento do novo formato."
   },
   {
