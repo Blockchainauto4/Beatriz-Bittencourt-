@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Sparkles, 
@@ -11,6 +11,7 @@ import {
   Scissors, 
   CheckCircle2, 
   ChevronRight, 
+  ChevronLeft,
   ChevronDown,
   Star, 
   Search, 
@@ -20,7 +21,13 @@ import {
   Check,
   Send,
   Navigation,
-  Compass
+  Compass,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Flame,
+  ArrowUpRight
 } from "lucide-react";
 import { 
   SERVICES, 
@@ -34,10 +41,127 @@ import { Service } from "./types";
 const bridalHairstyle = "/src/assets/images/bride_back_updo_1781965445461.jpg";
 const bridalPreparation = "/src/assets/images/bride_sitting_stairs_1781965459138.jpg";
 const bridalPhotoshoot = "/src/assets/images/three_brides_studio_1781965473262.jpg";
+const luxuryBlondNight = "/src/assets/images/luxury_blond_night_1790139979013.jpg";
+const salonTransformNight = "/src/assets/images/salon_transform_night_1790139991380.jpg";
+
+interface HeroSlide {
+  id: string;
+  index: string;
+  tag: string;
+  kicker: string;
+  title: string;
+  highlight: string;
+  description: string;
+  serviceTitle: string;
+  price: string;
+  originalPrice?: string;
+  badgeOffer: string;
+  bgImage: string;
+  videoUrl: string;
+  ctaText: string;
+  features: string[];
+}
+
+const HERO_SLIDES: HeroSlide[] = [
+  {
+    id: "blond-revolution",
+    index: "01",
+    tag: "NIGHT REVOLUTION // BLOND LUXURY",
+    kicker: "ESPECIALISTA EM LOIROS DE ALTO PADRÃO NO JD. MARAJOARA",
+    title: "Loiros Iluminados com Saúde Tridimensional",
+    highlight: "BLOND EXPERIENCE",
+    description: "Mechas personalizadas, neutralização milimétrica e reconstrução lipídica profunda com produtos TRUSS. O loiro marcante, com brilho reluzente dia e noite.",
+    serviceTitle: "BLOND EXPERIENCE (Mechas + Corte + Tonalização + Nutrição + Escova)",
+    price: "R$ 1.200",
+    originalPrice: "R$ 1.500",
+    badgeOffer: "Promoção Exclusiva: De R$ 1.500 por R$ 1.200 • Em até 3x",
+    bgImage: luxuryBlondNight,
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-hairdresser-styling-a-womans-hair-41121-large.mp4",
+    ctaText: "Garantir Blond no WhatsApp",
+    features: ["Clareamento Seguro com Plex", "Matização Personalizada", "Corte & Nutrição Inclusos", "Atendimento VIP com Hora Marcada"]
+  },
+  {
+    id: "dia-da-noiva-vip",
+    index: "02",
+    tag: "COUTURE BRIDAL // DIA DA NOIVA",
+    kicker: "SALA PRIVATIVA EXCLUSIVA NO PISO TÉRREO",
+    title: "O Seu Dia da Noiva Inesquecível & Sofisticado",
+    highlight: "EXPERIÊNCIA EXCLUSIVA",
+    description: "Espaço intimista reservado especialmente para você no The Place Salon. Penteados de alta fixação, maquiagem blindada com teste prévio e acolhimento total para madrinhas.",
+    serviceTitle: "Dia da Noiva Exclusivo VIP (Beatriz Bittencourt)",
+    price: "A partir de R$ 1.800",
+    badgeOffer: "Pacotes Completos com Prova • Até 3x ou Desconto PIX",
+    bgImage: bridalHairstyle,
+    videoUrl: "https://cdn.coverr.co/videos/coverr-hairdresser-washing-womans-hair-4982/1080p.mp4",
+    ctaText: "Consultar Data de Noiva no WhatsApp",
+    features: ["Sala Térrea Totalmente Exclusiva", "Teste Prévio de Cabelo & Make", "Produção de Madrinhas no Local", "Estacionamento de Cortesia"]
+  },
+  {
+    id: "corte-alinhamento",
+    index: "03",
+    tag: "HAIR TRANSFORMATION // VISAGISMO",
+    kicker: "ALINHAMENTO TÉRMICO ORGÂNICO & VISAGISMO",
+    title: "Cortes de Alta Precisão & Liso Espelhado Orgânico",
+    highlight: "SEM FORMOL",
+    description: "Visagismo contemporâneo desenhado para realçar os traços do seu rosto, somado ao alinhamento térmico zero formol com movimento natural, sedosidade e brilho espelhado.",
+    serviceTitle: "Corte Feminino + Progressiva Orgânica Sem Formol",
+    price: "R$ 480",
+    badgeOffer: "Fios 100% Alinhados • Zero Formol • Brilho Gloss",
+    bgImage: salonTransformNight,
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-woman-with-wavy-hair-41680-large.mp4",
+    ctaText: "Agendar Transformação no WhatsApp",
+    features: ["Zero Formol / Sem Ardor ou Fumaça", "Visagismo Facial sob Medida", "Lavagem & Finalização de Luxo", "Durabilidade Superior de até 4 Meses"]
+  }
+];
 
 export default function App() {
   // Navigation section
   const [activeSection, setActiveSection] = useState<"servicos" | "noivas" | "salao" | "faq">("servicos");
+
+  // Hero Carousel State - Night Revolution Experience
+  const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
+  const [isAutoPlay, setIsAutoPlay] = useState<boolean>(true);
+  const [isVideoMuted, setIsVideoMuted] = useState<boolean>(true);
+  const [slideProgress, setSlideProgress] = useState<number>(0);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const currentSlide = HERO_SLIDES[currentSlideIndex];
+
+  // Auto-advance slides with smooth progress animation
+  useEffect(() => {
+    if (!isAutoPlay) return;
+
+    const intervalTime = 50; // ms
+    const duration = 6000; // 6 seconds per slide
+    const increment = (intervalTime / duration) * 100;
+
+    const interval = setInterval(() => {
+      setSlideProgress((prev) => {
+        if (prev >= 100) {
+          setCurrentSlideIndex((curr) => (curr + 1) % HERO_SLIDES.length);
+          return 0;
+        }
+        return prev + increment;
+      });
+    }, intervalTime);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlay, currentSlideIndex]);
+
+  const handleNextSlide = () => {
+    setCurrentSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+    setSlideProgress(0);
+  };
+
+  const handlePrevSlide = () => {
+    setCurrentSlideIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+    setSlideProgress(0);
+  };
+
+  const handleSelectSlide = (idx: number) => {
+    setCurrentSlideIndex(idx);
+    setSlideProgress(0);
+  };
 
   // Filter & Search states for Services
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
@@ -199,83 +323,261 @@ export default function App() {
             transition={{ duration: 0.25 }}
             className="space-y-10"
           >
-            {/* Hero Welcome Banner */}
-            <div className="relative bg-gradient-to-br from-[#1C1A17] via-[#26231F] to-[#1C1A17] text-[#FAF9F5] rounded-3xl p-6 md:p-10 shadow-xl overflow-hidden border border-[#3D3831]">
-              <div className="relative z-10 max-w-3xl space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-800/90 text-[#B5945F] rounded-full text-xs font-mono tracking-wider uppercase border border-stone-700">
-                  <Sparkles size={13} className="text-[#B5945F]" />
-                  <span>Atendimento com Hora Marcada • Sala Privativa</span>
+            {/* ============================================================== */}
+            {/* 3 SLIDES HERO BANNER COM VÍDEO DE FUNDO // NIGHT REVOLUTION */}
+            {/* ============================================================== */}
+            <div className="relative rounded-3xl overflow-hidden border border-amber-500/25 bg-[#09080B] text-white shadow-[0_25px_70px_-15px_rgba(0,0,0,0.85)]">
+              
+              {/* Background Video Layer with Fallback Poster & Scrims */}
+              <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-none">
+                <video
+                  ref={videoRef}
+                  key={currentSlide.videoUrl}
+                  poster={currentSlide.bgImage}
+                  autoPlay
+                  loop
+                  muted={isVideoMuted}
+                  playsInline
+                  className="w-full h-full object-cover object-center scale-105 transition-opacity duration-1000 ease-in-out opacity-45"
+                >
+                  <source src={currentSlide.videoUrl} type="video/mp4" />
+                </video>
+
+                {/* Cinematic Ambient Overlays (Night Revolution Noir) */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#09080B] via-[#09080B]/85 to-[#09080B]/60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#09080B] via-transparent to-[#09080B]/70" />
+                <div className="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+              </div>
+
+              {/* Main Content Area */}
+              <div className="relative z-10 p-6 sm:p-8 md:p-12 lg:p-14 flex flex-col justify-between min-h-[580px] lg:min-h-[620px]">
+                
+                {/* Top Bar of the Slide: Badges & Controls */}
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-white/10">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono font-bold tracking-widest text-amber-300 bg-amber-500/10 border border-amber-500/25 uppercase">
+                      <Flame size={12} className="text-amber-400" />
+                      {currentSlide.tag}
+                    </span>
+                    <span className="text-[11px] font-mono text-stone-400 hidden sm:inline">
+                      SLIDE {currentSlide.index} / 03
+                    </span>
+                  </div>
+
+                  {/* Video & Playback Controls */}
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setIsVideoMuted(!isVideoMuted)}
+                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-white/5 hover:bg-white/10 text-stone-300 border border-white/10 transition-colors cursor-pointer"
+                      title={isVideoMuted ? "Ativar som do vídeo" : "Mutar som"}
+                    >
+                      {isVideoMuted ? <VolumeX size={13} /> : <Volume2 size={13} className="text-amber-400" />}
+                      <span className="hidden sm:inline">{isVideoMuted ? "Vídeo Mudo" : "Áudio Ativo"}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setIsAutoPlay(!isAutoPlay)}
+                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-white/5 hover:bg-white/10 text-stone-300 border border-white/10 transition-colors cursor-pointer"
+                      title={isAutoPlay ? "Pausar autoplay" : "Continuar autoplay"}
+                    >
+                      {isAutoPlay ? <Pause size={12} /> : <Play size={12} className="text-emerald-400" />}
+                      <span className="hidden sm:inline">{isAutoPlay ? "Pausar" : "Play"}</span>
+                    </button>
+                  </div>
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif tracking-tight leading-tight">
-                  Salão de Beleza & Corte Feminino no Jardim Marajoara
-                </h2>
+                {/* Center Content: Animated Slide Info */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-6 lg:py-8">
+                  
+                  {/* Left Column: Editorial Copy */}
+                  <div className="lg:col-span-7 space-y-4">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={currentSlide.id}
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -16 }}
+                        transition={{ duration: 0.35, ease: "easeOut" }}
+                        className="space-y-4"
+                      >
+                        <p className="text-[11px] sm:text-xs font-mono tracking-widest text-amber-300/90 uppercase font-semibold">
+                          {currentSlide.kicker}
+                        </p>
 
-                <p className="text-stone-300 text-sm md:text-base leading-relaxed">
-                  Corte de cabelo feminino sob medida, mechas loiras, escova progressiva sem formol e dia da noiva com a especialista <strong>Beatriz Bittencourt</strong> no <strong>The Place Salon</strong> (Rua Dr. Ferreira Lopes, 703 — perto da Chácara Flora e Vila Sofia). Preços transparentes e atendimento individual com hora marcada.
-                </p>
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-[1.12]">
+                          {currentSlide.title}
+                        </h2>
 
-                {/* Benefits Badges */}
-                <div className="flex flex-wrap gap-2 pt-2 text-xs">
-                  <span className="bg-stone-800/80 border border-stone-700 text-stone-200 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-                    <CreditCard size={13} className="text-[#B5945F]" />
-                    Cartões em até 3x
-                  </span>
-                  <span className="bg-stone-800/80 border border-stone-700 text-stone-200 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-                    <ShieldCheck size={13} className="text-[#B5945F]" />
-                    Produtos Profissionais TRUSS & Orgânicos
-                  </span>
-                  <span className="bg-stone-800/80 border border-stone-700 text-stone-200 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-                    <MapPin size={13} className="text-[#B5945F]" />
-                    Estacionamento de cortesia no local
-                  </span>
-                  <span className="bg-stone-800/80 border border-stone-700 text-stone-200 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-                    <Sparkles size={13} className="text-[#B5945F]" />
-                    Ambiente Exclusivo e Aconchegante
-                  </span>
+                        <p className="text-stone-300 text-xs sm:text-sm md:text-base max-w-xl leading-relaxed">
+                          {currentSlide.description}
+                        </p>
+
+                        {/* Checklist of Features */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 max-w-lg">
+                          {currentSlide.features.map((feature, idx) => (
+                            <div key={idx} className="flex items-center gap-2 text-xs text-stone-200">
+                              <CheckCircle2 size={14} className="text-amber-400 shrink-0" />
+                              <span className="truncate">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Pricing & Offer highlight */}
+                        <div className="flex flex-wrap items-center gap-3 pt-2">
+                          {currentSlide.originalPrice && (
+                            <span className="text-stone-400 line-through text-sm font-medium">
+                              De {currentSlide.originalPrice}
+                            </span>
+                          )}
+                          <span className="text-2xl sm:text-3xl font-serif font-bold text-amber-300">
+                            Por {currentSlide.price}
+                          </span>
+                          <span className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/10 text-stone-200 border border-white/10">
+                            {currentSlide.badgeOffer}
+                          </span>
+                        </div>
+
+                        {/* 100% WhatsApp Conversion Button */}
+                        <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                          <a
+                            href={getWhatsAppBookingLink(currentSlide.serviceTitle, currentSlide.price)}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm px-6 py-4 rounded-xl flex items-center justify-center gap-2.5 transition-all shadow-[0_8px_25px_rgba(37,211,102,0.4)] hover:shadow-[0_12px_30px_rgba(37,211,102,0.55)] active:scale-98 cursor-pointer"
+                          >
+                            <MessageCircle size={19} className="stroke-[2.5]" />
+                            <span>{currentSlide.ctaText}</span>
+                          </a>
+
+                          <div className="text-stone-400 text-[11px] flex items-center justify-center sm:justify-start gap-1 font-mono">
+                            <Clock size={12} className="text-amber-400" />
+                            <span>Resposta rápida no WhatsApp da Beatriz</span>
+                          </div>
+                        </div>
+
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Right Column: Visual Preview Card */}
+                  <div className="lg:col-span-5 hidden lg:block">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={currentSlide.id + "-preview"}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.4 }}
+                        className="relative rounded-2xl overflow-hidden border border-white/15 bg-white/5 backdrop-blur-md p-3 shadow-2xl group"
+                      >
+                        <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                          <img
+                            src={currentSlide.bgImage}
+                            alt={currentSlide.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                          
+                          <div className="absolute bottom-3 left-3 right-3 text-left">
+                            <span className="text-[10px] font-mono tracking-wider uppercase text-amber-300 font-bold block">
+                              The Place Salon • Jd. Marajoara
+                            </span>
+                            <span className="text-sm font-serif font-bold text-white block truncate">
+                              {currentSlide.highlight}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="pt-3 px-1 flex items-center justify-between text-xs text-stone-300">
+                          <span className="flex items-center gap-1">
+                            <Star size={12} className="text-amber-400 fill-amber-400" />
+                            <strong className="text-white">5.0</strong> Avaliação Google
+                          </span>
+                          <span className="text-stone-400 text-[11px]">
+                            Beatriz Bittencourt
+                          </span>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+
                 </div>
+
+                {/* Bottom Navigation: 3 Slide Selectors & Arrow Buttons */}
+                <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                  
+                  {/* The 3 Slide Selectors with Progress Bar */}
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3 flex-1 max-w-2xl">
+                    {HERO_SLIDES.map((slide, idx) => {
+                      const isActive = idx === currentSlideIndex;
+                      return (
+                        <button
+                          key={slide.id}
+                          type="button"
+                          onClick={() => handleSelectSlide(idx)}
+                          className={`relative text-left p-2.5 sm:p-3 rounded-xl transition-all cursor-pointer border ${
+                            isActive
+                              ? "bg-white/10 border-amber-400/40 text-white shadow-sm"
+                              : "bg-black/30 border-white/5 text-stone-400 hover:text-stone-200 hover:bg-white/5"
+                          }`}
+                        >
+                          {/* Progress Line */}
+                          {isActive && (
+                            <div className="absolute top-0 left-0 right-0 h-1 bg-white/10 rounded-t-xl overflow-hidden">
+                              <div
+                                className="h-full bg-gradient-to-r from-amber-400 to-yellow-200 transition-all duration-75 ease-linear"
+                                style={{ width: `${slideProgress}%` }}
+                              />
+                            </div>
+                          )}
+
+                          <div className="flex items-center justify-between text-[10px] font-mono">
+                            <span className={isActive ? "text-amber-300 font-bold" : "text-stone-500"}>
+                              {slide.index}
+                            </span>
+                            {isActive && (
+                              <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                            )}
+                          </div>
+                          
+                          <div className="font-serif font-semibold text-xs truncate mt-0.5">
+                            {idx === 0 && "01. Blond Experience"}
+                            {idx === 1 && "02. Noivas & Madrinhas"}
+                            {idx === 2 && "03. Visagismo & Liso"}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Previous / Next Arrow Controls */}
+                  <div className="flex items-center justify-end gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={handlePrevSlide}
+                      className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-stone-300 hover:text-white transition-colors active:scale-95 cursor-pointer"
+                      aria-label="Slide Anterior"
+                    >
+                      <ChevronLeft size={18} />
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleNextSlide}
+                      className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-stone-300 hover:text-white transition-colors active:scale-95 cursor-pointer"
+                      aria-label="Próximo Slide"
+                    >
+                      <ChevronRight size={18} />
+                    </button>
+                  </div>
+
+                </div>
+
               </div>
             </div>
-
-            {/* Banner Especial Promocional: BLOND EXPERIENCE */}
-            <motion.div 
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
-              className="bg-gradient-to-r from-amber-50 via-amber-100/60 to-amber-50 border-2 border-[#B5945F]/50 rounded-2xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6"
-            >
-              <div className="space-y-2 text-center md:text-left">
-                <div className="inline-flex items-center gap-2 bg-[#B5945F] text-[#1C1A17] text-xs font-mono font-bold px-3 py-0.5 rounded-full uppercase tracking-wider">
-                  ⭐ Destaque Promocional por Tempo Limitado
-                </div>
-                <h3 className="text-xl md:text-2xl font-serif font-bold text-[#1C1A17]">
-                  BLOND EXPERIENCE — Transformação Completa
-                </h3>
-                <p className="text-stone-700 text-xs md:text-sm max-w-2xl leading-relaxed">
-                  O pacote completo para o loiro perfeito: mechas completas com protetor contra quebra + corte feminino + tonalização na cor desejada + tratamento profundo de nutrição + escova luxuosa com acabamento impecável.
-                </p>
-                <div className="flex items-center justify-center md:justify-start gap-3 pt-1">
-                  <span className="text-stone-400 line-through text-sm font-medium">De R$ 1.500</span>
-                  <span className="text-2xl md:text-3xl font-bold text-stone-900 font-serif">Por R$ 1.200</span>
-                  <span className="text-xs bg-[#1C1A17] text-[#FAF9F5] px-2 py-0.5 rounded-md font-mono">
-                    Até 3x no cartão
-                  </span>
-                </div>
-              </div>
-
-              <div className="shrink-0 w-full md:w-auto">
-                <a
-                  href={getWhatsAppBookingLink("BLOND EXPERIENCE (Promoção De R$ 1.500 por R$ 1.200)", "R$ 1.200")}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs px-6 py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md active:scale-98 text-center w-full md:w-auto cursor-pointer"
-                >
-                  <MessageCircle size={18} />
-                  <span>Garantir Promoção no WhatsApp</span>
-                </a>
-              </div>
-            </motion.div>
 
             {/* Filter and Search Bar */}
             <div className="bg-white border border-stone-200/90 rounded-2xl p-4 md:p-6 shadow-xs space-y-4">
