@@ -529,39 +529,39 @@ export interface NeighborhoodSeoTerms {
 
 export const CITY_SEO_TERMS_LIST: { category: string; terms: string[] }[] = [
   {
-    category: "Termos Principais (Salão de Beleza, Visagismo & Localização)",
+    category: "Termos Mais Buscados por Clientes (Salão de Beleza & Proximidade)",
     terms: [
-      "Cabeleireira",
-      "Visagista",
-      "Perto de mim",
-      "Corte de cabelo feminino",
-      "Corte masculino perto de mim",
-      "Com visagismo",
-      "Valorize o formato do seu rosto",
-      "Atendimento",
-      "Em São Paulo",
-      "Zona Sul",
-      "Rua Doutor Ferreira Lopes, 703",
-      "Jardim Marajoara"
+      "Salão de beleza perto de mim",
+      "Corte de cabelo feminino perto de mim",
+      "Cabeleireira perto de mim",
+      "Salão de beleza no Jardim Marajoara",
+      "Escova progressiva perto de mim",
+      "Botox capilar perto de mim",
+      "Mechas loiras perto de mim",
+      "Morena iluminada perto de mim",
+      "Dia da noiva zona sul SP",
+      "Penteado para festa perto de mim",
+      "Hidratação capilar perto de mim",
+      "Rua Doutor Ferreira Lopes, 703"
     ]
   },
   {
-    category: "Corte Masculino & Barbeiro Perto de Mim",
+    category: "Cortes Femininos Mais Buscados por Clientes",
     terms: [
-      "corte masculino perto de mim",
-      "corte masculino perto de mim São Paulo",
-      "corte masculino perto de mim SP",
-      "corte masculino p/ mim Jardim Marajoara",
-      "corte de cabelo masculino perto de mim SP",
-      "barbeiro e corte masculino perto de mim São Paulo",
-      "corte masculino com visagismo perto de mim SP"
+      "corte de cabelo feminino perto de mim",
+      "corte de cabelo feminino em camadas perto de mim",
+      "corte feminino long bob perto de mim",
+      "corte chanel de bico perto de mim",
+      "corte de pontas feminino perto de mim",
+      "corte feminino com visagismo perto de mim",
+      "corte de cabelo feminino Jardim Marajoara"
     ]
   },
   {
     category: "Abreviações Frequentes de Busca ('p/ mim', 'p mim', 'prox a mim', 'perto')",
     terms: [
       "corte de cabelo feminino p/ mim São Paulo",
-      "corte masculino p/ mim SP",
+      "corte feminino p/ mim SP",
       "corte de cabelo feminino p/ mim SP",
       "corte de cabelo feminino p mim Sao Paulo",
       "cabeleireira p/ mim São Paulo",

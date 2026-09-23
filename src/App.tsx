@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Sparkles, 
@@ -29,7 +29,7 @@ import {
   CLIENT_TESTIMONIALS, 
   BRIDAL_PACKAGES 
 } from "./data";
-import { Service, Appointment } from "./types";
+import { Service } from "./types";
 
 const bridalHairstyle = "/src/assets/images/bride_back_updo_1781965445461.jpg";
 const bridalPreparation = "/src/assets/images/bride_sitting_stairs_1781965459138.jpg";
@@ -37,26 +37,11 @@ const bridalPhotoshoot = "/src/assets/images/three_brides_studio_1781965473262.j
 
 export default function App() {
   // Navigation section
-  const [activeSection, setActiveSection] = useState<"servicos" | "noivas" | "agendamento" | "salao" | "serp" | "faq">("servicos");
-  const [serpQuery, setSerpQuery] = useState<string>("corte de cabelo feminino perto de mim");
+  const [activeSection, setActiveSection] = useState<"servicos" | "noivas" | "salao" | "faq">("servicos");
 
   // Filter & Search states for Services
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
   const [searchTerm, setSearchTerm] = useState<string>("");
-
-  // Booking states
-  const [selectedService, setSelectedService] = useState<Service>(SERVICES[0]);
-  const [bookingDate, setBookingDate] = useState<string>("");
-  const [bookingTime, setBookingTime] = useState<string>("");
-  const [clientName, setClientName] = useState<string>("");
-  const [clientEmail, setClientEmail] = useState<string>("");
-  const [clientPhone, setClientPhone] = useState<string>("");
-  const [clientNotes, setClientNotes] = useState<string>("");
-  const [bookingSuccessModal, setBookingSuccessModal] = useState<boolean>(false);
-  const [bookedAppointment, setBookedAppointment] = useState<Appointment | null>(null);
-
-  // Time Slots
-  const TIME_SLOTS = ["09:00", "10:30", "13:00", "14:30", "16:00", "17:30"];
 
   // Bridal calculator states
   const [bridalPackage, setBridalPackage] = useState<string>("pacote-noiva-servico-prova");
@@ -67,57 +52,10 @@ export default function App() {
   // FAQ Accordion
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
-  // Testimonials state
-  const [testimonials, setTestimonials] = useState(() => {
-    const saved = localStorage.getItem("beatriz_testimonials");
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch (e) {
-        return CLIENT_TESTIMONIALS;
-      }
-    }
-    return CLIENT_TESTIMONIALS;
-  });
+  // Testimonials state (verified client reviews)
+  const testimonials = CLIENT_TESTIMONIALS;
 
-  // Submit review form
-  const [newReviewName, setNewReviewName] = useState("");
-  const [newReviewLocation, setNewReviewLocation] = useState("Jardim Marajoara");
-  const [newReviewService, setNewReviewService] = useState("Corte Feminino + Escova");
-  const [newReviewRating, setNewReviewRating] = useState<number>(5);
-  const [newReviewText, setNewReviewText] = useState("");
-  const [reviewSubmitMessage, setReviewSubmitMessage] = useState("");
-
-  const handleCreateReview = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newReviewName.trim() || !newReviewText.trim()) {
-      alert("Por favor, preencha o seu nome e sua mensagem.");
-      return;
-    }
-
-    const created = {
-      id: "review-" + Date.now(),
-      name: newReviewName,
-      role: "Cliente",
-      location: `${newReviewLocation}`,
-      service: newReviewService,
-      rating: newReviewRating,
-      text: newReviewText,
-      source: "Site Oficial",
-      date: "Recentemente"
-    };
-
-    const updated = [created, ...testimonials];
-    setTestimonials(updated);
-    localStorage.setItem("beatriz_testimonials", JSON.stringify(updated));
-
-    setNewReviewName("");
-    setNewReviewText("");
-    setReviewSubmitMessage("Obrigada! Sua avaliação foi enviada com sucesso.");
-    setTimeout(() => setReviewSubmitMessage(""), 5000);
-  };
-
-  // Categories list
+  // Categories list (client beauty services)
   const CATEGORIES = [
     { id: "Todos", label: "Todos os Serviços" },
     { id: "Corte & Finalização", label: "✂️ Corte & Escova" },
@@ -125,8 +63,7 @@ export default function App() {
     { id: "Blond & Mechas", label: "✨ Blond & Mechas" },
     { id: "Transformação", label: "💎 Progressiva & Botox" },
     { id: "Tratamentos", label: "🌿 Tratamentos" },
-    { id: "Noivas & Eventos", label: "💄 Noivas & Madrinhas" },
-    { id: "Barbearia", label: "💈 Corte Masculino" }
+    { id: "Noivas & Eventos", label: "💄 Noivas & Madrinhas" }
   ];
 
   // Filtered services
@@ -142,57 +79,9 @@ export default function App() {
   // Direct WhatsApp booking URL generator
   const getWhatsAppBookingLink = (serviceTitle: string, price: string) => {
     const text = encodeURIComponent(
-      `Olá, Beatriz! Gostaria de agendar o serviço: ${serviceTitle} (${price}). Vi no seu site e gostaria de saber as datas disponíveis.`
+      `Olá, Beatriz! Gostaria de agendar o serviço: ${serviceTitle} (${price}). Vi no seu site e gostaria de verificar as datas e horários disponíveis.`
     );
     return `https://wa.me/${STUDIO_INFO.whatsapp}?text=${text}`;
-  };
-
-  // Select service and scroll to booking form
-  const handleSelectServiceForBooking = (service: Service) => {
-    setSelectedService(service);
-    setActiveSection("agendamento");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  // Submit on-site appointment
-  const handleBookingSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!bookingDate || !bookingTime || !clientName || !clientPhone) {
-      alert("Por favor, preencha todos os campos obrigatórios (Data, Horário, Nome e WhatsApp).");
-      return;
-    }
-
-    const appointment: Appointment = {
-      id: "apt-" + Date.now(),
-      serviceId: selectedService.id,
-      serviceTitle: selectedService.title,
-      date: bookingDate,
-      timeSlot: bookingTime,
-      clientName: clientName,
-      clientEmail: clientEmail,
-      clientPhone: clientPhone,
-      status: "Confirmado",
-      createdAt: new Date().toLocaleDateString("pt-BR")
-    };
-
-    setBookedAppointment(appointment);
-    setBookingSuccessModal(true);
-  };
-
-  // WhatsApp confirmation text from appointment form
-  const sendAppointmentWhatsApp = () => {
-    if (!bookedAppointment) return;
-    const text = encodeURIComponent(
-      `Olá, Beatriz! Acabei de fazer um pré-agendamento no seu site:\n\n` +
-      `📌 *Serviço:* ${bookedAppointment.serviceTitle}\n` +
-      `📅 *Data:* ${bookedAppointment.date}\n` +
-      `⏰ *Horário:* ${bookedAppointment.timeSlot}\n` +
-      `👤 *Nome:* ${bookedAppointment.clientName}\n` +
-      `📱 *WhatsApp:* ${bookedAppointment.clientPhone}\n` +
-      (clientNotes ? `💬 *Observação:* ${clientNotes}\n\n` : `\n`) +
-      `Podemos confirmar esse horário?`
-    );
-    window.open(`https://wa.me/${STUDIO_INFO.whatsapp}?text=${text}`, "_blank");
   };
 
   // Calculate Bridal Total
@@ -248,11 +137,11 @@ export default function App() {
               </h1>
               <span className="h-4 w-[1px] bg-stone-300 hidden sm:inline" />
               <span className="text-[11px] tracking-widest uppercase text-[#B5945F] font-mono font-semibold hidden sm:inline">
-                Visagismo & Beleza
+                Salão de Beleza & Noivas
               </span>
             </div>
             <p className="text-xs text-stone-500 mt-0.5 tracking-wide">
-              Cuidado, técnica e personalização para realçar a sua beleza.
+              Salão de beleza no Jardim Marajoara: corte feminino, mechas, progressiva sem formol e dia da noiva.
             </p>
           </div>
 
@@ -261,9 +150,7 @@ export default function App() {
             {[
               { id: "servicos", label: "Serviços & Preços", icon: Scissors },
               { id: "noivas", label: "Noivas & Madrinhas", icon: Heart },
-              { id: "agendamento", label: "Agendar Horário", icon: Calendar },
               { id: "salao", label: "O Salão", icon: MapPin },
-              { id: "serp", label: "Google SERP & Local", icon: Search },
               { id: "faq", label: "Dúvidas & Avaliações", icon: Star }
             ].map(tab => {
               const Icon = tab.icon;
@@ -272,7 +159,7 @@ export default function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveSection(tab.id as any)}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium tracking-wide transition-all whitespace-nowrap ${
+                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium tracking-wide transition-all whitespace-nowrap cursor-pointer ${
                     active 
                       ? "bg-[#1C1A17] text-[#FAF9F5] shadow-sm font-semibold"
                       : "text-stone-600 hover:bg-stone-100 hover:text-stone-900"
@@ -284,15 +171,15 @@ export default function App() {
               );
             })}
 
-            {/* Direct WhatsApp Call Button */}
+            {/* Direct WhatsApp Action Button */}
             <a
-              href={`https://wa.me/${STUDIO_INFO.whatsapp}?text=${encodeURIComponent("Olá, Beatriz! Gostaria de informações sobre horários e serviços.")}`}
+              href={`https://wa.me/${STUDIO_INFO.whatsapp}?text=${encodeURIComponent("Olá, Beatriz! Gostaria de agendar um horário com você no salão.")}`}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-3.5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all shrink-0 ml-1 shadow-sm active:scale-95"
+              className="flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all shrink-0 ml-1 shadow-sm active:scale-95 cursor-pointer"
             >
-              <MessageCircle size={14} className="stroke-[2.5]" />
-              <span>WhatsApp</span>
+              <MessageCircle size={15} className="stroke-[2.5]" />
+              <span>Agendar no WhatsApp</span>
             </a>
           </nav>
         </div>
@@ -321,11 +208,11 @@ export default function App() {
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif tracking-tight leading-tight">
-                  Serviços Oficiais & Preços Transparentes
+                  Salão de Beleza & Corte Feminino no Jardim Marajoara
                 </h2>
 
                 <p className="text-stone-300 text-sm md:text-base leading-relaxed">
-                  Consulte abaixo todos os serviços prestados pela visagista <strong>Beatriz Bittencourt</strong> no <strong>The Place Salon</strong> (Jardim Marajoara, próximo à Chácara Flora e Vila Sofia). Valores claros, atendimento individual e sem complicações.
+                  Corte de cabelo feminino sob medida, mechas loiras, escova progressiva sem formol e dia da noiva com a especialista <strong>Beatriz Bittencourt</strong> no <strong>The Place Salon</strong> (Rua Dr. Ferreira Lopes, 703 — perto da Chácara Flora e Vila Sofia). Preços transparentes e atendimento individual com hora marcada.
                 </p>
 
                 {/* Benefits Badges */}
@@ -340,21 +227,24 @@ export default function App() {
                   </span>
                   <span className="bg-stone-800/80 border border-stone-700 text-stone-200 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
                     <MapPin size={13} className="text-[#B5945F]" />
-                    Estacionamento no local
+                    Estacionamento de cortesia no local
                   </span>
-                  <button
-                    onClick={() => setActiveSection("serp")}
-                    className="bg-[#B5945F]/20 hover:bg-[#B5945F]/30 border border-[#B5945F]/60 text-amber-200 px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer"
-                  >
-                    <Search size={13} className="text-[#B5945F]" />
-                    Ver no Google SERP (#1)
-                  </button>
+                  <span className="bg-stone-800/80 border border-stone-700 text-stone-200 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+                    <Sparkles size={13} className="text-[#B5945F]" />
+                    Ambiente Exclusivo e Aconchegante
+                  </span>
                 </div>
               </div>
             </div>
 
             {/* Banner Especial Promocional: BLOND EXPERIENCE */}
-            <div className="bg-gradient-to-r from-amber-50 via-amber-100/60 to-amber-50 border-2 border-[#B5945F]/50 rounded-2xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+            <motion.div 
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
+              className="bg-gradient-to-r from-amber-50 via-amber-100/60 to-amber-50 border-2 border-[#B5945F]/50 rounded-2xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6"
+            >
               <div className="space-y-2 text-center md:text-left">
                 <div className="inline-flex items-center gap-2 bg-[#B5945F] text-[#1C1A17] text-xs font-mono font-bold px-3 py-0.5 rounded-full uppercase tracking-wider">
                   ⭐ Destaque Promocional por Tempo Limitado
@@ -374,28 +264,18 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-2 shrink-0 w-full md:w-auto">
+              <div className="shrink-0 w-full md:w-auto">
                 <a
                   href={getWhatsAppBookingLink("BLOND EXPERIENCE (Promoção De R$ 1.500 por R$ 1.200)", "R$ 1.200")}
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm"
+                  className="bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs px-6 py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md active:scale-98 text-center w-full md:w-auto cursor-pointer"
                 >
-                  <MessageCircle size={15} />
-                  Garantir Promoção no WhatsApp
+                  <MessageCircle size={18} />
+                  <span>Garantir Promoção no WhatsApp</span>
                 </a>
-                <button
-                  onClick={() => {
-                    const blondExp = SERVICES.find(s => s.id === "blond-experience");
-                    if (blondExp) handleSelectServiceForBooking(blondExp);
-                  }}
-                  className="bg-[#1C1A17] hover:bg-stone-800 text-white font-medium text-xs px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all"
-                >
-                  <Calendar size={15} className="text-[#B5945F]" />
-                  Reservar Horário
-                </button>
               </div>
-            </div>
+            </motion.div>
 
             {/* Filter and Search Bar */}
             <div className="bg-white border border-stone-200/90 rounded-2xl p-4 md:p-6 shadow-xs space-y-4">
@@ -416,7 +296,7 @@ export default function App() {
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Buscar corte, mechas, progressiva..."
+                    placeholder="Buscar corte feminino, mechas, progressiva, botox..."
                     className="w-full pl-9 pr-4 py-2 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-800 focus:outline-none focus:ring-1 focus:ring-[#B5945F] focus:border-[#B5945F]"
                   />
                   {searchTerm && (
@@ -464,9 +344,17 @@ export default function App() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {filteredServices.map(service => (
-                  <div
+                {filteredServices.map((service, index) => (
+                  <motion.div
                     key={service.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ 
+                      duration: 0.4, 
+                      ease: [0.25, 1, 0.5, 1], 
+                      delay: (index % 4) * 0.07 
+                    }}
                     className={`bg-white border rounded-2xl p-5 shadow-xs transition-all hover:shadow-md flex flex-col justify-between ${
                       service.isPromo 
                         ? "border-[#B5945F] ring-1 ring-[#B5945F]/30" 
@@ -549,27 +437,19 @@ export default function App() {
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="grid grid-cols-2 gap-2 pt-4 mt-3 border-t border-stone-100">
+                    {/* Action Button - 100% WhatsApp */}
+                    <div className="pt-4 mt-3 border-t border-stone-100">
                       <a
                         href={getWhatsAppBookingLink(service.title, service.price)}
                         target="_blank"
                         rel="noreferrer"
-                        className="bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 py-2.5 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all text-center"
+                        className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all text-center shadow-xs active:scale-98 cursor-pointer"
                       >
-                        <MessageCircle size={14} className="text-emerald-600" />
-                        <span>Agendar WhatsApp</span>
+                        <MessageCircle size={16} />
+                        <span>Agendar no WhatsApp</span>
                       </a>
-
-                      <button
-                        onClick={() => handleSelectServiceForBooking(service)}
-                        className="bg-[#1C1A17] hover:bg-stone-800 text-white py-2.5 px-3 rounded-xl text-xs font-medium flex items-center justify-center gap-1.5 transition-all text-center shadow-xs"
-                      >
-                        <Calendar size={14} className="text-[#B5945F]" />
-                        <span>Reservar Horário</span>
-                      </button>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
@@ -665,9 +545,17 @@ export default function App() {
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {BRIDAL_PACKAGES.map((pkg) => (
-                  <div
+                {BRIDAL_PACKAGES.map((pkg, index) => (
+                  <motion.div
                     key={pkg.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ 
+                      duration: 0.4, 
+                      ease: [0.25, 1, 0.5, 1], 
+                      delay: index * 0.08 
+                    }}
                     className={`bg-white border rounded-2xl p-5 shadow-xs flex flex-col justify-between transition-all hover:shadow-md ${
                       pkg.id === "pacote-noiva-servico-prova"
                         ? "border-[#B5945F] ring-2 ring-[#B5945F]/30"
@@ -729,7 +617,7 @@ export default function App() {
                         Consultar Data no WhatsApp
                       </a>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -941,238 +829,7 @@ export default function App() {
         )}
 
         {/* ============================================================== */}
-        {/* SECTION 3: AGENDAMENTO ONLINE */}
-        {/* ============================================================== */}
-        {activeSection === "agendamento" && (
-          <motion.div
-            key="agendamento"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25 }}
-            className="space-y-8"
-          >
-            <div className="bg-white border border-stone-200/90 rounded-2xl p-6 md:p-8 shadow-xs max-w-3xl mx-auto space-y-6">
-              <div className="text-center max-w-lg mx-auto space-y-2">
-                <span className="text-xs font-mono uppercase text-[#B5945F] font-bold tracking-wider">
-                  Reserve com Antecedência
-                </span>
-                <h2 className="text-2xl font-serif font-bold text-stone-900">
-                  Agende o seu Atendimento com a Beatriz
-                </h2>
-                <p className="text-xs text-stone-600 leading-relaxed">
-                  Preencha o formulário abaixo para reservar o seu horário no salão. Você também pode finalizar a confirmação imediatamente pelo WhatsApp.
-                </p>
-              </div>
-
-              <form onSubmit={handleBookingSubmit} className="space-y-5">
-                {/* 1. Escolha do Serviço */}
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-stone-700 block">
-                    1. Escolha o Serviço Desejado:
-                  </label>
-                  <select
-                    value={selectedService.id}
-                    onChange={(e) => {
-                      const found = SERVICES.find(s => s.id === e.target.value);
-                      if (found) setSelectedService(found);
-                    }}
-                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs text-stone-800 focus:outline-none focus:ring-1 focus:ring-[#B5945F]"
-                  >
-                    <optgroup label="✂️ Corte & Finalização">
-                      {SERVICES.filter(s => s.category === "Corte & Finalização").map(s => (
-                        <option key={s.id} value={s.id}>
-                          {s.title} — {s.price} ({s.duration})
-                        </option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="🎨 Coloração">
-                      {SERVICES.filter(s => s.category === "Coloração").map(s => (
-                        <option key={s.id} value={s.id}>
-                          {s.title} — {s.price} ({s.duration})
-                        </option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="✨ Blond & Mechas">
-                      {SERVICES.filter(s => s.category === "Blond & Mechas").map(s => (
-                        <option key={s.id} value={s.id}>
-                          {s.title} — {s.price} ({s.duration})
-                        </option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="💎 Transformação (Progressiva & Botox)">
-                      {SERVICES.filter(s => s.category === "Transformação").map(s => (
-                        <option key={s.id} value={s.id}>
-                          {s.title} — {s.price} ({s.duration})
-                        </option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="🌿 Tratamentos Capilares">
-                      {SERVICES.filter(s => s.category === "Tratamentos").map(s => (
-                        <option key={s.id} value={s.id}>
-                          {s.title} — {s.price} ({s.duration})
-                        </option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="💄 Noivas & Eventos">
-                      {SERVICES.filter(s => s.category === "Noivas & Eventos").map(s => (
-                        <option key={s.id} value={s.id}>
-                          {s.title} — {s.price} ({s.duration})
-                        </option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="💈 Corte Masculino">
-                      {SERVICES.filter(s => s.category === "Barbearia").map(s => (
-                        <option key={s.id} value={s.id}>
-                          {s.title} — {s.price} ({s.duration})
-                        </option>
-                      ))}
-                    </optgroup>
-                  </select>
-
-                  {/* Selected service preview box */}
-                  <div className="bg-amber-50/60 border border-amber-200/60 rounded-xl p-3 flex items-center justify-between text-xs">
-                    <div>
-                      <span className="font-semibold text-stone-900 block">{selectedService.title}</span>
-                      <span className="text-stone-500 text-[11px]">{selectedService.protocol || selectedService.description}</span>
-                    </div>
-                    <div className="text-right shrink-0 ml-3">
-                      <span className="text-sm font-bold font-serif text-[#1C1A17] block">{selectedService.price}</span>
-                      <span className="text-[10px] text-stone-500">em até 3x</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* 2. Data e Horário */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-stone-700 block">
-                      2. Data da sua Preferência:
-                    </label>
-                    <input
-                      type="date"
-                      value={bookingDate}
-                      onChange={(e) => setBookingDate(e.target.value)}
-                      min={new Date().toISOString().split("T")[0]}
-                      className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs text-stone-800 focus:outline-none focus:ring-1 focus:ring-[#B5945F]"
-                      required
-                    />
-                    <span className="text-[10px] text-stone-500 block">
-                      Atendimento de Terça a Sábado.
-                    </span>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-stone-700 block">
-                      3. Horário Disponível:
-                    </label>
-                    <div className="grid grid-cols-3 gap-1.5">
-                      {TIME_SLOTS.map((slot) => {
-                        const isSelected = bookingTime === slot;
-                        return (
-                          <button
-                            key={slot}
-                            type="button"
-                            onClick={() => setBookingTime(slot)}
-                            className={`py-2 rounded-xl text-xs font-mono font-semibold transition-all border ${
-                              isSelected
-                                ? "bg-[#1C1A17] text-white border-[#1C1A17]"
-                                : "bg-stone-50 text-stone-700 border-stone-200 hover:border-stone-400"
-                            }`}
-                          >
-                            {slot}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-
-                {/* 3. Seus Dados */}
-                <div className="space-y-3 pt-2 border-t border-stone-100">
-                  <label className="text-xs font-semibold text-stone-700 block">
-                    4. Seus Dados para Contato:
-                  </label>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div>
-                      <input
-                        type="text"
-                        value={clientName}
-                        onChange={(e) => setClientName(e.target.value)}
-                        placeholder="Seu Nome Completo *"
-                        className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs text-stone-800 focus:outline-none focus:ring-1 focus:ring-[#B5945F]"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <input
-                        type="tel"
-                        value={clientPhone}
-                        onChange={(e) => setClientPhone(e.target.value)}
-                        placeholder="WhatsApp / Telefone com DDD *"
-                        className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs text-stone-800 focus:outline-none focus:ring-1 focus:ring-[#B5945F]"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <input
-                      type="email"
-                      value={clientEmail}
-                      onChange={(e) => setClientEmail(e.target.value)}
-                      placeholder="E-mail (opcional)"
-                      className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs text-stone-800 focus:outline-none focus:ring-1 focus:ring-[#B5945F]"
-                    />
-                  </div>
-
-                  <div>
-                    <textarea
-                      value={clientNotes}
-                      onChange={(e) => setClientNotes(e.target.value)}
-                      rows={2}
-                      placeholder="Alguma observação sobre seu cabelo ou preferência especial? (opcional)"
-                      className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-800 focus:outline-none focus:ring-1 focus:ring-[#B5945F]"
-                    />
-                  </div>
-                </div>
-
-                {/* Payment reminder */}
-                <div className="bg-stone-50 border border-stone-200/60 rounded-xl p-3 flex items-center justify-between text-xs text-stone-600">
-                  <div className="flex items-center gap-2">
-                    <CreditCard size={15} className="text-[#B5945F]" />
-                    <span>Pagamento no dia: <strong>Cartão em até 3x</strong> ou <strong>PIX</strong></span>
-                  </div>
-                  <span className="text-[11px] text-stone-500">Sem cobrança online antecipada</span>
-                </div>
-
-                {/* Action buttons */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  <button
-                    type="submit"
-                    className="w-full bg-[#1C1A17] hover:bg-stone-800 text-white font-medium text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm"
-                  >
-                    <Calendar size={15} className="text-[#B5945F]" />
-                    Confirmar Pré-Agendamento
-                  </button>
-
-                  <a
-                    href={getWhatsAppBookingLink(selectedService.title, selectedService.price)}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm text-center"
-                  >
-                    <MessageCircle size={15} />
-                    Agendar Direto no WhatsApp
-                  </a>
-                </div>
-              </form>
-            </div>
-          </motion.div>
-        )}
-
-        {/* ============================================================== */}
-        {/* SECTION 4: O SALÃO & LOCALIZAÇÃO */}
+        {/* SECTION 3: O SALÃO & LOCALIZAÇÃO */}
         {/* ============================================================== */}
         {activeSection === "salao" && (
           <motion.div
@@ -1186,13 +843,13 @@ export default function App() {
             <div className="bg-white border border-stone-200/90 rounded-2xl p-6 md:p-8 shadow-xs space-y-6">
               <div className="max-w-2xl space-y-2">
                 <span className="text-xs font-mono uppercase text-[#B5945F] font-bold tracking-wider">
-                  The Place Salon • Jardim Marajoara
+                  Salão de Beleza no Jardim Marajoara • The Place Salon
                 </span>
                 <h2 className="text-2xl md:text-3xl font-serif font-bold text-stone-900">
-                  Um Espaço Aconchegante e Reservado para Você
+                  Salão de Beleza Reservado e Aconchegante Perto de Você
                 </h2>
                 <p className="text-xs md:text-sm text-stone-600 leading-relaxed">
-                  A visagista <strong>Beatriz Bittencourt</strong> atende em sala privativa dentro do tradicional <strong>The Place Salon</strong>, oferecendo um atendimento calmo, sem barulho excessivo e com total dedicação ao seu visual.
+                  A cabeleireira e visagista <strong>Beatriz Bittencourt</strong> atende em sala privativa dentro do tradicional <strong>The Place Salon</strong> (Rua Dr. Ferreira Lopes, 703), oferecendo atendimento calmo, sem barulho e com total dedicação ao seu visual.
                 </p>
               </div>
 
@@ -1283,407 +940,6 @@ export default function App() {
         )}
 
         {/* ============================================================== */}
-        {/* SECTION 5: GOOGLE SERP & POSICIONAMENTO LOCAL */}
-        {/* ============================================================== */}
-        {activeSection === "serp" && (
-          <motion.div
-            key="serp"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25 }}
-            className="space-y-8"
-          >
-            {/* Header Banner */}
-            <div className="bg-gradient-to-br from-[#1C1A17] via-[#24211D] to-[#1C1A17] text-[#FAF9F5] rounded-3xl p-6 md:p-10 shadow-xl border border-[#3D3831] space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-800/90 text-[#B5945F] rounded-full text-xs font-mono tracking-wider uppercase border border-stone-700">
-                <Search size={13} className="text-[#B5945F]" />
-                <span>Google Search SERP & Local Pack #1</span>
-              </div>
-
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif tracking-tight leading-tight">
-                Posicionamento do Salão nas Buscas do Google
-              </h2>
-
-              <p className="text-stone-300 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl">
-                Otimização completa do <strong>Title</strong>, <strong>Meta Description</strong> e <strong>Schema.org LocalBusiness</strong> para ranquear nas principais pesquisas de salão de beleza e corte feminino perto de você na Zona Sul de São Paulo.
-              </p>
-
-              <div className="flex flex-wrap gap-2 pt-2 text-xs">
-                <span className="bg-emerald-950/70 border border-emerald-800 text-emerald-300 px-3 py-1 rounded-lg flex items-center gap-1.5">
-                  <CheckCircle2 size={13} className="text-emerald-400" />
-                  Title Otimizado: 61 caracteres (sem cortes)
-                </span>
-                <span className="bg-emerald-950/70 border border-emerald-800 text-emerald-300 px-3 py-1 rounded-lg flex items-center gap-1.5">
-                  <CheckCircle2 size={13} className="text-emerald-400" />
-                  Description Otimizada: 154 caracteres (com CTA)
-                </span>
-                <span className="bg-emerald-950/70 border border-emerald-800 text-emerald-300 px-3 py-1 rounded-lg flex items-center gap-1.5">
-                  <CheckCircle2 size={13} className="text-emerald-400" />
-                  Schema.org HairSalon + OfferCatalog com Preços Reais
-                </span>
-              </div>
-            </div>
-
-            {/* Interactive SERP Preview Box */}
-            <div className="bg-white border border-stone-200/90 rounded-2xl p-6 md:p-8 shadow-xs space-y-6">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-stone-100 pb-4">
-                <div>
-                  <h3 className="text-lg font-serif font-bold text-stone-900 flex items-center gap-2">
-                    <span className="inline-block w-3 h-3 rounded-full bg-red-500" />
-                    <span className="inline-block w-3 h-3 rounded-full bg-amber-400" />
-                    <span className="inline-block w-3 h-3 rounded-full bg-emerald-500" />
-                    <span className="ml-1">Simulador de SERP do Google (Desktop & Mobile)</span>
-                  </h3>
-                  <p className="text-xs text-stone-500 mt-0.5">
-                    Veja exatamente como a sua página aparece nos resultados de pesquisa orgânica do Google:
-                  </p>
-                </div>
-                <span className="text-[11px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-md self-start md:self-auto font-semibold">
-                  Google Rich Snippet Ativo
-                </span>
-              </div>
-
-              {/* Term Selector Chips */}
-              <div className="space-y-2">
-                <span className="text-xs font-semibold text-stone-700 block">
-                  Selecione um termo de busca local para simular a SERP:
-                </span>
-                <div className="flex flex-wrap gap-1.5">
-                  {[
-                    "corte de cabelo feminino perto de mim",
-                    "salão de beleza jardim marajoara",
-                    "escova progressiva perto de mim",
-                    "mechas loiro chácara flora",
-                    "botox capilar perto de mim",
-                    "dia da noiva zona sul sp"
-                  ].map((query) => (
-                    <button
-                      key={query}
-                      onClick={() => setSerpQuery(query)}
-                      className={`text-xs px-3 py-1.5 rounded-full transition-all flex items-center gap-1.5 border ${
-                        serpQuery === query
-                          ? "bg-[#1C1A17] text-white border-[#1C1A17] font-medium shadow-xs"
-                          : "bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100 hover:border-stone-300"
-                      }`}
-                    >
-                      <Search size={11} className={serpQuery === query ? "text-[#B5945F]" : "text-stone-400"} />
-                      <span>{query}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Google Search Bar Mockup */}
-              <div className="bg-[#f8f9fa] border border-stone-200 rounded-2xl p-4 md:p-6 space-y-5 font-sans">
-                
-                {/* Search Bar Input */}
-                <div className="max-w-2xl bg-white border border-stone-300 shadow-sm rounded-full px-4 py-2.5 flex items-center justify-between gap-3 text-xs">
-                  <div className="flex items-center gap-2.5 flex-1 min-w-0">
-                    <Search size={15} className="text-stone-400 shrink-0" />
-                    <span className="font-normal text-stone-800 truncate">
-                      {serpQuery}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 text-stone-400 shrink-0">
-                    <span className="text-[11px] font-mono bg-stone-100 px-2 py-0.5 rounded text-stone-500 hidden sm:inline">
-                      Zona Sul, SP
-                    </span>
-                  </div>
-                </div>
-
-                {/* The SERP Result #1 Card */}
-                <div className="bg-white border border-stone-200 rounded-xl p-5 md:p-6 max-w-2xl shadow-xs space-y-2">
-                  
-                  {/* URL / Breadcrumbs */}
-                  <div className="flex items-center gap-2 text-xs text-stone-600">
-                    <div className="w-6 h-6 rounded-full bg-stone-900 text-[#B5945F] flex items-center justify-center text-[10px] font-bold font-serif shrink-0">
-                      B
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-xs font-medium text-[#202124] leading-tight">
-                        Beatriz Bittencourt • The Place Salon
-                      </span>
-                      <span className="text-[11px] text-[#4d5156] truncate">
-                        https://beatrizbittencourt.com.br › sp › jardim-marajoara
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Title (Blue, Google standard) */}
-                  <h4 className="text-base sm:text-lg font-normal text-[#1a0dab] hover:underline cursor-pointer leading-snug pt-1">
-                    Beatriz Bittencourt | Salão de Beleza no Jardim Marajoara SP
-                  </h4>
-
-                  {/* Google Star Rating Row */}
-                  <div className="flex flex-wrap items-center gap-2 text-xs text-[#4d5156] pt-0.5">
-                    <div className="flex items-center text-amber-500 font-bold">
-                      ★★★★★
-                    </div>
-                    <span className="font-medium text-[#202124]">4,7</span>
-                    <span>(235 avaliações no Google)</span>
-                    <span>•</span>
-                    <span>Preço: R$$</span>
-                    <span>•</span>
-                    <span className="text-emerald-700 font-medium">Aberto agora</span>
-                  </div>
-
-                  {/* Description snippet */}
-                  <p className="text-xs sm:text-sm text-[#4d5156] leading-relaxed pt-1">
-                    <strong className="text-[#202124]">Salão de beleza no Jardim Marajoara (perto de mim)</strong>. Especialista em corte feminino, mechas, progressiva orgânica e dia da noiva. Agende pelo WhatsApp!
-                  </p>
-
-                  {/* Google Sitelinks Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 mt-2 border-t border-stone-100">
-                    <div 
-                      onClick={() => setActiveSection("servicos")}
-                      className="cursor-pointer group p-2 hover:bg-stone-50 rounded-lg transition-colors"
-                    >
-                      <span className="text-xs font-medium text-[#1a0dab] group-hover:underline block">
-                        ✂️ Corte Feminino + Escova (R$ 490)
-                      </span>
-                      <span className="text-[11px] text-stone-500 block leading-tight mt-0.5">
-                        Corte sob medida com visagismo e escova modelada.
-                      </span>
-                    </div>
-
-                    <div 
-                      onClick={() => setActiveSection("servicos")}
-                      className="cursor-pointer group p-2 hover:bg-stone-50 rounded-lg transition-colors"
-                    >
-                      <span className="text-xs font-medium text-[#1a0dab] group-hover:underline block">
-                        ✨ BLOND EXPERIENCE (R$ 1.200)
-                      </span>
-                      <span className="text-[11px] text-stone-500 block leading-tight mt-0.5">
-                        Mechas completas com protetor contra quebra e corte.
-                      </span>
-                    </div>
-
-                    <div 
-                      onClick={() => setActiveSection("servicos")}
-                      className="cursor-pointer group p-2 hover:bg-stone-50 rounded-lg transition-colors"
-                    >
-                      <span className="text-xs font-medium text-[#1a0dab] group-hover:underline block">
-                        💎 Progressiva Orgânica (R$ 650)
-                      </span>
-                      <span className="text-[11px] text-stone-500 block leading-tight mt-0.5">
-                        Alinhamento sem formol e sem cheiro forte.
-                      </span>
-                    </div>
-
-                    <div 
-                      onClick={() => setActiveSection("noivas")}
-                      className="cursor-pointer group p-2 hover:bg-stone-50 rounded-lg transition-colors"
-                    >
-                      <span className="text-xs font-medium text-[#1a0dab] group-hover:underline block">
-                        👰 Dia da Noiva & Madrinhas
-                      </span>
-                      <span className="text-[11px] text-stone-500 block leading-tight mt-0.5">
-                        Pacote completo com teste prévio e camarim.
-                      </span>
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-
-            {/* Google Maps Local Pack Card */}
-            <div className="bg-white border border-stone-200/90 rounded-2xl p-6 md:p-8 shadow-xs space-y-6">
-              <div>
-                <span className="text-xs font-mono uppercase text-[#B5945F] font-bold tracking-wider">
-                  Google Maps & Perfil de Empresa (Google Meu Negócio)
-                </span>
-                <h3 className="text-lg md:text-xl font-serif font-bold text-stone-900 mt-1">
-                  Perfil no Google Local Pack (Zona Sul SP)
-                </h3>
-                <p className="text-xs text-stone-500 mt-0.5">
-                  Exibição em destaque nos mapas para quem busca salão de beleza e cabeleireira perto de você:
-                </p>
-              </div>
-
-              <div className="bg-stone-50 border border-stone-200 rounded-2xl p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <span className="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase font-mono">
-                      Google Maps #1
-                    </span>
-                    <span className="text-xs text-stone-500">
-                      Raio de atendimento: pelo menos 5 km
-                    </span>
-                  </div>
-
-                  <div>
-                    <h4 className="text-base sm:text-lg font-bold text-stone-900">
-                      The Place Salon — Beatriz Bittencourt
-                    </h4>
-                    <p className="text-xs text-stone-600 mt-0.5 flex items-center gap-1.5">
-                      <MapPin size={13} className="text-[#B5945F]" />
-                      <span>Rua Dr. Ferreira Lopes, 703 - Piso Térreo, Jardim Marajoara, São Paulo - SP</span>
-                    </p>
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-3 text-xs text-stone-600">
-                    <span className="flex items-center gap-1 font-bold text-amber-500">
-                      ★ 4.7
-                      <span className="font-normal text-stone-500">(235 avaliações)</span>
-                    </span>
-                    <span>•</span>
-                    <span>Salão de beleza feminino & visagismo</span>
-                    <span>•</span>
-                    <span className="text-emerald-700 font-medium">Estacionamento de cortesia</span>
-                  </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-2 shrink-0 w-full md:w-auto">
-                  <a
-                    href={STUDIO_INFO.mapsUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="bg-[#1C1A17] hover:bg-stone-800 text-white font-medium text-xs px-4 py-2.5 rounded-xl flex items-center justify-center gap-2 transition-all shadow-xs"
-                  >
-                    <Navigation size={14} className="text-[#B5945F]" />
-                    Ver no Google Maps
-                  </a>
-                  <a
-                    href={`https://wa.me/${STUDIO_INFO.whatsapp}?text=${encodeURIComponent("Olá, Beatriz! Vi seu perfil no Google e gostaria de agendar um horário.")}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs px-4 py-2.5 rounded-xl flex items-center justify-center gap-2 transition-all shadow-xs"
-                  >
-                    <MessageCircle size={14} />
-                    Falar no WhatsApp
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Local Search Terms Table */}
-            <div className="bg-white border border-stone-200/90 rounded-2xl p-6 md:p-8 shadow-xs space-y-4">
-              <div>
-                <span className="text-xs font-mono uppercase text-[#B5945F] font-bold tracking-wider">
-                  Palavras-Chave de Ranqueamento Local
-                </span>
-                <h3 className="text-lg font-serif font-bold text-stone-900 mt-1">
-                  Termos Estratégicos com Foco em Clientes Locais
-                </h3>
-                <p className="text-xs text-stone-500 mt-0.5">
-                  Termos de busca de alta intenção transacional mapeados diretamente no código-fonte e metadados:
-                </p>
-              </div>
-
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs border-collapse">
-                  <thead>
-                    <tr className="border-b border-stone-200 bg-stone-50 text-stone-700 font-mono text-[11px] uppercase">
-                      <th className="py-2.5 px-3">Termo de Busca Google</th>
-                      <th className="py-2.5 px-3">Intenção da Cliente</th>
-                      <th className="py-2.5 px-3">Posição Alvo</th>
-                      <th className="py-2.5 px-3">Bairros de Cobertura (5 km)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-stone-100 text-stone-600">
-                    <tr>
-                      <td className="py-3 px-3 font-semibold text-stone-900">
-                        corte de cabelo feminino perto de mim
-                      </td>
-                      <td className="py-3 px-3">
-                        <span className="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-[10px] font-semibold">
-                          Agendamento Imediato
-                        </span>
-                      </td>
-                      <td className="py-3 px-3 font-bold text-stone-900">#1 (Local Pack)</td>
-                      <td className="py-3 px-3">Jd. Marajoara, Chácara Flora, Vila Sofia, Brooklin</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-3 font-semibold text-stone-900">
-                        salão de beleza jardim marajoara
-                      </td>
-                      <td className="py-3 px-3">
-                        <span className="bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px] font-semibold">
-                          Navegacional / Bairro
-                        </span>
-                      </td>
-                      <td className="py-3 px-3 font-bold text-stone-900">#1 Orgânico</td>
-                      <td className="py-3 px-3">Rua Dr. Ferreira Lopes, Colégio Chapel, Pão de Açúcar</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-3 font-semibold text-stone-900">
-                        escova progressiva perto de mim
-                      </td>
-                      <td className="py-3 px-3">
-                        <span className="bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px] font-semibold">
-                          Zero Formol / Orgânica
-                        </span>
-                      </td>
-                      <td className="py-3 px-3 font-bold text-stone-900">#1 (Local Pack)</td>
-                      <td className="py-3 px-3">Alto da Boa Vista, Santo Amaro, Campo Belo, Moema</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-3 font-semibold text-stone-900">
-                        mechas e loiro perto de mim
-                      </td>
-                      <td className="py-3 px-3">
-                        <span className="bg-purple-100 text-purple-800 px-2 py-0.5 rounded text-[10px] font-semibold">
-                          Alto Ticket (BLOND EXP)
-                        </span>
-                      </td>
-                      <td className="py-3 px-3 font-bold text-stone-900">#1 Orgânico</td>
-                      <td className="py-3 px-3">Chácara Flora, Panamby, Real Parque, Vila Mascote</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-3 font-semibold text-stone-900">
-                        dia da noiva zona sul sp
-                      </td>
-                      <td className="py-3 px-3">
-                        <span className="bg-rose-100 text-rose-800 px-2 py-0.5 rounded text-[10px] font-semibold">
-                          Pacote Noiva & Madrinha
-                        </span>
-                      </td>
-                      <td className="py-3 px-3 font-bold text-stone-900">#1 (Local Pack)</td>
-                      <td className="py-3 px-3">Zona Sul SP (Igrejas, Espaços de Eventos e Hoteis)</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Technical Verification Card */}
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-5 md:p-6 space-y-3">
-              <span className="text-xs font-mono uppercase text-stone-500 font-bold block">
-                Auditoria de Metadados & Código-Fonte:
-              </span>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                <div className="bg-white p-3.5 rounded-xl border border-stone-200/80 space-y-1">
-                  <div className="flex justify-between items-center">
-                    <span className="font-bold text-stone-800 font-mono text-[11px]">&lt;title&gt;</span>
-                    <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">
-                      61 caracteres
-                    </span>
-                  </div>
-                  <p className="text-stone-700 font-mono text-[11px] break-all">
-                    Beatriz Bittencourt | Salão de Beleza no Jardim Marajoara SP
-                  </p>
-                </div>
-
-                <div className="bg-white p-3.5 rounded-xl border border-stone-200/80 space-y-1">
-                  <div className="flex justify-between items-center">
-                    <span className="font-bold text-stone-800 font-mono text-[11px]">&lt;meta name="description"&gt;</span>
-                    <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">
-                      154 caracteres
-                    </span>
-                  </div>
-                  <p className="text-stone-700 font-mono text-[11px] break-all">
-                    Salão de beleza no Jardim Marajoara (perto de mim). Especialista em corte feminino, mechas, progressiva orgânica e dia da noiva. Agende pelo WhatsApp!
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </motion.div>
-        )}
-
-        {/* ============================================================== */}
         {/* SECTION 5: DÚVIDAS & AVALIAÇÕES */}
         {/* ============================================================== */}
         {activeSection === "faq" && (
@@ -1752,7 +1008,18 @@ export default function App() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {testimonials.slice(0, 6).map((item: any, idx: number) => (
-                  <div key={idx} className="bg-white border border-stone-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between space-y-3">
+                  <motion.div 
+                    key={idx} 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ 
+                      duration: 0.45, 
+                      ease: [0.25, 1, 0.5, 1], 
+                      delay: (idx % 3) * 0.1 
+                    }}
+                    className="bg-white border border-stone-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between space-y-3 hover:shadow-md transition-shadow"
+                  >
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1 text-amber-400">
@@ -1771,133 +1038,36 @@ export default function App() {
                       <p className="text-xs font-semibold text-stone-900">{item.name}</p>
                       <p className="text-[10px] text-stone-500">{item.service} • {item.location}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
-              {/* Form to leave a review */}
-              <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6 space-y-4 max-w-xl mx-auto">
-                <h4 className="text-sm font-serif font-bold text-stone-900 text-center">
-                  Já foi atendida pela Beatriz? Deixe sua avaliação:
+              {/* Send Review via WhatsApp */}
+              <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6 text-center space-y-3 max-w-xl mx-auto">
+                <div className="w-10 h-10 bg-emerald-100 text-[#25D366] rounded-full flex items-center justify-center mx-auto">
+                  <MessageCircle size={22} />
+                </div>
+                <h4 className="text-sm font-serif font-bold text-stone-900">
+                  Já foi atendida pela Beatriz no salão?
                 </h4>
-
-                {reviewSubmitMessage && (
-                  <div className="bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs p-3 rounded-xl text-center">
-                    {reviewSubmitMessage}
-                  </div>
-                )}
-
-                <form onSubmit={handleCreateReview} className="space-y-3">
-                  <div className="grid grid-cols-2 gap-2">
-                    <input
-                      type="text"
-                      value={newReviewName}
-                      onChange={(e) => setNewReviewName(e.target.value)}
-                      placeholder="Seu nome"
-                      className="bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-800 focus:outline-none"
-                      required
-                    />
-                    <input
-                      type="text"
-                      value={newReviewLocation}
-                      onChange={(e) => setNewReviewLocation(e.target.value)}
-                      placeholder="Seu bairro (ex: Chácara Flora)"
-                      className="bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-800 focus:outline-none"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-2">
-                    <input
-                      type="text"
-                      value={newReviewService}
-                      onChange={(e) => setNewReviewService(e.target.value)}
-                      placeholder="Serviço feito (ex: Mechas)"
-                      className="bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-800 focus:outline-none"
-                    />
-                    <select
-                      value={newReviewRating}
-                      onChange={(e) => setNewReviewRating(Number(e.target.value))}
-                      className="bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-800 focus:outline-none"
-                    >
-                      <option value={5}>⭐⭐⭐⭐⭐ (5 Estrelas)</option>
-                      <option value={4}>⭐⭐⭐⭐ (4 Estrelas)</option>
-                      <option value={3}>⭐⭐⭐ (3 Estrelas)</option>
-                    </select>
-                  </div>
-
-                  <textarea
-                    value={newReviewText}
-                    onChange={(e) => setNewReviewText(e.target.value)}
-                    rows={3}
-                    placeholder="Conte como foi sua experiência..."
-                    className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-800 focus:outline-none"
-                    required
-                  />
-
-                  <button
-                    type="submit"
-                    className="w-full bg-[#1C1A17] hover:bg-stone-800 text-white font-medium text-xs py-2.5 rounded-xl transition-all"
-                  >
-                    Publicar Avaliação
-                  </button>
-                </form>
+                <p className="text-xs text-stone-600 max-w-md mx-auto leading-relaxed">
+                  Envie seu depoimento ou uma foto do seu novo visual diretamente para o nosso WhatsApp!
+                </p>
+                <a
+                  href={`https://wa.me/${STUDIO_INFO.whatsapp}?text=${encodeURIComponent("Olá, Beatriz! Gostaria de enviar meu depoimento sobre o atendimento no salão:")}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs py-3 px-6 rounded-xl shadow-xs transition-all active:scale-98 cursor-pointer"
+                >
+                  <MessageCircle size={16} />
+                  <span>Enviar Depoimento no WhatsApp</span>
+                </a>
               </div>
             </div>
           </motion.div>
         )}
 
       </main>
-
-      {/* Booking Success Modal */}
-      {bookingSuccessModal && bookedAppointment && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-[70] p-4">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-stone-200 animate-in fade-in zoom-in duration-200">
-            <div className="text-center space-y-2">
-              <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                <CheckCircle2 size={24} />
-              </div>
-              <h3 className="text-xl font-serif font-bold text-stone-900">
-                Pré-Agendamento Registrado!
-              </h3>
-              <p className="text-xs text-stone-600">
-                Olá, <strong>{bookedAppointment.clientName}</strong>! Seu pedido para o dia <strong>{bookedAppointment.date}</strong> às <strong>{bookedAppointment.timeSlot}</strong> foi salvo.
-              </p>
-            </div>
-
-            <div className="bg-stone-50 border border-stone-200/80 rounded-xl p-3.5 space-y-2 text-xs">
-              <div className="flex justify-between">
-                <span className="text-stone-500">Serviço:</span>
-                <span className="font-semibold text-stone-900">{bookedAppointment.serviceTitle}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-stone-500">Local:</span>
-                <span className="font-semibold text-stone-900">Rua Dr. Ferreira Lopes, 703</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-stone-500">Pagamento:</span>
-                <span className="font-semibold text-stone-900">No dia (em até 3x ou PIX)</span>
-              </div>
-            </div>
-
-            <div className="space-y-2 pt-2">
-              <button
-                onClick={sendAppointmentWhatsApp}
-                className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-semibold text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm"
-              >
-                <MessageCircle size={15} />
-                Confirmar Imediatamente no WhatsApp
-              </button>
-
-              <button
-                onClick={() => setBookingSuccessModal(false)}
-                className="w-full bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium text-xs py-2.5 rounded-xl transition-all"
-              >
-                Fechar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Floating WhatsApp Action Button for Easy Access */}
       <aside 
