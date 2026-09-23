@@ -14,9 +14,14 @@ export interface Service {
   title: string;
   description: string;
   price: string;
+  originalPrice?: string;
   duration: string;
   category: string;
   tags: string[];
+  protocol?: string;
+  paymentNote?: string;
+  isPromo?: boolean;
+  isPopular?: boolean;
 }
 
 export interface Appointment {

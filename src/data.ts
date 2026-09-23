@@ -1,77 +1,270 @@
 import { Service } from "./types";
 
 export const SERVICES: Service[] = [
+  // ✂️ CORTE & FINALIZAÇÃO
   {
-    id: "consultoria-master",
-    title: "Corte de Cabelo Feminino (Corte)",
-    description: "Corte de cabelo feminino personalizado para valorizar seu formato de rosto e movimento natural. Se você busca um corte perto de mim na Zona Sul de São Paulo, agende para renovar seu estilo com acabamento de alto padrão.",
-    price: "Consulte via WhatsApp",
-    duration: "45min",
-    category: "Corte",
-    tags: ["Corte Feminino", "Corte perto de mim"]
+    id: "corte-escova",
+    title: "Corte Feminino + Escova Modelada",
+    description: "Corte personalizado feito sob medida para valorizar a sua beleza e o formato do seu rosto, com lavagem relaxante e escova modelada impecável com movimento e brilho.",
+    price: "R$ 490",
+    duration: "1h",
+    category: "Corte & Finalização",
+    protocol: "Avaliação do visual + lavagem especial + corte + escova",
+    tags: ["Corte Feminino", "Escova Inclusa", "Personalizado", "Perto de Mim"],
+    isPopular: true
   },
   {
-    id: "escova-progressiva",
-    title: "Escova Progressiva Orgânica / Alisamento Perto de Mim",
-    description: "Alisamento e alinhamento capilar de alta durabilidade com fórmula orgânica sem formol. Proporciona brilho espelhado, redução de volume e facilidade no dia a dia. A melhor escolha de escova progressiva perto de mim na Zona Sul.",
-    price: "Consulte via WhatsApp",
+    id: "hidratacao-nutricao-escova",
+    title: "Hidratação ou Nutrição Profunda + Escova",
+    description: "Tratamento completo para eliminar o ressecamento, devolver a maciez instantânea e o toque sedoso aos fios, finalizado com escova modelada.",
+    price: "R$ 299",
+    duration: "1h",
+    category: "Corte & Finalização",
+    protocol: "Diagnóstico dos fios + máscara intensiva + escova modelada",
+    tags: ["Maciez Instantânea", "Brilho Intenso", "Escova Inclusa", "Anti-Ressecamento"]
+  },
+  {
+    id: "reconstrucao-truss-escova",
+    title: "Reconstrução TRUSS + Escova",
+    description: "Tratamento reconstrutor com a renomada linha TRUSS para recuperar cabelos danificados ou quebradiços, devolvendo força, balanço e vitalidade aos fios.",
+    price: "R$ 299",
+    duration: "1h",
+    category: "Corte & Finalização",
+    protocol: "Recuperação TRUSS + blindagem + escova modelada",
+    tags: ["Linha TRUSS", "Recuperação de Fios", "Força e Brilho", "Escova Inclusa"],
+    isPopular: true
+  },
+
+  // 🎨 COLORAÇÃO
+  {
+    id: "coloracao-escova",
+    title: "Coloração Completa + Escova",
+    description: "Aplicação de cor com cobertura 100% uniforme dos fios brancos ou renovação do seu tom favorito com reflexos luminosos, acompanhada de escova profissional.",
+    price: "R$ 399",
+    duration: "1h 30min",
+    category: "Coloração",
+    protocol: "Aplicação da cor + higienização protetora + escova",
+    tags: ["Cobertura Perfeita", "Cor Radiante", "Brilho", "Escova Inclusa"]
+  },
+  {
+    id: "coloracao-personalizada",
+    title: "Coloração Personalizada com Tratamento",
+    description: "Experiência completa de cor: escolha da tonalidade perfeita para realçar o seu tom de pele, aplicação cuidadosa, tratamento protetor pós-cor e escova finalizada.",
+    price: "A partir de R$ 490",
     duration: "2h",
-    category: "Progressiva & Alisamento",
-    tags: ["Escova Progressiva", "Progressiva perto de mim", "Alisamento Orgânico", "Zero Formol"]
+    category: "Coloração",
+    protocol: "Diagnóstico + coloração + tratamento protetor + finalização",
+    tags: ["Cor Sob Medida", "Fios Protegidos", "Tratamento Incluso", "Mais Pedido"],
+    isPopular: true
+  },
+
+  // ✨ BLOND & MEchas
+  {
+    id: "mechas-personalizadas",
+    title: "Mechas Personalizadas (Loiro ou Morena Iluminada)",
+    description: "Iluminação feita sob medida para o seu estilo (morena iluminada, loiro perolado, dourado, mel ou baunilha). Clareamento seguro, tratamento protetor, tonalização perfeita e finalização.",
+    price: "A partir de R$ 890",
+    duration: "3h",
+    category: "Blond & Mechas",
+    protocol: "Diagnóstico + mechas sob medida + tratamento + tonalização + finalização",
+    tags: ["Loiro Saudável", "Morena Iluminada", "Tonalização Inclusa", "Sem Danos"],
+    isPopular: true
+  },
+  {
+    id: "mechas-tratamento-botox",
+    title: "Mechas Iluminadas + Tratamento ou Botox",
+    description: "O combo ideal para clarear os fios e já sair com o cabelo totalmente hidratado, sem frizz e com as pontas seladas e macias.",
+    price: "A partir de R$ 950",
+    duration: "3h 30min",
+    category: "Blond & Mechas",
+    protocol: "Mechas completas + tratamento disciplinante ou botox + escova",
+    tags: ["Clareamento Seguro", "Sem Frizz", "Pontas Saudáveis", "Alta Durabilidade"]
+  },
+  {
+    id: "mechas-raiz",
+    title: "Retoque de Mechas na Raiz (Até 3 meses)",
+    description: "Retoque suave para disfarçar o crescimento da raiz de até 3 meses, mantendo a luminosidade do loiro contínua e sem marcações. Inclui tratamento e tonalização.",
+    price: "R$ 750",
+    duration: "2h",
+    category: "Blond & Mechas",
+    protocol: "Retoque de raiz + tratamento + tonalização da cor + escova",
+    tags: ["Retoque Raiz", "Loiro Impecável", "Sem Marcação", "Até 3 Meses"]
+  },
+  {
+    id: "blond-experience",
+    title: "BLOND EXPERIENCE (Transformação Completa)",
+    description: "O pacote completo para transformar o seu loiro com valor promocional por tempo limitado (de R$ 1.500 por R$ 1.200). Inclui mechas completas com protetor contra quebra, corte feminino, tonalização na cor desejada, tratamento profundo e escova luxuosa.",
+    price: "R$ 1.200",
+    originalPrice: "R$ 1.500",
+    isPromo: true,
+    duration: "4h",
+    category: "Blond & Mechas",
+    protocol: "Mechas completas + protetor anti-quebra + corte + tonalização + tratamento + escova",
+    tags: ["De R$ 1.500 por R$ 1.200", "Promoção Especial", "Corte Incluso", "Transformação Total"],
+    isPopular: true
+  },
+
+  // 💎 TRANSFORMAÇÃO & ALINHAMENTO
+  {
+    id: "progressiva",
+    title: "Escova Progressiva Orgânica (Zero Formol)",
+    description: "Alisamento suave e duradouro com fórmula 100% orgânica, sem formol, sem cheiro forte e sem ardor nos olhos. Deixa o cabelo alinhado, macio, com volume reduzido e muito brilho.",
+    price: "R$ 650",
+    duration: "2h 30min",
+    category: "Transformação",
+    protocol: "Aplicação orgânica + alinhamento térmico + finalização espelhada",
+    tags: ["Zero Formol", "Sem Cheiro Forte", "Liso Natural", "Redução de Volume"],
+    isPopular: true
   },
   {
     id: "botox-capilar",
-    title: "Botox Capilar & Selagem Térmica Perto de Mim",
-    description: "Tratamento intensivo de reposição de massa e selagem que elimina o frizz, alinha os fios e devolve a maciez e o brilho sem alterar a estrutura do cabelo. Ideal para quem busca botox capilar perto de mim.",
-    price: "Consulte via WhatsApp",
+    title: "Botox Capilar Disciplinante",
+    description: "Tratamento que reduz o frizz, alinha os fios e devolve a massa capilar sem alisar artificialmente. Ideal para quem quer cabelos domados, com brilho e movimento natural.",
+    price: "R$ 499",
     duration: "1h 30min",
-    category: "Tratamento & Alinhamento",
-    tags: ["Botox Capilar", "Selagem Térmica", "Botox perto de mim", "Anti-Frizz"]
+    category: "Transformação",
+    protocol: "Higienização + aplicação disciplinante + selagem com brilho",
+    tags: ["Anti-Frizz", "Brilho Intenso", "Movimento Natural", "Sem Alisar Demais"],
+    isPopular: true
   },
   {
-    id: "aplicacao-mechas",
-    title: "Mechas e Iluminação Capilar (Mechas)",
-    description: "Técnica de mechas e iluminação com contorno suave para iluminar os fios com proteção da saúde capilar. Perfeito para quem busca mechas perto de mim na região.",
-    price: "Consulte via WhatsApp",
+    id: "progressiva-tratamento",
+    title: "Progressiva Orgânica + Tratamento Fortalecedor",
+    description: "Protocolo duplo para quem deseja alinhamento e máxima hidratação no mesmo dia. A Beatriz avalia o seu cabelo para indicar o melhor cuidado para os seus fios.",
+    price: "Consulte avaliação",
     duration: "2h 30min",
-    category: "Mechas",
-    tags: ["Mechas", "Cabelo Iluminado"]
+    category: "Transformação",
+    protocol: "Avaliação prévia gratuita + protocolo personalizado",
+    tags: ["Alinhamento e Saúde", "Cuidado Sob Medida", "Avaliação Gratuita"]
   },
+
+  // 🌿 TRATAMENTOS CAPILARES
   {
-    id: "colorimetria",
-    title: "Coloração Capilar Profissional (Coloração)",
-    description: "Coloração completa com cobertura excelente de fios brancos ou mudança de tom com brilho de alta duração. Ideal para quem procura coloração perto de mim.",
-    price: "Consulte via WhatsApp",
-    duration: "1h 30min",
-    category: "Coloração",
-    tags: ["Coloração", "Tintura Capilar"]
-  },
-  {
-    id: "cronograma-reconstrucao",
-    title: "Cronograma Capilar & Reconstrução de Danos Perto de Mim",
-    description: "Tratamento de nutrição, hidratação profunda e reconstrução de alta performance para fios danificados ou ressecados por processos químicos. Devolve elasticidade e força à fibra capilar.",
-    price: "Consulte via WhatsApp",
+    id: "blond-angel-escova",
+    title: "BLOND ANGEL Iluminador + Escova",
+    description: "Tratamento revitalizante para cabelos loiros, grisalhos ou com luzes. Elimina o tom amarelado indesejado, devolve a maciez e finaliza com escova modelada.",
+    price: "R$ 280",
     duration: "1h",
-    category: "Tratamento Capilar",
-    tags: ["Cronograma Capilar", "Reconstrução Capilar", "Hidratação Profunda"]
+    category: "Tratamentos",
+    protocol: "Lavagem desamareladora + máscara nutritiva + escova modelada",
+    tags: ["Desamarelador", "Loiro Radiante", "Brilho Espelhado", "Escova Inclusa"]
   },
   {
-    id: "escova-modelada",
-    title: "Escova Modelada & Penteado Express Perto de Mim",
-    description: "Modelagem profissional com escova adaptada ao seu visagismo e ao evento. Garante movimento natural, volume sob medida e brilho radiante.",
-    price: "Consulte via WhatsApp",
-    duration: "45min",
-    category: "Finalização & Modelagem",
-    tags: ["Escova Modelada", "Escova perto de mim", "Penteado Express"]
+    id: "truss-experience-escova",
+    title: "TRUSS Experience + Escova Modelada",
+    description: "Experiência completa com os produtos premium da TRUSS para nutrir, restaurar a elasticidade e trazer brilho intenso aos cabelos com escova inclusa.",
+    price: "R$ 299",
+    duration: "1h 15min",
+    category: "Tratamentos",
+    protocol: "Terapia TRUSS completa + máscara concentrada + escova",
+    tags: ["Linha TRUSS", "Nutrição Intensa", "Toque Aveludado", "Escova Inclusa"],
+    isPopular: true
   },
+  {
+    id: "loiros-poderosos-ozonio",
+    title: "Tratamento Loiros Poderosos + Massagem Capilar",
+    description: "Tratamento especial para recuperar cabelos claros, com máscara ultra-hidratante, vapor suavizante e massagem relaxante no couro cabeludo.",
+    price: "A partir de R$ 250",
+    duration: "1h",
+    category: "Tratamentos",
+    protocol: "Higienização + vapor hidratante + massagem relaxante + escova",
+    tags: ["Relaxamento", "Hidratação Máxima", "Cuidado Especial", "Massagem Inclusa"]
+  },
+
+  // 💄 NOIVAS, MADRINHAS & EVENTOS
+  {
+    id: "pacote-noiva-servico-prova",
+    title: "Pacote Noiva Completo (Grande Dia + Prova Prévia)",
+    description: "A opção mais tranquila e recomendada para noivas: inclui o ensaio prévio completo de cabelo e maquiagem semanas antes, mais a produção oficial no dia do casamento.",
+    price: "R$ 1.600",
+    duration: "4h 30min (2 etapas)",
+    category: "Noivas & Eventos",
+    protocol: "1ª Etapa: Prova de penteado e maquiagem • 2ª Etapa: Produção completa no Grande Dia",
+    tags: ["Sem Surpresas", "Prova Inclusa", "Grande Dia", "Noiva Tranquila"],
+    isPopular: true
+  },
+  {
+    id: "make-penteado-noiva",
+    title: "Make + Penteado de Noiva (Grande Dia)",
+    description: "Produção exclusiva no dia do casamento: penteado duradouro escolhido para harmonizar com seu vestido e grinalda, e maquiagem à prova d'água e lágrimas.",
+    price: "R$ 1.200",
+    duration: "2h 30min",
+    category: "Noivas & Eventos",
+    protocol: "Preparação de pele e cabelo + maquiagem blindada + penteado + fixação de véu",
+    tags: ["Grande Dia", "À Prova de Lágrimas", "Penteado Firme", "Camarim Exclusivo"],
+    isPopular: true
+  },
+  {
+    id: "prova-make-penteado",
+    title: "Prova de Make + Penteado de Noiva (Avulsa)",
+    description: "Ensaio técnico realizado semanas antes para você testar opções de penteados e maquiagens com calma, tirar fotos e aprovar cada detalhe com antecedência.",
+    price: "R$ 500",
+    duration: "2h",
+    category: "Noivas & Eventos",
+    protocol: "Teste real de penteado + teste completo de maquiagem + fotos para comparação",
+    tags: ["Ensaio Prévia", "Tranquilidade", "Teste Real", "Aprovação Antecipada"]
+  },
+  {
+    id: "make-penteado-madrinha",
+    title: "Make + Penteado — Madrinha",
+    description: "Produção impecável para madrinhas brilharem no altar: maquiagem social com cílios e penteado sofisticado (ondas, coque ou trança) com alta durabilidade para a festa inteira.",
+    price: "R$ 650",
+    duration: "1h 45min",
+    category: "Noivas & Eventos",
+    protocol: "Maquiagem social completa com cílios + penteado elaborado + fixação",
+    tags: ["Madrinhas", "Make com Cílios", "Penteado Elegante", "Dura a Festa Toda"]
+  },
+  {
+    id: "make-penteado-mae",
+    title: "Make + Penteado — Mãe da Noiva ou Noivo",
+    description: "Atendimento dedicado e carinhoso para a mãe da noiva ou noivo: maquiagem suave que valoriza a pele com naturalidade e penteado clássico elegante e confortável.",
+    price: "R$ 600",
+    duration: "1h 45min",
+    category: "Noivas & Eventos",
+    protocol: "Maquiagem iluminadora para pele madura + penteado confortável e elegante",
+    tags: ["Mãe da Noiva", "Pele Madura", "Naturalidade", "Elegância"]
+  },
+  {
+    id: "make-madrinha-mae",
+    title: "Maquiagem Social Completa (Madrinha / Mãe / Convidada)",
+    description: "Maquiagem profissional duradoura com preparação de pele, contorno suave, sombra esfumada e cílios postiços para você curtir a festa sem retoques.",
+    price: "R$ 350",
+    duration: "1h",
+    category: "Noivas & Eventos",
+    protocol: "Preparação de pele + make social + aplicação de cílios",
+    tags: ["Make com Cílios", "Alta Fixação", "Convidadas", "Madrinhas"]
+  },
+  {
+    id: "penteado-madrinha-mae",
+    title: "Penteado Social Elaborado (Madrinha / Mãe / Convidada)",
+    description: "Penteado sofisticado (coque elegante, semi-preso com ondas ou trança estilizada) com produtos de fixação para se manter perfeito durante todo o evento.",
+    price: "R$ 350",
+    duration: "1h",
+    category: "Noivas & Eventos",
+    protocol: "Preparação dos fios + modelagem do penteado + fixação prolongada",
+    tags: ["Coque Elegante", "Ondas e Tranças", "Penteado Firme", "Eventos"]
+  },
+  {
+    id: "escova-convidadas",
+    title: "Escova Modelada para Convidadas",
+    description: "Lavagem relaxante com produtos profissionais e escova modelada ou com ondas leves para deixar seu cabelo lindo e alinhado para a festa.",
+    price: "R$ 180",
+    duration: "45min",
+    category: "Noivas & Eventos",
+    protocol: "Lavagem relaxante + escova modelada ou babyliss leve",
+    tags: ["Escova Rápida", "Brilho e Movimento", "Convidadas", "Festas"]
+  },
+
+  // 💈 CORTE MASCULINO
   {
     id: "corte-masculino-barba",
-    title: "Corte Masculino & Design de Barba Visagista Perto de Mim",
-    description: "Corte masculino autoral com acabamento fino e alinhamento de barba visagista. A escolha ideal para homens que procuram barbeiro e corte masculino perto de mim na Zona Sul.",
-    price: "Consulte via WhatsApp",
-    duration: "40min",
+    title: "Corte Masculino & Alinhamento de Barba",
+    description: "Corte masculino moderno com acabamento limpo, alinhamento de barba e finalização rápida e prática em ambiente reservado.",
+    price: "R$ 150",
+    duration: "45min",
     category: "Barbearia",
-    tags: ["Corte Masculino", "Barbeiro perto de mim", "Design de Barba"]
+    protocol: "Corte de cabelo + acabamento de barba + lavagem rápida",
+    tags: ["Corte Masculino", "Barba Alinhada", "Ambiente Privativo", "Praticidade"]
   }
 ];
 
@@ -112,6 +305,10 @@ export const TEMPERAMENTS = [
 
 export const STUDIO_INFO = {
   salonName: "The Place Salon - Beatriz Bittencourt",
+  subtitle: "VISAGISMO • COLORAÇÃO • BLOND • TRATAMENTOS",
+  tagline: "CUIDADO, TÉCNICA E PERSONALIZAÇÃO PARA REALÇAR A SUA BELEZA.",
+  paymentTerms: "Aceitamos cartões de crédito em até 3x.",
+  attendanceNote: "São Paulo • Atendimento personalizado • Agendamentos pelo WhatsApp",
   address: "Rua Dr. Ferreira Lopes, 703 - Piso Térreo - Jardim Marajoara",
   streetAddress: "Rua Dr. Ferreira Lopes, 703",
   district: "Jardim Marajoara",
@@ -140,32 +337,36 @@ export const STUDIO_INFO = {
 
 export const FAQ = [
   {
-    question: "O que é a Consultoria em Visagismo do Salão de Beleza?",
-    answer: "O visagismo é a arte de criar uma imagem pessoal personalizada que revela sua identidade. Nossa consultoria garante atendimento especializado por Beatriz Bittencourt, com técnicas autorais de corte feminino, coloração avançada e mechas harmônicas sem o barulho dos salões de massa."
+    question: "Como funciona o atendimento com a Beatriz Bittencourt?",
+    answer: "O atendimento é exclusivo, com hora marcada e foco total em você. Antes de iniciar qualquer procedimento, a Beatriz conversa com você para entender seus desejos, estilo de vida e o que melhor harmoniza com o formato do seu rosto e seu cabelo."
   },
   {
-    question: "Como funciona a Escova Progressiva Orgânica perto de mim no salão?",
-    answer: "Nossa escova progressiva utiliza fórmula orgânica sem formol, que alinha as cutículas capilares, reduz o volume e traz brilho espelhado e toque sedoso. É a opção perfeita para quem busca escova progressiva perto de mim com segurança e sem cheiro forte."
+    question: "Quais são as formas de pagamento?",
+    answer: "Aceitamos cartões de crédito em até 3x, cartão de débito e PIX (com desconto especial à vista). Todas as condições são transparentes e informadas previamente."
   },
   {
-    question: "Qual a diferença entre Botox Capilar, Selagem Térmica e Escova Progressiva?",
-    answer: "A escova progressiva tem como objetivo o alisamento duradouro dos fios. Já o Botox Capilar e a Selagem Térmica realizam reposição de massa, nutrição profunda e eliminação do frizz, mantendo o movimento natural sem alterar a curvatura dos cabelos."
+    question: "A escova progressiva tem formol ou cheiro forte?",
+    answer: "Não! A nossa escova progressiva (R$ 650) é 100% orgânica e sem formol. Ela proporciona cabelos alinhados, reduz o volume e dá brilho espelhado com total conforto, sem ardor e sem cheiro forte."
   },
   {
-    question: "Qual é a área e o raio de atendimento do salão de beleza?",
-    answer: "Nosso salão de beleza atende clientes em um raio de pelo menos 5 km ao redor da Rua Dr. Ferreira Lopes, 703 (Zona Sul - SP). Cobrimos com máxima facilidade e estacionamento privativo de cortesia bairros como Chácara Flora, Jardim Marajoara, Vila Sofia, Alto da Boa Vista, Santo Amaro, Brooklin, Campo Belo, Moema, Vila Mascote, Jurubatuba, Panamby, Real Parque, Vila Andrade, Interlagos e região."
+    question: "Qual a diferença entre a Progressiva e o Botox Capilar?",
+    answer: "A progressiva (R$ 650) alinha e reduz intensamente o volume do cabelo. O Botox Capilar (R$ 499) é um tratamento disciplinante que hidrata, elimina o frizz e controla o volume sem alisar em excesso, mantendo o movimento natural dos fios."
   },
   {
-    question: "Como funciona a Análise IA do Salão de Beleza?",
-    answer: "Nossa inteligência artificial analisa seus traços faciais estruturais (ângulo da mandíbula, distância ocular, sobrancelhas e formato declarado) e seus objetivos de vida para prever seu temperamento e traçar recomendações profissionais imediatas baseadas nos materiais de estudo do Salão de Beleza."
+    question: "O que vem no pacote promocional BLOND EXPERIENCE?",
+    answer: "O BLOND EXPERIENCE está com valor promocional de R$ 1.500 por R$ 1.200 (tempo limitado). Ele inclui mechas completas com protetor contra quebra, corte feminino, tonalização para a cor desejada, tratamento profundo e escova de finalização."
   },
   {
-    question: "A consulta é feita perto de mim?",
-    answer: "Sim! Se você está em São Paulo em um raio de 5 km (Chácara Flora, Jardim Marajoara, Vila Sofia, Alto da Boa Vista, Santo Amaro, Brooklin ou Panamby), nosso salão de beleza fica na Rua Dr. Ferreira Lopes, 703, com estacionamento privativo e atendimento de salão de beleza reservado."
+    question: "Como funciona a produção para Noivas, Madrinhas e Mães?",
+    answer: "Temos pacotes completos para o Dia da Noiva (com ou sem prova antecipada), além de produções para madrinhas (R$ 650), mãe da noiva (R$ 600) e escova para convidadas (R$ 180). O salão conta com camarim aconchegante para fotos e tranquilidade."
   },
   {
-    question: "Preciso ir sem maquiagem para a consulta presencial?",
-    answer: "Sim. Para a colorimetria presencial e análise de linhas faciais ideais, solicitamos que venha de rosto limpo para que a pele neutra reflita os tecidos de draping sazonal com fidelidade perfeita."
+    question: "Onde fica o salão e como chegar?",
+    answer: "Ficamos na Rua Dr. Ferreira Lopes, 703 - Piso Térreo, no Jardim Marajoara (bem pertinho da Chácara Flora e Vila Sofia), Zona Sul de São Paulo. O local possui fácil acesso e vagas de estacionamento para o seu conforto."
+  },
+  {
+    question: "Como agendar um horário?",
+    answer: "Você pode agendar diretamente pelo botão de WhatsApp (11 99227-9655) ou preenchendo o formulário de agendamento aqui no site. Confirmamos o seu horário rapidamente!"
   }
 ];
 
@@ -427,7 +628,7 @@ export const CITY_SEO_TERMS_LIST: { category: string; terms: string[] }[] = [
     ]
   },
   {
-    category: "Escova Progressiva, Botox Capilar & Tratamentos Perto de Mim",
+    category: "Escova Progressiva, Botox Capilar & Transformação Perto de Mim",
     terms: [
       "escova progressiva perto de mim",
       "escova progressiva orgânica perto de mim SP",
@@ -439,6 +640,42 @@ export const CITY_SEO_TERMS_LIST: { category: string; terms: string[] }[] = [
       "reconstrução capilar perto de mim SP",
       "escova modelada perto de mim São Paulo",
       "hidratação profunda capilar perto de mim SP"
+    ]
+  },
+  {
+    category: "Blond & Mechas Personalizadas Perto de Mim",
+    terms: [
+      "mechas personalizadas perto de mim",
+      "blond experience perto de mim SP",
+      "mechas loiras perto de mim São Paulo",
+      "morena iluminada perto de mim SP",
+      "retoque de mechas raiz perto de mim",
+      "mechas e botox capilar perto de mim SP",
+      "matização e loiro saudável perto de mim",
+      "especialista em mechas perto de mim Jardim Marajoara"
+    ]
+  },
+  {
+    category: "Tratamentos TRUSS & Reconstrução Capilar Perto de Mim",
+    terms: [
+      "reconstrução TRUSS + escova perto de mim",
+      "TRUSS experience + escova perto de mim SP",
+      "blond angel + escova perto de mim São Paulo",
+      "loiros poderosos + ozônio perto de mim SP",
+      "hidratação ou nutrição + escova perto de mim",
+      "tratamento capilar com ozonioterapia perto de mim SP"
+    ]
+  },
+  {
+    category: "Make & Penteados para Noivas, Madrinhas e Festas Perto de Mim",
+    terms: [
+      "make + penteado noiva perto de mim SP",
+      "pacote noiva serviço + prova perto de mim",
+      "make + penteado madrinha perto de mim",
+      "make + penteado mãe da noiva perto de mim SP",
+      "penteado de noiva perto de mim Jardim Marajoara",
+      "maquiagem social blindada perto de mim Zona Sul",
+      "escova para convidadas perto de mim São Paulo"
     ]
   }
 ];
@@ -746,51 +983,72 @@ export interface BridalPackage {
 
 export const BRIDAL_PACKAGES: BridalPackage[] = [
   {
-    id: "noiva-essencial",
-    name: "Pacote Essencial: Preparação de Noiva & Penteado de noiva na Zona Sul, São Paulo",
-    price: 0,
-    priceString: "Consulte via WhatsApp",
-    idealFor: "Noivas que desejam um atendimento concentrado com maquiagem HD e penteado de noiva de alta fixação.",
+    id: "pacote-noiva-servico-prova",
+    name: "Pacote Noiva — Serviço + Prova",
+    price: 1600,
+    priceString: "R$ 1.600",
+    idealFor: "A escolha favorita e mais segura: produção completa no Grande Dia com a Prova Prévia Inclusa.",
     included: [
-      "Teste prévio de penteado de noiva e makeup",
-      "Penteado de noiva e maquiagem profissional no salão no Grande Dia da noiva",
-      "Hidratação capilar essencial e preparação de noiva para o penteado autoral",
-      "Consultoria de visagismo express para harmonização de véu, acessórios e decote na Zona Sul, São Paulo"
+      "Make + Penteado de Noiva no Grande Dia com fixação à prova de lágrimas e suor",
+      "Prova Completa prévia de Make + Penteado (ensaio técnico semanas antes)",
+      "Consultoria de visagismo autoral para harmonia de vestido, véu e tiara",
+      "Preparação capilar e facial com cosméticos de alta resistência para câmeras e luzes",
+      "Uso de camarim e espaço privativo de salão de beleza no Jardim Marajoara / Zona Sul"
     ],
-    features: ["Penteado de noiva", "Makeup", "Dia da noiva Slim"]
+    features: ["Serviço + Prova", "R$ 1.600", "Noiva VIP", "Visagismo"]
   },
   {
-    id: "noiva-classico",
-    name: "Pacote Clássico: Dia da noiva Premium & Penteado de noiva na Zona Sul, São Paulo",
-    price: 0,
-    priceString: "Consulte via WhatsApp",
-    idealFor: "A escolha favorita para o dia dela no salão com máximo conforto, relaxamento e bem-estar completo.",
+    id: "make-penteado-noiva",
+    name: "Make + Penteado de Noiva (Grande Dia)",
+    price: 1200,
+    priceString: "R$ 1.200",
+    idealFor: "Produção exclusiva para a noiva no dia do casamento com maquiagem blindada e penteado autoral.",
     included: [
-      "Delicioso café da manhã completo no salão de beleza",
-      "Massagem relaxante corporal para aliviar a tensão do casamento",
-      "Manicure e pedicure delicada dedicada para o grande dia",
-      "Hidratação capilar profunda e preparação completa do penteado de noiva",
-      "Penteado de noiva sofisticado personalizado + Maquiagem (makeup) blindada",
-      "Pausa estruturada para sessões de fotos e filmagens (por conta da noiva/seus fotógrafos)",
-      "Uso de camarim e espaço privativo de salão de beleza na Zona Sul, São Paulo"
+      "Penteado de noiva exclusivo com alta sustentação para véu e grinalda",
+      "Maquiagem (makeup) blindada profissional de altíssima fixação",
+      "Higienização e preparação da fibra capilar no salão",
+      "Colocação do véu e retoques finais antes da saída para a cerimônia"
     ],
-    features: ["Penteado de noiva", "Makeup", "Dia da noiva", "Salão de Beleza"]
+    features: ["Grande Dia", "R$ 1.200", "Make Blindada", "Penteado Autoral"]
   },
   {
-    id: "noiva-signature",
-    name: "Pacote Signature: Dia da noiva & Book de noiva de Luxo na Zona Sul, São Paulo",
-    price: 0,
-    priceString: "Consulte via WhatsApp",
-    idealFor: "A experiência absoluta de luxo, beleza e privacidade total para o dia dela no salão e book de fotos.",
+    id: "prova-make-penteado",
+    name: "Prova de Make + Penteado de Noiva",
+    price: 500,
+    priceString: "R$ 500",
+    idealFor: "Ensaio e teste técnico prévio com 30 a 60 dias de antecedência para aprovar o penteado e a maquiagem.",
     included: [
-      "Todos os serviços do pacote clássico (Café da manhã, Massagem, Depilação, Manicure & Pedicure)",
-      "Tratamento capilar intensivo, hidratação capilar e preparação exclusiva do penteado",
-      "Espaço reservado de salão de beleza com suporte a pausas planejadas para fotos e filmagens (por conta da noiva/seus fotógrafos)",
-      "Acompanhamento personalizado da visagista Beatriz Bittencourt até a cerimônia (retoque final no altar)",
-      "Acesso ao lounge VIP reservado do salão de beleza para mãe da noiva ou até 2 madrinhas na Zona Sul, São Paulo",
-      "Design de sobrancelha e análise de colorimetria express na semana do casamento"
+      "Teste real e montagem do penteado escolhido (coque, semi-preso ou trança)",
+      "Teste completo de maquiagem com harmonização de subtom e batom",
+      "Ajustes de segurança e registros fotográficos para a noiva comparar com calma"
     ],
-    features: ["Book de noiva", "Fazer Fotos & Filmes", "Dia da noiva", "Zona Sul, São Paulo"]
+    features: ["Prova Prévia", "R$ 500", "Tranquilidade", "Sem Surpresas"]
+  },
+  {
+    id: "make-penteado-madrinha",
+    name: "Make + Penteado — Madrinha",
+    price: 650,
+    priceString: "R$ 650",
+    idealFor: "Produção impecável para madrinhas brilharem no altar com sofisticação.",
+    included: [
+      "Maquiagem social blindada completa com aplicação de cílios postiços",
+      "Penteado sofisticado (ondas glamourosas, coque ou trança elaborada)",
+      "Produtos de alta fixação para durar toda a cerimônia e a festa"
+    ],
+    features: ["Madrinhas", "R$ 650", "Make + Penteado"]
+  },
+  {
+    id: "make-penteado-mae",
+    name: "Make + Penteado — Mãe da Noiva",
+    price: 600,
+    priceString: "R$ 600",
+    idealFor: "Atendimento carinhoso com visagismo rejuvenescedor para a mãe da noiva ou do noivo.",
+    included: [
+      "Maquiagem iluminadora especial para peles maduras com efeito lifting suave",
+      "Penteado clássico de alta durabilidade e acabamento leve",
+      "Atendimento prioritário e exclusivo"
+    ],
+    features: ["Mãe da Noiva", "R$ 600", "Visagismo Rejuvenescedor"]
   }
 ];
 
