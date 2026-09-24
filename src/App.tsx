@@ -27,7 +27,10 @@ import {
   Volume2,
   VolumeX,
   Flame,
-  ArrowUpRight
+  ArrowUpRight,
+  LayoutGrid,
+  Layers,
+  SlidersHorizontal
 } from "lucide-react";
 import { 
   SERVICES, 
@@ -68,12 +71,12 @@ const HERO_SLIDES: HeroSlide[] = [
     index: "01",
     tag: "NIGHT REVOLUTION // BLOND LUXURY",
     kicker: "ESPECIALISTA EM LOIROS DE ALTO PADRÃO NO JD. MARAJOARA",
-    title: "Loiros Iluminados com Saúde Tridimensional",
+    title: "Loiros Iluminados com Saúde",
     highlight: "BLOND EXPERIENCE",
-    description: "Mechas personalizadas, neutralização milimétrica e reconstrução lipídica profunda com produtos TRUSS. O loiro marcante, com brilho reluzente dia e noite.",
+    description: "Mechas personalizadas e reconstrução lipídica profunda com produtos TRUSS. O loiro marcante, saudável e sofisticado.",
     serviceTitle: "BLOND EXPERIENCE (Mechas + Corte + Tonalização + Nutrição + Escova)",
-    price: "R$ 1.200",
-    originalPrice: "R$ 1.500",
+    price: "R$ 1.200,00",
+    originalPrice: "R$ 1.500,00",
     badgeOffer: "Promoção Exclusiva: De R$ 1.500 por R$ 1.200 • Em até 3x",
     bgImage: luxuryBlondNight,
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-hairdresser-styling-a-womans-hair-41121-large.mp4",
@@ -84,33 +87,33 @@ const HERO_SLIDES: HeroSlide[] = [
     id: "dia-da-noiva-vip",
     index: "02",
     tag: "COUTURE BRIDAL // DIA DA NOIVA",
-    kicker: "SALA PRIVATIVA EXCLUSIVA NO PISO TÉRREO",
+    kicker: "ATENDIMENTO NO SALÃO, A DOMICÍLIO OU SALÃO DE FESTA",
     title: "O Seu Dia da Noiva Inesquecível & Sofisticado",
-    highlight: "EXPERIÊNCIA EXCLUSIVA",
-    description: "Espaço intimista reservado especialmente para você no The Place Salon. Penteados de alta fixação, maquiagem blindada com teste prévio e acolhimento total para madrinhas.",
+    highlight: "VALORES A COMBINAR",
+    description: "Atendimento exclusivo no salão, a domicílio e em salão de festa. Penteados de alta fixação, maquiagem blindada com teste prévio e acolhimento total para madrinhas. Valores a combinar.",
     serviceTitle: "Dia da Noiva Exclusivo VIP (Beatriz Bittencourt)",
-    price: "A partir de R$ 1.800",
-    badgeOffer: "Pacotes Completos com Prova • Até 3x ou Desconto PIX",
+    price: "A partir de R$ 2.800,00",
+    badgeOffer: "Valores a combinar • Atendimento a domicílio e salão de festa • Até 3x ou PIX",
     bgImage: bridalHairstyle,
     videoUrl: "https://cdn.coverr.co/videos/coverr-hairdresser-washing-womans-hair-4982/1080p.mp4",
     ctaText: "Consultar Data de Noiva no WhatsApp",
-    features: ["Sala Térrea Totalmente Exclusiva", "Teste Prévio de Cabelo & Make", "Produção de Madrinhas no Local", "Estacionamento de Cortesia"]
+    features: ["Atendimento no Salão, Domicílio ou Salão de Festa", "Teste Prévio de Cabelo & Make", "Produção de Madrinhas no Local", "Valores a Combinar e Parcelamento"]
   },
   {
-    id: "corte-alinhamento",
+    id: "corte-e-alinhamentos",
     index: "03",
-    tag: "HAIR TRANSFORMATION // VISAGISMO",
-    kicker: "ALINHAMENTO TÉRMICO ORGÂNICO & VISAGISMO",
-    title: "Cortes de Alta Precisão & Liso Espelhado Orgânico",
-    highlight: "SEM FORMOL",
-    description: "Visagismo contemporâneo desenhado para realçar os traços do seu rosto, somado ao alinhamento térmico zero formol com movimento natural, sedosidade e brilho espelhado.",
-    serviceTitle: "Corte Feminino + Progressiva Orgânica Sem Formol",
-    price: "R$ 480",
-    badgeOffer: "Fios 100% Alinhados • Zero Formol • Brilho Gloss",
+    tag: "VISAGISMO // BOTOX & PROGRESSIVA",
+    kicker: "CORTE FEMININO COM VISAGISMO • BOTOX • PROGRESSIVA",
+    title: "Corte com Visagismo, Botox & Progressiva",
+    highlight: "CORTE R$ 250,00",
+    description: "Corte feminino com visagismo para valorizar seu formato de rosto por R$ 250,00. Ou alinhamento e redução de frizz com Botox Capilar (a partir de R$ 480,00) e Progressiva Orgânica (a partir de R$ 650,00). Serviços individuais sem combos.",
+    serviceTitle: "Corte Feminino com Visagismo (R$ 250,00) ou Botox / Progressiva",
+    price: "R$ 250,00",
+    badgeOffer: "Corte: R$ 250,00 • Botox a partir de R$ 480,00 • Progressiva a partir de R$ 650,00",
     bgImage: salonTransformNight,
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-woman-with-wavy-hair-41680-large.mp4",
-    ctaText: "Agendar Transformação no WhatsApp",
-    features: ["Zero Formol / Sem Ardor ou Fumaça", "Visagismo Facial sob Medida", "Lavagem & Finalização de Luxo", "Durabilidade Superior de até 4 Meses"]
+    ctaText: "Agendar Corte ou Alinhamento no WhatsApp",
+    features: ["Corte Feminino com Visagismo: R$ 250,00", "Botox Capilar: a partir de R$ 480,00", "Escova Progressiva Orgânica: a partir de R$ 650,00", "Sem combos de liso e corte • Procedimentos sob medida"]
   }
 ];
 
@@ -166,6 +169,44 @@ export default function App() {
   // Filter & Search states for Services
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
   const [searchTerm, setSearchTerm] = useState<string>("");
+
+  // Services Carousel & Glassmorphism View State
+  const [servicesViewMode, setServicesViewMode] = useState<"carousel" | "grid">("carousel");
+  const servicesCarouselRef = useRef<HTMLDivElement | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
+  const [canScrollRight, setCanScrollRight] = useState<boolean>(true);
+  const [activeCarouselIndex, setActiveCarouselIndex] = useState<number>(0);
+
+  const updateScrollState = () => {
+    if (servicesCarouselRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = servicesCarouselRef.current;
+      setCanScrollLeft(scrollLeft > 15);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
+
+      const cardWidth = 360;
+      const index = Math.max(0, Math.round(scrollLeft / cardWidth));
+      setActiveCarouselIndex(index);
+    }
+  };
+
+  const scrollServicesCarousel = (direction: "left" | "right") => {
+    if (servicesCarouselRef.current) {
+      const cardWidth = servicesCarouselRef.current.clientWidth > 768 ? 390 : 320;
+      servicesCarouselRef.current.scrollBy({
+        left: direction === "left" ? -cardWidth : cardWidth,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (servicesCarouselRef.current) {
+      servicesCarouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+      setCanScrollLeft(false);
+      setCanScrollRight(true);
+      setActiveCarouselIndex(0);
+    }
+  }, [selectedCategory, searchTerm]);
 
   // Bridal calculator states
   const [bridalPackage, setBridalPackage] = useState<string>("pacote-noiva-servico-prova");
@@ -546,7 +587,7 @@ export default function App() {
                           <div className="font-serif font-semibold text-xs truncate mt-0.5">
                             {idx === 0 && "01. Blond Experience"}
                             {idx === 1 && "02. Noivas & Madrinhas"}
-                            {idx === 2 && "03. Visagismo & Liso"}
+                            {idx === 2 && "03. Corte & Botox / Progressiva"}
                           </div>
                         </button>
                       );
@@ -579,185 +620,447 @@ export default function App() {
               </div>
             </div>
 
-            {/* Filter and Search Bar */}
-            <div className="bg-white border border-stone-200/90 rounded-2xl p-4 md:p-6 shadow-xs space-y-4">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                  <h3 className="text-base font-serif font-semibold text-stone-900">
-                    O que você gostaria de fazer hoje?
+            {/* ============================================================== */}
+            {/* CARROSSEL ELEGANTE COM TRANSPARÊNCIA AOS SERVIÇOS */}
+            {/* ============================================================== */}
+            <div className="relative bg-gradient-to-br from-[#121016]/95 via-[#191522]/90 to-[#0F0D14]/95 border border-amber-500/20 rounded-3xl p-5 sm:p-7 md:p-9 text-white shadow-[0_25px_60px_-15px_rgba(0,0,0,0.65)] backdrop-blur-2xl overflow-hidden space-y-6">
+              
+              {/* Ambient Glowing Orbs */}
+              <div className="absolute -top-24 -left-24 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Header with Title, Mode Switcher & Carousel Navigation */}
+              <div className="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-5 pb-5 border-b border-white/10">
+                <div className="space-y-2 max-w-2xl">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono font-bold tracking-widest text-amber-300 bg-amber-500/10 border border-amber-500/25 uppercase">
+                    <Sparkles size={12} className="text-amber-400" />
+                    Carrossel com Transparência Glass • Alta Coiffure
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
+                    Catálogo de Procedimentos & Preços
                   </h3>
-                  <p className="text-xs text-stone-500">
-                    Escolha uma categoria abaixo ou busque pelo nome do serviço:
+                  <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                    Deslize pelos carrosséis elegantes translúcidos para conhecer cada tratamento com a <strong>Beatriz Bittencourt</strong> no <strong>The Place Salon</strong>. Atendimento individual com hora marcada.
                   </p>
                 </div>
 
-                {/* Search input */}
-                <div className="relative w-full md:w-72">
-                  <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
-                  <input
-                    type="text"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Buscar corte feminino, mechas, progressiva, botox..."
-                    className="w-full pl-9 pr-4 py-2 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-800 focus:outline-none focus:ring-1 focus:ring-[#B5945F] focus:border-[#B5945F]"
-                  />
-                  {searchTerm && (
-                    <button 
-                      onClick={() => setSearchTerm("")}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 text-xs"
+                {/* View Controls: Carousel vs Grid & Arrows */}
+                <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+                  {/* Mode Switcher */}
+                  <div className="inline-flex p-1 bg-white/5 border border-white/10 rounded-xl backdrop-blur-md">
+                    <button
+                      type="button"
+                      onClick={() => setServicesViewMode("carousel")}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                        servicesViewMode === "carousel"
+                          ? "bg-amber-400 text-stone-950 font-bold shadow-xs"
+                          : "text-stone-300 hover:text-white"
+                      }`}
                     >
-                      Limpar
+                      <SlidersHorizontal size={13} />
+                      <span>Carrossel</span>
                     </button>
+                    <button
+                      type="button"
+                      onClick={() => setServicesViewMode("grid")}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                        servicesViewMode === "grid"
+                          ? "bg-amber-400 text-stone-950 font-bold shadow-xs"
+                          : "text-stone-300 hover:text-white"
+                      }`}
+                    >
+                      <LayoutGrid size={13} />
+                      <span>Grade</span>
+                    </button>
+                  </div>
+
+                  {/* Carousel Navigation Arrows (Visible in Carousel Mode) */}
+                  {servicesViewMode === "carousel" && (
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => scrollServicesCarousel("left")}
+                        disabled={!canScrollLeft}
+                        className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all cursor-pointer ${
+                          canScrollLeft
+                            ? "bg-white/10 hover:bg-white/20 border-white/20 text-white shadow-xs"
+                            : "bg-white/5 border-white/5 text-stone-600 cursor-not-allowed opacity-40"
+                        }`}
+                        aria-label="Voltar no carrossel de serviços"
+                      >
+                        <ChevronLeft size={17} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => scrollServicesCarousel("right")}
+                        disabled={!canScrollRight}
+                        className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all cursor-pointer ${
+                          canScrollRight
+                            ? "bg-white/10 hover:bg-white/20 border-white/20 text-white shadow-xs"
+                            : "bg-white/5 border-white/5 text-stone-600 cursor-not-allowed opacity-40"
+                        }`}
+                        aria-label="Avançar no carrossel de serviços"
+                      >
+                        <ChevronRight size={17} />
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>
 
-              {/* Category Pills */}
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {CATEGORIES.map(category => {
-                  const isSelected = selectedCategory === category.id;
-                  return (
-                    <button
-                      key={category.id}
-                      onClick={() => setSelectedCategory(category.id)}
-                      className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
-                        isSelected 
-                          ? "bg-[#1C1A17] text-[#FAF9F5] shadow-xs font-semibold"
-                          : "bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-900"
+              {/* Filter and Search Bar with Glassmorphism */}
+              <div className="relative z-10 space-y-4">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                  {/* Category Pills with Translucent Styling */}
+                  <div className="flex flex-wrap gap-1.5 flex-1">
+                    {CATEGORIES.map(category => {
+                      const isSelected = selectedCategory === category.id;
+                      return (
+                        <button
+                          key={category.id}
+                          onClick={() => setSelectedCategory(category.id)}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all backdrop-blur-md cursor-pointer border ${
+                            isSelected 
+                              ? "bg-amber-400 text-stone-950 font-bold border-amber-300 shadow-[0_0_15px_rgba(251,191,36,0.35)]"
+                              : "bg-white/5 hover:bg-white/10 text-stone-300 border-white/10 hover:border-white/20"
+                          }`}
+                        >
+                          {category.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Search input with Dark Glass */}
+                  <div className="relative w-full md:w-64 shrink-0">
+                    <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
+                    <input
+                      type="text"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      placeholder="Buscar serviço..."
+                      className="w-full pl-9 pr-4 py-2 bg-white/5 border border-white/15 rounded-xl text-xs text-white placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-amber-400 focus:border-amber-400 backdrop-blur-md"
+                    />
+                    {searchTerm && (
+                      <button 
+                        onClick={() => setSearchTerm("")}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-200 text-xs cursor-pointer"
+                      >
+                        Limpar
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between text-xs text-stone-400 pt-1">
+                  <span className="font-mono">
+                    Mostrando <strong className="text-amber-300">{filteredServices.length}</strong> serviços {servicesViewMode === "carousel" ? "no carrossel" : "na grade"}
+                  </span>
+                  <span className="flex items-center gap-1 font-mono text-[11px] text-stone-300">
+                    <CreditCard size={12} className="text-amber-400" />
+                    Em até 3x sem juros no cartão ou PIX
+                  </span>
+                </div>
+              </div>
+
+              {/* ============================================================== */}
+              {/* MODE 1: CARROSSEL ELEGANTE COM TRANSPARÊNCIA */}
+              {/* ============================================================== */}
+              {servicesViewMode === "carousel" ? (
+                <div className="relative z-10 space-y-4">
+                  <div
+                    ref={servicesCarouselRef}
+                    onScroll={updateScrollState}
+                    className="flex gap-5 overflow-x-auto pb-5 pt-2 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                  >
+                    {filteredServices.map((service, index) => (
+                      <motion.div
+                        key={service.id}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.35, delay: (index % 5) * 0.05 }}
+                        className={`w-[310px] sm:w-[350px] md:w-[380px] shrink-0 snap-start bg-white/[0.06] hover:bg-white/[0.11] backdrop-blur-2xl border rounded-3xl p-6 text-white transition-all duration-300 shadow-[0_10px_35px_rgba(0,0,0,0.4)] hover:shadow-[0_15px_45px_rgba(181,148,95,0.22)] flex flex-col justify-between group relative overflow-hidden ${
+                          service.isPromo 
+                            ? "border-amber-400/60 ring-1 ring-amber-400/30" 
+                            : "border-white/15 hover:border-amber-400/40"
+                        }`}
+                      >
+                        {/* Shimmer Glass Top Light */}
+                        <div className="absolute -top-12 -right-12 w-28 h-28 bg-white/[0.04] group-hover:bg-amber-400/10 rounded-full blur-xl transition-all pointer-events-none" />
+
+                        <div className="space-y-4">
+                          {/* Badges Bar */}
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/25 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                              {service.category}
+                            </span>
+                            
+                            <div className="flex items-center gap-1.5">
+                              {service.isPromo && (
+                                <span className="text-[10px] bg-red-500/20 text-red-300 border border-red-500/30 font-bold px-2 py-0.5 rounded-md uppercase backdrop-blur-sm">
+                                  Promoção
+                                </span>
+                              )}
+                              {service.isPopular && !service.isPromo && (
+                                <span className="text-[10px] bg-amber-400/20 text-amber-200 border border-amber-400/30 font-medium px-2 py-0.5 rounded-md backdrop-blur-sm">
+                                  ⭐ Mais Pedido
+                                </span>
+                              )}
+                              <span className="text-xs text-stone-300 bg-white/10 px-2 py-0.5 rounded-md flex items-center gap-1 font-mono backdrop-blur-sm">
+                                <Clock size={11} className="text-amber-400" />
+                                {service.duration}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Title & Price */}
+                          <div className="flex items-start justify-between gap-3 pt-1">
+                            <h4 className="text-lg sm:text-xl font-serif font-bold text-white group-hover:text-amber-200 transition-colors leading-snug">
+                              {service.title}
+                            </h4>
+                          </div>
+
+                          {/* Price Tag with Transparent Pill */}
+                          <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-3 flex items-center justify-between backdrop-blur-sm">
+                            <div>
+                              <span className="text-[10px] font-mono uppercase text-stone-400 block">
+                                Valor do Serviço
+                              </span>
+                              <div className="flex items-baseline gap-2">
+                                {service.originalPrice && (
+                                  <span className="text-xs text-stone-400 line-through font-medium">
+                                    {service.originalPrice}
+                                  </span>
+                                )}
+                                <span className="text-2xl font-serif font-bold text-amber-300">
+                                  {service.price}
+                                </span>
+                              </div>
+                            </div>
+                            <span className="text-[10px] font-mono text-stone-300 bg-white/10 px-2 py-1 rounded-md">
+                              em até 3x
+                            </span>
+                          </div>
+
+                          {/* Clear Client Description */}
+                          <p className="text-xs text-stone-300/95 leading-relaxed min-h-[48px]">
+                            {service.description}
+                          </p>
+
+                          {/* Protocol / What is included */}
+                          {service.protocol && (
+                            <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-3 space-y-1 backdrop-blur-sm">
+                              <span className="text-[10px] uppercase font-bold text-amber-400/90 font-mono tracking-wider block">
+                                O que está incluso:
+                              </span>
+                              <p className="text-xs text-stone-200 font-medium flex items-start gap-1.5">
+                                <Check size={13} className="text-emerald-400 shrink-0 mt-0.5" />
+                                <span>{service.protocol}</span>
+                              </p>
+                            </div>
+                          )}
+
+                          {/* Service Tags */}
+                          <div className="flex flex-wrap gap-1 pt-1">
+                            {service.tags.map((tag, idx) => (
+                              <span 
+                                key={idx}
+                                className="text-[10px] bg-white/[0.06] border border-white/10 text-stone-300 px-2 py-0.5 rounded-md backdrop-blur-xs"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Action Button - 100% WhatsApp */}
+                        <div className="pt-5 mt-4 border-t border-white/10">
+                          <a
+                            href={getWhatsAppBookingLink(service.title, service.price)}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(37,211,102,0.35)] hover:shadow-[0_8px_25px_rgba(37,211,102,0.5)] active:scale-98 transition-all text-center cursor-pointer"
+                          >
+                            <MessageCircle size={16} />
+                            <span>Agendar no WhatsApp</span>
+                          </a>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Carousel Footnote & Quick Scroll Hints */}
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-white/10 text-xs text-stone-400 font-mono">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
+                      <span className="text-stone-300">
+                        Procedimento <strong className="text-amber-300">{Math.min(activeCarouselIndex + 1, filteredServices.length)}</strong> de <strong className="text-white">{filteredServices.length}</strong>
+                      </span>
+                      <span className="text-stone-600 hidden sm:inline">•</span>
+                      <span className="text-stone-400 hidden sm:inline">
+                        Deslize horizontalmente ou use as setas
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      {/* Dots preview (up to first 8 items) */}
+                      <div className="hidden md:flex items-center gap-1 mr-2">
+                        {filteredServices.slice(0, 8).map((_, i) => (
+                          <div
+                            key={i}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${
+                              i === activeCarouselIndex
+                                ? "w-6 bg-amber-400"
+                                : "w-1.5 bg-white/20"
+                            }`}
+                          />
+                        ))}
+                        {filteredServices.length > 8 && (
+                          <span className="text-[10px] text-stone-500 pl-0.5">+</span>
+                        )}
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => scrollServicesCarousel("left")}
+                        disabled={!canScrollLeft}
+                        className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-1 transition-colors cursor-pointer ${
+                          canScrollLeft
+                            ? "bg-white/10 border-white/15 text-stone-200 hover:text-white"
+                            : "bg-transparent border-transparent text-stone-600 opacity-40 cursor-not-allowed"
+                        }`}
+                      >
+                        <ChevronLeft size={14} /> Anterior
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => scrollServicesCarousel("right")}
+                        disabled={!canScrollRight}
+                        className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-1 transition-colors cursor-pointer ${
+                          canScrollRight
+                            ? "bg-white/10 border-white/15 text-stone-200 hover:text-white"
+                            : "bg-transparent border-transparent text-stone-600 opacity-40 cursor-not-allowed"
+                        }`}
+                      >
+                        Próximo <ChevronRight size={14} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                /* ============================================================== */
+                /* MODE 2: GRADE COMPLETA COM TRANSPARÊNCIA */
+                /* ============================================================== */
+                <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+                  {filteredServices.map((service, index) => (
+                    <motion.div
+                      key={service.id}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.35, delay: (index % 4) * 0.05 }}
+                      className={`bg-white/[0.06] hover:bg-white/[0.11] backdrop-blur-2xl border rounded-3xl p-6 text-white transition-all duration-300 shadow-[0_10px_35px_rgba(0,0,0,0.4)] hover:shadow-[0_15px_45px_rgba(181,148,95,0.22)] flex flex-col justify-between group relative overflow-hidden ${
+                        service.isPromo 
+                          ? "border-amber-400/60 ring-1 ring-amber-400/30" 
+                          : "border-white/15 hover:border-amber-400/40"
                       }`}
                     >
-                      {category.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Services Grid */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-stone-500">
-                  Mostrando <strong>{filteredServices.length}</strong> serviços disponíveis:
-                </span>
-                <span className="text-xs text-stone-500 flex items-center gap-1">
-                  <CreditCard size={13} className="text-[#B5945F]" />
-                  Parcelamento em até 3x sem juros
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {filteredServices.map((service, index) => (
-                  <motion.div
-                    key={service.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-30px" }}
-                    transition={{ 
-                      duration: 0.4, 
-                      ease: [0.25, 1, 0.5, 1], 
-                      delay: (index % 4) * 0.07 
-                    }}
-                    className={`bg-white border rounded-2xl p-5 shadow-xs transition-all hover:shadow-md flex flex-col justify-between ${
-                      service.isPromo 
-                        ? "border-[#B5945F] ring-1 ring-[#B5945F]/30" 
-                        : "border-stone-200/90"
-                    }`}
-                  >
-                    <div className="space-y-3">
-                      {/* Badges */}
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#B5945F] bg-[#B5945F]/10 px-2.5 py-0.5 rounded-md">
-                          {service.category}
-                        </span>
-                        
-                        <div className="flex items-center gap-1.5">
-                          {service.isPromo && (
-                            <span className="text-[10px] bg-red-600 text-white font-bold px-2 py-0.5 rounded-md uppercase">
-                              Promoção
-                            </span>
-                          )}
-                          {service.isPopular && !service.isPromo && (
-                            <span className="text-[10px] bg-stone-800 text-amber-300 font-medium px-2 py-0.5 rounded-md">
-                              ⭐ Mais Pedido
-                            </span>
-                          )}
-                          <span className="text-xs text-stone-500 flex items-center gap-1 font-mono">
-                            <Clock size={12} />
-                            {service.duration}
+                      <div className="space-y-4">
+                        {/* Badges Bar */}
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/25 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                            {service.category}
                           </span>
+                          
+                          <div className="flex items-center gap-1.5">
+                            {service.isPromo && (
+                              <span className="text-[10px] bg-red-500/20 text-red-300 border border-red-500/30 font-bold px-2 py-0.5 rounded-md uppercase backdrop-blur-sm">
+                                Promoção
+                              </span>
+                            )}
+                            {service.isPopular && !service.isPromo && (
+                              <span className="text-[10px] bg-amber-400/20 text-amber-200 border border-amber-400/30 font-medium px-2 py-0.5 rounded-md backdrop-blur-sm">
+                                ⭐ Mais Pedido
+                              </span>
+                            )}
+                            <span className="text-xs text-stone-300 bg-white/10 px-2 py-0.5 rounded-md flex items-center gap-1 font-mono backdrop-blur-sm">
+                              <Clock size={11} className="text-amber-400" />
+                              {service.duration}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Title & Price */}
+                        <div className="flex items-start justify-between gap-3 pt-1">
+                          <h4 className="text-lg sm:text-xl font-serif font-bold text-white group-hover:text-amber-200 transition-colors leading-snug">
+                            {service.title}
+                          </h4>
+                          <div className="text-right shrink-0">
+                            {service.originalPrice && (
+                              <span className="text-xs text-stone-400 line-through font-medium block">
+                                {service.originalPrice}
+                              </span>
+                            )}
+                            <span className="text-2xl font-serif font-bold text-amber-300 block">
+                              {service.price}
+                            </span>
+                            <span className="text-[10px] font-mono text-stone-400 block">
+                              em até 3x
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-xs text-stone-300/95 leading-relaxed">
+                          {service.description}
+                        </p>
+
+                        {/* Protocol */}
+                        {service.protocol && (
+                          <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-3 space-y-1 backdrop-blur-sm">
+                            <span className="text-[10px] uppercase font-bold text-amber-400/90 font-mono tracking-wider block">
+                              O que está incluso:
+                            </span>
+                            <p className="text-xs text-stone-200 font-medium flex items-start gap-1.5">
+                              <Check size={13} className="text-emerald-400 shrink-0 mt-0.5" />
+                              <span>{service.protocol}</span>
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-1 pt-1">
+                          {service.tags.map((tag, idx) => (
+                            <span 
+                              key={idx}
+                              className="text-[10px] bg-white/[0.06] border border-white/10 text-stone-300 px-2 py-0.5 rounded-md backdrop-blur-xs"
+                            >
+                              {tag}
+                            </span>
+                          ))}
                         </div>
                       </div>
 
-                      {/* Title & Price */}
-                      <div className="flex items-start justify-between gap-3">
-                        <h4 className="text-base sm:text-lg font-serif font-bold text-stone-900 leading-snug">
-                          {service.title}
-                        </h4>
-                        <div className="text-right shrink-0">
-                          {service.originalPrice && (
-                            <span className="text-xs text-stone-400 line-through block font-medium">
-                              {service.originalPrice}
-                            </span>
-                          )}
-                          <span className="text-lg font-bold text-[#1C1A17] font-serif block">
-                            {service.price}
-                          </span>
-                          <span className="text-[10px] text-stone-500 font-mono block">
-                            em até 3x
-                          </span>
-                        </div>
+                      {/* WhatsApp Button */}
+                      <div className="pt-5 mt-4 border-t border-white/10">
+                        <a
+                          href={getWhatsAppBookingLink(service.title, service.price)}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(37,211,102,0.35)] hover:shadow-[0_8px_25px_rgba(37,211,102,0.5)] active:scale-98 transition-all text-center cursor-pointer"
+                        >
+                          <MessageCircle size={16} />
+                          <span>Agendar no WhatsApp</span>
+                        </a>
                       </div>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
 
-                      {/* Clear Client Description */}
-                      <p className="text-xs text-stone-600 leading-relaxed">
-                        {service.description}
-                      </p>
-
-                      {/* What's included (Protocol) */}
-                      {service.protocol && (
-                        <div className="bg-stone-50 border border-stone-100 rounded-xl p-2.5 space-y-1">
-                          <span className="text-[10px] uppercase font-bold text-stone-500 font-mono tracking-wider block">
-                            O que está incluso:
-                          </span>
-                          <p className="text-xs text-stone-700 font-medium flex items-start gap-1.5">
-                            <Check size={13} className="text-emerald-600 shrink-0 mt-0.5" />
-                            <span>{service.protocol}</span>
-                          </p>
-                        </div>
-                      )}
-
-                      {/* Service Tags */}
-                      <div className="flex flex-wrap gap-1 pt-1">
-                        {service.tags.map((tag, idx) => (
-                          <span 
-                            key={idx}
-                            className="text-[10px] bg-stone-100 text-stone-600 px-2 py-0.5 rounded-md"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Action Button - 100% WhatsApp */}
-                    <div className="pt-4 mt-3 border-t border-stone-100">
-                      <a
-                        href={getWhatsAppBookingLink(service.title, service.price)}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all text-center shadow-xs active:scale-98 cursor-pointer"
-                      >
-                        <MessageCircle size={16} />
-                        <span>Agendar no WhatsApp</span>
-                      </a>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
+              {/* Empty state */}
               {filteredServices.length === 0 && (
-                <div className="bg-white border border-stone-200 rounded-2xl p-8 text-center space-y-3">
-                  <p className="text-sm text-stone-600">
+                <div className="relative z-10 bg-white/5 border border-white/10 rounded-2xl p-8 text-center space-y-3 backdrop-blur-md">
+                  <p className="text-sm text-stone-300">
                     Nenhum serviço encontrado para "<strong>{searchTerm}</strong>".
                   </p>
                   <button
@@ -765,12 +1068,13 @@ export default function App() {
                       setSearchTerm("");
                       setSelectedCategory("Todos");
                     }}
-                    className="text-xs font-semibold text-[#B5945F] underline"
+                    className="text-xs font-semibold text-amber-300 underline cursor-pointer"
                   >
                     Ver todos os serviços
                   </button>
                 </div>
               )}
+
             </div>
 
             {/* Quick Consultation CTA */}
@@ -1190,7 +1494,7 @@ export default function App() {
                     <span>ENDEREÇO OFICIAL</span>
                   </div>
                   <h3 className="text-lg font-serif font-bold">
-                    Rua Dr. Ferreira Lopes, 703 — Piso Térreo
+                    Rua Dr. Ferreira Lopes, 703
                   </h3>
                   <p className="text-xs text-stone-300">
                     Jardim Marajoara, São Paulo - SP, CEP 04671-011<br />
@@ -1431,7 +1735,7 @@ export default function App() {
               </span>
               <p className="text-xs text-stone-500 leading-relaxed">
                 The Place Salon<br />
-                Rua Dr. Ferreira Lopes, 703 - Piso Térreo<br />
+                Rua Dr. Ferreira Lopes, 703<br />
                 Jardim Marajoara, São Paulo - SP<br />
                 CEP: 04671-011
               </p>

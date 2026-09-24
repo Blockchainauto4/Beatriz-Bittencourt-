@@ -3,21 +3,21 @@ import { Service } from "./types";
 export const SERVICES: Service[] = [
   // ✂️ CORTE & FINALIZAÇÃO
   {
-    id: "corte-escova",
-    title: "Corte Feminino + Escova Modelada",
-    description: "Corte personalizado feito sob medida para valorizar a sua beleza e o formato do seu rosto, com lavagem relaxante e escova modelada impecável com movimento e brilho.",
-    price: "R$ 490",
+    id: "corte-visagismo-escova",
+    title: "Corte Feminino com Visagismo + Escova",
+    description: "Corte personalizado feito sob medida para valorizar a sua beleza e o formato do seu rosto com consultoria de visagismo autoral, lavagem relaxante e escova modelada.",
+    price: "R$ 250,00",
     duration: "1h",
     category: "Corte & Finalização",
-    protocol: "Avaliação do visual + lavagem especial + corte + escova",
-    tags: ["Corte Feminino", "Escova Inclusa", "Personalizado", "Perto de Mim"],
+    protocol: "Consultoria de visagismo + lavagem especial + corte + escova",
+    tags: ["Corte Feminino", "R$ 250,00", "Visagismo", "Escova Inclusa"],
     isPopular: true
   },
   {
     id: "hidratacao-nutricao-escova",
     title: "Hidratação ou Nutrição Profunda + Escova",
     description: "Tratamento completo para eliminar o ressecamento, devolver a maciez instantânea e o toque sedoso aos fios, finalizado com escova modelada.",
-    price: "R$ 299",
+    price: "R$ 300,00",
     duration: "1h",
     category: "Corte & Finalização",
     protocol: "Diagnóstico dos fios + máscara intensiva + escova modelada",
@@ -27,7 +27,7 @@ export const SERVICES: Service[] = [
     id: "reconstrucao-truss-escova",
     title: "Reconstrução TRUSS + Escova",
     description: "Tratamento reconstrutor com a renomada linha TRUSS para recuperar cabelos danificados ou quebradiços, devolvendo força, balanço e vitalidade aos fios.",
-    price: "R$ 299",
+    price: "R$ 300,00",
     duration: "1h",
     category: "Corte & Finalização",
     protocol: "Recuperação TRUSS + blindagem + escova modelada",
@@ -38,19 +38,19 @@ export const SERVICES: Service[] = [
   // 🎨 COLORAÇÃO
   {
     id: "coloracao-escova",
-    title: "Coloração Completa + Escova",
-    description: "Aplicação de cor com cobertura 100% uniforme dos fios brancos ou renovação do seu tom favorito com reflexos luminosos, acompanhada de escova profissional.",
-    price: "R$ 399",
+    title: "Coloração Raiz + Escova",
+    description: "Aplicação de cor na raiz com cobertura uniforme dos fios brancos ou renovação do seu tom favorito com reflexos luminosos, acompanhada de escova profissional.",
+    price: "R$ 400,00",
     duration: "1h 30min",
     category: "Coloração",
-    protocol: "Aplicação da cor + higienização protetora + escova",
-    tags: ["Cobertura Perfeita", "Cor Radiante", "Brilho", "Escova Inclusa"]
+    protocol: "Aplicação da cor na raiz + higienização protetora + escova",
+    tags: ["Cobertura Perfeita", "Coloração Raiz", "Brilho", "Escova Inclusa"]
   },
   {
     id: "coloracao-personalizada",
     title: "Coloração Personalizada com Tratamento",
     description: "Experiência completa de cor: escolha da tonalidade perfeita para realçar o seu tom de pele, aplicação cuidadosa, tratamento protetor pós-cor e escova finalizada.",
-    price: "A partir de R$ 490",
+    price: "A partir de R$ 490,00",
     duration: "2h",
     category: "Coloração",
     protocol: "Diagnóstico + coloração + tratamento protetor + finalização",
@@ -58,12 +58,12 @@ export const SERVICES: Service[] = [
     isPopular: true
   },
 
-  // ✨ BLOND & MEchas
+  // ✨ BLOND & MECHAS
   {
     id: "mechas-personalizadas",
     title: "Mechas Personalizadas (Loiro ou Morena Iluminada)",
-    description: "Iluminação feita sob medida para o seu estilo (morena iluminada, loiro perolado, dourado, mel ou baunilha). Clareamento seguro, tratamento protetor, tonalização perfeita e finalização.",
-    price: "A partir de R$ 890",
+    description: "Iluminação sob medida para o seu estilo (morena iluminada, loiro perolado, dourado, mel ou baunilha). Clareamento seguro, tratamento protetor, tonalização e finalização.",
+    price: "A partir de R$ 890,00",
     duration: "3h",
     category: "Blond & Mechas",
     protocol: "Diagnóstico + mechas sob medida + tratamento + tonalização + finalização",
@@ -73,8 +73,8 @@ export const SERVICES: Service[] = [
   {
     id: "mechas-tratamento-botox",
     title: "Mechas Iluminadas + Tratamento ou Botox",
-    description: "O combo ideal para clarear os fios e já sair com o cabelo totalmente hidratado, sem frizz e com as pontas seladas e macias.",
-    price: "A partir de R$ 950",
+    description: "O procedimento ideal para clarear os fios e já sair com o cabelo totalmente hidratado, sem frizz e com as pontas seladas e macias.",
+    price: "A partir de R$ 950,00",
     duration: "3h 30min",
     category: "Blond & Mechas",
     protocol: "Mechas completas + tratamento disciplinante ou botox + escova",
@@ -84,7 +84,7 @@ export const SERVICES: Service[] = [
     id: "mechas-raiz",
     title: "Retoque de Mechas na Raiz (Até 3 meses)",
     description: "Retoque suave para disfarçar o crescimento da raiz de até 3 meses, mantendo a luminosidade do loiro contínua e sem marcações. Inclui tratamento e tonalização.",
-    price: "R$ 750",
+    price: "R$ 750,00",
     duration: "2h",
     category: "Blond & Mechas",
     protocol: "Retoque de raiz + tratamento + tonalização da cor + escova",
@@ -93,9 +93,9 @@ export const SERVICES: Service[] = [
   {
     id: "blond-experience",
     title: "BLOND EXPERIENCE (Transformação Completa)",
-    description: "O pacote completo para transformar o seu loiro com valor promocional por tempo limitado (de R$ 1.500 por R$ 1.200). Inclui mechas completas com protetor contra quebra, corte feminino, tonalização na cor desejada, tratamento profundo e escova luxuosa.",
-    price: "R$ 1.200",
-    originalPrice: "R$ 1.500",
+    description: "O pacote completo para transformar o seu loiro com valor promocional por tempo limitado (de R$ 1.500 por R$ 1.200). Inclui mechas completas com protetor contra quebra, corte feminino, tonalização, tratamento profundo e escova luxuosa.",
+    price: "R$ 1.200,00",
+    originalPrice: "R$ 1.500,00",
     isPromo: true,
     duration: "4h",
     category: "Blond & Mechas",
@@ -104,38 +104,28 @@ export const SERVICES: Service[] = [
     isPopular: true
   },
 
-  // 💎 TRANSFORMAÇÃO & ALINHAMENTO
-  {
-    id: "progressiva",
-    title: "Escova Progressiva Orgânica (Zero Formol)",
-    description: "Alisamento suave e duradouro com fórmula 100% orgânica, sem formol, sem cheiro forte e sem ardor nos olhos. Deixa o cabelo alinhado, macio, com volume reduzido e muito brilho.",
-    price: "R$ 650",
-    duration: "2h 30min",
-    category: "Transformação",
-    protocol: "Aplicação orgânica + alinhamento térmico + finalização espelhada",
-    tags: ["Zero Formol", "Sem Cheiro Forte", "Liso Natural", "Redução de Volume"],
-    isPopular: true
-  },
+  // 💎 TRANSFORMAÇÃO & ALINHAMENTO (SEM COMBOS DE LISO E CORTE)
   {
     id: "botox-capilar",
     title: "Botox Capilar Disciplinante",
-    description: "Tratamento que reduz o frizz, alinha os fios e devolve a massa capilar sem alisar artificialmente. Ideal para quem quer cabelos domados, com brilho e movimento natural.",
-    price: "R$ 499",
+    description: "Tratamento que reduz o frizz, alinha os fios e repõe a massa capilar sem alisar artificialmente. Ideal para quem quer cabelos domados, com brilho e movimento natural.",
+    price: "A partir de R$ 480,00",
     duration: "1h 30min",
     category: "Transformação",
     protocol: "Higienização + aplicação disciplinante + selagem com brilho",
-    tags: ["Anti-Frizz", "Brilho Intenso", "Movimento Natural", "Sem Alisar Demais"],
+    tags: ["A partir de R$ 480", "Anti-Frizz", "Brilho Intenso", "Movimento Natural"],
     isPopular: true
   },
   {
-    id: "progressiva-tratamento",
-    title: "Progressiva Orgânica + Tratamento Fortalecedor",
-    description: "Protocolo duplo para quem deseja alinhamento e máxima hidratação no mesmo dia. A Beatriz avalia o seu cabelo para indicar o melhor cuidado para os seus fios.",
-    price: "Consulte avaliação",
+    id: "progressiva",
+    title: "Escova Progressiva Orgânica (Zero Formol)",
+    description: "Alinhamento suave e duradouro com fórmula 100% orgânica, sem formol, sem cheiro forte e sem ardor nos olhos. Deixa o cabelo alinhado, macio, com volume reduzido e muito brilho.",
+    price: "A partir de R$ 650,00",
     duration: "2h 30min",
     category: "Transformação",
-    protocol: "Avaliação prévia gratuita + protocolo personalizado",
-    tags: ["Alinhamento e Saúde", "Cuidado Sob Medida", "Avaliação Gratuita"]
+    protocol: "Aplicação orgânica + alinhamento térmico + finalização espelhada",
+    tags: ["A partir de R$ 650", "Zero Formol", "Sem Cheiro Forte", "Liso Natural"],
+    isPopular: true
   },
 
   // 🌿 TRATAMENTOS CAPILARES
@@ -143,7 +133,7 @@ export const SERVICES: Service[] = [
     id: "blond-angel-escova",
     title: "BLOND ANGEL Iluminador + Escova",
     description: "Tratamento revitalizante para cabelos loiros, grisalhos ou com luzes. Elimina o tom amarelado indesejado, devolve a maciez e finaliza com escova modelada.",
-    price: "R$ 280",
+    price: "R$ 280,00",
     duration: "1h",
     category: "Tratamentos",
     protocol: "Lavagem desamareladora + máscara nutritiva + escova modelada",
@@ -153,7 +143,7 @@ export const SERVICES: Service[] = [
     id: "truss-experience-escova",
     title: "TRUSS Experience + Escova Modelada",
     description: "Experiência completa com os produtos premium da TRUSS para nutrir, restaurar a elasticidade e trazer brilho intenso aos cabelos com escova inclusa.",
-    price: "R$ 299",
+    price: "R$ 300,00",
     duration: "1h 15min",
     category: "Tratamentos",
     protocol: "Terapia TRUSS completa + máscara concentrada + escova",
@@ -164,41 +154,41 @@ export const SERVICES: Service[] = [
     id: "loiros-poderosos-ozonio",
     title: "Tratamento Loiros Poderosos + Massagem Capilar",
     description: "Tratamento especial para recuperar cabelos claros, com máscara ultra-hidratante, vapor suavizante e massagem relaxante no couro cabeludo.",
-    price: "A partir de R$ 250",
+    price: "A partir de R$ 250,00",
     duration: "1h",
     category: "Tratamentos",
     protocol: "Higienização + vapor hidratante + massagem relaxante + escova",
     tags: ["Relaxamento", "Hidratação Máxima", "Cuidado Especial", "Massagem Inclusa"]
   },
 
-  // 💄 NOIVAS, MADRINHAS & EVENTOS
+  // 💄 NOIVAS, MADRINHAS & EVENTOS (VALORES A COMBINAR • ATENDIMENTO A DOMICÍLIO E SALÃO DE FESTA)
   {
     id: "pacote-noiva-servico-prova",
     title: "Pacote Noiva Completo (Grande Dia + Prova Prévia)",
-    description: "A opção mais tranquila e recomendada para noivas: inclui o ensaio prévio completo de cabelo e maquiagem semanas antes, mais a produção oficial no dia do casamento.",
-    price: "R$ 1.600",
+    description: "Produção inesquecível para o seu casamento com ensaio prévio completo de cabelo e maquiagem, mais a produção oficial no Grande Dia. Atendimento no salão, a domicílio e em salão de festa (valores a combinar).",
+    price: "A partir de R$ 2.800,00",
     duration: "4h 30min (2 etapas)",
     category: "Noivas & Eventos",
-    protocol: "1ª Etapa: Prova de penteado e maquiagem • 2ª Etapa: Produção completa no Grande Dia",
-    tags: ["Sem Surpresas", "Prova Inclusa", "Grande Dia", "Noiva Tranquila"],
+    protocol: "1ª Etapa: Prova de penteado e maquiagem • 2ª Etapa: Produção completa no Grande Dia (Salão, domicílio ou salão de festa)",
+    tags: ["A partir de R$ 2.800", "Valores a Combinar", "Domicílio / Salão de Festa", "Grande Dia"],
     isPopular: true
   },
   {
     id: "make-penteado-noiva",
     title: "Make + Penteado de Noiva (Grande Dia)",
-    description: "Produção exclusiva no dia do casamento: penteado duradouro escolhido para harmonizar com seu vestido e grinalda, e maquiagem à prova d'água e lágrimas.",
-    price: "R$ 1.200",
+    description: "Produção exclusiva no dia do casamento: penteado duradouro escolhido para harmonizar com seu vestido e grinalda, e maquiagem à prova d'água e lágrimas. Atendimento no salão, domicílio ou salão de festa.",
+    price: "Valores a combinar",
     duration: "2h 30min",
     category: "Noivas & Eventos",
     protocol: "Preparação de pele e cabelo + maquiagem blindada + penteado + fixação de véu",
-    tags: ["Grande Dia", "À Prova de Lágrimas", "Penteado Firme", "Camarim Exclusivo"],
+    tags: ["Grande Dia", "À Prova de Lágrimas", "Valores a Combinar", "Atendimento Personalizado"],
     isPopular: true
   },
   {
     id: "prova-make-penteado",
     title: "Prova de Make + Penteado de Noiva (Avulsa)",
     description: "Ensaio técnico realizado semanas antes para você testar opções de penteados e maquiagens com calma, tirar fotos e aprovar cada detalhe com antecedência.",
-    price: "R$ 500",
+    price: "R$ 500,00",
     duration: "2h",
     category: "Noivas & Eventos",
     protocol: "Teste real de penteado + teste completo de maquiagem + fotos para comparação",
@@ -207,8 +197,8 @@ export const SERVICES: Service[] = [
   {
     id: "make-penteado-madrinha",
     title: "Make + Penteado — Madrinha",
-    description: "Produção impecável para madrinhas brilharem no altar: maquiagem social com cílios e penteado sofisticado (ondas, coque ou trança) com alta durabilidade para a festa inteira.",
-    price: "R$ 650",
+    description: "Produção impecável para madrinhas brilharem no altar: maquiagem social com cílios e penteado sofisticado com alta durabilidade para a festa inteira.",
+    price: "R$ 650,00",
     duration: "1h 45min",
     category: "Noivas & Eventos",
     protocol: "Maquiagem social completa com cílios + penteado elaborado + fixação",
@@ -218,7 +208,7 @@ export const SERVICES: Service[] = [
     id: "make-penteado-mae",
     title: "Make + Penteado — Mãe da Noiva ou Noivo",
     description: "Atendimento dedicado e carinhoso para a mãe da noiva ou noivo: maquiagem suave que valoriza a pele com naturalidade e penteado clássico elegante e confortável.",
-    price: "R$ 600",
+    price: "R$ 600,00",
     duration: "1h 45min",
     category: "Noivas & Eventos",
     protocol: "Maquiagem iluminadora para pele madura + penteado confortável e elegante",
@@ -228,7 +218,7 @@ export const SERVICES: Service[] = [
     id: "make-madrinha-mae",
     title: "Maquiagem Social Completa (Madrinha / Mãe / Convidada)",
     description: "Maquiagem profissional duradoura com preparação de pele, contorno suave, sombra esfumada e cílios postiços para você curtir a festa sem retoques.",
-    price: "R$ 350",
+    price: "R$ 350,00",
     duration: "1h",
     category: "Noivas & Eventos",
     protocol: "Preparação de pele + make social + aplicação de cílios",
@@ -238,7 +228,7 @@ export const SERVICES: Service[] = [
     id: "penteado-madrinha-mae",
     title: "Penteado Social Elaborado (Madrinha / Mãe / Convidada)",
     description: "Penteado sofisticado (coque elegante, semi-preso com ondas ou trança estilizada) com produtos de fixação para se manter perfeito durante todo o evento.",
-    price: "R$ 350",
+    price: "R$ 350,00",
     duration: "1h",
     category: "Noivas & Eventos",
     protocol: "Preparação dos fios + modelagem do penteado + fixação prolongada",
@@ -248,7 +238,7 @@ export const SERVICES: Service[] = [
     id: "escova-convidadas",
     title: "Escova Modelada para Convidadas",
     description: "Lavagem relaxante com produtos profissionais e escova modelada ou com ondas leves para deixar seu cabelo lindo e alinhado para a festa.",
-    price: "R$ 180",
+    price: "R$ 180,00",
     duration: "45min",
     category: "Noivas & Eventos",
     protocol: "Lavagem relaxante + escova modelada ou babyliss leve",
@@ -260,7 +250,7 @@ export const SERVICES: Service[] = [
     id: "corte-masculino-barba",
     title: "Corte Masculino & Alinhamento de Barba",
     description: "Corte masculino moderno com acabamento limpo, alinhamento de barba e finalização rápida e prática em ambiente reservado.",
-    price: "R$ 150",
+    price: "R$ 150,00",
     duration: "45min",
     category: "Barbearia",
     protocol: "Corte de cabelo + acabamento de barba + lavagem rápida",
@@ -309,12 +299,12 @@ export const STUDIO_INFO = {
   tagline: "CUIDADO, TÉCNICA E PERSONALIZAÇÃO PARA REALÇAR A SUA BELEZA.",
   paymentTerms: "Aceitamos cartões de crédito em até 3x.",
   attendanceNote: "São Paulo • Atendimento personalizado • Agendamentos pelo WhatsApp",
-  address: "Rua Dr. Ferreira Lopes, 703 - Piso Térreo - Jardim Marajoara",
+  address: "Rua Dr. Ferreira Lopes, 703 - Jardim Marajoara",
   streetAddress: "Rua Dr. Ferreira Lopes, 703",
   district: "Jardim Marajoara",
   city: "São Paulo - SP, CEP 04671-011",
   postalCode: "04671-011",
-  floor: "Piso Térreo (Floor 0)",
+  floor: "The Place Salon",
   landmarkReference: "Próximo à Av. Washington Luís, Escola Suíço-Brasileira & Smart Fit",
   phone: "(11) 99227-9655",
   whatsapp: "5511992279655",
@@ -346,7 +336,7 @@ export const FAQ = [
   },
   {
     question: "A escova progressiva tem formol ou cheiro forte?",
-    answer: "Não! A nossa escova progressiva (R$ 650) é 100% orgânica e sem formol. Ela proporciona cabelos alinhados, reduz o volume e dá brilho espelhado com total conforto, sem ardor e sem cheiro forte."
+    answer: "Não! A nossa escova progressiva (a partir de R$ 650,00) é 100% orgânica e sem formol. Ela proporciona cabelos alinhados, reduz o volume e dá brilho com total conforto, sem ardor e sem cheiro forte."
   },
   {
     question: "Qual a diferença entre a Progressiva e o Botox Capilar?",
@@ -985,31 +975,31 @@ export const BRIDAL_PACKAGES: BridalPackage[] = [
   {
     id: "pacote-noiva-servico-prova",
     name: "Pacote Noiva — Serviço + Prova",
-    price: 1600,
-    priceString: "R$ 1.600",
-    idealFor: "A escolha favorita e mais segura: produção completa no Grande Dia com a Prova Prévia Inclusa.",
+    price: 2800,
+    priceString: "A partir de R$ 2.800",
+    idealFor: "Produção completa para o seu casamento com ensaio prévio e Grande Dia. Atendimento no salão, a domicílio e em salão de festa (valores a combinar).",
     included: [
       "Make + Penteado de Noiva no Grande Dia com fixação à prova de lágrimas e suor",
-      "Prova Completa prévia de Make + Penteado (ensaio técnico semanas antes)",
-      "Consultoria de visagismo autoral para harmonia de vestido, véu e tiara",
-      "Preparação capilar e facial com cosméticos de alta resistência para câmeras e luzes",
-      "Uso de camarim e espaço privativo de salão de beleza no Jardim Marajoara / Zona Sul"
+      "Prova Completa prévia de Make + Penteado (ensaio técnico antecipado)",
+      "Consultoria de visagismo autoral para harmonia de vestido, véu e grinalda",
+      "Atendimento exclusivo no salão, a domicílio ou em salão de festa (valores a combinar)",
+      "Preparação capilar e facial com cosméticos de alta resistência para câmeras e luzes"
     ],
-    features: ["Serviço + Prova", "R$ 1.600", "Noiva VIP", "Visagismo"]
+    features: ["A partir de R$ 2.800", "Serviço + Prova", "Salão, Domicílio ou Festa", "Valores a Combinar"]
   },
   {
     id: "make-penteado-noiva",
     name: "Make + Penteado de Noiva (Grande Dia)",
-    price: 1200,
-    priceString: "R$ 1.200",
-    idealFor: "Produção exclusiva para a noiva no dia do casamento com maquiagem blindada e penteado autoral.",
+    price: 2000,
+    priceString: "Valores a combinar",
+    idealFor: "Produção exclusiva para a noiva no dia do casamento com maquiagem blindada e penteado autoral. Atendimento no salão, a domicílio e em salão de festa.",
     included: [
       "Penteado de noiva exclusivo com alta sustentação para véu e grinalda",
       "Maquiagem (makeup) blindada profissional de altíssima fixação",
-      "Higienização e preparação da fibra capilar no salão",
-      "Colocação do véu e retoques finais antes da saída para a cerimônia"
+      "Atendimento exclusivo no salão, a domicílio ou em salão de festa (valores a combinar)",
+      "Colocação do véu e retoques finais antes da cerimônia"
     ],
-    features: ["Grande Dia", "R$ 1.200", "Make Blindada", "Penteado Autoral"]
+    features: ["Grande Dia", "Valores a Combinar", "Make Blindada", "Penteado Autoral"]
   },
   {
     id: "prova-make-penteado",
